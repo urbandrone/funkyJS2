@@ -4,19 +4,16 @@
 
     if (typeof define === 'function' && define.amd) {
         define([
-            '../type',
-            '../arity'
+            '../type'
         ], factory);
 
     } else if (typeof exports === 'object') {
         module.exports = factory(
-            require('../type'),
-            require('../arity')
+            require('../type')
         );
 
     } else {
         ext = factory(
-            global.funkyJS,
             global.funkyJS
         );
 
@@ -27,12 +24,16 @@
         }
     }
 
-})(this, function (type, arity) {
+})(this, function (type) {
 
     /**
     @module experiments
     **/
     var api = {};
+
+
+
+
 
 
 
