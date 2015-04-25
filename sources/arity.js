@@ -62,12 +62,25 @@
         max.length;
         // -> 0
 
-        var fixedMax = funkyJS.aritize(3)(max);
+        // loosely aritized (acts much like variadic)
+        var looseMax = funkyJS.aritize(3, true)(max);
 
-        fixedMax(1, 2, 3, 4, 5);
+        looseMax(1, 2, 3, 4, 5);
+        // -> 5
+
+        looseMax.length;
         // -> 3
 
-        fixedMax.length;
+
+        // strictly aritized (acts much like niladic, monadic, etc...)
+        var stictMax = funkyJS.aritize(3)(function (args) {
+            return max.apply(null, args);
+        });
+
+        strictMax(1, 2, 3, 4, 5);
+        // -> 3
+
+        strictMax.length;
         // -> 3
 
     **/
