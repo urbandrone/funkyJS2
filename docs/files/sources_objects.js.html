@@ -19,7 +19,7 @@
             
         </div>
         <div class="yui3-u-1-4 version">
-            <em>API Docs for: 0.7.0</em>
+            <em>API Docs for: 1.3.0</em>
         </div>
     </div>
     <div id="bd" class="yui3-g">
@@ -251,11 +251,14 @@
         funkyJS.pluck(&#x27;foo&#x27;, dicts);
         // -&gt; [&#x27;bar&#x27;, &#x27;baz&#x27;, &#x27;bam&#x27;]
 
-        funkyJS.pluck(&#x27;howdy&#x27;, dict);
+        funkyJS.pluck(&#x27;howdy&#x27;, dicts);
         // -&gt; [null, null, null]
 
-        funkyJS.pluck(&#x27;foo&#x27;)(dict);
+        funkyJS.pluck(&#x27;foo&#x27;)(dicts);
         // -&gt; [&#x27;bar&#x27;, &#x27;baz&#x27;, &#x27;bam&#x27;]
+
+        funkyJS.pluck(&#x27;foo&#x27;, dicts[0]);
+        // -&gt; &#x27;bar&#x27;
 
     **/
     api.pluck = function pluck (s, os) {

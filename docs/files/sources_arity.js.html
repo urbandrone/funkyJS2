@@ -19,7 +19,7 @@
             
         </div>
         <div class="yui3-u-1-4 version">
-            <em>API Docs for: 0.7.0</em>
+            <em>API Docs for: 1.3.0</em>
         </div>
     </div>
     <div id="bd" class="yui3-g">
@@ -170,12 +170,25 @@
         max.length;
         // -&gt; 0
 
-        var fixedMax = funkyJS.aritize(3)(max);
+        // loosely aritized (acts much like variadic)
+        var looseMax = funkyJS.aritize(3, true)(max);
 
-        fixedMax(1, 2, 3, 4, 5);
+        looseMax(1, 2, 3, 4, 5);
+        // -&gt; 5
+
+        looseMax.length;
         // -&gt; 3
 
-        fixedMax.length;
+
+        // strictly aritized (acts much like niladic, monadic, etc...)
+        var stictMax = funkyJS.aritize(3)(function (args) {
+            return max.apply(null, args);
+        });
+
+        strictMax(1, 2, 3, 4, 5);
+        // -&gt; 3
+
+        strictMax.length;
         // -&gt; 3
 
     **/

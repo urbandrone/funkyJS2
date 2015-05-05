@@ -143,11 +143,14 @@
         funkyJS.pluck('foo', dicts);
         // -> ['bar', 'baz', 'bam']
 
-        funkyJS.pluck('howdy', dict);
+        funkyJS.pluck('howdy', dicts);
         // -> [null, null, null]
 
-        funkyJS.pluck('foo')(dict);
+        funkyJS.pluck('foo')(dicts);
         // -> ['bar', 'baz', 'bam']
+
+        funkyJS.pluck('foo', dicts[0]);
+        // -> 'bar'
 
     **/
     api.pluck = function pluck (s, os) {

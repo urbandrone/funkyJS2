@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="de">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="keywords" content="funkyJS2, Example, Google Map">
+        <meta name="description" content="Example website for feature demo of funkyJS2">
+        <meta name="author" content="David Hofmann">
+        <meta name="robots" content="index, follow">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        <title>funkyJS2 Google Map</title>
+        <link rel="stylesheet" href="">
+    </head>
+    <body>
+        <!-- APP begin -->
+        <div class="app">
+            <!-- HEADER begin -->
+            <div class="app_header">
+                <span class="app_logo">funkyJS2 Google Maps</span>
+                <span class="app_subline">Captial city informations</span>
+            </div>
+            <!-- /HEADER end -->
+            <div class="app_main">
+                <!-- CONTENT begin -->
+                <div class="app_content">
+                    <!-- MAP begin -->
+                    <div id="map" class="googlemap ratio_16-9">
+                        <div id="map_container"></div>
+                    </div>
+                    <!-- /MAP end -->
+                    <!-- INFO begin -->
+                    <div id="info" class="infobox">
+                    </div>
+                    <!-- /INFO end -->
+                </div>
+                <!-- /CONTENT end -->
+                <!-- CITYSELECT begin -->
+                <div id="cities" class="cities">
+                    <ul class="cities_list">
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- /APP end -->
+        <!-- LOADSCREEN begin -->
+        <div id="loadscreen" class="loadscreen">
+        </div>
+        <!-- LOADSCREEN end -->
+        <script src="//maps.googleapis.com/maps/api/js?sensor=false"></script>
+        <script src="../../builds/funkyjs2.browser.min.js"></script>
+        <script src="../../builds/funkyjs2.ext.browser.min.js"></script>
+        <!-- // -->
+        <script src="js/_core.js"></script>
+        <script src="js/city.js"></script>
+    </body>
+</html>

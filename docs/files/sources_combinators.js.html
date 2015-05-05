@@ -19,7 +19,7 @@
             
         </div>
         <div class="yui3-u-1-4 version">
-            <em>API Docs for: 0.7.0</em>
+            <em>API Docs for: 1.3.0</em>
         </div>
     </div>
     <div id="bd" class="yui3-g">
@@ -157,6 +157,10 @@
         return flattened;
     }
 
+    var execBoundContract = function (args, f) {
+        return !!f.apply(this, args);
+    }
+
 
 
     /**
@@ -248,267 +252,113 @@
     }
 
     /**
-    The curry function allows to return a function from a given function, which
-        splits the application of the given function into multiple steps. The
-        returned function returns itself functions, until enough arguments to
-        execute the originally given function
+    The and function allows to combine a series of comparator functions into a
+        sequence of and-and (&amp;&amp;) conditions, incoming values must pass
 
-    @method curry
+    @method and
     @for funkyJS
-    @param {function} fn The function to curry
-    @return {function} The curried function
+    @param {function} fn1* One to N functions to compare against
+    @return {function} The conditions chained inside a new function
 
     @example
-        var add = funkyJS.curry(function (a, b) {
-            return a + b;
+        var isBelow10 = function (value) {
+            return value &lt; 10;
+        }
+
+        var isDivBy2 = function (value) {
+            return value % 2 === 0;
+        }
+
+        var isNumBelow10DivBy2 = funkyJS.and(
+            funkyJS.isNumber,
+            isBelow10,
+            isDivBy2
+        );
+
+        isNumBelow10DivBy2(8);
+        // -&gt; true
+
+        isNumBelow10DivBy2(9);
+        // -&gt; false
+
+        isNumBelow10DivBy2(null);
+        // -&gt; false
+
+    **/
+    api.and = function and (/* fn1, ...fnN */) {
+        var fns,
+            max;
+
+        if (arguments.length &lt; 1) {
+            return and;
+        }
+
+        fns = slice(arguments).filter(type.isFunction);
+        max = Math.max.apply(Math, fns.map(function (f) { return f.length; }));
+        if (fns.length &lt; 1) {
+            throw new Error(&#x27;and expected at least two functions but found none&#x27;);
+        }
+
+        return arity.aritize(max)(function (args) {
+            return fns.every(execBoundContract.bind(this, args));
         });
-
-        add(&#x27;a&#x27;)(&#x27;z&#x27;);
-        // -&gt; &#x27;az&#x27;
-
-    **/
-    api.curry = function curry (fn /*, arg1 */) {
-        if (arguments.length &lt; 1) {
-            return curry;
-        }
-
-        if (type.isNotFunction(fn)) {
-            throw new Error(&#x27;Expected to curry a function but saw &#x27; + fn);
-        }
-
-        function acc (collected) {
-            return function (arg) {
-                var args = collected.concat(arg);
-                if (args.length &lt; fn.length) {
-                    return acc(args);
-                }
-
-                return fn.apply(this, args);
-            }
-        }
-
-        return acc((arguments.length &gt; 1 ? [arguments[1]] : []));
     }
 
     /**
-    The curryRight function allows to return a function from a given function, which
-        splits the application of the given function into multiple steps. The
-        returned function returns itself functions, until enough arguments to
-        execute the originally given function. The collected arguments are reversed
-        before applied
+    The or function allows to combine a series of comparator functions into a
+        sequence of or-or (||) conditions, incoming values must pass
 
-    @method curryRight
+    @method or
     @for funkyJS
-    @param {function} fn The function to curry
-    @return {function} The curried function
+    @param {function} fn1* One to N functions to compare against
+    @return {function} The conditions chained inside a new function
 
     @example
-        var add = funkyJS.curryRight(function (a, b) {
-            return a + b;
+        var hasLength = funkyJS.has(&#x27;length&#x27;);
+
+        var isIterable = funkyJS.or(
+            funkyJS.isArray,
+            funkyJS.and(hasLength, funkyJS.isNotFunction)
+        );
+
+        isIterable(&#x27;string&#x27;);
+        // -&gt; true
+
+        isIterable([&#x27;a&#x27;, &#x27;b&#x27;, &#x27;c&#x27;]);
+        // -&gt; true
+
+        isIterable({
+            length: 3,
+            0: &#x27;some&#x27;,
+            1: &#x27;thing&#x27;,
+            2: &#x27;here&#x27;
         });
+        // -&gt; true
 
-        add(&#x27;a&#x27;)(&#x27;z&#x27;);
-        // -&gt; &#x27;za&#x27;
+        isIterable(null);
+        // -&gt; false
 
-    **/
-    api.curryRight = function curryRight (fn /*, arg1 */) {
-        if (arguments.length &lt; 1) {
-            return curryRight;
-        }
-
-        if (type.isNotFunction(fn)) {
-            throw new Error(&#x27;Expected to curryRight a function but saw &#x27; + fn);
-        }
-
-        function acc (collected) {
-            return function (arg) {
-                var args = collected.concat(arg);
-                if (args.length &lt; fn.length) {
-                    return acc(args);
-                }
-
-                return fn.apply(this, args.reverse());
-            }
-        }
-
-        return acc((arguments.length &gt; 1 ? [arguments[1]] : []));
-    }
-
-    /**
-    The partial function allows to partially apply a function to a set of arguments
-        by leaving the context unbound. It returns a funciton, which collects
-        arguments until enough arguments are collected to execute the partially
-        applied function. funkyJS.partial also allows to leave holes in the list
-        of arguments preset to a function by passing the undefined value
-
-    @method partial
-    @for funkyJS
-    @param {function} fn The function to partially apply
-    @param {array|*} [partials] The argument values to preset (ltr)
-    @return {function} The partially applied function
-
-    @example
-        var format = function (prefix, value, postfix) {
-            return prefix + &#x27; &#x27; + value + &#x27; &#x27; + postfix;
-        }
-
-        var formatBtn = funkyJS.partial(format, [
-            &#x27;this is&#x27;,
-            undefined,
-            &#x27;button&#x27;
-        ]);
-
-        formatBtn(&#x27;joe&#x27;);
-        // -&gt; &#x27;this is joe button&#x27;;
-
-        formatBtn(&#x27;a&#x27;);
-        // -&gt; &#x27;this is a button&#x27;;
+        isIterable(function (a, b, c) {});
+        // -&gt; false
 
     **/
-    api.partial = function partial (fn, partials) {
-        var missing,
-            now;
+    api.or = function or (/* fn1, ...fnN */) {
+        var fns,
+            max;
 
         if (arguments.length &lt; 1) {
-            return partial;
+            return or;
         }
 
-        if (type.isNotFunction(fn)) {
-            throw new Error(&#x27;partial expected to see a function but saw &#x27; + fn);
+        fns = slice(arguments).filter(type.isFunction);
+        max = Math.max.apply(Math, fns.map(function (f) { return f.length; }));
+        if (fns.length &lt; 1) {
+            throw new Error(&#x27;or expected at least two functions but found none&#x27;);
         }
 
-        if (arguments.length &lt; 2) {
-            partials = [];
-        } else if (!Array.isArray(partials)) {
-            partials = slice(arguments, 1);
-        }
-
-        missing = fn.length;
-        for (now = 0; now &lt; fn.length; now += 1) {
-            if (partials[now] === undefined) {
-                partials[now] = undefined;
-                continue;
-            }
-            missing -= 1;
-        }
-
-        function accumulator (partials, missed) {
-            return arity.aritize(missed)(function (args) {
-                var _partials,
-                    _missed;
-
-                _missed = missed;
-                _partials = partials.map(function (p) {
-                    var _p;
-                    if (p !== undefined) {
-                        return p;
-                    }
-
-                    _p = args.shift();
-                    if (_p !== undefined) {
-                        _missed -= 1;
-                    }
-                    return _p;
-                });
-
-                if (_missed &gt; 0) {
-                    return accumulator(_partials, _missed);
-                }
-
-                return fn.apply(this, _partials);
-            });
-        }
-
-        return accumulator(partials, missing);
-    }
-
-    /**
-    The partialRight function allows to partially apply a function to a set of arguments
-        by leaving the context unbound. It returns a funciton, which collects
-        arguments until enough arguments are collected to execute the partially
-        applied function. funkyJS.partialRight also allows to leave holes in the list
-        of arguments preset to a function by passing the undefined value. The
-        accumulated arguments are reversed before the function is applied to them
-
-    @method partialRight
-    @for funkyJS
-    @param {function} fn The function to partially apply
-    @param {array|*} [partials] The argument values to preset (rtl)
-    @return {function} The partially applied function
-
-    @example
-        var format = function (prefix, value, postfix) {
-            return prefix + &#x27; &#x27; + value + &#x27; &#x27; + postfix;
-        }
-
-        var formatBtnR = funkyJS.partialRight(format, [
-            &#x27;button&#x27;,
-            undefined,
-            &#x27;this is&#x27;
-        ]);
-
-        formatBtnR(&#x27;joe&#x27;);
-        // -&gt; &#x27;this is joe button&#x27;;
-
-        formatBtnR(&#x27;a&#x27;);
-        // -&gt; &#x27;this is a button&#x27;;
-
-    **/
-    api.partialRight = function partialRight (fn, partials) {
-        var missing,
-            now;
-
-        if (arguments.length &lt; 1) {
-            return partialRight;
-        }
-
-        if (type.isNotFunction(fn)) {
-            throw new Error(&#x27;partialRight expected to see a function but saw &#x27; + fn);
-        }
-
-        if (arguments.length &lt; 2) {
-            partials = [];
-        } else if (!Array.isArray(partials)) {
-            partials = slice(arguments, 1);
-        }
-
-        missing = fn.length;
-        for (now = 0; now &lt; fn.length; now += 1) {
-            if (partials[now] === undefined) {
-                partials[now] = undefined;
-                continue;
-            }
-            missing -= 1;
-        }
-
-        function accumulator (partials, missed) {
-            return arity.aritize(missed)(function (args) {
-                var _partials,
-                    _missed;
-
-                _missed = missed;
-                _partials = partials.map(function (p) {
-                    var _p;
-                    if (p !== undefined) {
-                        return p;
-                    }
-
-                    _p = args.shift();
-                    if (_p !== undefined) {
-                        _missed -= 1;
-                    }
-                    return _p;
-                });
-
-                if (_missed &gt; 0) {
-                    return accumulator(_partials, _missed);
-                }
-
-                return fn.apply(this, _partials.reverse());
-            });
-        }
-
-        return accumulator(partials, missing);
+        return arity.aritize(max)(function (args) {
+            return fns.some(execBoundContract.bind(this, args));
+        });
     }
 
 

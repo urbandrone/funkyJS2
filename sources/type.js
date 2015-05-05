@@ -837,7 +837,13 @@
     }
 
     /**
-    The isSequencial function takes in a value and checks if it is a sequencial enumerable
+    The isSequencial function takes in a value and checks if it is a sequencial
+        enumerable. A enumerable is considered sequencial, if it validates against
+        the following tests:
+        1) Is not null or undefined AND
+        2) Has a length property with int32 value AND
+        3) Is not a function AND
+        4) Is not a object
 
     @method isSequencial
     @for funkyJS
@@ -861,7 +867,13 @@
     }
 
     /**
-    The isNotSequencial function takes in a value and checks if it is not a sequencial enumerable
+    The isNotSequencial function takes in a value and checks if it is not a
+        sequencial enumerable. A enumerable is not considered sequencial, if it
+        fails in any of the following tests:
+        1) Is not null or undefined AND
+        2) Has a length property with int32 value AND
+        3) Is not a function AND
+        4) Is not a object
 
     @method isNotSequencial
     @for funkyJS
@@ -882,7 +894,14 @@
     }
 
     /**
-    The isEnumerable function takes in a value and checks if it is a enumerable
+    The isEnumerable function takes in a value and checks if it is a enumerable.
+        A enumerable must validate against the following tests:
+        1) Is object
+        OR
+        1) Is not null or undefined AND
+        2) Has a length property with int32 value AND
+        3) Is not a function AND
+        4) Is not a object
 
     @method isEnumerable
     @for funkyJS
@@ -903,7 +922,16 @@
     }
 
     /**
-    The isNotEnumerable function takes in a value and checks if it is not a enumerable
+    The isNotEnumerable function takes in a value and checks if it is not a enumerable.
+        A value is not considered enumerable if it fails in any of the following
+        tests:
+        1) Is object
+        OR
+        1) Is not null or undefined AND
+        2) Has a length property with int32 value AND
+        3) Is not a function AND
+        4) Is not a object
+
 
     @method isNotEnumerable
     @for funkyJS

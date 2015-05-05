@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>sources\experiments\contracts.js - funkyjs-2</title>
+    <title>sources\extensions\contracts.js - funkyjs-2</title>
     <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
@@ -19,7 +19,7 @@
             
         </div>
         <div class="yui3-u-1-4 version">
-            <em>API Docs for: 0.7.0</em>
+            <em>API Docs for: 1.3.0</em>
         </div>
     </div>
     <div id="bd" class="yui3-g">
@@ -102,7 +102,7 @@
             <div class="apidocs">
                 <div id="docs-main">
                     <div class="content">
-                        <h1 class="file-heading">File: sources\experiments\contracts.js</h1>
+                        <h1 class="file-heading">File: sources\extensions\contracts.js</h1>
 
 <div class="file">
     <pre class="code prettyprint linenums">
@@ -141,325 +141,330 @@
 
 
 
+    // internal utility
     function enforce (type, comparator) {
-        return function (value) {
-            if (!comparator(value)) {
-                throw new TypeError(&#x27;given value &#x27; + value + &#x27;is not of type &#x27; + type);
+        return function (arg) {
+            if (!comparator(arg)) {
+                throw new TypeError(&#x27;enforce(:arg, :type) :: &#x27; + arg + &#x27;is not of type &#x27; + type);
             }
-            return value;
+            return arg;
         }
     }
 
 
 
     /**
-    The onlyNil function allows only null or undefined values to pass
+    The beNil function allows only null or undefined values to pass
 
-    @method onlyNil
+    @method beNil
     @for funkyJS
     @param {any} value The value to check
     @return {null|undefined} No others pass
 
     @example
-        funkyJS.onlyNil(null);
+        funkyJS.beNil(null);
         // -&gt; null
 
-        funkyJS.onlyNil(undefined);
+        funkyJS.beNil(undefined);
         // -&gt; undefined
 
-        funkyJS.onlyNil(1);
+        funkyJS.beNil(1);
         // -&gt; Error
 
     **/
-    api.onlyNil = enforce(&#x27;null or undefined&#x27;, type.isNil);
+    api.beNil = enforce(&#x27;null or undefined&#x27;, type.isNil);
 
     /**
-    The onlyNull function allows only null values to pass
+    The beNull function allows only null values to pass
 
-    @method onlyNull
+    @method beNull
     @for funkyJS
     @param {any} value The value to check
     @return {null} No others pass
 
     @example
-        funkyJS.onlyNull(null);
+        funkyJS.beNull(null);
         // -&gt; null
 
-        funkyJS.onlyNull(undefined);
+        funkyJS.beNull(undefined);
         // -&gt; Error
 
     **/
-    api.onlyNull = enforce(&#x27;null&#x27;, type.isNull);
+    api.beNull = enforce(&#x27;null&#x27;, type.isNull);
 
     /**
-    The onlyVoid function allows only undefined values to pass
+    The beVoid function allows only undefined values to pass
 
-    @method onlyVoid
+    @method beVoid
     @for funkyJS
     @param {any} value The value to check
     @return {undefined} No others pass
 
     @example
-        funkyJS.onlyVoid(undefined);
+        funkyJS.beVoid(undefined);
         // -&gt; undefined
 
-        funkyJS.onlyVoid(null);
+        funkyJS.beVoid(null);
         // -&gt; Error
 
     **/
-    api.onlyVoid = enforce(&#x27;undefined&#x27;, type.isVoid);
+    api.beVoid = enforce(&#x27;undefined&#x27;, type.isVoid);
 
     /**
-    The onlyString function allows only strings to pass
+    The beString function allows only strings to pass
 
-    @method onlyString
+    @method beString
     @for funkyJS
     @param {any} value The value to check
     @return {string} No others pass
 
     @example
-        funkyJS.onlyString(&#x27;a string&#x27;);
+        funkyJS.beString(&#x27;a string&#x27;);
         // -&gt; &#x27;a string&#x27;
 
-        funkyJS.onlyString(undefined);
+        funkyJS.beString(undefined);
         // -&gt; Error
 
     **/
-    api.onlyString = enforce(&#x27;string&#x27;, type.isString);
+    api.beString = enforce(&#x27;string&#x27;, type.isString);
 
     /**
-    The onlyNull function allows only null values to pass
+    The beBool function allows only boolean values to pass
 
-    @method onlyNull
+    @method beBool
     @for funkyJS
     @param {any} value The value to check
-    @return {null} No others pass
+    @return {boolean} No others pass
 
     @example
-        funkyJS.onlyNull(null);
-        // -&gt; null
+        funkyJS.beBool(true);
+        // -&gt; true
 
-        funkyJS.onlyNull(undefined);
+        funkyJS.beBool(undefined);
         // -&gt; Error
 
     **/
-    api.onlyBool = enforce(&#x27;boolean&#x27;, type.isBool);
+    api.beBool = enforce(&#x27;boolean&#x27;, type.isBool);
 
     /**
-    The onlyNull function allows only null values to pass
+    The beNumber function allows only number values to pass
 
-    @method onlyNull
+    @method beNumber
     @for funkyJS
     @param {any} value The value to check
-    @return {null} No others pass
+    @return {number} No others pass
 
     @example
-        funkyJS.onlyNull(null);
-        // -&gt; null
+        funkyJS.beNumber(2);
+        // -&gt; 2
 
-        funkyJS.onlyNull(undefined);
+        funkyJS.beNumber(undefined);
         // -&gt; Error
 
     **/
-    api.onlyNumber = enforce(&#x27;int32 or float32&#x27;, type.isNumber);
+    api.beNumber = enforce(&#x27;int32 or float32&#x27;, type.isNumber);
 
     /**
-    The onlyNull function allows only null values to pass
+    The beInt32 function allows only integer values to pass
 
-    @method onlyNull
+    @method beInt32
     @for funkyJS
     @param {any} value The value to check
-    @return {null} No others pass
+    @return {int32} No others pass
 
     @example
-        funkyJS.onlyNull(null);
-        // -&gt; null
+        funkyJS.beInt32(2);
+        // -&gt; 2
 
-        funkyJS.onlyNull(undefined);
+        funkyJS.beInt32(2.5);
         // -&gt; Error
 
     **/
-    api.onlyInt32 = enforce(&#x27;int32&#x27;, type.isInt32);
+    api.beInt32 = enforce(&#x27;int32&#x27;, type.isInt32);
 
     /**
-    The onlyNull function allows only null values to pass
+    The beFloat32 function allows only floating point number values to pass
 
-    @method onlyNull
+    @method beFloat32
     @for funkyJS
     @param {any} value The value to check
-    @return {null} No others pass
+    @return {float} No others pass
 
     @example
-        funkyJS.onlyNull(null);
-        // -&gt; null
+        funkyJS.beFloat32(2.5);
+        // -&gt; 2.5
 
-        funkyJS.onlyNull(undefined);
+        funkyJS.beFloat32(2);
         // -&gt; Error
 
     **/
-    api.onlyFloat32 = enforce(&#x27;float32&#x27;, type.isFloat32);
+    api.beFloat32 = enforce(&#x27;float32&#x27;, type.isFloat32);
 
     /**
-    The onlyNull function allows only null values to pass
+    The beFunction function allows only function values to pass
 
-    @method onlyNull
+    @method beFunction
     @for funkyJS
     @param {any} value The value to check
-    @return {null} No others pass
+    @return {function} No others pass
 
     @example
-        funkyJS.onlyNull(null);
-        // -&gt; null
+        funkyJS.beFunction(function (a) { return a; });
+        // -&gt; function (a) { return a; }
 
-        funkyJS.onlyNull(undefined);
+        funkyJS.beFunction(undefined);
         // -&gt; Error
 
     **/
-    api.onlyFunction = enforce(&#x27;function&#x27;, type.isFunction);
+    api.beFunction = enforce(&#x27;function&#x27;, type.isFunction);
 
     /**
-    The onlyNull function allows only null values to pass
+    The beArray function allows only array values to pass
 
-    @method onlyNull
+    @method beArray
     @for funkyJS
     @param {any} value The value to check
-    @return {null} No others pass
+    @return {array} No others pass
 
     @example
-        funkyJS.onlyNull(null);
-        // -&gt; null
+        funkyJS.beArray([]);
+        // -&gt; []
 
-        funkyJS.onlyNull(undefined);
+        funkyJS.beArray({});
         // -&gt; Error
 
     **/
-    api.onlyArray = enforce(&#x27;array&#x27;, type.isArray);
+    api.beArray = enforce(&#x27;array&#x27;, type.isArray);
 
     /**
-    The onlyNull function allows only null values to pass
+    The beObject function allows only object values to pass
 
-    @method onlyNull
+    @method beObject
     @for funkyJS
     @param {any} value The value to check
-    @return {null} No others pass
+    @return {object} No others pass
 
     @example
-        funkyJS.onlyNull(null);
-        // -&gt; null
+        funkyJS.beObject({});
+        // -&gt; {}
 
-        funkyJS.onlyNull(undefined);
+        funkyJS.beObject([]);
         // -&gt; Error
 
     **/
-    api.onlyObject = enforce(&#x27;object&#x27;, type.isObject);
+    api.beObject = enforce(&#x27;object&#x27;, type.isObject);
 
     /**
-    The onlyNull function allows only null values to pass
+    The beDate function allows only date values to pass
 
-    @method onlyNull
+    @method beDate
     @for funkyJS
     @param {any} value The value to check
-    @return {null} No others pass
+    @return {date} No others pass
 
     @example
-        funkyJS.onlyNull(null);
-        // -&gt; null
+        funkyJS.beDate(new Date(2015, 2, 25));
+        // -&gt; Date(2015-2-25 00:00:00)
 
-        funkyJS.onlyNull(undefined);
+        funkyJS.beDate({});
         // -&gt; Error
 
     **/
-    api.onlyDate = enforce(&#x27;date&#x27;, type.isDate);
+    api.beDate = enforce(&#x27;date&#x27;, type.isDate);
 
     /**
-    The onlyNull function allows only null values to pass
+    The beRegex function allows only regular expression values to pass
 
-    @method onlyNull
+    @method beRegex
     @for funkyJS
     @param {any} value The value to check
-    @return {null} No others pass
+    @return {regular expression} No others pass
 
     @example
-        funkyJS.onlyNull(null);
-        // -&gt; null
+        funkyJS.beRegex(new RegExp(&#x27;.*&#x27;, &#x27;g&#x27;));
+        // -&gt; RegExp
 
-        funkyJS.onlyNull(undefined);
+        funkyJS.beRegex(&#x27;.*&#x27;);
         // -&gt; Error
 
     **/
-    api.onlyRegex = enforce(&#x27;regexp&#x27;, type.isRegex);
+    api.beRegex = enforce(&#x27;regexp&#x27;, type.isRegex);
 
     /**
-    The onlyNull function allows only null values to pass
+    The beNode function allows only DOMNode values to pass
 
-    @method onlyNull
+    @method beNode
     @for funkyJS
     @param {any} value The value to check
-    @return {null} No others pass
+    @return {DOMNode} No others pass
 
     @example
-        funkyJS.onlyNull(null);
-        // -&gt; null
+        funkyJS.beNode(document.body);
+        // -&gt; &lt;body&gt;
 
-        funkyJS.onlyNull(undefined);
+        funkyJS.beNode(null);
         // -&gt; Error
 
     **/
-    api.onlyNode = enforce(&#x27;DOMNode&#x27;, type.isNode);
+    api.beNode = enforce(&#x27;DOMNode&#x27;, type.isNode);
 
     /**
-    The onlyNull function allows only null values to pass
+    The beNodeList function allows only DOMNodeList values to pass
 
-    @method onlyNull
+    @method beNodeList
     @for funkyJS
     @param {any} value The value to check
-    @return {null} No others pass
+    @return {DOMNodeList} No others pass
 
     @example
-        funkyJS.onlyNull(null);
-        // -&gt; null
+        funkyJS.beNodeList(document.querySelectorAll(&#x27;div&#x27;));
+        // -&gt; DOMNodeList
 
-        funkyJS.onlyNull(undefined);
+        funkyJS.beNodeList([]);
         // -&gt; Error
 
     **/
-    api.onlyNodeList = enforce(&#x27;DOMNodeList&#x27;, type.isNodeList);
+    api.beNodeList = enforce(&#x27;DOMNodeList&#x27;, type.isNodeList);
 
     /**
-    The onlyNull function allows only null values to pass
+    The beSequencial function allows only sequencial values to pass. For a description
+        of when a value is considered sequencial, please see the isSequencial
+        function
 
-    @method onlyNull
+    @method beSequencial
     @for funkyJS
     @param {any} value The value to check
-    @return {null} No others pass
+    @return {sequencial} No others pass
 
     @example
-        funkyJS.onlyNull(null);
-        // -&gt; null
+        funkyJS.beSequencial(&#x27;abc&#x27;);
+        // -&gt; &#x27;abc&#x27;
 
-        funkyJS.onlyNull(undefined);
+        funkyJS.beSequencial(undefined);
         // -&gt; Error
 
     **/
-    api.onlySequencial = enforce(&#x27;sequencial&#x27;, type.isSequencial);
+    api.beSequencial = enforce(&#x27;sequencial&#x27;, type.isSequencial);
 
     /**
-    The onlyNull function allows only null values to pass
+    The beEnumerable function allows only enumerable values to pass. For a description
+        of when a value is considered enumerable, please see the isEnumerable
+        function
 
-    @method onlyNull
+    @method beEnumerable
     @for funkyJS
     @param {any} value The value to check
-    @return {null} No others pass
+    @return {enumerable} No others pass
 
     @example
-        funkyJS.onlyNull(null);
-        // -&gt; null
+        funkyJS.beEnumerable({});
+        // -&gt; {}
 
-        funkyJS.onlyNull(undefined);
+        funkyJS.beEnumerable(undefined);
         // -&gt; Error
 
     **/
-    api.onlyEnumerable = enforce(&#x27;enumerable&#x27;, type.isEnumberable);
+    api.beEnumerable = enforce(&#x27;enumerable&#x27;, type.isEnumerable);
 
 
 
