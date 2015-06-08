@@ -527,15 +527,11 @@
     }
 
     /**
-    The flatten function flattens any given nested sequencial value. A optional
-        second parameter determines the maximum number of iterations are used
-        until the process is terminated. The default amount of maximum iterations
-        is Infinity
+    The flatten function flattens any given nested sequencial value
 
     @method flatten
     @for funkyJS
     @param {array|nodelist|arguments|string} a1 The nested sequencial
-    @param {number} [maxIterations = Infinity] Max. Number of Iterations
     @return {array} A new flat version of the given array
 
     @example
@@ -548,29 +544,34 @@
         funkyJS.flatten(multiLevel);
         // -> ['a', 'b', 'c', 'd', 'e'];
 
-        funkyJS.flatten(multiLevel, 1);
-        // -> [[['a', 'b']], [c], 'd', [[['d']]]];
-
     **/
     api.flatten = (function () {
-
-        function flattenTCO (list, acc, maxIter) {
-            if (list.length < 1 || maxIter < 1) {
+        function flattenTCO (list, acc) {
+            if (list.length < 1) {
                 return acc;
             }
 
-            if (Array.isArray(list[0])) {
-                return flattenTCO(list[0].concat(list.slice(1)), acc, maxIter - 1);
-            }
+            return function () {
+                if (Array.isArray(list[0])) {
+                    return flattenTCO(list[0].concat(list.slice(1)), acc);
+                }
 
-            return flattenTCO(list.slice(1), acc.concat(list[0]), maxIter - 1);
+                return flattenTCO(list.slice(1), acc.concat(list[0]));
+            }
         }
 
-        return function flatten (a1, maxIterations) {
+        return function flatten (a1) {
+            var _list = api.toArray(a1);
             if (arguments.length < 1) {
                 return flatten;
             }
-            return flattenTCO(a1, [], maxIterations || Infinity);
+
+            _list = flattenTCO(a1, []);
+            while (type.isFunction(_list)) {
+                _list = _list();
+            }
+
+            return _list;
         }
 
     })();

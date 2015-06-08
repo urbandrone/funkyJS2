@@ -45,7 +45,27 @@
             "name": "sources\\extensions\\iterators.js",
             "modules": {},
             "classes": {},
-            "fors": {},
+            "fors": {
+                "funkyJS": 1
+            },
+            "namespaces": {}
+        },
+        "sources\\extensions\\strings.js": {
+            "name": "sources\\extensions\\strings.js",
+            "modules": {},
+            "classes": {},
+            "fors": {
+                "funkyJS": 1
+            },
+            "namespaces": {}
+        },
+        "sources\\extensions\\trampolines.js": {
+            "name": "sources\\extensions\\trampolines.js",
+            "modules": {},
+            "classes": {},
+            "fors": {
+                "funkyJS": 1
+            },
             "namespaces": {}
         },
         "sources\\_birds.js": {
@@ -994,7 +1014,291 @@
         },
         {
             "file": "sources\\extensions\\iterators.js",
-            "line": 264,
+            "line": 39,
+            "description": "Allows to create a numerical iterator, with a optional start and end number.\n    If the end number is below the start number, the returned iterator counts\n    down. If no arguments are given, the iterator counts up to positive\n    infinity",
+            "itemtype": "method",
+            "name": "numIterator",
+            "params": [
+                {
+                    "name": "[start",
+                    "description": "= 0] Optional start number",
+                    "type": "Number"
+                },
+                {
+                    "name": "[max",
+                    "description": "= Infinity] Optional end number",
+                    "type": "Number"
+                }
+            ],
+            "return": {
+                "description": "Iterator object",
+                "type": "Object"
+            },
+            "example": [
+                "\n    var nums = funkyJS.numIterator(5); // counts 5 -> Infinity\n\n    nums.next().value();\n    // -> 5\n\n    nums.next().value();\n    // -> 6\n\n    nums.next().value();\n    // -> 7\n"
+            ],
+            "class": "funkyJS",
+            "module": "experiments"
+        },
+        {
+            "file": "sources\\extensions\\iterators.js",
+            "line": 289,
+            "description": "EXPORT\n======",
+            "class": "funkyJS",
+            "module": "experiments"
+        },
+        {
+            "file": "sources\\extensions\\strings.js",
+            "line": 36,
+            "description": "The trimLeft function allows to remove whitespace from the beginning of a\n    string",
+            "itemtype": "method",
+            "name": "trimLeft",
+            "params": [
+                {
+                    "name": "str",
+                    "description": "The string to trim left",
+                    "type": "String"
+                }
+            ],
+            "return": {
+                "description": "The trimmed string",
+                "type": "String"
+            },
+            "example": [
+                "\n    var str = '   a string   ';\n\n    funkyJS.trimLeft(str);\n    // -> 'a string   '\n"
+            ],
+            "class": "funkyJS",
+            "module": "experiments"
+        },
+        {
+            "file": "sources\\extensions\\strings.js",
+            "line": 60,
+            "description": "The trimRight function allows to remove whitespace from the end of a string",
+            "itemtype": "method",
+            "name": "trimRight",
+            "params": [
+                {
+                    "name": "str",
+                    "description": "The string to trim right",
+                    "type": "String"
+                }
+            ],
+            "return": {
+                "description": "The trimmed string",
+                "type": "String"
+            },
+            "example": [
+                "\n    var str = '   a string   ';\n\n    funkyJS.trimRight(str);\n    // -> '   a string'\n"
+            ],
+            "class": "funkyJS",
+            "module": "experiments"
+        },
+        {
+            "file": "sources\\extensions\\strings.js",
+            "line": 83,
+            "description": "The trim function allows to remove whitespace from both sides of a string",
+            "itemtype": "method",
+            "name": "trim",
+            "params": [
+                {
+                    "name": "str",
+                    "description": "The string to trim",
+                    "type": "String"
+                }
+            ],
+            "return": {
+                "description": "The trimmed string",
+                "type": "String"
+            },
+            "example": [
+                "\n    var str = '   a string   ';\n\n    funkyJS.trim(str);\n    // -> 'a string'\n"
+            ],
+            "class": "funkyJS",
+            "module": "experiments"
+        },
+        {
+            "file": "sources\\extensions\\strings.js",
+            "line": 106,
+            "description": "The camelize function allows to transform a string from separation by\n    dashes and underscores into a camelcased form",
+            "itemtype": "method",
+            "name": "camelize",
+            "params": [
+                {
+                    "name": "str",
+                    "description": "The string to transform",
+                    "type": "String"
+                }
+            ],
+            "return": {
+                "description": "Formatted string",
+                "type": "String"
+            },
+            "example": [
+                "\n    var str = 'string-separated';\n\n    funkyJS.camelize(str);\n    // -> 'stringSeparated'\n"
+            ],
+            "class": "funkyJS",
+            "module": "experiments"
+        },
+        {
+            "file": "sources\\extensions\\strings.js",
+            "line": 132,
+            "description": "The dasherize function allows to transform a string from separation by\n    uppercase letters and underscores into separations by dashes",
+            "itemtype": "method",
+            "name": "dasherize",
+            "params": [
+                {
+                    "name": "str",
+                    "description": "The string to transform",
+                    "type": "String"
+                }
+            ],
+            "return": {
+                "description": "Formatted string",
+                "type": "String"
+            },
+            "example": [
+                "\n    var str = 'stringSeparated';\n\n    funkyJS.dasherize(str);\n    // -> 'string-separated'\n"
+            ],
+            "class": "funkyJS",
+            "module": "experiments"
+        },
+        {
+            "file": "sources\\extensions\\strings.js",
+            "line": 158,
+            "description": "The underscore function allows to transform a string from separation by\n    uppercase letters and dashes into separations by underscores",
+            "itemtype": "method",
+            "name": "underscore",
+            "params": [
+                {
+                    "name": "str",
+                    "description": "The string to transform",
+                    "type": "String"
+                }
+            ],
+            "return": {
+                "description": "Formatted string",
+                "type": "String"
+            },
+            "example": [
+                "\n    var str = 'string-separated';\n\n    funkyJS.underscore(str);\n    // -> 'string_separated'\n"
+            ],
+            "class": "funkyJS",
+            "module": "experiments"
+        },
+        {
+            "file": "sources\\extensions\\strings.js",
+            "line": 184,
+            "description": "The splitParse function allows to split a string on a freely definable\n    delimiter and parse the created atoms with a given operation",
+            "itemtype": "method",
+            "name": "splitParse",
+            "params": [
+                {
+                    "name": "fn",
+                    "description": "The operation to perform after splitting",
+                    "type": "Function"
+                },
+                {
+                    "name": "delimiter",
+                    "description": "The delimiter to split on",
+                    "type": "String|regexp"
+                },
+                {
+                    "name": "str",
+                    "description": "The string seed",
+                    "type": "String"
+                }
+            ],
+            "return": {
+                "description": "The parsed atoms of the string",
+                "type": "Array"
+            },
+            "example": [
+                "\n    function toInt (n) {\n        return parseInt(n, 10);\n    }\n\n    var isoDateToInts = funkyJS.splitParse(toInt, /\\s|\\-|\\:/g);\n\n    isoDateToInts('2015-02-25 06:00:00');\n    // -> [2015, 2, 25, 6, 0, 0]\n"
+            ],
+            "class": "funkyJS",
+            "module": "experiments"
+        },
+        {
+            "file": "sources\\extensions\\strings.js",
+            "line": 234,
+            "description": "Meant to be a basic templating function, the substitude function allows to\n    replace parts of a template string with real data at runtime. The parts\n    of a template which should be replaced have to be wrapped in placeholders\n    in the format: ${key}. The actual data is awaited to be given as a pure\n    object (may be JSON as well)",
+            "itemtype": "method",
+            "name": "substitude",
+            "params": [
+                {
+                    "name": "str",
+                    "description": "The template string",
+                    "type": "String"
+                },
+                {
+                    "name": "data",
+                    "description": "The data as key-value pairs",
+                    "type": "Object"
+                }
+            ],
+            "return": {
+                "description": "The parsed string",
+                "type": "String"
+            },
+            "example": [
+                "\n    var tpl = 'This is ${subject} and ${does}.';\n\n    var desc = funkyJS.substitude(tpl);\n\n    desc({subject: 'John Doe', does: 'he codes JavaScript'});\n    // -> 'This is John Doe and his computer.'\n\n    desc({subject: 'Steve Smith', does: 'he does nothing'});\n    // 'This is Steve Smith and he does nothing.'\n\n\n\n    funkyJS.substitude(tpl, {\n        subject: 'me',\n        does: 'I test substitude'\n    });\n    // -> 'This is me and I test substitude.'\n"
+            ],
+            "class": "funkyJS",
+            "module": "experiments"
+        },
+        {
+            "file": "sources\\extensions\\strings.js",
+            "line": 300,
+            "description": "EXPORT\n======",
+            "class": "funkyJS",
+            "module": "experiments"
+        },
+        {
+            "file": "sources\\extensions\\trampolines.js",
+            "line": 46,
+            "description": "The thunk function allows to wrap a function into a thunk which can be used\n    in trampolined functions. For usage please take a look at the trampoline\n    function",
+            "itemtype": "method",
+            "name": "thunk",
+            "params": [
+                {
+                    "name": "fn",
+                    "description": "The function to thunk",
+                    "type": "Function"
+                }
+            ],
+            "return": {
+                "description": "A new thunk",
+                "type": "Thunk"
+            },
+            "class": "funkyJS",
+            "module": "experiments"
+        },
+        {
+            "file": "sources\\extensions\\trampolines.js",
+            "line": 65,
+            "description": "The trampoline function allows to implement tail-call optimized functions/\n    tail-recursive function calls in JavaScript as a stack-oriented language.\n    This allows to transfer the burden of computations from the stack onto\n    the heap which results in the possibility of much longer computations to\n    run",
+            "itemtype": "method",
+            "name": "trampoline",
+            "params": [
+                {
+                    "name": "fn",
+                    "description": "A function returning thunks or a final value",
+                    "type": "Function"
+                }
+            ],
+            "return": {
+                "description": "The final result",
+                "type": "Any"
+            },
+            "example": [
+                "\n    var _vanilla = function (n1, n2) {\n        if (n2 < 1) {\n            return n1;\n        }\n        return _vanilla(n1 * n2, n2 - 1);\n    }\n\n    var _thunkedInner = function (n1, n2) {\n        if (n2 < 1) {\n            return n1;\n        }\n        return funkyJS.thunk(function () {\n            return _thunkedInner(n1 * n2, n2 - 1);\n        });\n    }\n\n    var thunked = function (n) {\n        return funkyJS.trampoline(_thunkedInner(1, Math.abs(n)));\n    }\n\n\n    vanilla(10);\n    // -> 362880\n\n    vanilla(50325);\n    // -> RangeError\n\n\n    thunked(10);\n    // -> 3628800\n\n    thunked(50325);\n    // -> ... Wait until finished :)\n"
+            ],
+            "class": "funkyJS",
+            "module": "experiments"
+        },
+        {
+            "file": "sources\\extensions\\trampolines.js",
+            "line": 123,
             "description": "EXPORT\n======",
             "class": "funkyJS",
             "module": "experiments"
@@ -1571,7 +1875,7 @@
         {
             "file": "sources\\arrays.js",
             "line": 529,
-            "description": "The flatten function flattens any given nested sequencial value. A optional\n    second parameter determines the maximum number of iterations are used\n    until the process is terminated. The default amount of maximum iterations\n    is Infinity",
+            "description": "The flatten function flattens any given nested sequencial value",
             "itemtype": "method",
             "name": "flatten",
             "params": [
@@ -1579,11 +1883,6 @@
                     "name": "a1",
                     "description": "The nested sequencial",
                     "type": "Array|nodelist|arguments|string"
-                },
-                {
-                    "name": "[maxIterations",
-                    "description": "= Infinity] Max. Number of Iterations",
-                    "type": "Number"
                 }
             ],
             "return": {
@@ -1591,14 +1890,14 @@
                 "type": "Array"
             },
             "example": [
-                "\n    var singleLevel = [['a', 'b'], ['c', 'd'], 'e'];\n    var multiLevel = [[[['a', 'b']], ['c']], 'd', [[[['e']]]]];\n\n    funkyJS.flatten(singleLevel);\n    // -> ['a', 'b', 'c', 'd', 'e'];\n\n    funkyJS.flatten(multiLevel);\n    // -> ['a', 'b', 'c', 'd', 'e'];\n\n    funkyJS.flatten(multiLevel, 1);\n    // -> [[['a', 'b']], [c], 'd', [[['d']]]];\n"
+                "\n    var singleLevel = [['a', 'b'], ['c', 'd'], 'e'];\n    var multiLevel = [[[['a', 'b']], ['c']], 'd', [[[['e']]]]];\n\n    funkyJS.flatten(singleLevel);\n    // -> ['a', 'b', 'c', 'd', 'e'];\n\n    funkyJS.flatten(multiLevel);\n    // -> ['a', 'b', 'c', 'd', 'e'];\n"
             ],
             "class": "funkyJS",
             "module": "arrays"
         },
         {
             "file": "sources\\arrays.js",
-            "line": 578,
+            "line": 579,
             "description": "Given two sequencial values, the union function returns a new array which\n    contains the unique values of both",
             "itemtype": "method",
             "name": "union",
@@ -1626,7 +1925,7 @@
         },
         {
             "file": "sources\\arrays.js",
-            "line": 612,
+            "line": 613,
             "description": "Given two sequencial values, the intersect function returns a new array which\n    contains the intersection of both",
             "itemtype": "method",
             "name": "intersect",
@@ -1654,7 +1953,7 @@
         },
         {
             "file": "sources\\arrays.js",
-            "line": 654,
+            "line": 655,
             "description": "Given two sequencial values, the difference function returns a new array which\n    contains the difference of both",
             "itemtype": "method",
             "name": "difference",
@@ -1778,7 +2077,30 @@
         },
         {
             "file": "sources\\combinators.js",
-            "line": 258,
+            "line": 256,
+            "description": "Given a array of functions, the splat function allows to apply incoming\n    arguments to all given functions at once. It returns a function which\n    consumes the arguments and passes them to every function in the array",
+            "itemtype": "method",
+            "name": "splat",
+            "params": [
+                {
+                    "name": "fns",
+                    "description": "The functions to \"splat\" onto the arguments",
+                    "type": "Array"
+                }
+            ],
+            "return": {
+                "description": "A function awaiting arguments",
+                "type": "Function"
+            },
+            "example": [
+                "\n    var multiply = function (n) {\n        console.log(n * n);\n    }\n\n    var add = function (n) {\n        console.log(n + n);\n    }\n\n    var logMultAdd = funkyJS.splat([multiply, add]);\n\n    logMultAdd(4);\n    // -> console logs 16\n    // -> console logs 8\n"
+            ],
+            "class": "funkyJS",
+            "module": "combinators"
+        },
+        {
+            "file": "sources\\combinators.js",
+            "line": 304,
             "description": "EXPORT\n======",
             "class": "funkyJS",
             "module": "combinators"
@@ -1906,29 +2228,6 @@
         {
             "file": "sources\\decorators.js",
             "line": 284,
-            "description": "Given a function, the splat function returns a function which takes either\n    a array as single argument or a unlimited number of arguments and returns\n    a new array with the given function mapped to the array or to all the\n    arguments provided. It is some kind of `<array>`.mapWith(fn)",
-            "itemtype": "method",
-            "name": "splat",
-            "params": [
-                {
-                    "name": "fn",
-                    "description": "The function to \"splat\" onto the arguments/array values",
-                    "type": "Function"
-                }
-            ],
-            "return": {
-                "description": "A function awaiting arguments or a array",
-                "type": "Function"
-            },
-            "example": [
-                "\n    var multiply = function (n) {\n        return n * n;\n    }\n\n    var multiplyAll = funkyJS.splat(multiply);\n\n    var array = [1, 2, 3];\n\n\n    // old way, before ES5, works with (nearly) everything\n    var i, l, mapped;\n    for (i = 0, l = array.length, mapped = []; i < l; i += 1) {\n        mapped.push(multiply(array[i]));\n    }\n    // -> [1, 4, 9] (= mapped)\n\n    // new way, with ES5, works only on arrays\n    array.map(multiply);\n    // -> [1, 4, 9]\n\n    // more reusable version, works with (nearly) everything\n    multiplyAll(array);\n    // -> [1, 4, 9]\n\n    multiplyAll(4, 8, 16);\n    // -> [16, 64, 256]\n"
-            ],
-            "class": "funkyJS",
-            "module": "decorators"
-        },
-        {
-            "file": "sources\\decorators.js",
-            "line": 342,
             "description": "Given a number of milliseconds and a function, the debounce function returns\n    a function which calls the given function debounced for the given amount\n    of milliseconds. Every new call to the returned function debounces the\n    invocation further.",
             "itemtype": "method",
             "name": "debounce",
@@ -1956,7 +2255,7 @@
         },
         {
             "file": "sources\\decorators.js",
-            "line": 402,
+            "line": 344,
             "description": "Given a function, the memoize function returns a memoized version of that\n    function",
             "itemtype": "method",
             "name": "memoize",
@@ -1979,7 +2278,7 @@
         },
         {
             "file": "sources\\decorators.js",
-            "line": 443,
+            "line": 385,
             "description": "The curry function allows to return a function from a given function, which\n    splits the application of the given function into multiple steps. The\n    returned function returns itself functions, until enough arguments to\n    execute the originally given function",
             "itemtype": "method",
             "name": "curry",
@@ -2002,7 +2301,7 @@
         },
         {
             "file": "sources\\decorators.js",
-            "line": 486,
+            "line": 428,
             "description": "The curryRight function allows to return a function from a given function, which\n    splits the application of the given function into multiple steps. The\n    returned function returns itself functions, until enough arguments to\n    execute the originally given function. The collected arguments are reversed\n    before applied",
             "itemtype": "method",
             "name": "curryRight",
@@ -2025,7 +2324,7 @@
         },
         {
             "file": "sources\\decorators.js",
-            "line": 530,
+            "line": 472,
             "description": "The partial function allows to partially apply a function to a set of arguments\n    by leaving the context unbound. It returns a funciton, which collects\n    arguments until enough arguments are collected to execute the partially\n    applied function. funkyJS.partial also allows to leave holes in the list\n    of arguments preset to a function by passing the undefined value",
             "itemtype": "method",
             "name": "partial",
@@ -2054,7 +2353,7 @@
         },
         {
             "file": "sources\\decorators.js",
-            "line": 618,
+            "line": 560,
             "description": "The partialRight function allows to partially apply a function to a set of arguments\n    by leaving the context unbound. It returns a funciton, which collects\n    arguments until enough arguments are collected to execute the partially\n    applied function. funkyJS.partialRight also allows to leave holes in the list\n    of arguments preset to a function by passing the undefined value. The\n    accumulated arguments are reversed before the function is applied to them",
             "itemtype": "method",
             "name": "partialRight",
@@ -2083,7 +2382,7 @@
         },
         {
             "file": "sources\\decorators.js",
-            "line": 709,
+            "line": 651,
             "description": "EXPORT\n======",
             "class": "funkyJS",
             "module": "decorators"
@@ -2313,6 +2612,35 @@
         {
             "file": "sources\\objects.js",
             "line": 358,
+            "description": "The instance function always returns a instance of the given constructor. If\n    the second argument already is a instance of the constructor, it is\n    returned, otherwise a new instance of the constructor is created. This\n    allows to create instances out of every function",
+            "itemtype": "method",
+            "name": "instance",
+            "params": [
+                {
+                    "name": "Ctor",
+                    "description": "The constructor function",
+                    "type": "Function"
+                },
+                {
+                    "name": "context",
+                    "description": "The current context to check against (optional)",
+                    "type": "Any",
+                    "optional": true
+                }
+            ],
+            "return": {
+                "description": "Context if given and instance of Ctor, otherwise new Ctor",
+                "type": "Object"
+            },
+            "example": [
+                "\n    function thing (value) {\n        var self = funkyJS.instance(thing, this);\n        self.value = function () {\n            return value;\n        }\n        return self;\n    }\n\n    function isAThing (x) {\n        return x instanceof thing;\n    }\n\n    var _t = thing(10);\n\n    isAThing(_t);\n    // -> true\n\n    _t.value();\n    // -> 10\n"
+            ],
+            "class": "funkyJS",
+            "module": "objects"
+        },
+        {
+            "file": "sources\\objects.js",
+            "line": 406,
             "description": "The extend method takes in two objects and extends the first one with the\n    last one. See also the extendWith method",
             "itemtype": "method",
             "name": "extend",
@@ -2340,7 +2668,7 @@
         },
         {
             "file": "sources\\objects.js",
-            "line": 414,
+            "line": 462,
             "description": "The extendWith method takes in two objects and extends the last one with the\n    first one. See also the extend method",
             "itemtype": "method",
             "name": "extendWith",
@@ -2368,7 +2696,7 @@
         },
         {
             "file": "sources\\objects.js",
-            "line": 463,
+            "line": 511,
             "description": "The inherits method is designed to work particularly well with constructor\n    functions. It takes a two object, from which the first one is the source\n    and the second one is the extension on the source. The returned value is\n    a new object to use as prototype",
             "itemtype": "method",
             "name": "inherits",
@@ -2396,7 +2724,7 @@
         },
         {
             "file": "sources\\objects.js",
-            "line": 526,
+            "line": 574,
             "description": "The delegate function is a way to delegate the behaviour of one object to\n    other objects. It allows to specify the methods which are available\n    exclusive. This means, if no method is specified or none of the given\n    method names exists on the provider, no method will be available\n    on the receiver either. It is mostly useful if you have a certain\n    behaviour you want to share across instances or classes/prototypes",
             "itemtype": "method",
             "name": "delegate",
@@ -2429,7 +2757,7 @@
         },
         {
             "file": "sources\\objects.js",
-            "line": 610,
+            "line": 658,
             "description": "The forward function can be used to achieve forwarding of method calls from\n    one object to another. This is useful if you want to use a object as\n    a property of some other object and want to share some methods from\n    the inner object on the outer one. It allows to specify the methods\n    exclusive. This means, if no method is specified or none of the given\n    method names exists on the receiver, no method will be available\n    on the forwarder either.",
             "itemtype": "method",
             "name": "forward",
@@ -3290,15 +3618,23 @@
         },
         {
             "message": "Missing item type\nEXPORT\n======",
-            "line": " sources\\extensions\\iterators.js:264"
+            "line": " sources\\extensions\\iterators.js:289"
         },
         {
             "message": "Missing item type\nEXPORT\n======",
-            "line": " sources\\combinators.js:258"
+            "line": " sources\\extensions\\strings.js:300"
         },
         {
             "message": "Missing item type\nEXPORT\n======",
-            "line": " sources\\decorators.js:709"
+            "line": " sources\\extensions\\trampolines.js:123"
+        },
+        {
+            "message": "Missing item type\nEXPORT\n======",
+            "line": " sources\\combinators.js:304"
+        },
+        {
+            "message": "Missing item type\nEXPORT\n======",
+            "line": " sources\\decorators.js:651"
         }
     ]
 }

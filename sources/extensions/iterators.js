@@ -10,8 +10,8 @@
 
     } else if (typeof exports === 'object') {
         module.exports = factory(
-            require('../type'),
-            require('../array')
+            require('type'),
+            require('array')
         );
 
     } else {

@@ -282,64 +282,6 @@
     }
 
     /**
-    Given a function, the splat function returns a function which takes either
-        a array as single argument or a unlimited number of arguments and returns
-        a new array with the given function mapped to the array or to all the
-        arguments provided. It is some kind of `<array>`.mapWith(fn)
-
-    @method splat
-    @for funkyJS
-    @param {function} fn The function to "splat" onto the arguments/array values
-    @return {function} A function awaiting arguments or a array
-
-    @example
-        var multiply = function (n) {
-            return n * n;
-        }
-
-        var multiplyAll = funkyJS.splat(multiply);
-
-        var array = [1, 2, 3];
-
-
-        // old way, before ES5, works with (nearly) everything
-        var i, l, mapped;
-        for (i = 0, l = array.length, mapped = []; i < l; i += 1) {
-            mapped.push(multiply(array[i]));
-        }
-        // -> [1, 4, 9] (= mapped)
-
-        // new way, with ES5, works only on arrays
-        array.map(multiply);
-        // -> [1, 4, 9]
-
-        // more reusable version, works with (nearly) everything
-        multiplyAll(array);
-        // -> [1, 4, 9]
-
-        multiplyAll(4, 8, 16);
-        // -> [16, 64, 256]
-
-    **/
-    api.splat = function splat (fn) {
-        if (arguments.length < 1) {
-            return splat;
-        }
-
-        if (type.isNotFunction(fn)) {
-            throw new Error('Expected to splat a function but saw ' + fn);
-        }
-
-        return arity.aritize(fn.length, true)(function () {
-            if (arguments.length === 1 && type.isArray(arguments[0])) {
-                return arguments[0].map(fn, this);
-            }
-
-            return flat(arguments).map(fn, this);
-        });
-    }
-
-    /**
     Given a number of milliseconds and a function, the debounce function returns
         a function which calls the given function debounced for the given amount
         of milliseconds. Every new call to the returned function debounces the

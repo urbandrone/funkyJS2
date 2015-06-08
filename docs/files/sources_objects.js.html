@@ -464,6 +464,54 @@
     }
 
     /**
+    The instance function always returns a instance of the given constructor. If
+        the second argument already is a instance of the constructor, it is
+        returned, otherwise a new instance of the constructor is created. This
+        allows to create instances out of every function
+
+    @method instance
+    @for funkyJS
+    @param {function} Ctor The constructor function
+    @param {any} [context] The current context to check against (optional)
+    @return {object} Context if given and instance of Ctor, otherwise new Ctor
+
+    @example
+        function thing (value) {
+            var self = funkyJS.instance(thing, this);
+            self.value = function () {
+                return value;
+            }
+            return self;
+        }
+
+        function isAThing (x) {
+            return x instanceof thing;
+        }
+
+        var _t = thing(10);
+
+        isAThing(_t);
+        // -&gt; true
+
+        _t.value();
+        // -&gt; 10
+
+    **/
+    api.instance = function instance (Ctor, context) {
+        if (type.isNotFunction(Ctor)) {
+            throw new Error(&#x27;instance expected Ctor to be function but saw &#x27; + Ctor);
+        }
+
+        if (context !== undefined) {
+            if (Ctor.prototype.isPrototypeOf(context)) {
+                return context;
+            }
+        }
+
+        return Object.create(Ctor.prototype);
+    }
+
+    /**
     The extend method takes in two objects and extends the first one with the
         last one. See also the extendWith method
 

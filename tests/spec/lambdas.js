@@ -1,3 +1,4 @@
+/* global describe, it, expect, funkyJS */
 describe('funkyJS Lambda Module', function () {
 
     var add = funkyJS.lambda('a, b -> a + b');

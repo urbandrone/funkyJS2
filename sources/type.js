@@ -190,7 +190,7 @@
             return isNotVoid;
         }
 
-        return x === undefined;
+        return x !== undefined;
     }
 
     /**

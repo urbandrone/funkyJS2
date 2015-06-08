@@ -45,7 +45,9 @@ module.exports = function(grunt) {
                         'sources/extensions/contracts.js',
                         'sources/extensions/functors.js',
                         'sources/extensions/decorators.js',
-                        'sources/extensions/iterators.js'
+                        'sources/extensions/iterators.js',
+                        'sources/extensions/trampolines.js',
+                        'sources/extensions/strings.js'
                     ],
 
                     /**
@@ -54,21 +56,23 @@ module.exports = function(grunt) {
                     ============================================================
                     Core
                     **/
-                    'builds/funkyjs2-amd-cjs/birds.js': 'sources/_birds.js',
-                    'builds/funkyjs2-amd-cjs/type.js': 'sources/type.js',
-                    'builds/funkyjs2-amd-cjs/lambdas.js': 'sources/lambdas.js',
-                    'builds/funkyjs2-amd-cjs/objects.js': 'sources/objects.js',
-                    'builds/funkyjs2-amd-cjs/arrays.js': 'sources/arrays.js',
-                    'builds/funkyjs2-amd-cjs/arity.js': 'sources/arity.js',
-                    'builds/funkyjs2-amd-cjs/decorators.js': 'sources/decorators.js',
-                    'builds/funkyjs2-amd-cjs/combinators.js': 'sources/combinators.js',
+                    'builds/amd-cjs/birds.js': 'sources/_birds.js',
+                    'builds/amd-cjs/type.js': 'sources/type.js',
+                    'builds/amd-cjs/lambdas.js': 'sources/lambdas.js',
+                    'builds/amd-cjs/objects.js': 'sources/objects.js',
+                    'builds/amd-cjs/arrays.js': 'sources/arrays.js',
+                    'builds/amd-cjs/arity.js': 'sources/arity.js',
+                    'builds/amd-cjs/decorators.js': 'sources/decorators.js',
+                    'builds/amd-cjs/combinators.js': 'sources/combinators.js',
                     /**
                     Extensions
                     **/
-                    'builds/funkyjs2-amd-cjs/extensions/contracts.js': 'sources/extensions/contracts.js',
-                    'builds/funkyjs2-amd-cjs/extensions/functors.js': 'sources/extensions/functors.js',
-                    'builds/funkyjs2-amd-cjs/extensions/decorators.js': 'sources/extensions/decorators.js',
-                    'builds/funkyjs2-amd-cjs/extensions/iterators.js': 'sources/extensions/iterators.js'
+                    'builds/amd-cjs/ext/contracts.js': 'sources/extensions/contracts.js',
+                    'builds/amd-cjs/ext/functors.js': 'sources/extensions/functors.js',
+                    'builds/amd-cjs/ext/decorators.js': 'sources/extensions/decorators.js',
+                    'builds/amd-cjs/ext/iterators.js': 'sources/extensions/iterators.js',
+                    'builds/amd-cjs/ext/trampolines.js': 'sources/extensions/trampolines.js',
+                    'builds/amd-cjs/ext/strings.js': 'sources/extensions/strings.js'
                 }
             }
         },

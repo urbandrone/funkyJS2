@@ -35,11 +35,6 @@ describe('funkyJS Decorators Module', function () {
         expect(nF()).toBe(false);
     });
 
-    it('testing splat :: f -> f -> f', function () {
-        var sq = _.splat(function (x) { return x * x; });
-        expect(sq(1, 2, 3)).toEqual([1, 4, 9]);
-    });
-
     it('testing curry :: f -> f, * -> f', function () {
         var f = _.curry(function (a, b) { return a + b; });
         var g = _.curry(function (a, b) { return a + b; }, 'g');

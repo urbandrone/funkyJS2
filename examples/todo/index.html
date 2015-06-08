@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="de">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="keywords" content="">
+        <meta name="description" content="">
+        <meta name="author" content="D. Hofmann">
+        <meta name="robots" content="index, follow">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        <title>funkyJS Todo Example</title>
+        <link rel='stylesheet' href='//fonts.googleapis.com/css?family=Noto+Sans:400,700'>
+        <link rel="stylesheet" href="app.css">
+    </head>
+    <body>
+        <div id="app" class="app">
+            <div id="header" class="app_head">
+                <div class="bar">
+                    <span class="logo">Todo<b>App</b></span>
+                </div>
+                <form action="#" method="POST" id="todoform" class="form" enctype="application/x-www-form-urlencoded">
+                    <label for="todo_name">Todo</label>
+                    <input type="text" id="todo_name" class="input input--text" name="TodoName">
+
+                    <label for="todo_desc">Description</label>
+                    <textarea id="todo_desc" class="input input--text" name="TodoDesc"></textarea>
+
+                    <label for="todo_dead">Deadline</label>
+                    <select id="todo_dead" class="select" name="TodoDeadline">
+                        <option value="1">Next day</option>
+                        <option value="2">In 2 days</option>
+                        <option value="3">In 3 days</option>
+                        <option value="4">In 4 days</option>
+                        <option value="5">In 5 days</option>
+                        <option value="6">In 6 days</option>
+                        <option value="7">In 7 days</option>
+                        <option value="8">In 8 days</option>
+                        <option value="9">In 9 days</option>
+                        <option value="10">In 10 days</option>
+                        <option value="11">In 11 days</option>
+                        <option value="12">In 12 days</option>
+                        <option value="13">In 13 days</option>
+                        <option value="14">In 14 days</option>
+                    </select>
+
+                    <button type="submit" class="button button--action">
+                        Submit
+                    </button>
+                </form>
+            </div>
+            <ul id="todos" class="app_todos list list--nobullet">
+            </ul>
+        </div>
+    </body>
+    <script src="../../builds/funkyjs2.browser.min.js"></script>
+    <script src="../../builds/funkyjs2.ext.browser.min.js"></script>
+    <script src="store.min.js"></script>
+    <!-- Application logic -->
+    <script>var TodoApp = {};</script>
+    <script src="dom.js"></script>
+    <script src="todo.js"></script>
+    <script src="formactions.js"></script>
+    <script src="todostore.js"></script>
+</html>

@@ -635,15 +635,11 @@
     }
 
     /**
-    The flatten function flattens any given nested sequencial value. A optional
-        second parameter determines the maximum number of iterations are used
-        until the process is terminated. The default amount of maximum iterations
-        is Infinity
+    The flatten function flattens any given nested sequencial value
 
     @method flatten
     @for funkyJS
     @param {array|nodelist|arguments|string} a1 The nested sequencial
-    @param {number} [maxIterations = Infinity] Max. Number of Iterations
     @return {array} A new flat version of the given array
 
     @example
@@ -656,29 +652,34 @@
         funkyJS.flatten(multiLevel);
         // -&gt; [&#x27;a&#x27;, &#x27;b&#x27;, &#x27;c&#x27;, &#x27;d&#x27;, &#x27;e&#x27;];
 
-        funkyJS.flatten(multiLevel, 1);
-        // -&gt; [[[&#x27;a&#x27;, &#x27;b&#x27;]], [c], &#x27;d&#x27;, [[[&#x27;d&#x27;]]]];
-
     **/
     api.flatten = (function () {
-
-        function flattenTCO (list, acc, maxIter) {
-            if (list.length &lt; 1 || maxIter &lt; 1) {
+        function flattenTCO (list, acc) {
+            if (list.length &lt; 1) {
                 return acc;
             }
 
-            if (Array.isArray(list[0])) {
-                return flattenTCO(list[0].concat(list.slice(1)), acc, maxIter - 1);
-            }
+            return function () {
+                if (Array.isArray(list[0])) {
+                    return flattenTCO(list[0].concat(list.slice(1)), acc);
+                }
 
-            return flattenTCO(list.slice(1), acc.concat(list[0]), maxIter - 1);
+                return flattenTCO(list.slice(1), acc.concat(list[0]));
+            }
         }
 
-        return function flatten (a1, maxIterations) {
+        return function flatten (a1) {
+            var _list = api.toArray(a1);
             if (arguments.length &lt; 1) {
                 return flatten;
             }
-            return flattenTCO(a1, [], maxIterations || Infinity);
+
+            _list = flattenTCO(a1, []);
+            while (type.isFunction(_list)) {
+                _list = _list();
+            }
+
+            return _list;
         }
 
     })();

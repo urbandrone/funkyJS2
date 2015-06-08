@@ -118,8 +118,8 @@
 
     } else if (typeof exports === &#x27;object&#x27;) {
         module.exports = factory(
-            require(&#x27;../type&#x27;),
-            require(&#x27;../array&#x27;)
+            require(&#x27;type&#x27;),
+            require(&#x27;array&#x27;)
         );
 
     } else {
@@ -144,8 +144,33 @@
 
 
 
+    /**
+    Allows to create a numerical iterator, with a optional start and end number.
+        If the end number is below the start number, the returned iterator counts
+        down. If no arguments are given, the iterator counts up to positive
+        infinity
+
+    @method numIterator
+    @for funkyJS
+    @param {number} [start = 0] Optional start number
+    @param {number} [max = Infinity] Optional end number
+    @return {object} Iterator object
+
+    @example
+        var nums = funkyJS.numIterator(5); // counts 5 -&gt; Infinity
+
+        nums.next().value();
+        // -&gt; 5
+
+        nums.next().value();
+        // -&gt; 6
+
+        nums.next().value();
+        // -&gt; 7
+
+    **/
     api.numIterator = function numIterator (start, max) {
-        var _now = start === undefined ? 0 : start,
+        var _now = type.isNotInt32(start) ? 0 : start,
             _end = max === undefined ? Infinity : max,
             _add = 1;
 

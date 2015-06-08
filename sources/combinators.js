@@ -253,6 +253,52 @@
         });
     }
 
+    /**
+    Given a array of functions, the splat function allows to apply incoming
+        arguments to all given functions at once. It returns a function which
+        consumes the arguments and passes them to every function in the array
+
+    @method splat
+    @for funkyJS
+    @param {array} fns The functions to "splat" onto the arguments
+    @return {function} A function awaiting arguments
+
+    @example
+        var multiply = function (n) {
+            console.log(n * n);
+        }
+
+        var add = function (n) {
+            console.log(n + n);
+        }
+
+        var logMultAdd = funkyJS.splat([multiply, add]);
+
+        logMultAdd(4);
+        // -> console logs 16
+        // -> console logs 8
+
+    **/
+    api.splat = function splat (fns) {
+        if (arguments.length < 1) {
+            return splat;
+        }
+
+        if (type.isNotArray(fns) || fns.some(type.isNotFunction)) {
+            throw new Error('splat expected arguments to be array of functions but saw ' + fns);
+        }
+
+        return arity.aritize(
+            fns.reduce(function (acc, fn) {
+                return Math.max(acc, fn.length);
+            }, 0)
+        )(function (args) {
+            fns.forEach(function (fn) {
+                fn.apply(this, args);
+            }, this);
+        });
+    }
+
 
 
     /***
