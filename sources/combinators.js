@@ -293,7 +293,7 @@
                 return Math.max(acc, fn.length);
             }, 0)
         )(function (args) {
-            fns.forEach(function (fn) {
+            return fns.map(function (fn) {
                 fn.apply(this, args);
             }, this);
         });

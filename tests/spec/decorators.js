@@ -7,6 +7,16 @@ describe('funkyJS Decorators Module', function () {
         return [a, b];
     }
 
+    it('testing call :: f -> f -> f', function () {
+        var up = _.call(String.prototype.toUpperCase);
+        expect(up('a')).toBe('A');
+    });
+
+    it('testing callRight :: f -> f -> f', function () {
+        var sl2 = _.callRight(Array.prototype.slice, 2);
+        expect(sl2(['a', 'b', 'c'])).toEqual(['a', 'b']);
+    });
+
     it('testing flip :: f -> f -> f', function () {
         expect(_.flip(ab)(1, 2)).toEqual([2, 1]);
     });

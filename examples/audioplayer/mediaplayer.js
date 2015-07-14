@@ -18,7 +18,7 @@
      * Queries one or all DOMNodes by a certain selector
      * @param  {DOMNode} rootNode Root from which to query
      * @param  {string} selector CSS like selector
-     * @param  {boolean} all True to query all node which match the selector
+     * @param  {boolean} [all=false] True to query all node which match the selector
      * @return {array|DOMNode} Result of the query
      *
      * @example
@@ -49,17 +49,19 @@
      *     
      */ 
     function isValidMediaInterface (mediaInterface) {
-        return [
-            'state',
-            'play',
-            'pause',
-            'stop',
-            'jumpTo',
-            'setVol',
-            'getVol',
-            'info',
-            'on'
-        ].every(f.partial(f.has, [undefined, mediaInterface]));
+        return f.isObject(mediaInterface) && f.pairs({
+            state: f.isString,
+            play: f.isFunction,
+            pause: f.isFunction,
+            stop: f.isFunction,
+            jumpTo: f.isFunction,
+            setVol: f.isFunction,
+            getVol: f.isFunction,
+            info: f.isFunction,
+            on: f.isFunction
+        }).every(function (pair) {
+            return pair[1](mediaInterface[pair[0]]);
+        });
     }
 
 
@@ -289,10 +291,10 @@
                 this.$played.style.width = (this.media.info().elapsed + '%');
             },
             handleJump: function (event) {
-                var _pos = $.getCoords(this.$buffered);
-                _pos.x = event.pageX - (_pos.x + _pos.w);
+                var _pos = $.getCoords(this.$buffered),
+                    _x = event.pageX - _pos.x;
 
-                this.media.jumpTo((_pos.x / _pos.w) * 100);
+                this.media.jumpTo((_x / _pos.w) * 100);
             }
         });
     }
@@ -350,9 +352,11 @@
                 
                 if (this.active) {
                     _pos = $.getCoords(this.$wrap);
-                    
+                    _y = event.pageY - _pos.y;
+
+                    this.media.setVol((_y / _pos.h) * 100);
+                    this.$bar.style.height = (this.media.getVol() + '%');
                 }
-                
             },
             handleEnd: function () {
                 this.active = false;
@@ -378,13 +382,31 @@
             media: iMedia,
             gui: iUser,
             timelineControl: iTimeline,
-            audioControl: iAudio
+            audioControl: iAudio,
+            play: function () {
+                // the combination takes care to make the Play/Pause button
+                //  display the "pause" symbol (since this player is playing...) 
+                this.media.pause();
+                this.gui.handlePlayPause();
+            },
+            stop: function () {
+                // takes care to update the play button and display the "play"
+                //  symbol
+                this.gui.handleStop();
+            },
+            volume: function (percent) {
+                if (f.isNotNumber(percent)) {
+                    return this.media.getVol();
+                }
+                this.media.setVol(percent);
+            }
         });
     }
 
 
 
     window.mediaplayer = {
+        isValidMediaInterface: isValidMediaInterface,
         makeMediaInterface: makeMediaInterface,
         makeRessourceReader: makeRessourceReader,
         makeUserInterface: makeUserInterface,

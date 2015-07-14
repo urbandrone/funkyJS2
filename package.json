@@ -3,7 +3,7 @@
   "version": "1.6.1",
   "description": "Second version of funkyJS",
   "license": "MIT",
-  "author": "David Hofmann <the.urban.drone@gmail.com",
+  "author": "David Hofmann <the.urban.drone@gmail.com>",
   "repository": {
     "type": "git",
     "url": "http://github.com/urbandrone/funky2/"

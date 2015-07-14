@@ -365,7 +365,7 @@
     @for funkyJS
     @param {function} Ctor The constructor function
     @param {any} [context] The current context to check against (optional)
-    @return {object} Context if given and instance of Ctor, otherwise new Ctor
+    @return {object} Context if given a instance of Ctor, otherwise new Ctor
 
     @example
         function thing (value) {

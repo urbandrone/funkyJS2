@@ -77,9 +77,7 @@
                 if (_cur === _end) {
                     return {
                         done: true,
-                        value: function () {
-                            return undefined;
-                        }
+                        value: _cur
                     };
                 }
                 return {
@@ -109,9 +107,7 @@
                 if (_index >= _sequence.length) {
                     return {
                         done: true,
-                        value: function () {
-                            return undefined;
-                        }
+                        value: _sequence[_sequence.length - 1]
                     };
                 }
 
@@ -182,9 +178,7 @@
                 if (_it.done) {
                     return {
                         done: true,
-                        value: function () {
-                            return undefined;
-                        }
+                        value: _it.value
                     }
                 }
 
@@ -264,9 +258,7 @@
                 if (_it.done) {
                     return {
                         done: true,
-                        value: function () {
-                            return undefined
-                        }
+                        value: _it.value
                     };
                 }
 

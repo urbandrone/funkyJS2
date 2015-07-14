@@ -646,6 +646,149 @@
         return accumulator(partials, missing);
     }
 
+    /**
+    The call function kind of works much like the native Function.prototype.bind
+        function, but skips the setting of a specific context until execution.
+        The returned function awaits the context as the first argument given. If
+        a function with a arity of zero is passed into call, the returned function
+        has a arity of one, because at least the context argument must be given
+
+    @method call
+    @for funkyJS
+    @param {function} fn The function to call
+    @param {any} [...leftArgs] Any arguments to pass through from the left
+    @return {function} Function awaiting a context and optionally more arguments
+
+    @example
+        var slice = funkyJS.call(Array.prototype.slice);
+
+        slice(['a', 'b', 'c'], 1, 2);
+        // -> ['b']
+
+        var sliceTail = funkyJS.call(Array.prototype.slice, 1);
+
+        sliceTail(['a', 'b', 'c']);
+        // -> ['b', 'c']
+
+    **/
+    api.call = function call (fn /*, leftArgs*/) {
+        var lArgs;
+        if (fn === undefined) {
+            return call;
+        }
+
+        if (type.isNotFunction(fn)) {
+            throw new Error('call expected to see a function but saw ' + fn);
+        }
+
+        lArgs = slice(arguments, 1);
+        return arity.aritize(fn.length + 1, true)(function (context) {
+            return fn.apply(context, lArgs.concat(slice(arguments, 1)));
+        });
+    }
+
+    /*
+    The callRight function kind of works much like the native Function.prototype.bind
+        function, but skips the setting of a specific context until execution.
+        The returned function awaits the context as the first argument given. If
+        a function with a arity of zero is passed into call, the returned function
+        has a arity of one, because at least the context argument must be given
+
+    @method call
+    @for funkyJS
+    @param {function} fn The function to call
+    @param {any} [...leftArgs] Any arguments to pass through from the right
+    @return {function} Function awaiting a context and optionally more arguments
+
+    @example
+        var slice = funkyJS.callRight(Array.prototype.slice);
+
+        slice(['a', 'b', 'c'], 2, 1);
+        // -> ['b']
+
+        var slice2 = funkyJS.callRight(Array.prototype.slice, 2);
+
+        slice2(['a', 'b', 'c']);
+        // -> ['a', 'b']
+
+    */
+    api.callRight = function callRight (fn /*, rightArgs*/) {
+        var rArgs;
+        if (fn === undefined) {
+            return callRight;
+        }
+
+        if (type.isNotFunction(fn)) {
+            throw new Error('callRight expected to see a function but saw ' + fn);
+        }
+
+        rArgs = slice(arguments, 1);
+        return arity.aritize(fn.length + 1, true)(function (context) {
+            return fn.apply(context, rArgs.concat(slice(arguments, 1)).reverse());
+        });
+    }
+
+    /*
+    The defaults function allow to define overwritable default arguments for a
+        given function. If less arguments are given to the returned function
+        than the given function needs the missing arguments are filled with
+        the defined default parameters. It is possible to skip concrete parameters
+        on function invocation by passing "undefined". A skipped parameter
+        will also be filled with the default arguments
+
+    @method defaults
+    @for funkyJS
+    @param {function} fn The function to define default parameters for
+    @param {array} defs The default parameters in order
+    @return {function} Function with default parameters set
+
+    @example
+        var sayTo = function (sentence, subject) {
+           console.log(sentence + ' ' + subject);
+        }
+
+        var greet = funkyJS.defaults(sayTo, ['hello', 'world']);
+
+        greet();
+        // -> 'hello world'
+
+        greet('again, hello');
+        // -> 'again, hello world'
+        
+        greet('hi', 'joe');
+        // -> 'hi joe'
+
+        greet(undefined, 'joe');
+        // -> 'hello joe'
+       
+     */
+    api.defaults = function defaults (fn, defs) {
+        if (arguments.length < 1) {
+            return defaults;
+        }
+
+        if (type.isNotFunction(fn)) {
+            throw new Error('defaults expected to see a function but saw ' + fn);
+        }
+
+        if (type.isNotArray(defs)) {
+            return fn;
+        }
+
+        if (defs.length < fn.length) {
+            throw new Error('defaults misses parameters, expected ' + fn.length + ' but saw ' + defs.length);
+        }
+
+        return arity.aritize(fn.length)(function (args) {
+            fn.apply(this, defs.map(function (def, idx) {
+                if (idx < args.length && type.isNotVoid(args[idx])) {
+                    return args[idx];
+                }
+                return def;
+            }));
+        });
+    }
+
 
 
     /***

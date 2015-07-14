@@ -47,7 +47,8 @@ module.exports = function(grunt) {
                         'sources/extensions/decorators.js',
                         'sources/extensions/iterators.js',
                         'sources/extensions/trampolines.js',
-                        'sources/extensions/strings.js'
+                        'sources/extensions/strings.js',
+                        'sources/extensions/classes.js'
                     ],
 
                     /**
@@ -72,7 +73,8 @@ module.exports = function(grunt) {
                     'builds/amd-cjs/ext/decorators.js': 'sources/extensions/decorators.js',
                     'builds/amd-cjs/ext/iterators.js': 'sources/extensions/iterators.js',
                     'builds/amd-cjs/ext/trampolines.js': 'sources/extensions/trampolines.js',
-                    'builds/amd-cjs/ext/strings.js': 'sources/extensions/strings.js'
+                    'builds/amd-cjs/ext/strings.js': 'sources/extensions/strings.js',
+                    'builds/amd-cjs/ext/classes.js': 'sources/extensions/classes.js'
                 }
             }
         },

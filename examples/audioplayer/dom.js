@@ -53,7 +53,7 @@
     api.parents = f.dyadic(function parents (levels, node) {
         var _node = f.beNode(node),
             _ls = f.beInt32(levels);
-        while (_ls) {
+        while (_ls && _node !== document.body) {
             _node = _node.parentNode;
             _ls -= 1;
         }
@@ -61,12 +61,15 @@
     });
 
     api.getCoords = function getCoords (node) {
-        var _coords = f.beNode(node).getBoundingClientRect();
+        var _coords = f.beNode(node).getClientRects(),
+            _left = document.documentElement.scrollLeft || document.body.scrollLeft,
+            _top = document.documentElement.scrollTop || document.body.scrollTop;
+
         return {
-            x: _coords.left,
-            y: _coords.top,
-            w: _coords.width,
-            h: _coords.height
+            x: _coords[0].left + _left,
+            y: _coords[0].top + _top,
+            w: _coords[0].width,
+            h: _coords[0].height
         };
     }
 
