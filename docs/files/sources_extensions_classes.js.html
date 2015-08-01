@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>objects - funkyjs-2</title>
+    <title>sources\extensions\classes.js - funkyjs-2</title>
     <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
@@ -102,37 +102,121 @@
             <div class="apidocs">
                 <div id="docs-main">
                     <div class="content">
-                        <h1>objects Module</h1>
-<div class="box clearfix meta">
+                        <h1 class="file-heading">File: sources\extensions\classes.js</h1>
+
+<div class="file">
+    <pre class="code prettyprint linenums">
+;(function (global, factory) {
+    var ext,
+        it;
+
+    if (typeof define === &#x27;function&#x27; &amp;&amp; define.amd) {
+        define([
+            &#x27;../type&#x27;,
+            &#x27;../arrays&#x27;,
+            &#x27;../objects&#x27;
+        ], factory);
+
+    } else if (typeof exports === &#x27;object&#x27;) {
+        module.exports = factory(
+            require(&#x27;type&#x27;),
+            require(&#x27;arrays&#x27;),
+            require(&#x27;objects&#x27;)
+        );
+
+    } else {
+        ext = factory(
+            global.funkyJS,
+            global.funkyJS,
+            global.funkyJS
+        );
+
+        for (it in ext) {
+            if (ext.hasOwnProperty(it)) {
+                global.funkyJS[it] = ext[it];
+            }
+        }
+    }
+
+})(this, function (type, list, dict) {
+
+    /**
+    @module experiments
+    **/
+    var api = {};
+
+
+
+    /**
+    The instanceWith function allows to build instances of a given class with
+        a freely extendable behaviour without the need to extend the class. This
+        is especially useful if you want to use a existing class but with a
+        slightly altered behaviour, without creating a new subclass or modifying
+        the prototype   
     
+    @method instanceWith
+    
+    @param {function} Ctor Constructor of the class
+    @param {object} extension Methods and properties to extend the classinstance with
+    
+    @return {object} A new instance with extension
+    
+    @example
+        var Some = function () {}
+        Some.prototype.setValue = function (value) { this.value = value; }
+        Some.prototype.getValue = function () { return this.value; }
+    
+        var instance = new Some();
+        instance.setValue(&#x27;foo&#x27;);
+        instance.getValue();
+        // -&gt; &#x27;foo&#x27;
+
 
     
-
+        var extendIt = {
+            modify: function (v) { return (v + &#x27;!&#x27;).toUpperCase(); },
+            getValue: function () { return this.modify(this.value); }
+        }
     
-        <div class="foundat">
-            Defined in: <a href="../files/sources_objects.js.html#l22"><code>sources\objects.js:22</code></a>
-        </div>
-    
+        var extInstance = funkyJS.instanceWith(Some, extendIt);
+        extInstance.setValue(&#x27;bar&#x27;);
+        extInstance.getValue();
+        // -&gt; &#x27;BAR!&#x27;
+         
+    **/
+    api.instanceWith = function instanceWith (Ctor, extension) {
+        var stub;
+        if (type.isNotFunction(Ctor)) {
+            throw new Error(&#x27;instanceWith expected Ctor to be function but saw &#x27; + Ctor);
+        }
 
-    
-</div>
+        if (extension === undefined) {
+            return function () {
+                return instanceWith.apply(this, list.append(arguments, [Ctor]));
+            };
+        }
+
+        stub = dict.instance(Ctor);
+        list.tail(arguments).forEach(function (ext) {
+            if (type.isObject(ext)) {
+                dict.extend(stub, ext);
+            }
+        });
+
+        return stub;
+    }
 
 
 
-<div class="box intro">
-    
-</div>
+    /***
+     * EXPORT
+     * ======
+     */
 
+    return api;
 
-
-<div class="yui3-g">
-    <div class="yui3-u-1-2">
-        
-    </div>
-
-    <div class="yui3-u-1-2">
-        
-    </div>
+});
+    </pre>
 </div>
 
                     </div>

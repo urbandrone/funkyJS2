@@ -19,7 +19,7 @@
             
         </div>
         <div class="yui3-u-1-4 version">
-            <em>API Docs for: 1.3.0</em>
+            <em>API Docs for: 1.6.1</em>
         </div>
     </div>
     <div id="bd" class="yui3-g">
@@ -295,6 +295,13 @@
                             </li>
                         
                             <li class="index-item method">
+                                <a href="#method_call">call</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
                                 <a href="#method_camelize">camelize</a>
 
                                 
@@ -520,6 +527,13 @@
                         
                             <li class="index-item method">
                                 <a href="#method_instance">instance</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_instanceWith">instanceWith</a>
 
                                 
                                 
@@ -1433,7 +1447,7 @@ funkyJS.append(newTail)()([&#39;a&#39;, &#39;b&#39;, &#39;c&#39;]);
             
         
         
-        <a href="../files/sources_arity.js.html#l40"><code>sources\arity.js:40</code></a>
+        <a href="../files/sources_arity.js.html#l43"><code>sources\arity.js:43</code></a>
         
         </p>
 
@@ -3634,6 +3648,159 @@ funkyJS.beVoid(null);
 </div>
 
                 
+                    <div id="method_call" class="method item">
+    <h3 class="name"><code>call</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>fn</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code class="optional">[...leftArgs]</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">Function</span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                    <p>Provided by the <a href="../modules/decorators.html">decorators</a> module.</p>
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/sources_decorators.js.html#l649"><code>sources\decorators.js:649</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>The call function kind of works much like the native Function.prototype.bind
+    function, but skips the setting of a specific context until execution.
+    The returned function awaits the context as the first argument given. If
+    a function with a arity of zero is passed into call, the returned function
+    has a arity of one, because at least the context argument must be given</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">fn</code>
+                        <span class="type">Function</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>The function to call</p>
+
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name optional">[...leftArgs]</code>
+                        <span class="type">Any</span>
+                        <span class="flag optional" title="This parameter is optional.">optional</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>Any arguments to pass through from the left</p>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type">Function</span>:
+                    
+                    <p>Function awaiting a context and optionally more arguments</p>
+
+                
+            </div>
+        </div>
+    
+
+    
+        <div class="example">
+            <h4>Example:</h4>
+
+            <div class="example-content">
+                <pre class="code prettyprint"><code>var slice = funkyJS.call(Array.prototype.slice);
+
+slice([&#39;a&#39;, &#39;b&#39;, &#39;c&#39;], 1, 2);
+// -&gt; [&#39;b&#39;]
+
+var sliceTail = funkyJS.call(Array.prototype.slice, 1);
+
+sliceTail([&#39;a&#39;, &#39;b&#39;, &#39;c&#39;]);
+// -&gt; [&#39;b&#39;, &#39;c&#39;]</code></pre>
+
+            </div>
+        </div>
+    
+</div>
+
+                
                     <div id="method_camelize" class="method item">
     <h3 class="name"><code>camelize</code></h3>
 
@@ -5371,7 +5538,7 @@ funkyJS.drop(2)()([&#39;a&#39;, &#39;b&#39;, &#39;c&#39;, &#39;d&#39;]);
             
         
         
-        <a href="../files/sources_arity.js.html#l205"><code>sources\arity.js:205</code></a>
+        <a href="../files/sources_arity.js.html#l208"><code>sources\arity.js:208</code></a>
         
         </p>
 
@@ -8530,7 +8697,7 @@ Extended.subClass = function (ext) {
                     
                         <span class="type">Object</span>:
                     
-                    <p>Context if given and instance of Ctor, otherwise new Ctor</p>
+                    <p>Context if given a instance of Ctor, otherwise new Ctor</p>
 
                 
             </div>
@@ -8561,6 +8728,169 @@ isAThing(_t);
 
 _t.value();
 // -&gt; 10</code></pre>
+
+            </div>
+        </div>
+    
+</div>
+
+                
+                    <div id="method_instanceWith" class="method item">
+    <h3 class="name"><code>instanceWith</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>Ctor</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>extension</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">Object</span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                    <p>Provided by the <a href="../modules/experiments.html">experiments</a> module.</p>
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/sources_extensions_classes.js.html#l42"><code>sources\extensions\classes.js:42</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>The instanceWith function allows to build instances of a given class with
+    a freely extendable behaviour without the need to extend the class. This
+    is especially useful if you want to use a existing class but with a
+    slightly altered behaviour, without creating a new subclass or modifying
+    the prototype</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">Ctor</code>
+                        <span class="type">Function</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>Constructor of the class</p>
+
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">extension</code>
+                        <span class="type">Object</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>Methods and properties to extend the classinstance with</p>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type">Object</span>:
+                    
+                    <p>A new instance with extension</p>
+
+                
+            </div>
+        </div>
+    
+
+    
+        <div class="example">
+            <h4>Example:</h4>
+
+            <div class="example-content">
+                <pre class="code prettyprint"><code>var Some = function () {}
+Some.prototype.setValue = function (value) { this.value = value; }
+Some.prototype.getValue = function () { return this.value; }
+
+var instance = new Some();
+instance.setValue(&#39;foo&#39;);
+instance.getValue();
+// -&gt; &#39;foo&#39;
+
+
+
+var extendIt = {
+    modify: function (v) { return (v + &#39;!&#39;).toUpperCase(); },
+    getValue: function () { return this.modify(this.value); }
+}
+
+var extInstance = funkyJS.instanceWith(Some, extendIt);
+extInstance.setValue(&#39;bar&#39;);
+extInstance.getValue();
+// -&gt; &#39;BAR!&#39;</code></pre>
 
             </div>
         </div>
@@ -14201,7 +14531,7 @@ funkyJS.methods()(dict);
             
         
         
-        <a href="../files/sources_arity.js.html#l161"><code>sources\arity.js:161</code></a>
+        <a href="../files/sources_arity.js.html#l164"><code>sources\arity.js:164</code></a>
         
         </p>
 
@@ -14519,7 +14849,7 @@ multiply([1, 2, 3, 4, 5]);
             
         
         
-        <a href="../files/sources_arity.js.html#l121"><code>sources\arity.js:121</code></a>
+        <a href="../files/sources_arity.js.html#l124"><code>sources\arity.js:124</code></a>
         
         </p>
 
@@ -15970,7 +16300,7 @@ funkyJS.pluck(&#39;foo&#39;, dicts[0]);
             
         
         
-        <a href="../files/sources_arity.js.html#l377"><code>sources\arity.js:377</code></a>
+        <a href="../files/sources_arity.js.html#l380"><code>sources\arity.js:380</code></a>
         
         </p>
 
@@ -17322,7 +17652,7 @@ funkyJS.take(2)()([&#39;a&#39;, &#39;b&#39;, &#39;c&#39;, &#39;d&#39;]);
             
         
         
-        <a href="../files/sources_arity.js.html#l315"><code>sources\arity.js:315</code></a>
+        <a href="../files/sources_arity.js.html#l318"><code>sources\arity.js:318</code></a>
         
         </p>
 
@@ -17846,7 +18176,7 @@ thunked(50325);
             
         
         
-        <a href="../files/sources_arity.js.html#l257"><code>sources\arity.js:257</code></a>
+        <a href="../files/sources_arity.js.html#l260"><code>sources\arity.js:260</code></a>
         
         </p>
 
@@ -18864,7 +19194,7 @@ funkyJS.values()(dict);
             
         
         
-        <a href="../files/sources_arity.js.html#l432"><code>sources\arity.js:432</code></a>
+        <a href="../files/sources_arity.js.html#l435"><code>sources\arity.js:435</code></a>
         
         </p>
 

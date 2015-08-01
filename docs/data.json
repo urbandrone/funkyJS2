@@ -1,7 +1,7 @@
 {
     "project": {
         "name": "funkyjs-2",
-        "version": "1.3.0",
+        "version": "1.6.1",
         "description": "Second version of funkyJS"
     },
     "files": {
@@ -10,6 +10,13 @@
             "modules": {
                 "experiments": 1
             },
+            "classes": {},
+            "fors": {},
+            "namespaces": {}
+        },
+        "sources\\extensions\\classes.js": {
+            "name": "sources\\extensions\\classes.js",
+            "modules": {},
             "classes": {},
             "fors": {},
             "namespaces": {}
@@ -311,6 +318,41 @@
         {
             "file": "sources\\extensions\\_template.js",
             "line": 40,
+            "description": "EXPORT\n======",
+            "class": "funkyJS",
+            "module": "experiments"
+        },
+        {
+            "file": "sources\\extensions\\classes.js",
+            "line": 42,
+            "description": "The instanceWith function allows to build instances of a given class with\n    a freely extendable behaviour without the need to extend the class. This\n    is especially useful if you want to use a existing class but with a\n    slightly altered behaviour, without creating a new subclass or modifying\n    the prototype",
+            "itemtype": "method",
+            "name": "instanceWith",
+            "params": [
+                {
+                    "name": "Ctor",
+                    "description": "Constructor of the class",
+                    "type": "Function"
+                },
+                {
+                    "name": "extension",
+                    "description": "Methods and properties to extend the classinstance with",
+                    "type": "Object"
+                }
+            ],
+            "return": {
+                "description": "A new instance with extension",
+                "type": "Object"
+            },
+            "example": [
+                "\n    var Some = function () {}\n    Some.prototype.setValue = function (value) { this.value = value; }\n    Some.prototype.getValue = function () { return this.value; }\n\n    var instance = new Some();\n    instance.setValue('foo');\n    instance.getValue();\n    // -> 'foo'\n\n\n\n    var extendIt = {\n        modify: function (v) { return (v + '!').toUpperCase(); },\n        getValue: function () { return this.modify(this.value); }\n    }\n\n    var extInstance = funkyJS.instanceWith(Some, extendIt);\n    extInstance.setValue('bar');\n    extInstance.getValue();\n    // -> 'BAR!'\n     "
+            ],
+            "class": "funkyJS",
+            "module": "experiments"
+        },
+        {
+            "file": "sources\\extensions\\classes.js",
+            "line": 103,
             "description": "EXPORT\n======",
             "class": "funkyJS",
             "module": "experiments"
@@ -1042,7 +1084,7 @@
         },
         {
             "file": "sources\\extensions\\iterators.js",
-            "line": 289,
+            "line": 281,
             "description": "EXPORT\n======",
             "class": "funkyJS",
             "module": "experiments"
@@ -1374,7 +1416,7 @@
         },
         {
             "file": "sources\\arity.js",
-            "line": 40,
+            "line": 43,
             "description": "The aritize function takes a number and returns a function which has a arity\n    of exactly that length. A optional second argument allows to create a\n    loosely aritized function, which acts much like a variadic function, but\n    packs all the given arguments into a array. A call to aritize returns a\n    function, which awaits a function describing the operation applied to the\n    given arguments (either loosely or strict)",
             "itemtype": "method",
             "name": "aritize",
@@ -1402,7 +1444,7 @@
         },
         {
             "file": "sources\\arity.js",
-            "line": 121,
+            "line": 124,
             "description": "The niladic function restricts the number of arguments (a functions arity) that\n    are needed to execute a function to zero. It takes a function and returns\n    a function which takes arguments until the given function can be executed.\n    If more arguments are passed than the arity of the given function is, the\n    arguments which are too many will be ignored",
             "itemtype": "method",
             "name": "niladic",
@@ -1425,7 +1467,7 @@
         },
         {
             "file": "sources\\arity.js",
-            "line": 161,
+            "line": 164,
             "description": "The monadic function restricts the number of arguments (a functions arity) that\n    are needed to execute a function to one. It takes a function and returns\n    a function which takes arguments until the given function can be executed.\n    If more arguments are passed than the arity of the given function is, the\n    arguments which are too many will be ignored",
             "itemtype": "method",
             "name": "monadic",
@@ -1448,7 +1490,7 @@
         },
         {
             "file": "sources\\arity.js",
-            "line": 205,
+            "line": 208,
             "description": "The dyadic function restricts the number of arguments (a functions arity) that\n    are needed to execute a function to two. It takes a function and returns\n    a function which takes arguments until the given function can be executed.\n    If more arguments are passed than the arity of the given function is, the\n    arguments which are too many will be ignored",
             "itemtype": "method",
             "name": "dyadic",
@@ -1471,7 +1513,7 @@
         },
         {
             "file": "sources\\arity.js",
-            "line": 257,
+            "line": 260,
             "description": "The triadic function restricts the number of arguments (a functions arity) that\n    are needed to execute a function to three. It takes a function and returns\n    a function which takes arguments until the given function can be executed.\n    If more arguments are passed than the arity of the given function is, the\n    arguments which are too many will be ignored",
             "itemtype": "method",
             "name": "triadic",
@@ -1494,7 +1536,7 @@
         },
         {
             "file": "sources\\arity.js",
-            "line": 315,
+            "line": 318,
             "description": "The tetradic function restricts the number of arguments (a functions arity) that\n    are needed to execute a function to four. It takes a function and returns\n    a function which takes arguments until the given function can be executed.\n    If more arguments are passed than the arity of the given function is, the\n    arguments which are too many will be ignored",
             "itemtype": "method",
             "name": "tetradic",
@@ -1517,7 +1559,7 @@
         },
         {
             "file": "sources\\arity.js",
-            "line": 377,
+            "line": 380,
             "description": "The polyadic function restricts the number of arguments (a functions arity) that\n    are needed to execute a function to two or more. It takes a function and returns\n    a function which takes arguments until the given function can be executed.\n    If too less arguments are given to the returned accumulator function, a\n    new accumulator function is returned.",
             "itemtype": "method",
             "name": "polyadic",
@@ -1540,7 +1582,7 @@
         },
         {
             "file": "sources\\arity.js",
-            "line": 432,
+            "line": 435,
             "description": "The variadic function transforms any function which takes at least one argument\n    (unary function) into a function which takes a variable number or arguments\n    (multary function) by providing the overhanging arguments combined into\n    a array with the regular last argument",
             "itemtype": "method",
             "name": "variadic",
@@ -2382,7 +2424,36 @@
         },
         {
             "file": "sources\\decorators.js",
-            "line": 651,
+            "line": 649,
+            "description": "The call function kind of works much like the native Function.prototype.bind\n    function, but skips the setting of a specific context until execution.\n    The returned function awaits the context as the first argument given. If\n    a function with a arity of zero is passed into call, the returned function\n    has a arity of one, because at least the context argument must be given",
+            "itemtype": "method",
+            "name": "call",
+            "params": [
+                {
+                    "name": "fn",
+                    "description": "The function to call",
+                    "type": "Function"
+                },
+                {
+                    "name": "...leftArgs",
+                    "description": "Any arguments to pass through from the left",
+                    "type": "Any",
+                    "optional": true
+                }
+            ],
+            "return": {
+                "description": "Function awaiting a context and optionally more arguments",
+                "type": "Function"
+            },
+            "example": [
+                "\n    var slice = funkyJS.call(Array.prototype.slice);\n\n    slice(['a', 'b', 'c'], 1, 2);\n    // -> ['b']\n\n    var sliceTail = funkyJS.call(Array.prototype.slice, 1);\n\n    sliceTail(['a', 'b', 'c']);\n    // -> ['b', 'c']\n"
+            ],
+            "class": "funkyJS",
+            "module": "decorators"
+        },
+        {
+            "file": "sources\\decorators.js",
+            "line": 794,
             "description": "EXPORT\n======",
             "class": "funkyJS",
             "module": "decorators"
@@ -2629,7 +2700,7 @@
                 }
             ],
             "return": {
-                "description": "Context if given and instance of Ctor, otherwise new Ctor",
+                "description": "Context if given a instance of Ctor, otherwise new Ctor",
                 "type": "Object"
             },
             "example": [
@@ -3606,6 +3677,10 @@
         },
         {
             "message": "Missing item type\nEXPORT\n======",
+            "line": " sources\\extensions\\classes.js:103"
+        },
+        {
+            "message": "Missing item type\nEXPORT\n======",
             "line": " sources\\extensions\\contracts.js:363"
         },
         {
@@ -3618,7 +3693,7 @@
         },
         {
             "message": "Missing item type\nEXPORT\n======",
-            "line": " sources\\extensions\\iterators.js:289"
+            "line": " sources\\extensions\\iterators.js:281"
         },
         {
             "message": "Missing item type\nEXPORT\n======",
@@ -3634,7 +3709,7 @@
         },
         {
             "message": "Missing item type\nEXPORT\n======",
-            "line": " sources\\decorators.js:651"
+            "line": " sources\\decorators.js:794"
         }
     ]
 }

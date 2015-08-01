@@ -708,7 +708,7 @@
 
         var slice2 = funkyJS.callRight(Array.prototype.slice, 2);
 
-        slice2(['a', 'b', 'c']);
+        slice2(['a', 'b', 'c'], 0);
         // -> ['a', 'b']
 
     */
@@ -780,7 +780,7 @@
         }
 
         return arity.aritize(fn.length)(function (args) {
-            fn.apply(this, defs.map(function (def, idx) {
+            return fn.apply(this, defs.map(function (def, idx) {
                 if (idx < args.length && type.isNotVoid(args[idx])) {
                     return args[idx];
                 }

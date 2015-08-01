@@ -294,7 +294,7 @@
             }, 0)
         )(function (args) {
             return fns.map(function (fn) {
-                fn.apply(this, args);
+                return fn.apply(this, args);
             }, this);
         });
     }

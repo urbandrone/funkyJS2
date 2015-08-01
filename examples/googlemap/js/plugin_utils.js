@@ -1,6 +1,8 @@
 /* globals PlaceMap, funkyJS, make */
 ;(function (f, plugin) {
 
+    var CITY_TEMPLATE = null;
+
     /**
      * plugin utility, we use this to split all kinds of strings
      *
@@ -30,9 +32,19 @@
      *
      * @return {*} Whatever the last property's value is
      */
-    var deepPluck = f.pipe(f.splat([split('.'), f.identity]), function (args) {
-        return args[0].reduce(f.flip(f.pluck), args[1]);
-    });
+    var deepPluck = function (path, object) {
+        var _path = split('.', path);
+        var _level = object;
+        while (_path.length > 0 && f.has(_path[0], _level)) {
+            _level = _level[_path.shift()];            
+        }
+
+        if (_path.length > 0) {
+            throw 'deepPluck was not able to finish the work, misses: ' + _path.join(':');
+        }
+
+        return _level;
+    }
 
 
 
@@ -53,22 +65,8 @@
      *
      * @return {array} Two floating point numbers
      */
-    var toFloatPair = f.multiDispatch([{
-        // noop, in case everything is alright
-        args: [f.isNumber, f.isNumber],
-        proc: f.splat([f.identity, f.identity])
-    }, {
-        // handles lat:lng notation
-        args: [f.isString],
-        proc: f.splitParse(parseFloat, ':')
-    }, {
-        // handles objects with lat/lng properties
-        args: [f.isObject],
-        proc: f.splat([
-            f.pipe(f.get('lat'), parseFloat),
-            f.pipe(f.get('lng'), parseFloat)
-        ])
-    }]);
+    var toFloatPair = f.splitParse(parseFloat, ':');
+
 
     // wicked stuff, do not try to understand. returns a function which produces
     //   a valid level 4 UUID
@@ -107,12 +105,66 @@
 
 
 
+
+
+    var toUpper = f.call(String.prototype.toUpperCase);
+    var toLower = f.call(String.prototype.toLowerCase);
+    var join = f.call(Array.prototype.join);
+
+    var orElse = function (fn, rescue) {
+        return f.aritize(fn.length, true)(function () {
+            var r = fn.apply(this, arguments);
+            if (!!r) {
+                return r;
+            }
+            return rescue.apply(this, arguments);
+        });
+    }
+
+    var below = f.dyadic(function (n, v) { return n > v; });
+    var above = f.dyadic(function (n, v) { return n < v; });
+
+    var between = f.dyadic(function (min, max) {
+        return f.and(f.isInt32, above(min), below(max));
+    });
+
+    var firstUpper = f.pipe(
+        f.splat([f.pipe(f.first, toUpper), f.tail]),
+        f.flip(f.call(join, ''))
+    );
+
+
+    /*
+    Translates the configuration settings according to the translationTable argument
+        provided. To see a translation table, take a look at the file plugin_map.js
+    */
+    var translateConfig = f.dyadic(function (translationTable, configs) {
+        return f.keys(translationTable).reduce(function (acc, key) {
+            var transform = f.pipe.apply(null, translationTable[key].transforms);
+            acc[translationTable[key].prop] = transform(deepPluck(key, configs));
+
+            return acc;
+        }, {});
+    });
+
+    var getTemplate = f.pipe(f.first, f.get('innerHTML'), f.trim, f.substitude);
+
     plugin.utils = make({
+        upper: toUpper,
+        lower: toLower,
+        firstUpper: firstUpper,
+        ifThenElse: orElse,
+        below: below,
+        above: above,
+        between: between,
+        translateConfig: translateConfig,
         uuid: makeUuid,
         deepPluck: deepPluck,
         dataConfig: f.partial(deepPluck, [undefined, plugin.json]),
+        domConfig: f.partial(deepPluck, [undefined, plugin.dom]),
         pluginConfig: f.constant(plugin.config),
-        floatPair: toFloatPair
+        floatPair: toFloatPair,
+        getTemplateFn: getTemplate
     });
 
 })(funkyJS, PlaceMap);

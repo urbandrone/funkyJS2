@@ -105,7 +105,7 @@
             }
 
             return function (x) {
-                return f(g(x));
+                return f.call(this, g.call(this, x));
             }
         }
     }

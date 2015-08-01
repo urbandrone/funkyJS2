@@ -19,7 +19,7 @@
             
         </div>
         <div class="yui3-u-1-4 version">
-            <em>API Docs for: 1.3.0</em>
+            <em>API Docs for: 1.6.1</em>
         </div>
     </div>
     <div id="bd" class="yui3-g">
@@ -401,8 +401,8 @@
                 return Math.max(acc, fn.length);
             }, 0)
         )(function (args) {
-            fns.forEach(function (fn) {
-                fn.apply(this, args);
+            return fns.map(function (fn) {
+                return fn.apply(this, args);
             }, this);
         });
     }

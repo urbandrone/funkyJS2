@@ -14,7 +14,15 @@ describe('funkyJS Decorators Module', function () {
 
     it('testing callRight :: f -> f -> f', function () {
         var sl2 = _.callRight(Array.prototype.slice, 2);
-        expect(sl2(['a', 'b', 'c'])).toEqual(['a', 'b']);
+        expect(sl2(['a', 'b', 'c'], 0)).toEqual(['a', 'b']);
+    });
+
+    it('testing defaults :: f -> f, a -> f', function () {
+        var f = _.defaults(ab, ['*', '-']);
+        expect(f()).toEqual(['*', '-']);
+        expect(f('a')).toEqual(['a', '-']);
+        expect(f(undefined, 'a')).toEqual(['*', 'a']);
+        expect(f('a', 'b')).toEqual(['a', 'b']);
     });
 
     it('testing flip :: f -> f -> f', function () {

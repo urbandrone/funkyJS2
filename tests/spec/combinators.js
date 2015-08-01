@@ -16,6 +16,12 @@ describe('funkyJS Combinators Module', function () {
         expect(f(2)).toBe('cmps-2!');
     });
 
+    it('testing splat :: f -> fs, a -> f', function () {
+        var f = funkyJS.splat([prefix('simon says: '), exclaim]);
+
+        expect(f(4)).toEqual(['simon says: -4', '4!']);
+    });
+
     it('testing pipe :: f -> f1, f2, ... -> f', function () {
         var f = _.pipe(prefix('pipe'), exclaim);
         expect(f(2)).toBe('pipe-2!');

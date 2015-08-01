@@ -19,7 +19,7 @@
             
         </div>
         <div class="yui3-u-1-4 version">
-            <em>API Docs for: 1.3.0</em>
+            <em>API Docs for: 1.6.1</em>
         </div>
     </div>
     <div id="bd" class="yui3-g">
@@ -185,9 +185,7 @@
                 if (_cur === _end) {
                     return {
                         done: true,
-                        value: function () {
-                            return undefined;
-                        }
+                        value: _cur
                     };
                 }
                 return {
@@ -217,9 +215,7 @@
                 if (_index &gt;= _sequence.length) {
                     return {
                         done: true,
-                        value: function () {
-                            return undefined;
-                        }
+                        value: _sequence[_sequence.length - 1]
                     };
                 }
 
@@ -290,9 +286,7 @@
                 if (_it.done) {
                     return {
                         done: true,
-                        value: function () {
-                            return undefined;
-                        }
+                        value: _it.value
                     }
                 }
 
@@ -372,9 +366,7 @@
                 if (_it.done) {
                     return {
                         done: true,
-                        value: function () {
-                            return undefined
-                        }
+                        value: _it.value
                     };
                 }
 

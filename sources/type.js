@@ -425,7 +425,7 @@
             return isInt32;
         }
 
-        return api.isNumber(x) && x % 1 === 0;
+        return api.isNumber(x) && x % 1 === 0 || api.isNumber(x) && x === 1;
     }
 
     /**

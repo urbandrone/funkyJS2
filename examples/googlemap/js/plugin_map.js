@@ -2,23 +2,31 @@
 ;(function (f, plugin, $g) {
 
     /* =========== REUSABLE HELPERS =========== */
+    var addListener = $g.maps.event.addListener.bind($g.maps.event);
 
-    var toUpper = f.call(String.prototype.toUpperCase);
-    var toLower = f.call(String.prototype.toLowerCase);
-
-    var orElse = function (fn, rescue) {
-        return f.aritize(fn.length, true)(function () {
-            var r = fn.apply(this, arguments);
-            if (!!r) {
-                return r;
-            }
-            return rescue.apply(this, arguments);
-        });
+    function addMarkerPosition (data, lat, lng) {
+        data.position = new $g.maps.LatLng(lat, lng);
+        return data;
     }
 
-    var below = f.dyadic(function (n, v) { return n > v; });
-    var above = f.dyadic(function (n, v) { return n < v; });
+    function addMarkerMap (data, map) {
+        data.map = map;
+        return data;
+    }
 
+    function addMarkerTitle (data, title) {
+        if (f.isString(title)) {
+            data.title = title;
+        }
+        return data;
+    }
+
+    function addMarkerIcon (data, icon) {
+        if (f.isString(icon)) {
+            data.icon = icon;
+        }
+        return data;
+    }
 
 
     /* =========== UTILITY DEFINITION =========== */
@@ -30,13 +38,13 @@
         a array of function transformations which finally return the correct
         value to set
     */
-    var CONFIG_TRANSLATE = {
+    var getMapConfig = plugin.utils.translateConfig({
         'typeid': {
             prop: 'mapTypeId',
             transforms: [
-                toUpper,
+                plugin.utils.upper,
                 function (value) {
-                    return $g.maps.mapTypeId[value];
+                    return $g.maps.MapTypeId[value];
                 }
             ],
         },
@@ -56,9 +64,9 @@
         'maxZoom': {
             prop: 'maxZoom',
             transforms: [
-                orElse(
+                plugin.utils.ifThenElse(
                     // condition: value if int & > 1 & < 19 else 18
-                    f.guard(f.and(f.isInt32, f.and(above(1), below(19))), f.identity),
+                    f.guard(plugin.utils.between(1, 19), f.identity),
                     f.constant(18)
                 )
             ]
@@ -66,15 +74,19 @@
         'minZoom': {
             prop: 'minZoom',
             transforms: [
-                orElse(
+                plugin.utils.ifThenElse(
                     // condition: value if int & > 0 & < 18 else 1
-                    f.guard(f.and(f.isInt32, f.and(above(0), below(18))), f.identity),
+                    f.guard(plugin.utils.between(0, 18), f.identity),
                     f.constant(1)
                 )
             ]
         },
         'draggable': {
             prop: 'draggable',
+            transforms: [f.identity]
+        },
+        'mousewheel': {
+            prop: 'mousewheel',
             transforms: [f.identity]
         },
         'controls.type': {
@@ -104,28 +116,15 @@
         'controls.streetview': {
             prop: 'streetViewControl',
             transforms: [f.identity]
-        },
-    }
+        }
+    });
 
-
-    /*
-    Creates a Google MapOptions object according to the specifications above
-        from the user configuration. It takes in the user configurations,
-        extracts the keys from the translation settings, deep plucks them
-        from the user configuration and applies the given transforms in the
-        translation configuration. Finally it reduces all the key:value pairs
-        into the MapOptions object and returns that
-    */
-    function translateMapOptions (userConfig) {
-        return f.keys(CONFIG_TRANSLATE).reduce(function (acc, key) {
-            var transform = f.pipe.apply(null, CONFIG_TRANSLATE[key].transforms);
-            acc[CONFIG_TRANSLATE[key].prop] = transform(
-                plugin.utils.deepPluck(key, userConfig)
-            );
-
-            return acc;
-        }, {});
-    }
+    var getMarkerIcon = plugin.utils.translateConfig({
+        'markerIcon': {
+            prop: 'icon',
+            transforms: [f.identity]
+        }
+    });
 
 
 
@@ -135,31 +134,40 @@
 
         return make({
             $map: null,
+            $cityMarkers: null,
             connectController: function (controller) {
                 _controller = controller;
             },
             renderMap: function (rootNode) {
                 this.$map = new $g.maps.Map(
                     rootNode,
-                    translateMapOptions(plugin.utils.pluginConfig())
+                    getMapConfig(plugin.utils.pluginConfig())
                 );
             },
             renderMarker: function (data) {
                 var _marker = null,
-                    _city = {
-                    position: new $g.maps.LatLng(data.latitude, data.longitude),
-                    map: this.$map,
-                    title: data.capital + ' / ' + data.continent
-                };
+                    _icon = getMarkerIcon(plugin.utils.pluginConfig()),
+                    _city = {};
 
-                if (plugin.utils.pluginConfig().markerIcon) {
-                    _city.icon = plugin.utils.pluginConfig().markerIcon;
+                if (this.$cityMarkers === null) {
+                    this.$cityMarkers = [];
                 }
 
+                addMarkerTitle(_city, data.capital);
+                addMarkerPosition(_city, data.latitude, data.longitude);
+                addMarkerMap(_city, this.$map);
+                addMarkerIcon(_city, _icon);
                 _marker = new $g.maps.Marker(_city);
 
-                $g.maps.event.addListener(_marker, 'click', function () {
-                    _controller.handleMarkerClick(_marker, data.uuid);
+                addListener(
+                    _marker,
+                    'click',
+                    _controller.handleMarkerClick.bind(_controller, data.uuid)
+                );
+
+                this.$cityMarkers.push({
+                    marker: _marker,
+                    city: f.extend({}, data)
                 });
             }
         });
@@ -167,7 +175,9 @@
 
 
 
-    plugin.mapRenderer = makeMap();
+    plugin.mapRenderer = make({
+        make: makeMap
+    });
 
     
 })(funkyJS, PlaceMap, google);

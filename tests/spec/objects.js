@@ -1,4 +1,4 @@
-/* globals describe, it, expect */
+/* globals funkyJS, describe, it, expect */
 describe('funkyJS Objects Module', function () {
     var dict = {
         foo: 'bar',
@@ -63,12 +63,37 @@ describe('funkyJS Objects Module', function () {
         expect(n.length).toEqual(0);
     });
 
+    it('testing pluck :: f -> o -> a', function () {
+        var p = funkyJS.pluck('foo');
+
+        expect(p([dict])).toEqual(['bar']);
+    });
+
     it('testing inverse :: f -> o -> o', function () {
         var i = funkyJS.inverse({foo: 'bar', hoo: 'baz'});
         var n = funkyJS.inverse(null);
 
         expect(i).toEqual({bar: 'foo', baz: 'hoo'});
         expect(n).toEqual(null);
+    });
+
+    it('testing instance :: f -> f, o -> o', function () {
+        function thing (value) {
+            var self = funkyJS.instance(thing),
+                now = value;
+            self.get = function () {
+                return now;
+            };
+            self.set = function (v) {
+                now = v;
+            };
+            return self;
+        }
+        var it = thing('Testobject');
+        expect(it.get()).toBe('Testobject');
+
+        it.set(it.get() + ':altered');
+        expect(it.get()).toBe('Testobject:altered');
     });
 
     it('testing extend :: f -> o, o -> o', function () {

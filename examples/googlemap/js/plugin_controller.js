@@ -22,22 +22,46 @@
             },
             // model connections
             // -----------------
+            createUI: function () {
+                _view.renderUINodes();
+                _view.renderSelects();
+            },
             createMap: function () {
-                _renderer.renderMap(_view.renderMapNode());
+                _view.renderMapNode()
+
+                _renderer.renderMap(_view.$map);
             },
             createMapMarker: function (city) {
                 _renderer.renderMarker(city);
+            },
+            shutdown: function () {
+
+            },
+            releaseSpinner: function () {
 
             },
             // map renderer connections
             // ------------------------
-            handleMarkerClick: function (marker, uuid) {
-
+            handleMarkerClick: function (uuid) {
+                var city = _model.findByUuid(uuid);
+                if (f.isObject(city)) {
+                    _view.clear();
+                    _view.showData(city);
+                }
             },
             // view connections
             // ----------------
-            handleUISelectionChange: function (selects) {
-                // process all incoming <select> elements
+            getSelectOptions: function () {
+                return _model.getSelectOptions();
+            },
+            handleUISelectionChange: function (filterValue) {
+                // process incoming (all key:value, pass undefined for empty string)
+                _view.clear();
+                _model.filter(
+                    filterValue.continent || undefined,
+                    filterValue.country || undefined,
+                    filterValue.city || undefined
+                ).forEach(_view.showData);
             }
         });
     }

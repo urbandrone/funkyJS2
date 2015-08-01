@@ -3,6 +3,8 @@
 
     /* =========== REUSABLE HELPERS =========== */
 
+    var jsonData = null; // store the json after load here
+
     var filters = {
         continent: function (name) {
             return function (city) {
@@ -40,30 +42,51 @@
      * @return {object} Normalized representation
      */
     function normalizeJson (data) {
-        return f.keys(plugin.json.fields).reduce(function (acc, field) {
+        return f.keys(plugin.utils.dataConfig('dataFields')).reduce(function (acc, field) {
             acc[field] = data[field];
             return acc;
         }, {});
     }
 
+    function ifReady (fn) {
+        return function () {
+            if (this.readyState === 4 && this.status === 200) {
+                fn(this.responseText);
+            }
+        }
+    }
+
     function parseJson (data) {
-        return JSON.parse(data.responseText);
+        return JSON.parse(data);
     }
 
     function loadJson (success, failure, always) {
         var xhr = new XMLHttpRequest(),
-            url = plugin.utils.dataConfig('url');
+            url = plugin.utils.dataConfig('dataUrl');
 
         xhr.open('GET', url);
-        xhr.addEventListener('load', f.pipe(
+        xhr.addEventListener('load', ifReady(f.pipe(
             parseJson,
             f.mapWith(normalizeJson),
             success
-        ));
+        )));
         xhr.addEventListener('error', failure);
         xhr.addEventListener('abort', failure);
         xhr.addEventListener('loadend', always);
         xhr.send(null);
+    }
+
+    // ---
+    var pluckUniqueFields = function (field, list) {
+        return list.map(function (item) {
+            return item[field];
+        });
+    }
+
+    var pluck2 = function (first, second, list) {
+        return list.map(function (item) {
+            return [item[first], item[second]];
+        });
     }
 
     /* =========== MODEL FACTORY =========== */
@@ -73,10 +96,8 @@
 
         return make({
             cities: null,
-            setController: function (controller) {
+            connectController: function (controller) {
                 _controller = controller;
-                
-                loadJson(this.readyLoad, this.failLoad, this.endLoad);
             },
             filter: f.defaults(
                 function (continent, country, city) {
@@ -91,15 +112,32 @@
             findByUuid: function (uuid) {
                 return f.first(this.cities.filter(filters.uuid(uuid)));
             },
+            getSelectOptions: function () {
+                return {
+                    continents: pluckUniqueFields('continent', this.cities),
+                    countries: pluckUniqueFields('country', this.cities),
+                    cities: pluck2('capital', 'uuid', this.cities)
+                };
+            },
+            loadJson: function () {
+                if (jsonData) {
+                    return this.readyLoad(jsonData);
+                }
+
+                loadJson(this.readyLoad, this.failLoad, this.endLoad);
+            },
             readyLoad: function (cities) {
-                _controller.createMap();
+                jsonData = cities;
 
                 this.cities = cities.map(function (city) {
                     city.uuid = plugin.utils.uuid();
                     _controller.createMapMarker(city);
-
                     return city;
                 });
+                debugger;
+
+                _controller.createUI();
+                _controller.createMap();
             },
             failLoad: function () {
                 _controller.shutdown();
