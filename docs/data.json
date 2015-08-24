@@ -1,7 +1,7 @@
 {
     "project": {
         "name": "funkyjs-2",
-        "version": "1.6.1",
+        "version": "1.7.1",
         "description": "Second version of funkyJS"
     },
     "files": {
@@ -141,10 +141,10 @@
             },
             "namespaces": {}
         },
-        "sources\\lambdas.js": {
-            "name": "sources\\lambdas.js",
+        "sources\\lenses.js": {
+            "name": "sources\\lenses.js",
             "modules": {
-                "lambda": 1
+                "lenses": 1
             },
             "classes": {},
             "fors": {
@@ -260,8 +260,8 @@
             "file": "sources\\decorators.js",
             "line": 22
         },
-        "lambda": {
-            "name": "lambda",
+        "lenses": {
+            "name": "lenses",
             "submodules": {},
             "classes": {},
             "fors": {
@@ -269,8 +269,8 @@
             },
             "namespaces": {},
             "tag": "module",
-            "file": "sources\\lambdas.js",
-            "line": 23
+            "file": "sources\\lenses.js",
+            "line": 30
         },
         "objects": {
             "name": "objects",
@@ -2459,27 +2459,34 @@
             "module": "decorators"
         },
         {
-            "file": "sources\\lambdas.js",
-            "line": 42,
-            "description": "The lambda function creates new functions from string expressions and returns\n    them. See also the example below for a example of what the lambda function\n    does.\n\nA \"->\" separates the arguments from the function body. If the expression\n    contains a underscore \"_\", this is the argument. By chaining \"->\" between\n    the argument names, a curried function is created.\n\nIf the expression begins or ends with an operator or relation, the\n    argument is appended/prepended (note that the expression cannot begin\n    with a \"-\").",
+            "file": "sources\\lenses.js",
+            "line": 37,
+            "description": "makeLense awaits a array of one to N property names and returns a\n    collection of lenses with one lense per property. Lenses are a way to\n    implement immutable data structures in javascript and they compose\n    nicely",
             "itemtype": "method",
-            "name": "lambda",
+            "name": "makeLense",
             "params": [
                 {
-                    "name": "f",
-                    "description": "Function or string expression",
-                    "type": "String|function"
+                    "name": "props",
+                    "description": "Array of property names",
+                    "type": "Array"
                 }
             ],
             "return": {
-                "description": "A lambda function",
-                "type": "Function"
+                "description": "Collection of lenses",
+                "type": "Object"
             },
             "example": [
-                "\n    var square = funkyJS.lambda('x -> x * x');\n    square(2);\n    // => 4\n\n    var aPlusB = funkyJS.lambda('x, y -> x + y');\n    aPlusB('hello', 'world');\n    // => 'hello world'\n\n\n    var double = funkyJS.lambda('_ * 2');\n    double(2);\n    // => 4\n\n\n    var divide4By = funkyJS.lambda('4/');\n    divide4By(2);\n    // => 2\n\n\n    var ifElse = funkyJS.lambda('x -> y -> z -> !!x ? y : z');\n    ifElse(true)('yep')('nope');\n    // => 'yep'\n\n    ifElse(false)('yep')('nope');\n    // => 'nope'\n"
+                "\n    var L = funkyJS.makeLense(['message', 'user', 'email']);\n\n    var comment = {\n        message: 'This is the user message',\n        user: 'John Doe',\n        email: 'jdoe@example.com'\n    };\n\n    var formatEmail = function (email) {\n        return email.replace(/jdoe@/g, 'charlie(at)');\n    }\n\n    var charliesComment = L.user.set('Charlie', comment);\n    L.user(charliesComment);\n    // -> 'Charlie'\n\n    charliesEscComment = L.email.over(formatEmail, charliesComment);\n    L.email(charliesEscComment);\n    // -> 'charlie(at)example.com'\n\n\n\n    // equivalent but shorter version\n    // ------------------------------\n    var processComment = funkyJS.compose(\n        L.email.over(formatEmail),\n        L.user.set('Charlie')\n    )\n\n    var f3Comment = processComment(comment);\n"
             ],
             "class": "funkyJS",
-            "module": "lambda"
+            "module": "lenses"
+        },
+        {
+            "file": "sources\\lenses.js",
+            "line": 126,
+            "description": "EXPORT\n======",
+            "class": "funkyJS",
+            "module": "lenses"
         },
         {
             "file": "sources\\objects.js",
@@ -3710,6 +3717,10 @@
         {
             "message": "Missing item type\nEXPORT\n======",
             "line": " sources\\decorators.js:794"
+        },
+        {
+            "message": "Missing item type\nEXPORT\n======",
+            "line": " sources\\lenses.js:126"
         }
     ]
 }

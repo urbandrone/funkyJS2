@@ -11,7 +11,7 @@ YUI.add("yuidoc-meta", function(Y) {
         "core",
         "decorators",
         "experiments",
-        "lambda",
+        "lenses",
         "objects",
         "type"
     ],
@@ -45,8 +45,8 @@ YUI.add("yuidoc-meta", function(Y) {
             "name": "experiments"
         },
         {
-            "displayName": "lambda",
-            "name": "lambda"
+            "displayName": "lenses",
+            "name": "lenses"
         },
         {
             "displayName": "objects",

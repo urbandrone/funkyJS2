@@ -19,7 +19,7 @@
             
         </div>
         <div class="yui3-u-1-4 version">
-            <em>API Docs for: 1.6.1</em>
+            <em>API Docs for: 1.7.1</em>
         </div>
     </div>
     <div id="bd" class="yui3-g">
@@ -61,7 +61,7 @@
             
                 <li><a href="../modules/experiments.html">experiments</a></li>
             
-                <li><a href="../modules/lambda.html">lambda</a></li>
+                <li><a href="../modules/lenses.html">lenses</a></li>
             
                 <li><a href="../modules/objects.html">objects</a></li>
             
@@ -213,7 +213,7 @@
             }
 
             return function (x) {
-                return f(g(x));
+                return f.call(this, g.call(this, x));
             }
         }
     }

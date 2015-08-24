@@ -19,7 +19,7 @@
             
         </div>
         <div class="yui3-u-1-4 version">
-            <em>API Docs for: 1.6.1</em>
+            <em>API Docs for: 1.7.1</em>
         </div>
     </div>
     <div id="bd" class="yui3-g">
@@ -61,7 +61,7 @@
             
                 <li><a href="../modules/experiments.html">experiments</a></li>
             
-                <li><a href="../modules/lambda.html">lambda</a></li>
+                <li><a href="../modules/lenses.html">lenses</a></li>
             
                 <li><a href="../modules/objects.html">objects</a></li>
             
@@ -806,14 +806,14 @@
                             </li>
                         
                             <li class="index-item method">
-                                <a href="#method_lambda">lambda</a>
+                                <a href="#method_last">last</a>
 
                                 
                                 
                             </li>
                         
                             <li class="index-item method">
-                                <a href="#method_last">last</a>
+                                <a href="#method_makeLense">makeLense</a>
 
                                 
                                 
@@ -13660,156 +13660,6 @@ funkyJS.keys()(dict)
 </div>
 
                 
-                    <div id="method_lambda" class="method item">
-    <h3 class="name"><code>lambda</code></h3>
-
-    
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-            
-                <li class="arg">
-                    
-                        <code>f</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
-    
-
-    
-        <span class="returns-inline">
-            <span class="type">Function</span>
-        </span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                    <p>Provided by the <a href="../modules/lambda.html">lambda</a> module.</p>
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/sources_lambdas.js.html#l42"><code>sources\lambdas.js:42</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>The lambda function creates new functions from string expressions and returns
-    them. See also the example below for a example of what the lambda function
-    does.</p>
-<p>A &quot;-&gt;&quot; separates the arguments from the function body. If the expression
-    contains a underscore &quot;_&quot;, this is the argument. By chaining &quot;-&gt;&quot; between
-    the argument names, a curried function is created.</p>
-<p>If the expression begins or ends with an operator or relation, the
-    argument is appended/prepended (note that the expression cannot begin
-    with a &quot;-&quot;).</p>
-
-    </div>
-
-    
-        <div class="params">
-            <h4>Parameters:</h4>
-
-            <ul class="params-list">
-            
-                <li class="param">
-                    
-                        <code class="param-name">f</code>
-                        <span class="type">String | Function</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <p>Function or string expression</p>
-
-                    </div>
-
-                    
-                </li>
-            
-            </ul>
-        </div>
-    
-
-    
-        <div class="returns">
-            <h4>Returns:</h4>
-
-            <div class="returns-description">
-                
-                    
-                        <span class="type">Function</span>:
-                    
-                    <p>A lambda function</p>
-
-                
-            </div>
-        </div>
-    
-
-    
-        <div class="example">
-            <h4>Example:</h4>
-
-            <div class="example-content">
-                <pre class="code prettyprint"><code>var square = funkyJS.lambda(&#39;x -&gt; x * x&#39;);
-square(2);
-// =&gt; 4
-
-var aPlusB = funkyJS.lambda(&#39;x, y -&gt; x + y&#39;);
-aPlusB(&#39;hello&#39;, &#39;world&#39;);
-// =&gt; &#39;hello world&#39;
-
-
-var double = funkyJS.lambda(&#39;_ * 2&#39;);
-double(2);
-// =&gt; 4
-
-
-var divide4By = funkyJS.lambda(&#39;4/&#39;);
-divide4By(2);
-// =&gt; 2
-
-
-var ifElse = funkyJS.lambda(&#39;x -&gt; y -&gt; z -&gt; !!x ? y : z&#39;);
-ifElse(true)(&#39;yep&#39;)(&#39;nope&#39;);
-// =&gt; &#39;yep&#39;
-
-ifElse(false)(&#39;yep&#39;)(&#39;nope&#39;);
-// =&gt; &#39;nope&#39;</code></pre>
-
-            </div>
-        </div>
-    
-</div>
-
-                
                     <div id="method_last" class="method item">
     <h3 class="name"><code>last</code></h3>
 
@@ -13932,6 +13782,156 @@ funkyJS.last(null);
 
 funkyJS.last()([&#39;a&#39;, &#39;b&#39;, &#39;c&#39;]);
 // -&gt; &#39;c&#39;</code></pre>
+
+            </div>
+        </div>
+    
+</div>
+
+                
+                    <div id="method_makeLense" class="method item">
+    <h3 class="name"><code>makeLense</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>props</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">Object</span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                    <p>Provided by the <a href="../modules/lenses.html">lenses</a> module.</p>
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/sources_lenses.js.html#l37"><code>sources\lenses.js:37</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>makeLense awaits a array of one to N property names and returns a
+    collection of lenses with one lense per property. Lenses are a way to
+    implement immutable data structures in javascript and they compose
+    nicely</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">props</code>
+                        <span class="type">Array</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>Array of property names</p>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type">Object</span>:
+                    
+                    <p>Collection of lenses</p>
+
+                
+            </div>
+        </div>
+    
+
+    
+        <div class="example">
+            <h4>Example:</h4>
+
+            <div class="example-content">
+                <pre class="code prettyprint"><code>var L = funkyJS.makeLense([&#39;message&#39;, &#39;user&#39;, &#39;email&#39;]);
+
+var comment = {
+    message: &#39;This is the user message&#39;,
+    user: &#39;John Doe&#39;,
+    email: &#39;jdoe@example.com&#39;
+};
+
+var formatEmail = function (email) {
+    return email.replace(/jdoe@/g, &#39;charlie(at)&#39;);
+}
+
+var charliesComment = L.user.set(&#39;Charlie&#39;, comment);
+L.user(charliesComment);
+// -&gt; &#39;Charlie&#39;
+
+charliesEscComment = L.email.over(formatEmail, charliesComment);
+L.email(charliesEscComment);
+// -&gt; &#39;charlie(at)example.com&#39;
+
+
+
+// equivalent but shorter version
+// ------------------------------
+var processComment = funkyJS.compose(
+    L.email.over(formatEmail),
+    L.user.set(&#39;Charlie&#39;)
+)
+
+var f3Comment = processComment(comment);</code></pre>
 
             </div>
         </div>

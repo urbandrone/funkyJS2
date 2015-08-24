@@ -32,7 +32,7 @@ module.exports = function(grunt) {
                         'sources/_birds.js',
                         'sources/type.js',
                         'sources/arity.js',
-                        'sources/lambdas.js',
+                        'sources/lenses.js',
                         'sources/objects.js',
                         'sources/arrays.js',
                         'sources/decorators.js',
@@ -59,10 +59,10 @@ module.exports = function(grunt) {
                     **/
                     'builds/amd-cjs/birds.js': 'sources/_birds.js',
                     'builds/amd-cjs/type.js': 'sources/type.js',
-                    'builds/amd-cjs/lambdas.js': 'sources/lambdas.js',
                     'builds/amd-cjs/objects.js': 'sources/objects.js',
                     'builds/amd-cjs/arrays.js': 'sources/arrays.js',
                     'builds/amd-cjs/arity.js': 'sources/arity.js',
+                    'builds/amd-cjs/lenses.js': 'sources/lenses.js',
                     'builds/amd-cjs/decorators.js': 'sources/decorators.js',
                     'builds/amd-cjs/combinators.js': 'sources/combinators.js',
                     /**
