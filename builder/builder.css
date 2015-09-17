@@ -1,0 +1,141 @@
+/*
+BUILDER CSS FILE
+*/
+html {
+    font-size: 62.5%;
+}
+
+body {
+    background-color: #F5F5F5;
+    color: #282828;
+    font-family: 'Arimo', Helvetica, Arial, sans-serif;
+    font-size: 1.6rem;
+    line-height: 1.5;
+}
+
+body * {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    -epub-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+
+
+.h1, .h2, .h3, .h4 {
+    font-weight: 400;
+}
+
+
+
+/* OUTPUT =================================================================== */
+.code {
+    display: block;
+    visibility: hidden;
+    border: 1px solid #1A4F9E;
+    padding: 6px 12px;
+    margin-bottom: 12px;
+    background-color: #EBEBEB;
+    font-size: 1.3rem;
+}
+.code.success,
+.code.failure {
+    visibility: visible;
+    margin-bottom: 30px;
+}
+.code.failure {
+    border-color: #c00;
+    border-width: 3px;
+    color: #c00;
+    font-weight: 700;
+}
+
+
+
+/* BUTTONS ================================================================== */
+.button {
+    margin-bottom: 12px;
+    padding: 12px 16px;
+    border: 1px solid #143D7B;
+    background-color: #1A4F9E;
+    color: #F5F5F5;
+    cursor: pointer;
+}
+.button:hover,
+.button:focus,
+.button:active {
+    border: 1px solid #113469; 
+    background-color: #143D7B;
+}
+.button:last-of-type {
+    border-left: 0 none;
+}
+
+
+
+/* DESCRIPTIONS ============================================================= */
+.descriptor {
+    margin: 12px 0 30px 0;
+    padding: 6px 12px;
+    background-color: #E0E0E0;
+    font-size: 1.3rem;
+}
+.descriptor + .descriptor {
+    margin-top: -18px;
+}
+
+.descriptor b {
+    color: #454545;
+    font-weight: 700;
+}
+
+
+
+/* FRAME/BUILDER ============================================================ */
+.builder {
+    padding: 0 12px 120px 12px;
+}
+
+
+
+/* FORM ===================================================================== */
+.form {
+    font-size: 0;
+}
+.form:after {
+    content: '';
+    display: block;
+    clear: both;
+    height: 0;
+}
+
+
+
+/* FORM GROUP =============================================================== */
+.form_group {
+    border: 0 none;
+    border-top: 1px solid #858585;
+    background-color: #EBEBEB;
+    font-size: 1.6rem;
+}
+@media screen and (min-width: 870px) {
+    .form_group {
+        display: inline-block;
+        vertical-align: top;
+        width: 50%;
+        margin: 0;
+    }
+    .form_group:first-of-type {
+        border-right: 6px solid #F5F5F5;
+    }
+    .form_group:last-of-type {
+        border-left: 6px solid #F5F5F5;
+    }
+}
+
+.form_group_label {
+    padding: 3px 6px;
+    background-color: #282828;
+    color: #F5F5F5;
+}

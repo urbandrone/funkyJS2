@@ -11,6 +11,9 @@ describe('funkyJS Iterators Extension Module', function () {
         return a + b;
     }
 
+    var addSelf = function (x) { return x + x; };
+    var notB = function (x) { return x !== 'b'; }
+
 
 
     it('testing numIterator :: f -> n, n -> o', function () {
@@ -76,8 +79,8 @@ describe('funkyJS Iterators Extension Module', function () {
         var _itA = _.seqIterator(SEQ_ARR),
             _itO = _.objIterator(OBJ);
 
-        var _mapA = _.mapLazy(_.lambda('x -> x + x'), _itA),
-            _mapO = _.mapLazy(_.lambda('x -> x + x'), _itO);
+        var _mapA = _.mapLazy(addSelf, _itA),
+            _mapO = _.mapLazy(addSelf, _itO);
 
         expect(_mapA.next().value()).toBe('aa');
         expect(_mapA.next().value()).toBe('bb');
@@ -94,8 +97,8 @@ describe('funkyJS Iterators Extension Module', function () {
         var _itA = _.seqIterator(SEQ_ARR),
             _itO = _.objIterator(OBJ);
 
-        var _filtA = _.filterLazy(_.lambda('x -> x !== "b"'), _itA),
-            _filtO = _.filterLazy(_.lambda('x -> x !== "b"'), _itO);
+        var _filtA = _.filterLazy(notB, _itA),
+            _filtO = _.filterLazy(notB, _itO);
 
         expect(_filtA.next().value()).toBe('a');
         expect(_filtA.next().value()).toBe('c');
@@ -128,8 +131,8 @@ describe('funkyJS Iterators Extension Module', function () {
         var _itA = _.seqIterator(SEQ_ARR),
             _itO = _.objIterator(OBJ);
 
-        var filter = _.filterLazy(_.lambda('c -> c !== "b"')),
-            map = _.mapLazy(_.lambda('c -> c + c')),
+        var filter = _.filterLazy(notB),
+            map = _.mapLazy(addSelf),
             fold = _.foldLazy(add);
 
         var _fmfItA = fold(map(filter(_itA)), ''),
@@ -147,8 +150,11 @@ describe('funkyJS Iterators Extension Module', function () {
     it('testing nested fold-, filter- and mapLazy over infinite iterators', function () {
         var _it = _.numIterator();
 
-        var filter = _.filterLazy(_.lambda('n -> n % 2 === 0')),
-            map = _.mapLazy(_.lambda('n -> n * n')),
+        var even = function (n) { return n % 2 === 0; },
+            sqr = function (n) { return n * n; };
+
+        var filter = _.filterLazy(even),
+            map = _.mapLazy(sqr),
             fold = _.foldLazy(add);
 
         var _fmfIt = fold(map(filter(_it)), 0);

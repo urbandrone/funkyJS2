@@ -27,7 +27,7 @@
         }
     }
 
-})(this, function (type, array) {
+})(this, function (type) {
 
     /**
     @module experiments
@@ -63,7 +63,7 @@
     **/
     api.numIterator = function numIterator (start, max) {
         var _now = type.isNotInt32(start) ? 0 : start,
-            _end = max === undefined ? Infinity : max,
+            _end = type.isNotInt32(max) ? Infinity : max,
             _add = 1;
 
         if (_end < _now) {
@@ -77,7 +77,9 @@
                 if (_cur === _end) {
                     return {
                         done: true,
-                        value: _cur
+                        value: function () {
+                            return undefined;
+                        }
                     };
                 }
                 return {
@@ -91,30 +93,30 @@
     }
 
     api.seqIterator = function seqIterator (seq) {
-        var _sequence,
-            _index;
+        var _index;
 
         if (type.isNotSequencial(seq)) {
             throw new Error('seqIterator expected argument to be sequencial but saw ' + seq);
         }
 
-        _sequence = array.toArray(seq);
         _index = -1;
         return {
             next: function () {
                 _index += 1;
 
-                if (_index >= _sequence.length) {
+                if (_index >= seq.length) {
                     return {
                         done: true,
-                        value: _sequence[_sequence.length - 1]
+                        value: function () {
+                            return undefined;
+                        }
                     };
                 }
 
                 return {
                     done: false,
                     value: function () {
-                        return _sequence[_index];
+                        return seq[_index];
                     }
                 };
             }
@@ -178,7 +180,9 @@
                 if (_it.done) {
                     return {
                         done: true,
-                        value: _it.value
+                        value: function () {
+                            return undefined;
+                        }
                     }
                 }
 
@@ -210,12 +214,17 @@
         return {
             next: function () {
                 var _it = iterator.next();
-                while (!fn(_it.value()) && !_it.done) {
+                while (!_it.done && !fn(_it.value())) {
                     _it = iterator.next();
                 }
 
                 if (_it.done) {
-                    return _it;
+                    return {
+                        done: true,
+                        value: function () {
+                            return undefined;
+                        }
+                    };
                 }
 
                 return {
@@ -258,7 +267,9 @@
                 if (_it.done) {
                     return {
                         done: true,
-                        value: _it.value
+                        value: function () {
+                            return undefined;
+                        }
                     };
                 }
 

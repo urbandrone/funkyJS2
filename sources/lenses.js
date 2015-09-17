@@ -50,19 +50,20 @@
 
         var comment = {
             message: 'This is the user message',
-            user: 'John Doe',
-            email: 'jdoe@example.com'
+            user: 'anonymous',
+            email: 'anonymous@example.com'
         };
 
         var formatEmail = function (email) {
-            return email.replace(/jdoe@/g, 'charlie(at)');
+            return email.replace(/@/g, '(at)');
         }
 
         var charliesComment = L.user.set('Charlie', comment);
         L.user(charliesComment);
         // -> 'Charlie'
 
-        charliesEscComment = L.email.over(formatEmail, charliesComment);
+        var charliesEscComment = L.email.set('charlie@example.com' charliesComment);
+        charliesEscComment = L.email.over(formatEmail, charliesEscComment);
         L.email(charliesEscComment);
         // -> 'charlie(at)example.com'
 
@@ -71,12 +72,13 @@
         // equivalent but shorter version
         // ------------------------------
         var processComment = funkyJS.compose(
-            L.email.over(formatEmail),
-            L.user.set('Charlie')
+            L.user.set('Charlie'),
+            L.email.set('charlie@example.com'),
+            L.email.over(formatEmail)
         )
 
-        var f3Comment = processComment(comment);
-
+        processComment(comment);
+        // -> { ..., user: 'Charlie', email: 'charlie(at)example.com'}
     **/
     api.makeLense = function makeLense (props) {
         if (!Array.isArray(props)) {
@@ -96,11 +98,6 @@
             return set(fn(get(obj)), obj);
         }
     }
-
-
-
-
-
 
     function toLense (get, set) {
         var lense = function (data) { return get(data); };

@@ -247,14 +247,12 @@
                 return n * n;
             }
         }, {
-            // this definition says:
-            // -> input must be 1 argument of type array
-            // -> output must be of type number
-            // -> operation to perform if input validates
             args: [funkyJS.isArray],
             out: funkyJS.isNumber,
             proc: function (list) {
-                return list.reduce(function (acc, n) { return acc * n; }, 0);
+                return list.slice(1).reduce(function (acc, n) {
+                    return acc * n;
+                }, list[0]);
             }
         }]);
 
@@ -273,7 +271,7 @@
         multiply.length;
         // -> 0
 
-        // uses the aritize function to create the wished arity
+        // uses the aritize function to create the arity wanted
         multiply = funkyJS.aritize(2, true)(multiply);
 
         multiply.length;
@@ -303,9 +301,14 @@
             var _args = [].slice.call(arguments),
                 _rslt,
                 _def,
+                _l,
                 _i;
 
-            for (_i = 0; !!(_def = _applicable[_i]); _i += 1) {
+            for (_i = 0, _l = _applicable.length; _i < _l; _i += 1) {
+                _def = _applicable[_i];
+                if (!_def) {
+                    break;
+                }
                 if (_def.args.length > 0 && _args.length !== _def.args.length) {
                     continue; // skip, wrong input
                 }

@@ -27,8 +27,7 @@ module.exports = function(grunt) {
                     ============================================================
                     Core
                     **/
-                    'builds/funkyjs2.browser.min.js': [
-                        'sources/_core.js',
+                    'builds/funkyjs2.bundled.min.js': [
                         'sources/_birds.js',
                         'sources/type.js',
                         'sources/arity.js',
@@ -41,14 +40,14 @@ module.exports = function(grunt) {
                     /**
                     Extensions
                     **/
-                    'builds/funkyjs2.ext.browser.min.js': [
+                    'builds/funkyjs2.ext.bundled.min.js': [
                         'sources/extensions/contracts.js',
                         'sources/extensions/functors.js',
+                        'sources/extensions/combinators.js',
                         'sources/extensions/decorators.js',
                         'sources/extensions/iterators.js',
                         'sources/extensions/trampolines.js',
-                        'sources/extensions/strings.js',
-                        'sources/extensions/classes.js'
+                        'sources/extensions/strings.js'
                     ],
 
                     /**
@@ -70,12 +69,29 @@ module.exports = function(grunt) {
                     **/
                     'builds/amd-cjs/ext/contracts.js': 'sources/extensions/contracts.js',
                     'builds/amd-cjs/ext/functors.js': 'sources/extensions/functors.js',
+                    'builds/amd-cjs/ext/combinators.js': 'sources/extensions/combinators.js',
                     'builds/amd-cjs/ext/decorators.js': 'sources/extensions/decorators.js',
                     'builds/amd-cjs/ext/iterators.js': 'sources/extensions/iterators.js',
                     'builds/amd-cjs/ext/trampolines.js': 'sources/extensions/trampolines.js',
-                    'builds/amd-cjs/ext/strings.js': 'sources/extensions/strings.js',
-                    'builds/amd-cjs/ext/classes.js': 'sources/extensions/classes.js'
+                    'builds/amd-cjs/ext/strings.js': 'sources/extensions/strings.js'
                 }
+            }
+        },
+        copy: {
+            main: {
+                files: [{
+                    expand: true,
+                    flatten: true,
+                    src: ['builds/*.bundled.min.js'],
+                    dest: 'builder/libs/'
+                }, {
+                    expand: true,
+                    flatten: false,
+                    cwd: 'builds/amd-cjs/',
+                    src: ['**/*.js'],
+                    dest: 'builder/sources/',
+                    filter: 'isFile'
+                }]
             }
         },
         yuidoc: {
@@ -95,8 +111,9 @@ module.exports = function(grunt) {
     // Load the plugins.
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-yuidoc');
+    grunt.loadNpmTasks('grunt-contrib-copy');
 
     // Register Tasks
-    grunt.registerTask('default', ['uglify', 'yuidoc']);
+    grunt.registerTask('default', ['uglify', 'copy', 'yuidoc']);
 
 };

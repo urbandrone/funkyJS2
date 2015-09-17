@@ -1,7 +1,4 @@
 ;(function (global, factory) {
-    var ext,
-        it;
-
     if (typeof define === 'function' && define.amd) {
         define([], factory);
 
@@ -9,12 +6,7 @@
         module.exports = factory();
 
     } else {
-        ext = factory();
-        for (it in ext) {
-            if (ext.hasOwnProperty(it)) {
-                global.funkyJS[it] = ext[it];
-            }
-        }
+        global.funkyJS = factory();
     }
 
 })(this, function () {
@@ -23,7 +15,7 @@
     @module birds
     **/
 
-    var api = {};
+    var api = Object.create(null);
 
 
 

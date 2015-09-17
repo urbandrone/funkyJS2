@@ -31,6 +31,46 @@ describe('funkyJS Types Module', function () {
         expect(s).toBe(true);
     });
 
+    it('testing isNull :: f -> x -> b', function () {
+        var nul = funkyJS.isNull(null);
+        var undef = funkyJS.isNull(void 0);
+        var s = funkyJS.isNull('a string');
+
+        expect(nul).toBe(true);
+        expect(undef).toBe(false);
+        expect(s).toBe(false);
+    });
+
+    it('testing isNotNull :: f -> x -> b', function () {
+        var nul = funkyJS.isNotNull(null);
+        var undef = funkyJS.isNotNull(void 0);
+        var s = funkyJS.isNotNull('a string');
+
+        expect(nul).toBe(false);
+        expect(undef).toBe(true);
+        expect(s).toBe(true);
+    });
+
+    it('testing isVoid :: f -> x -> b', function () {
+        var nul = funkyJS.isVoid(null);
+        var undef = funkyJS.isVoid(void 0);
+        var s = funkyJS.isVoid('a string');
+
+        expect(nul).toBe(false);
+        expect(undef).toBe(true);
+        expect(s).toBe(false);
+    });
+
+    it('testing isNotVoid :: f -> x -> b', function () {
+        var nul = funkyJS.isNotVoid(null);
+        var undef = funkyJS.isNotVoid(void 0);
+        var s = funkyJS.isNotVoid('a string');
+
+        expect(nul).toBe(true);
+        expect(undef).toBe(false);
+        expect(s).toBe(true);
+    });
+
     it('testing isBool :: f -> x -> b', function () {
         var b = funkyJS.isBool(false);
         var s = funkyJS.isBool('a string');

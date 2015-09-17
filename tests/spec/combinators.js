@@ -40,15 +40,4 @@ describe('funkyJS Combinators Module', function () {
         expect(f(null)).toBe(false);
     });
 
-    it('testing splat :: f -> f -> f', function () {
-        var _a = [],
-            _f = _.splat([
-                function (n) { _a.push(n * n); },
-                function (n) { _a.push(n + n); }
-            ]);
-
-        _f(4);
-        expect(_a).toEqual([16, 8]);
-    });
-
 });

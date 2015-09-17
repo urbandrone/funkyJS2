@@ -8,7 +8,6 @@ YUI.add("yuidoc-meta", function(Y) {
         "arrays",
         "birds",
         "combinators",
-        "core",
         "decorators",
         "experiments",
         "lenses",
@@ -31,10 +30,6 @@ YUI.add("yuidoc-meta", function(Y) {
         {
             "displayName": "combinators",
             "name": "combinators"
-        },
-        {
-            "displayName": "core",
-            "name": "core"
         },
         {
             "displayName": "decorators",

@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="author" content="D. Hofmann">
+    <meta name="keywords" content="funkyjs, js, javascript, functional, online builder">
+    <meta name="robots" content="index,nofollow">
+    <title>funkyJS Builder</title>
+    <link href='https://fonts.googleapis.com/css?family=Arimo:400,700' rel='stylesheet'>
+    <link rel="stylesheet" href="builder.css">
+</head>
+<body>
+    <div class="builder">
+        <h1 class="h1 builder_title">
+            funky<b>JS2</b> Builder
+        </h1>
+        <form id="inputs" class="form" action="builder.php" method="get" accept-charset="utf-8">
+            <button type="submit" class="button">Build</button>
+            <button type="reset" class="button">Restart</button>
+            <code id="output" class="code"></code>
+            <fieldset class="form_group form_group--left size-at-border">
+                <legend class="form_group_label h4">Core</legend>
+
+                <div class="form_pair">
+                    <input class="checkbox" type="checkbox" name="modules[]" value="birds" checked disabled>
+                    <label class="label">Birds</label>
+                </div>
+                <p class="descriptor">
+                    <b>Provided functions:</b>
+                    <br>
+                    .identity, .constant, .cmps
+                </p>
+                <p class="descriptor">
+                    <b>Depends on:</b>
+                    <br>
+                    - No dependency -
+                </p>
+
+                <div class="form_pair">
+                    <input class="checkbox" type="checkbox" name="modules[]" value="type" checked disabled>
+                    <label class="label">Type</label>
+                </div>
+                <p class="descriptor">
+                    <b>Provided functions:</b>
+                    <br>
+                    .is, .isBool, .isString, .isNumber, .isInt32, .isFloat32, .isNil, .isVoid, .isFunction, .isObject, .isArray, .isSequencial, .isNode, .isNodeList, .isEnumerable, .isDate, .isRegex, .isNotBool, .isNotString, .isNotNumber, .isNotInt32, .isNotFloat32, .isNotNil, .isNotVoid, .isNotFunction, .isNotObject, .isNotArray, .isNotSequencial, .isNotNode, .isNotNodeList, .isNotEnumerable, .isNotDate, .isNotRegex
+                </p>
+                <p class="descriptor">
+                    <b>Depends on:</b>
+                    <br>
+                    - No dependency -
+                </p>
+
+                <div class="form_pair">
+                    <input class="checkbox" type="checkbox" name="modules[]" value="arity">
+                    <label class="label">Arity</label>
+                </div>
+                <p class="descriptor">
+                    <b>Provided functions:</b>
+                    <br>
+                    .aritize, .niladic, .monadic, .dyadic, .triadic, .tetradic, .polyadic, .variadic
+                </p>
+                <p class="descriptor">
+                    <b>Depends on:</b>
+                    <br>
+                    Type
+                </p>
+
+                <div class="form_pair">
+                    <input class="checkbox" type="checkbox" name="modules[]" value="decorators">
+                    <label class="label">Decorators</label>
+                </div>
+                <p class="descriptor">
+                    <b>Provided functions:</b>
+                    <br>
+                    .call, .callRight, .defaults, .flip, .fluent, .guard, .maybe, .not, .curry, .curryRight, .partial, .partialRight
+                </p>
+                <p class="descriptor">
+                    <b>Depends on:</b>
+                    <br>
+                    Type, Arity
+                </p>
+
+                <div class="form_pair">
+                    <input class="checkbox" type="checkbox" name="modules[]" value="combinators">
+                    <label class="label">Combinators.Sync</label>
+                </div>
+                <p class="descriptor">
+                    <b>Provided functions:</b>
+                    <br>
+                    .compose, .pipe, .and, .or, .splat
+                </p>
+                <p class="descriptor">
+                    <b>Depends on:</b>
+                    <br>
+                    Type, Arity
+                </p>
+
+                <div class="form_pair">
+                    <input class="checkbox" type="checkbox" name="modules[]" value="arrays">
+                    <label class="label">Arrays</label>
+                </div>
+                <p class="descriptor">
+                    <b>Provided functions:</b>
+                    <br>
+                    .toArray, .first, .last, .nth, .head, .tail, .take, .drop, .append, .prepend, .surround, .unique, .flatten, .union, .intersect, .difference
+                </p>
+                <p class="descriptor">
+                    <b>Depends on:</b>
+                    <br>
+                    Type
+                </p>
+
+                <div class="form_pair">
+                    <input class="checkbox" type="checkbox" name="modules[]" value="objects">
+                    <label class="label">Objects</label>
+                </div>
+                <p class="descriptor">
+                    <b>Provided functions:</b>
+                    <br>
+                    .has, .get, .keys, .values, .methods, .pairs, .pluck, .inverse, .instance, .extend, .extendWith, .inherits, .delegate, .forward
+                </p>
+                <p class="descriptor">
+                    <b>Depends on:</b>
+                    <br>
+                    Type
+                </p>
+
+                <div class="form_pair">
+                    <input class="checkbox" type="checkbox" name="modules[]" value="lenses">
+                    <label class="label">Lenses</label>
+                </div>
+                <p class="descriptor">
+                    <b>Provided functions:</b>
+                    <br>
+                    .makeLense
+                </p>
+                <p class="descriptor">
+                    <b>Depends on:</b>
+                    <br>
+                    Arity
+                </p>
+            </fieldset>
+            <fieldset class="form_group form_group--right size-at-border">
+                <legend class="form_group_label h4">Extensions</legend>
+
+                <div class="form_pair">
+                    <input class="checkbox" type="checkbox" name="modules[]" value="trampolines">
+                    <label class="label">Trampolines</label>
+                </div>
+                <p class="descriptor">
+                    <b>Provided functions:</b>
+                    <br>
+                    .trampoline, .thunk
+                </p>
+                <p class="descriptor">
+                    <b>Depends on:</b>
+                    <br>
+                    Type
+                </p>
+
+                <div class="form_pair">
+                    <input class="checkbox" type="checkbox" name="modules[]" value="functors">
+                    <label class="label">functorWith</label>
+                </div>
+                <p class="descriptor">
+                    <b>Provided functions:</b>
+                    <br>
+                    .forEachWith, .mapWith, .filterWith, .foldWith, .foldRightWith, .someWith, .everyWith
+                </p>
+                <p class="descriptor">
+                    <b>Depends on:</b>
+                    <br>
+                    Type
+                </p>
+
+                <div class="form_pair">
+                    <input class="checkbox" type="checkbox" name="modules[]" value="iterators">
+                    <label class="label">Iterators</label>
+                </div>
+                <p class="descriptor">
+                    <b>Provided functions:</b>
+                    <br>
+                    .numIterator, .seqIterator, .objIterator, .mapLazy, .filterLazy, .foldLazy
+                </p>
+                <p class="descriptor">
+                    <b>Depends on:</b>
+                    <br>
+                    Type
+                </p>
+
+                <div class="form_pair">
+                    <input class="checkbox" type="checkbox" name="modules[]" value="combinators2">
+                    <label class="label">Combinators.Async</label>
+                </div>
+                <p class="descriptor">
+                    <b>Provided functions:</b>
+                    <br>
+                    .composeAsync, .pipeAsync, .liftAsync, .sideEffect
+                </p>
+                <p class="descriptor">
+                    <b>Depends on:</b>
+                    <br>
+                    Type, Arity
+                </p>
+
+                <div class="form_pair">
+                    <input class="checkbox" type="checkbox" name="modules[]" value="decorators2">
+                    <label class="label">Decorators.Beyond</label>
+                </div>
+                <p class="descriptor">
+                    <b>Provided functions:</b>
+                    <br>
+                    .hom, .multiDispatch, .displaceArgs
+                </p>
+                <p class="descriptor">
+                    <b>Depends on:</b>
+                    <br>
+                    Type, Arity
+                </p>
+
+                <div class="form_pair">
+                    <input class="checkbox" type="checkbox" name="modules[]" value="strings">
+                    <label class="label">Strings</label>
+                </div>
+                <p class="descriptor">
+                    <b>Provided functions:</b>
+                    <br>
+                    .trim, .trimLeft, .trimRight, .camelize, .dasherize, .underscore, .splitParse, .substitude
+                </p>
+                <p class="descriptor">
+                    <b>Depends on:</b>
+                    <br>
+                    Type
+                </p>
+
+                <div class="form_pair">
+                    <input class="checkbox" type="checkbox" name="modules[]" value="contracts">
+                    <label class="label">Contracts</label>
+                </div>
+                <p class="descriptor">
+                    <b>Provided functions:</b>
+                    <br>
+                    .beNil, .beNull, .beVoid, .beString, .beBool, .beNumber, .beInt32, .beFloat32, .beFunction, .beArray, .beObject, .beDate, .beRegex, .beDate, .beNode, .beNodeList, .beSequencial, .beEnumerable
+                </p>
+                <p class="descriptor">
+                    <b>Depends on:</b>
+                    <br>
+                    Type
+                </p>
+            </fieldset>
+        </form>
+    </div>
+    <script src="libs/funkyjs2.bundled.min.js"></script>
+    <script src="libs/funkyjs2.ext.bundled.min.js"></script>
+    <script src="libs/promise.min.js"></script>
+    <script src="builder.js"></script>
+    <script>
+    /* globals Builder */
+    Builder.setInput(document.querySelector('#inputs'));
+    Builder.setOutput(document.querySelector('#output'));
+    </script>
+</body>
+</html>

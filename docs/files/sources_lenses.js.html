@@ -55,8 +55,6 @@
             
                 <li><a href="../modules/combinators.html">combinators</a></li>
             
-                <li><a href="../modules/core.html">core</a></li>
-            
                 <li><a href="../modules/decorators.html">decorators</a></li>
             
                 <li><a href="../modules/experiments.html">experiments</a></li>
@@ -158,19 +156,20 @@
 
         var comment = {
             message: &#x27;This is the user message&#x27;,
-            user: &#x27;John Doe&#x27;,
-            email: &#x27;jdoe@example.com&#x27;
+            user: &#x27;anonymous&#x27;,
+            email: &#x27;anonymous@example.com&#x27;
         };
 
         var formatEmail = function (email) {
-            return email.replace(/jdoe@/g, &#x27;charlie(at)&#x27;);
+            return email.replace(/@/g, &#x27;(at)&#x27;);
         }
 
         var charliesComment = L.user.set(&#x27;Charlie&#x27;, comment);
         L.user(charliesComment);
         // -&gt; &#x27;Charlie&#x27;
 
-        charliesEscComment = L.email.over(formatEmail, charliesComment);
+        var charliesEscComment = L.email.set(&#x27;charlie@example.com&#x27; charliesComment);
+        charliesEscComment = L.email.over(formatEmail, charliesEscComment);
         L.email(charliesEscComment);
         // -&gt; &#x27;charlie(at)example.com&#x27;
 
@@ -179,12 +178,13 @@
         // equivalent but shorter version
         // ------------------------------
         var processComment = funkyJS.compose(
-            L.email.over(formatEmail),
-            L.user.set(&#x27;Charlie&#x27;)
+            L.user.set(&#x27;Charlie&#x27;),
+            L.email.set(&#x27;charlie@example.com&#x27;),
+            L.email.over(formatEmail)
         )
 
-        var f3Comment = processComment(comment);
-
+        processComment(comment);
+        // -&gt; { ..., user: &#x27;Charlie&#x27;, email: &#x27;charlie(at)example.com&#x27;}
     **/
     api.makeLense = function makeLense (props) {
         if (!Array.isArray(props)) {
@@ -204,11 +204,6 @@
             return set(fn(get(obj)), obj);
         }
     }
-
-
-
-
-
 
     function toLense (get, set) {
         var lense = function (data) { return get(data); };

@@ -55,8 +55,6 @@
             
                 <li><a href="../modules/combinators.html">combinators</a></li>
             
-                <li><a href="../modules/core.html">core</a></li>
-            
                 <li><a href="../modules/decorators.html">decorators</a></li>
             
                 <li><a href="../modules/experiments.html">experiments</a></li>
@@ -107,9 +105,6 @@
 <div class="file">
     <pre class="code prettyprint linenums">
 ;(function (global, factory) {
-    var ext,
-        it;
-
     if (typeof define === &#x27;function&#x27; &amp;&amp; define.amd) {
         define([], factory);
 
@@ -117,12 +112,7 @@
         module.exports = factory();
 
     } else {
-        ext = factory();
-        for (it in ext) {
-            if (ext.hasOwnProperty(it)) {
-                global.funkyJS[it] = ext[it];
-            }
-        }
+        global.funkyJS = factory();
     }
 
 })(this, function () {
@@ -131,7 +121,7 @@
     @module birds
     **/
 
-    var api = {};
+    var api = Object.create(null);
 
 
 

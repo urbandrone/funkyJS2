@@ -1,3 +1,0 @@
-/*! funkyjs-2 1.7.1
- *  David Hofmann <the.urban.drone@gmail.com>, MIT license */
-/* globals define, module, exports, require */!function(a,b){var c,d;if("function"==typeof define&&define.amd)define(["../type","../arrays","../objects"],b);else if("object"==typeof exports)module.exports=b(require("type"),require("arrays"),require("objects"));else{c=b(a.funkyJS,a.funkyJS,a.funkyJS);for(d in c)c.hasOwnProperty(d)&&(a.funkyJS[d]=c[d])}}(this,function(a,b,c){var d={};return d.instanceWith=function e(d,f){var g;if(a.isNotFunction(d))throw new Error("instanceWith expected Ctor to be function but saw "+d);return void 0===f?function(){return e.apply(this,b.append(arguments,[d]))}:(g=c.instance(d),b.tail(arguments).forEach(function(b){a.isObject(b)&&c.extend(g,b)}),g)},d});

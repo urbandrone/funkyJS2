@@ -14,8 +14,8 @@
             "fors": {},
             "namespaces": {}
         },
-        "sources\\extensions\\classes.js": {
-            "name": "sources\\extensions\\classes.js",
+        "sources\\extensions\\combinators.js": {
+            "name": "sources\\extensions\\combinators.js",
             "modules": {},
             "classes": {},
             "fors": {},
@@ -84,17 +84,6 @@
             "fors": {
                 "funkyJS": 1
             },
-            "namespaces": {}
-        },
-        "sources\\_core.js": {
-            "name": "sources\\_core.js",
-            "modules": {
-                "core": 1
-            },
-            "classes": {
-                "funkyJS": 1
-            },
-            "fors": {},
             "namespaces": {}
         },
         "sources\\arity.js": {
@@ -179,7 +168,9 @@
         "experiments": {
             "name": "experiments",
             "submodules": {},
-            "classes": {},
+            "classes": {
+                "funkyJS": 1
+            },
             "fors": {
                 "funkyJS": 1
             },
@@ -198,19 +189,7 @@
             "namespaces": {},
             "tag": "module",
             "file": "sources\\_birds.js",
-            "line": 22
-        },
-        "core": {
-            "name": "core",
-            "submodules": {},
-            "classes": {
-                "funkyJS": 1
-            },
-            "fors": {},
-            "namespaces": {},
-            "tag": "module",
-            "file": "sources\\_core.js",
-            "line": 24
+            "line": 14
         },
         "arity": {
             "name": "arity",
@@ -306,12 +285,8 @@
             "extensions": [],
             "plugin_for": [],
             "extension_for": [],
-            "module": "core",
-            "namespace": "",
-            "file": "sources\\_core.js",
-            "line": 24,
-            "description": "funkyJS 2: A JavaScript framework for functional programming",
-            "static": 1
+            "module": "experiments",
+            "namespace": ""
         }
     },
     "classitems": [
@@ -323,36 +298,8 @@
             "module": "experiments"
         },
         {
-            "file": "sources\\extensions\\classes.js",
-            "line": 42,
-            "description": "The instanceWith function allows to build instances of a given class with\n    a freely extendable behaviour without the need to extend the class. This\n    is especially useful if you want to use a existing class but with a\n    slightly altered behaviour, without creating a new subclass or modifying\n    the prototype",
-            "itemtype": "method",
-            "name": "instanceWith",
-            "params": [
-                {
-                    "name": "Ctor",
-                    "description": "Constructor of the class",
-                    "type": "Function"
-                },
-                {
-                    "name": "extension",
-                    "description": "Methods and properties to extend the classinstance with",
-                    "type": "Object"
-                }
-            ],
-            "return": {
-                "description": "A new instance with extension",
-                "type": "Object"
-            },
-            "example": [
-                "\n    var Some = function () {}\n    Some.prototype.setValue = function (value) { this.value = value; }\n    Some.prototype.getValue = function () { return this.value; }\n\n    var instance = new Some();\n    instance.setValue('foo');\n    instance.getValue();\n    // -> 'foo'\n\n\n\n    var extendIt = {\n        modify: function (v) { return (v + '!').toUpperCase(); },\n        getValue: function () { return this.modify(this.value); }\n    }\n\n    var extInstance = funkyJS.instanceWith(Some, extendIt);\n    extInstance.setValue('bar');\n    extInstance.getValue();\n    // -> 'BAR!'\n     "
-            ],
-            "class": "funkyJS",
-            "module": "experiments"
-        },
-        {
-            "file": "sources\\extensions\\classes.js",
-            "line": 103,
+            "file": "sources\\extensions\\combinators.js",
+            "line": 342,
             "description": "EXPORT\n======",
             "class": "funkyJS",
             "module": "experiments"
@@ -801,14 +748,14 @@
                 "type": "Function"
             },
             "example": [
-                "\n\n    var multiply = funkyJS.multiDispatch([{\n        // this definition says:\n        // -> input must be 2 arguments of type number\n        // -> output must be of type number\n        // -> operation to perform if input validates\n        args: [funkyJS.isNumber, funkyJS.isNumber],\n        out: funkyJS.isNumber,\n        proc: function (n1, n2) {\n            return n1 * n2;\n        }\n    }, {\n        // this definition says:\n        // -> input must be 1 argument of type number\n        // -> any output accepted\n        // -> operation to perform if input validates\n        args: [funkyJS.isNumber],\n        proc: function (n) {\n            return n * n;\n        }\n    }, {\n        // this definition says:\n        // -> input must be 1 argument of type array\n        // -> output must be of type number\n        // -> operation to perform if input validates\n        args: [funkyJS.isArray],\n        out: funkyJS.isNumber,\n        proc: function (list) {\n            return list.reduce(function (acc, n) { return acc * n; }, 0);\n        }\n    }]);\n\n    multiply(2, 3);\n    // -> 6\n\n    multiply(9);\n    // -> 81\n\n    multiply([1, 2, 3, 4, 5]);\n    // -> 120\n\n    multiply(null);\n    // -> undefined\n\n    multiply.length;\n    // -> 0\n\n    // uses the aritize function to create the wished arity\n    multiply = funkyJS.aritize(2, true)(multiply);\n\n    multiply.length;\n    // -> 2\n\n    // works like before\n    multiply(2, 3);\n    // -> 6\n\n    // works also with single argument like before\n    multiply(9);\n    // -> 81\n\n    // or with arrays\n    multiply([1, 2, 3, 4, 5]);\n    // -> 120\n"
+                "\n\n    var multiply = funkyJS.multiDispatch([{\n        // this definition says:\n        // -> input must be 2 arguments of type number\n        // -> output must be of type number\n        // -> operation to perform if input validates\n        args: [funkyJS.isNumber, funkyJS.isNumber],\n        out: funkyJS.isNumber,\n        proc: function (n1, n2) {\n            return n1 * n2;\n        }\n    }, {\n        // this definition says:\n        // -> input must be 1 argument of type number\n        // -> any output accepted\n        // -> operation to perform if input validates\n        args: [funkyJS.isNumber],\n        proc: function (n) {\n            return n * n;\n        }\n    }, {\n        args: [funkyJS.isArray],\n        out: funkyJS.isNumber,\n        proc: function (list) {\n            return list.slice(1).reduce(function (acc, n) {\n                return acc * n;\n            }, list[0]);\n        }\n    }]);\n\n    multiply(2, 3);\n    // -> 6\n\n    multiply(9);\n    // -> 81\n\n    multiply([1, 2, 3, 4, 5]);\n    // -> 120\n\n    multiply(null);\n    // -> undefined\n\n    multiply.length;\n    // -> 0\n\n    // uses the aritize function to create the arity wanted\n    multiply = funkyJS.aritize(2, true)(multiply);\n\n    multiply.length;\n    // -> 2\n\n    // works like before\n    multiply(2, 3);\n    // -> 6\n\n    // works also with single argument like before\n    multiply(9);\n    // -> 81\n\n    // or with arrays\n    multiply([1, 2, 3, 4, 5]);\n    // -> 120\n"
             ],
             "class": "funkyJS",
             "module": "experiments"
         },
         {
             "file": "sources\\extensions\\decorators.js",
-            "line": 327,
+            "line": 330,
             "description": "The displaceArgs function allows to rearrange the position of arguments passed\n    to a function before the function is applied to them. This is especially\n    useful if a function should be reused, but the order of arguments it\n    consumes does not match for any reason with the new implementation (for\n    example: a incoming array should be applied to a existing function, but\n    the order of items is incorrect)",
             "itemtype": "method",
             "name": "displaceArgs",
@@ -836,7 +783,7 @@
         },
         {
             "file": "sources\\extensions\\decorators.js",
-            "line": 390,
+            "line": 393,
             "description": "EXPORT\n======",
             "class": "funkyJS",
             "module": "experiments"
@@ -1084,7 +1031,7 @@
         },
         {
             "file": "sources\\extensions\\iterators.js",
-            "line": 281,
+            "line": 292,
             "description": "EXPORT\n======",
             "class": "funkyJS",
             "module": "experiments"
@@ -1347,7 +1294,7 @@
         },
         {
             "file": "sources\\_birds.js",
-            "line": 30,
+            "line": 22,
             "description": "The identity function (Identity/Idiot Bird) takes a argument and instantly\n    returns it",
             "itemtype": "method",
             "name": "identity",
@@ -1370,7 +1317,7 @@
         },
         {
             "file": "sources\\_birds.js",
-            "line": 47,
+            "line": 39,
             "description": "The constant function (Kestrel) takes a argument and returns a function\n    which will always return the given argument if called",
             "itemtype": "method",
             "name": "constant",
@@ -1393,7 +1340,7 @@
         },
         {
             "file": "sources\\_birds.js",
-            "line": 72,
+            "line": 64,
             "description": "The cmps function (Bluebird) is the basic functional higher-order function\n    for function composition. It takes a function, returns a function which\n    again takes a function and returns a function taking any value which is\n    piped through both given functions from right to left",
             "itemtype": "method",
             "name": "cmps",
@@ -2476,14 +2423,14 @@
                 "type": "Object"
             },
             "example": [
-                "\n    var L = funkyJS.makeLense(['message', 'user', 'email']);\n\n    var comment = {\n        message: 'This is the user message',\n        user: 'John Doe',\n        email: 'jdoe@example.com'\n    };\n\n    var formatEmail = function (email) {\n        return email.replace(/jdoe@/g, 'charlie(at)');\n    }\n\n    var charliesComment = L.user.set('Charlie', comment);\n    L.user(charliesComment);\n    // -> 'Charlie'\n\n    charliesEscComment = L.email.over(formatEmail, charliesComment);\n    L.email(charliesEscComment);\n    // -> 'charlie(at)example.com'\n\n\n\n    // equivalent but shorter version\n    // ------------------------------\n    var processComment = funkyJS.compose(\n        L.email.over(formatEmail),\n        L.user.set('Charlie')\n    )\n\n    var f3Comment = processComment(comment);\n"
+                "\n    var L = funkyJS.makeLense(['message', 'user', 'email']);\n\n    var comment = {\n        message: 'This is the user message',\n        user: 'anonymous',\n        email: 'anonymous@example.com'\n    };\n\n    var formatEmail = function (email) {\n        return email.replace(/@/g, '(at)');\n    }\n\n    var charliesComment = L.user.set('Charlie', comment);\n    L.user(charliesComment);\n    // -> 'Charlie'\n\n    var charliesEscComment = L.email.set('charlie@example.com' charliesComment);\n    charliesEscComment = L.email.over(formatEmail, charliesEscComment);\n    L.email(charliesEscComment);\n    // -> 'charlie(at)example.com'\n\n\n\n    // equivalent but shorter version\n    // ------------------------------\n    var processComment = funkyJS.compose(\n        L.user.set('Charlie'),\n        L.email.set('charlie@example.com'),\n        L.email.over(formatEmail)\n    )\n\n    processComment(comment);\n    // -> { ..., user: 'Charlie', email: 'charlie(at)example.com'}"
             ],
             "class": "funkyJS",
             "module": "lenses"
         },
         {
             "file": "sources\\lenses.js",
-            "line": 126,
+            "line": 123,
             "description": "EXPORT\n======",
             "class": "funkyJS",
             "module": "lenses"
@@ -3684,7 +3631,7 @@
         },
         {
             "message": "Missing item type\nEXPORT\n======",
-            "line": " sources\\extensions\\classes.js:103"
+            "line": " sources\\extensions\\combinators.js:342"
         },
         {
             "message": "Missing item type\nEXPORT\n======",
@@ -3692,7 +3639,7 @@
         },
         {
             "message": "Missing item type\nEXPORT\n======",
-            "line": " sources\\extensions\\decorators.js:390"
+            "line": " sources\\extensions\\decorators.js:393"
         },
         {
             "message": "Missing item type\nEXPORT\n======",
@@ -3700,7 +3647,7 @@
         },
         {
             "message": "Missing item type\nEXPORT\n======",
-            "line": " sources\\extensions\\iterators.js:281"
+            "line": " sources\\extensions\\iterators.js:292"
         },
         {
             "message": "Missing item type\nEXPORT\n======",
@@ -3720,7 +3667,7 @@
         },
         {
             "message": "Missing item type\nEXPORT\n======",
-            "line": " sources\\lenses.js:126"
+            "line": " sources\\lenses.js:123"
         }
     ]
 }
