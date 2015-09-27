@@ -15,11 +15,11 @@
     <div id="hd" class="yui3-g header">
         <div class="yui3-u-3-4">
             
-                <h1><img src="../assets/css/logo.png" title="funkyjs-2"></h1>
+                <h1><img src="..\logo.png" title="funkyjs-2"></h1>
             
         </div>
         <div class="yui3-u-1-4 version">
-            <em>API Docs for: 1.7.1</em>
+            <em>API Docs for: 1.8.0</em>
         </div>
     </div>
     <div id="bd" class="yui3-g">
@@ -47,6 +47,8 @@
 
             <ul id="api-modules" class="apis modules">
             
+                <li><a href="../modules/advices.html">advices</a></li>
+            
                 <li><a href="../modules/arity.html">arity</a></li>
             
                 <li><a href="../modules/arrays.html">arrays</a></li>
@@ -55,13 +57,27 @@
             
                 <li><a href="../modules/combinators.html">combinators</a></li>
             
+                <li><a href="../modules/combinators.extensions.html">combinators.extensions</a></li>
+            
+                <li><a href="../modules/contracts.html">contracts</a></li>
+            
                 <li><a href="../modules/decorators.html">decorators</a></li>
             
+                <li><a href="../modules/decorators.extensions.html">decorators.extensions</a></li>
+            
                 <li><a href="../modules/experiments.html">experiments</a></li>
+            
+                <li><a href="../modules/functors.html">functors</a></li>
+            
+                <li><a href="../modules/iterators.html">iterators</a></li>
             
                 <li><a href="../modules/lenses.html">lenses</a></li>
             
                 <li><a href="../modules/objects.html">objects</a></li>
+            
+                <li><a href="../modules/strings.html">strings</a></li>
+            
+                <li><a href="../modules/trampolines.html">trampolines</a></li>
             
                 <li><a href="../modules/type.html">type</a></li>
             
@@ -110,7 +126,7 @@
 
     
         
-            Module: <a href="../modules/experiments.html">experiments</a>
+            Module: <a href="../modules/advices.html">advices</a>
         
     
 
@@ -146,6 +162,13 @@
                     <h3>Methods</h3>
 
                     <ul class="index-list methods">
+                        
+                            <li class="index-item method">
+                                <a href="#method_advisable">advisable</a>
+
+                                
+                                
+                            </li>
                         
                             <li class="index-item method">
                                 <a href="#method_and">and</a>
@@ -1087,6 +1110,158 @@
                 <h2 class="off-left">Methods</h2>
 
                 
+                    <div id="method_advisable" class="method item">
+    <h3 class="name"><code>advisable</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>fn</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">Function</span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/sources_extensions_advices.js.html#l99"><code>sources\extensions\advices.js:99</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>The advisable function allows to implement some kind of aspect oriented
+    programming techniques on other functions by adding a adviceBefore,
+    adviceAfter and adviceError method on the function. The advice- methods
+    have a fluent interface so that chained calls are possible. While any
+    attached after advices are executed in the same order as they are attached,
+    all before advices are executed in reversed order. Please see the example
+    for details</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">fn</code>
+                        <span class="type">Function</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>The function/method which should be advisable</p>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type">Function</span>:
+                    
+                    <p>A advisable wrapper function around fn</p>
+
+                
+            </div>
+        </div>
+    
+
+    
+        <div class="example">
+            <h4>Example:</h4>
+
+            <div class="example-content">
+                <pre class="code prettyprint"><code>var idMaker = {
+    id: 0,
+    uuid: funkyJS.advisable(function () {
+        return &#39;uuid&#39; + this.id;
+    })
+};
+
+// add before advice to idMaker.uuid
+idMaker.uuid.adviceBefore(function () {
+    this.id += 1;
+});
+
+idMaker.uuid();
+// -&gt; &#39;uuid1&#39;
+
+idMaker.uuid();
+// -&gt; &#39;uuid2&#39;
+
+
+// adding a second before advice
+idMaker.uuid.adviceBefore(function () {
+    console.log(&#39;last uuid was: uuid&#39; + this.id);
+
+}).adviceAfter(function (result) {
+    console.log(&#39;new uuid is: &#39; + result);
+});
+
+idMaker.uuid();
+// -&gt; logs &#39;last uuid was: uuid2&#39; in console
+// -&gt; &#39;uuid3&#39;
+// -&gt; logs &#39;new uuid is: uuid3&#39; in console</code></pre>
+
+            </div>
+        </div>
+    
+</div>
+
+                
                     <div id="method_and" class="method item">
     <h3 class="name"><code>and</code></h3>
 
@@ -1592,6 +1767,8 @@ strictMax.length;
         
             
                 
+                    <p>Provided by the <a href="../modules/contracts.html">contracts</a> module.</p>
+                
                 <p>
                 
                 Defined in
@@ -1711,6 +1888,8 @@ funkyJS.beArray({});
     <div class="meta">
         
             
+                
+                    <p>Provided by the <a href="../modules/contracts.html">contracts</a> module.</p>
                 
                 <p>
                 
@@ -1832,6 +2011,8 @@ funkyJS.beBool(undefined);
         
             
                 
+                    <p>Provided by the <a href="../modules/contracts.html">contracts</a> module.</p>
+                
                 <p>
                 
                 Defined in
@@ -1951,6 +2132,8 @@ funkyJS.beDate({});
     <div class="meta">
         
             
+                
+                    <p>Provided by the <a href="../modules/contracts.html">contracts</a> module.</p>
                 
                 <p>
                 
@@ -2074,6 +2257,8 @@ funkyJS.beEnumerable(undefined);
         
             
                 
+                    <p>Provided by the <a href="../modules/contracts.html">contracts</a> module.</p>
+                
                 <p>
                 
                 Defined in
@@ -2193,6 +2378,8 @@ funkyJS.beFloat32(2);
     <div class="meta">
         
             
+                
+                    <p>Provided by the <a href="../modules/contracts.html">contracts</a> module.</p>
                 
                 <p>
                 
@@ -2314,6 +2501,8 @@ funkyJS.beFunction(undefined);
         
             
                 
+                    <p>Provided by the <a href="../modules/contracts.html">contracts</a> module.</p>
+                
                 <p>
                 
                 Defined in
@@ -2433,6 +2622,8 @@ funkyJS.beInt32(2.5);
     <div class="meta">
         
             
+                
+                    <p>Provided by the <a href="../modules/contracts.html">contracts</a> module.</p>
                 
                 <p>
                 
@@ -2557,6 +2748,8 @@ funkyJS.beNil(1);
         
             
                 
+                    <p>Provided by the <a href="../modules/contracts.html">contracts</a> module.</p>
+                
                 <p>
                 
                 Defined in
@@ -2676,6 +2869,8 @@ funkyJS.beNode(null);
     <div class="meta">
         
             
+                
+                    <p>Provided by the <a href="../modules/contracts.html">contracts</a> module.</p>
                 
                 <p>
                 
@@ -2797,6 +2992,8 @@ funkyJS.beNodeList([]);
         
             
                 
+                    <p>Provided by the <a href="../modules/contracts.html">contracts</a> module.</p>
+                
                 <p>
                 
                 Defined in
@@ -2916,6 +3113,8 @@ funkyJS.beNull(undefined);
     <div class="meta">
         
             
+                
+                    <p>Provided by the <a href="../modules/contracts.html">contracts</a> module.</p>
                 
                 <p>
                 
@@ -3037,6 +3236,8 @@ funkyJS.beNumber(undefined);
         
             
                 
+                    <p>Provided by the <a href="../modules/contracts.html">contracts</a> module.</p>
+                
                 <p>
                 
                 Defined in
@@ -3157,6 +3358,8 @@ funkyJS.beObject([]);
         
             
                 
+                    <p>Provided by the <a href="../modules/contracts.html">contracts</a> module.</p>
+                
                 <p>
                 
                 Defined in
@@ -3276,6 +3479,8 @@ funkyJS.beRegex(&#39;.*&#39;);
     <div class="meta">
         
             
+                
+                    <p>Provided by the <a href="../modules/contracts.html">contracts</a> module.</p>
                 
                 <p>
                 
@@ -3399,6 +3604,8 @@ funkyJS.beSequencial(undefined);
         
             
                 
+                    <p>Provided by the <a href="../modules/contracts.html">contracts</a> module.</p>
+                
                 <p>
                 
                 Defined in
@@ -3518,6 +3725,8 @@ funkyJS.beString(undefined);
     <div class="meta">
         
             
+                
+                    <p>Provided by the <a href="../modules/contracts.html">contracts</a> module.</p>
                 
                 <p>
                 
@@ -3791,6 +4000,8 @@ sliceTail([&#39;a&#39;, &#39;b&#39;, &#39;c&#39;]);
     <div class="meta">
         
             
+                
+                    <p>Provided by the <a href="../modules/strings.html">strings</a> module.</p>
                 
                 <p>
                 
@@ -4554,6 +4765,8 @@ add(&#39;a&#39;)(&#39;z&#39;);
         
             
                 
+                    <p>Provided by the <a href="../modules/strings.html">strings</a> module.</p>
+                
                 <p>
                 
                 Defined in
@@ -5177,6 +5390,8 @@ funkyJS.difference(first, second);
         
             
                 
+                    <p>Provided by the <a href="../modules/decorators.extensions.html">decorators.extensions</a> module.</p>
+                
                 <p>
                 
                 Defined in
@@ -5614,6 +5829,8 @@ greet({name: &#39;joe&#39;});
     <div class="meta">
         
             
+                
+                    <p>Provided by the <a href="../modules/functors.html">functors</a> module.</p>
                 
                 <p>
                 
@@ -6085,6 +6302,8 @@ funkyJS.extendWith(ext)()(dict);
     <div class="meta">
         
             
+                
+                    <p>Provided by the <a href="../modules/functors.html">functors</a> module.</p>
                 
                 <p>
                 
@@ -6753,6 +6972,8 @@ staticClass.foo().bar();
         
             
                 
+                    <p>Provided by the <a href="../modules/functors.html">functors</a> module.</p>
+                
                 <p>
                 
                 Defined in
@@ -6921,6 +7142,8 @@ catRight([&#39;hello&#39;, &#39;why&#39;, &#39;there&#39;], &#39;&#39;);
         
             
                 
+                    <p>Provided by the <a href="../modules/functors.html">functors</a> module.</p>
+                
                 <p>
                 
                 Defined in
@@ -7082,6 +7305,8 @@ sum([1, 2, 3], 0);
     <div class="meta">
         
             
+                
+                    <p>Provided by the <a href="../modules/functors.html">functors</a> module.</p>
                 
                 <p>
                 
@@ -8025,6 +8250,8 @@ funkyJS.head()([&#39;a&#39;, &#39;b&#39;, &#39;c&#39;]);
     <div class="meta">
         
             
+                
+                    <p>Provided by the <a href="../modules/decorators.extensions.html">decorators.extensions</a> module.</p>
                 
                 <p>
                 
@@ -13758,6 +13985,8 @@ processComment(comment);
         
             
                 
+                    <p>Provided by the <a href="../modules/functors.html">functors</a> module.</p>
+                
                 <p>
                 
                 Defined in
@@ -14426,6 +14655,8 @@ sayToNobody(&#39;hello&#39;, {name: &#39;joe&#39;});
         
             
                 
+                    <p>Provided by the <a href="../modules/decorators.extensions.html">decorators.extensions</a> module.</p>
+                
                 <p>
                 
                 Defined in
@@ -15023,6 +15254,8 @@ funkyJS.nth(1)()([&#39;a&#39;, &#39;b&#39;, &#39;c&#39;]);
     <div class="meta">
         
             
+                
+                    <p>Provided by the <a href="../modules/iterators.html">iterators</a> module.</p>
                 
                 <p>
                 
@@ -16351,6 +16584,8 @@ funkyJS.prepend(newHead)()([&#39;a&#39;, &#39;b&#39;, &#39;c&#39;]);
         
             
                 
+                    <p>Provided by the <a href="../modules/functors.html">functors</a> module.</p>
+                
                 <p>
                 
                 Defined in
@@ -16636,6 +16871,8 @@ logMultAdd(4);
         
             
                 
+                    <p>Provided by the <a href="../modules/strings.html">strings</a> module.</p>
+                
                 <p>
                 
                 Defined in
@@ -16797,6 +17034,8 @@ isoDateToInts(&#39;2015-02-25 06:00:00&#39;);
     <div class="meta">
         
             
+                
+                    <p>Provided by the <a href="../modules/strings.html">strings</a> module.</p>
                 
                 <p>
                 
@@ -17535,6 +17774,8 @@ takeFour(1, 2, 3, 4, 5);
         
             
                 
+                    <p>Provided by the <a href="../modules/trampolines.html">trampolines</a> module.</p>
+                
                 <p>
                 
                 Defined in
@@ -17770,6 +18011,8 @@ funkyJS.toArray(null);
     <div class="meta">
         
             
+                
+                    <p>Provided by the <a href="../modules/trampolines.html">trampolines</a> module.</p>
                 
                 <p>
                 
@@ -18057,6 +18300,8 @@ greet({name: &#39;joe&#39;});
         
             
                 
+                    <p>Provided by the <a href="../modules/strings.html">strings</a> module.</p>
+                
                 <p>
                 
                 Defined in
@@ -18175,6 +18420,8 @@ funkyJS.trim(str);
     <div class="meta">
         
             
+                
+                    <p>Provided by the <a href="../modules/strings.html">strings</a> module.</p>
                 
                 <p>
                 
@@ -18296,6 +18543,8 @@ funkyJS.trimLeft(str);
         
             
                 
+                    <p>Provided by the <a href="../modules/strings.html">strings</a> module.</p>
+                
                 <p>
                 
                 Defined in
@@ -18414,6 +18663,8 @@ funkyJS.trimRight(str);
     <div class="meta">
         
             
+                
+                    <p>Provided by the <a href="../modules/strings.html">strings</a> module.</p>
                 
                 <p>
                 

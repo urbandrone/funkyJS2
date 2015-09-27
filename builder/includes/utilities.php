@@ -53,6 +53,7 @@ class Utils
             'strings' => 'sources/ext/strings.js',
             'lenses' => 'sources/lenses.js',
             'trampolines' => 'sources/ext/trampolines.js',
+            'advices' => 'sources/ext/advices.js',
             'iterators' => 'sources/ext/iterators.js',
             'functors' => 'sources/ext/functors.js',
             'contracts' => 'sources/ext/contracts.js'

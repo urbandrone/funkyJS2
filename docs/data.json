@@ -1,8 +1,9 @@
 {
     "project": {
         "name": "funkyjs-2",
-        "version": "1.7.1",
-        "description": "Second version of funkyJS"
+        "version": "1.8.0",
+        "description": "Second version of funkyJS",
+        "logo": "logo.png"
     },
     "files": {
         "sources\\extensions\\_template.js": {
@@ -14,16 +15,31 @@
             "fors": {},
             "namespaces": {}
         },
+        "sources\\extensions\\advices.js": {
+            "name": "sources\\extensions\\advices.js",
+            "modules": {
+                "advices": 1
+            },
+            "classes": {},
+            "fors": {
+                "funkyJS": 1
+            },
+            "namespaces": {}
+        },
         "sources\\extensions\\combinators.js": {
             "name": "sources\\extensions\\combinators.js",
-            "modules": {},
+            "modules": {
+                "combinators.extensions": 1
+            },
             "classes": {},
             "fors": {},
             "namespaces": {}
         },
         "sources\\extensions\\contracts.js": {
             "name": "sources\\extensions\\contracts.js",
-            "modules": {},
+            "modules": {
+                "contracts": 1
+            },
             "classes": {},
             "fors": {
                 "funkyJS": 1
@@ -32,7 +48,9 @@
         },
         "sources\\extensions\\decorators.js": {
             "name": "sources\\extensions\\decorators.js",
-            "modules": {},
+            "modules": {
+                "decorators.extensions": 1
+            },
             "classes": {},
             "fors": {
                 "funkyJS": 1
@@ -41,7 +59,9 @@
         },
         "sources\\extensions\\functors.js": {
             "name": "sources\\extensions\\functors.js",
-            "modules": {},
+            "modules": {
+                "functors": 1
+            },
             "classes": {},
             "fors": {
                 "funkyJS": 1
@@ -50,7 +70,9 @@
         },
         "sources\\extensions\\iterators.js": {
             "name": "sources\\extensions\\iterators.js",
-            "modules": {},
+            "modules": {
+                "iterators": 1
+            },
             "classes": {},
             "fors": {
                 "funkyJS": 1
@@ -59,7 +81,9 @@
         },
         "sources\\extensions\\strings.js": {
             "name": "sources\\extensions\\strings.js",
-            "modules": {},
+            "modules": {
+                "strings": 1
+            },
             "classes": {},
             "fors": {
                 "funkyJS": 1
@@ -68,7 +92,9 @@
         },
         "sources\\extensions\\trampolines.js": {
             "name": "sources\\extensions\\trampolines.js",
-            "modules": {},
+            "modules": {
+                "trampolines": 1
+            },
             "classes": {},
             "fors": {
                 "funkyJS": 1
@@ -168,6 +194,16 @@
         "experiments": {
             "name": "experiments",
             "submodules": {},
+            "classes": {},
+            "fors": {},
+            "namespaces": {},
+            "tag": "module",
+            "file": "sources\\extensions\\_template.js",
+            "line": 29
+        },
+        "advices": {
+            "name": "advices",
+            "submodules": {},
             "classes": {
                 "funkyJS": 1
             },
@@ -176,7 +212,89 @@
             },
             "namespaces": {},
             "tag": "module",
-            "file": "sources\\extensions\\_template.js",
+            "file": "sources\\extensions\\advices.js",
+            "line": 32
+        },
+        "combinators.extensions": {
+            "name": "combinators.extensions",
+            "submodules": {},
+            "classes": {},
+            "fors": {},
+            "namespaces": {},
+            "tag": "module",
+            "file": "sources\\extensions\\combinators.js",
+            "line": 32
+        },
+        "contracts": {
+            "name": "contracts",
+            "submodules": {},
+            "classes": {},
+            "fors": {
+                "funkyJS": 1
+            },
+            "namespaces": {},
+            "tag": "module",
+            "file": "sources\\extensions\\contracts.js",
+            "line": 29
+        },
+        "decorators.extensions": {
+            "name": "decorators.extensions",
+            "submodules": {},
+            "classes": {},
+            "fors": {
+                "funkyJS": 1
+            },
+            "namespaces": {},
+            "tag": "module",
+            "file": "sources\\extensions\\decorators.js",
+            "line": 32
+        },
+        "functors": {
+            "name": "functors",
+            "submodules": {},
+            "classes": {},
+            "fors": {
+                "funkyJS": 1
+            },
+            "namespaces": {},
+            "tag": "module",
+            "file": "sources\\extensions\\functors.js",
+            "line": 29
+        },
+        "iterators": {
+            "name": "iterators",
+            "submodules": {},
+            "classes": {},
+            "fors": {
+                "funkyJS": 1
+            },
+            "namespaces": {},
+            "tag": "module",
+            "file": "sources\\extensions\\iterators.js",
+            "line": 32
+        },
+        "strings": {
+            "name": "strings",
+            "submodules": {},
+            "classes": {},
+            "fors": {
+                "funkyJS": 1
+            },
+            "namespaces": {},
+            "tag": "module",
+            "file": "sources\\extensions\\strings.js",
+            "line": 29
+        },
+        "trampolines": {
+            "name": "trampolines",
+            "submodules": {},
+            "classes": {},
+            "fors": {
+                "funkyJS": 1
+            },
+            "namespaces": {},
+            "tag": "module",
+            "file": "sources\\extensions\\trampolines.js",
             "line": 29
         },
         "birds": {
@@ -285,7 +403,7 @@
             "extensions": [],
             "plugin_for": [],
             "extension_for": [],
-            "module": "experiments",
+            "module": "advices",
             "namespace": ""
         }
     },
@@ -298,11 +416,41 @@
             "module": "experiments"
         },
         {
+            "file": "sources\\extensions\\advices.js",
+            "line": 99,
+            "description": "The advisable function allows to implement some kind of aspect oriented\n    programming techniques on other functions by adding a adviceBefore,\n    adviceAfter and adviceError method on the function. The advice- methods\n    have a fluent interface so that chained calls are possible. While any\n    attached after advices are executed in the same order as they are attached,\n    all before advices are executed in reversed order. Please see the example\n    for details",
+            "itemtype": "method",
+            "name": "advisable",
+            "params": [
+                {
+                    "name": "fn",
+                    "description": "The function/method which should be advisable",
+                    "type": "Function"
+                }
+            ],
+            "return": {
+                "description": "A advisable wrapper function around fn",
+                "type": "Function"
+            },
+            "example": [
+                "\n    var idMaker = {\n        id: 0,\n        uuid: funkyJS.advisable(function () {\n            return 'uuid' + this.id;\n        })\n    };\n\n    // add before advice to idMaker.uuid\n    idMaker.uuid.adviceBefore(function () {\n        this.id += 1;\n    });\n\n    idMaker.uuid();\n    // -> 'uuid1'\n\n    idMaker.uuid();\n    // -> 'uuid2'\n\n\n    // adding a second before advice\n    idMaker.uuid.adviceBefore(function () {\n        console.log('last uuid was: uuid' + this.id);\n    \n    }).adviceAfter(function (result) {\n        console.log('new uuid is: ' + result);\n    });\n\n    idMaker.uuid();\n    // -> logs 'last uuid was: uuid2' in console\n    // -> 'uuid3'\n    // -> logs 'new uuid is: uuid3' in console\n"
+            ],
+            "class": "funkyJS",
+            "module": "advices"
+        },
+        {
+            "file": "sources\\extensions\\advices.js",
+            "line": 179,
+            "description": "EXPORT\n======",
+            "class": "funkyJS",
+            "module": "advices"
+        },
+        {
             "file": "sources\\extensions\\combinators.js",
             "line": 342,
             "description": "EXPORT\n======",
             "class": "funkyJS",
-            "module": "experiments"
+            "module": "combinators.extensions"
         },
         {
             "file": "sources\\extensions\\contracts.js",
@@ -325,7 +473,7 @@
                 "\n    funkyJS.beNil(null);\n    // -> null\n\n    funkyJS.beNil(undefined);\n    // -> undefined\n\n    funkyJS.beNil(1);\n    // -> Error\n"
             ],
             "class": "funkyJS",
-            "module": "experiments"
+            "module": "contracts"
         },
         {
             "file": "sources\\extensions\\contracts.js",
@@ -348,7 +496,7 @@
                 "\n    funkyJS.beNull(null);\n    // -> null\n\n    funkyJS.beNull(undefined);\n    // -> Error\n"
             ],
             "class": "funkyJS",
-            "module": "experiments"
+            "module": "contracts"
         },
         {
             "file": "sources\\extensions\\contracts.js",
@@ -371,7 +519,7 @@
                 "\n    funkyJS.beVoid(undefined);\n    // -> undefined\n\n    funkyJS.beVoid(null);\n    // -> Error\n"
             ],
             "class": "funkyJS",
-            "module": "experiments"
+            "module": "contracts"
         },
         {
             "file": "sources\\extensions\\contracts.js",
@@ -394,7 +542,7 @@
                 "\n    funkyJS.beString('a string');\n    // -> 'a string'\n\n    funkyJS.beString(undefined);\n    // -> Error\n"
             ],
             "class": "funkyJS",
-            "module": "experiments"
+            "module": "contracts"
         },
         {
             "file": "sources\\extensions\\contracts.js",
@@ -417,7 +565,7 @@
                 "\n    funkyJS.beBool(true);\n    // -> true\n\n    funkyJS.beBool(undefined);\n    // -> Error\n"
             ],
             "class": "funkyJS",
-            "module": "experiments"
+            "module": "contracts"
         },
         {
             "file": "sources\\extensions\\contracts.js",
@@ -440,7 +588,7 @@
                 "\n    funkyJS.beNumber(2);\n    // -> 2\n\n    funkyJS.beNumber(undefined);\n    // -> Error\n"
             ],
             "class": "funkyJS",
-            "module": "experiments"
+            "module": "contracts"
         },
         {
             "file": "sources\\extensions\\contracts.js",
@@ -463,7 +611,7 @@
                 "\n    funkyJS.beInt32(2);\n    // -> 2\n\n    funkyJS.beInt32(2.5);\n    // -> Error\n"
             ],
             "class": "funkyJS",
-            "module": "experiments"
+            "module": "contracts"
         },
         {
             "file": "sources\\extensions\\contracts.js",
@@ -486,7 +634,7 @@
                 "\n    funkyJS.beFloat32(2.5);\n    // -> 2.5\n\n    funkyJS.beFloat32(2);\n    // -> Error\n"
             ],
             "class": "funkyJS",
-            "module": "experiments"
+            "module": "contracts"
         },
         {
             "file": "sources\\extensions\\contracts.js",
@@ -509,7 +657,7 @@
                 "\n    funkyJS.beFunction(function (a) { return a; });\n    // -> function (a) { return a; }\n\n    funkyJS.beFunction(undefined);\n    // -> Error\n"
             ],
             "class": "funkyJS",
-            "module": "experiments"
+            "module": "contracts"
         },
         {
             "file": "sources\\extensions\\contracts.js",
@@ -532,7 +680,7 @@
                 "\n    funkyJS.beArray([]);\n    // -> []\n\n    funkyJS.beArray({});\n    // -> Error\n"
             ],
             "class": "funkyJS",
-            "module": "experiments"
+            "module": "contracts"
         },
         {
             "file": "sources\\extensions\\contracts.js",
@@ -555,7 +703,7 @@
                 "\n    funkyJS.beObject({});\n    // -> {}\n\n    funkyJS.beObject([]);\n    // -> Error\n"
             ],
             "class": "funkyJS",
-            "module": "experiments"
+            "module": "contracts"
         },
         {
             "file": "sources\\extensions\\contracts.js",
@@ -578,7 +726,7 @@
                 "\n    funkyJS.beDate(new Date(2015, 2, 25));\n    // -> Date(2015-2-25 00:00:00)\n\n    funkyJS.beDate({});\n    // -> Error\n"
             ],
             "class": "funkyJS",
-            "module": "experiments"
+            "module": "contracts"
         },
         {
             "file": "sources\\extensions\\contracts.js",
@@ -601,7 +749,7 @@
                 "\n    funkyJS.beRegex(new RegExp('.*', 'g'));\n    // -> RegExp\n\n    funkyJS.beRegex('.*');\n    // -> Error\n"
             ],
             "class": "funkyJS",
-            "module": "experiments"
+            "module": "contracts"
         },
         {
             "file": "sources\\extensions\\contracts.js",
@@ -624,7 +772,7 @@
                 "\n    funkyJS.beNode(document.body);\n    // -> <body>\n\n    funkyJS.beNode(null);\n    // -> Error\n"
             ],
             "class": "funkyJS",
-            "module": "experiments"
+            "module": "contracts"
         },
         {
             "file": "sources\\extensions\\contracts.js",
@@ -647,7 +795,7 @@
                 "\n    funkyJS.beNodeList(document.querySelectorAll('div'));\n    // -> DOMNodeList\n\n    funkyJS.beNodeList([]);\n    // -> Error\n"
             ],
             "class": "funkyJS",
-            "module": "experiments"
+            "module": "contracts"
         },
         {
             "file": "sources\\extensions\\contracts.js",
@@ -670,7 +818,7 @@
                 "\n    funkyJS.beSequencial('abc');\n    // -> 'abc'\n\n    funkyJS.beSequencial(undefined);\n    // -> Error\n"
             ],
             "class": "funkyJS",
-            "module": "experiments"
+            "module": "contracts"
         },
         {
             "file": "sources\\extensions\\contracts.js",
@@ -693,14 +841,14 @@
                 "\n    funkyJS.beEnumerable({});\n    // -> {}\n\n    funkyJS.beEnumerable(undefined);\n    // -> Error\n"
             ],
             "class": "funkyJS",
-            "module": "experiments"
+            "module": "contracts"
         },
         {
             "file": "sources\\extensions\\contracts.js",
             "line": 363,
             "description": "EXPORT\n======",
             "class": "funkyJS",
-            "module": "experiments"
+            "module": "contracts"
         },
         {
             "file": "sources\\extensions\\decorators.js",
@@ -728,7 +876,7 @@
                 "\n    // a \"Person\" constructor, which is highly dependend on the types of\n    //   arguments passed to it to function correctly\n    var Person = function (name, birthdate) {\n        var _now = +(new Date()) - (+birthdate);\n\n        this.name = Person.formatName(name);\n        this.age = Person.calcAge(_now);\n        return this;\n    }\n\n    // a \"isPerson\" contract\n    Person.is = function (instance) {\n        return Person.prototype.isPrototypeOf(instance);\n    }\n\n    Person.formatName = function (name) { ... }\n    Person.calcAge = function (msSinceBirth) { ... }\n\n\n\n    // create a factory function which is typesafe\n    Person.make = funkyJS.hom(\n        // enforce incoming arguments to be a string and\n        //   a date object. any function which returns a\n        //   boolean result may be used here\n        [funkyJS.isString, funkyJS.isDate],\n        Person.is\n    )(function (name, birthday) {\n        if (+birthday > +(new Date())) {\n            // this throws error because it violates the\n            //   output contract, so we are able to detect\n            //   persons created with a date in future\n            return null;\n        }\n        return new Person(name, birthday);\n    });\n\n\n\n    Person.make('john doe', new Date(1985, 2, 25));\n    // -> Person(name:'John Doe', age: ... );\n\n    Person.make(1, 0);\n    // -> Error\n\n    Person.make('john doe', 0);\n    // -> Error\n\n    Person.make('john doe', new Date());\n    // -> Person(name:'John Doe', age: 0); // just born\n\n    Person.make('john doe', new Date(2320, 2, 25));\n    // -> Error\n\n\n\n    // the behaviour of hom allows also to store for example a creation\n    //   process before defining the type of output\n    var fromStrDateMake = funkyJS.hom([\n        funkyJS.isString,\n        funkyJS.isDate\n    ]);\n\n    // a delivery label factory\n    var labelDelivery = function (id, deliveryDate) {\n        return {\n            id: 'label-' + id,\n            delivered: deliveryDate.toISOString()\n        };\n    }\n\n    var isLabel = funkyJS.hom(\n        [funkyJS.isObject],\n        funkyJS.isObject\n    )(function (label) {\n        if (funkyJS.has('id', label) && funkyJS.has('delivered', label)) {\n            return label;\n        }\n        return null;\n    });\n\n\n    // the factory for Person rewritten\n    Person.make = fromStrDateMake(Person.is)(function (name, bDay) {\n        return new Person(name, bDay);\n    });\n\n    // the label factory\n    var makeLabel = fromStrDateMake(isLabel)(labelDelivery);\n"
             ],
             "class": "funkyJS",
-            "module": "experiments"
+            "module": "decorators.extensions"
         },
         {
             "file": "sources\\extensions\\decorators.js",
@@ -751,7 +899,7 @@
                 "\n\n    var multiply = funkyJS.multiDispatch([{\n        // this definition says:\n        // -> input must be 2 arguments of type number\n        // -> output must be of type number\n        // -> operation to perform if input validates\n        args: [funkyJS.isNumber, funkyJS.isNumber],\n        out: funkyJS.isNumber,\n        proc: function (n1, n2) {\n            return n1 * n2;\n        }\n    }, {\n        // this definition says:\n        // -> input must be 1 argument of type number\n        // -> any output accepted\n        // -> operation to perform if input validates\n        args: [funkyJS.isNumber],\n        proc: function (n) {\n            return n * n;\n        }\n    }, {\n        args: [funkyJS.isArray],\n        out: funkyJS.isNumber,\n        proc: function (list) {\n            return list.slice(1).reduce(function (acc, n) {\n                return acc * n;\n            }, list[0]);\n        }\n    }]);\n\n    multiply(2, 3);\n    // -> 6\n\n    multiply(9);\n    // -> 81\n\n    multiply([1, 2, 3, 4, 5]);\n    // -> 120\n\n    multiply(null);\n    // -> undefined\n\n    multiply.length;\n    // -> 0\n\n    // uses the aritize function to create the arity wanted\n    multiply = funkyJS.aritize(2, true)(multiply);\n\n    multiply.length;\n    // -> 2\n\n    // works like before\n    multiply(2, 3);\n    // -> 6\n\n    // works also with single argument like before\n    multiply(9);\n    // -> 81\n\n    // or with arrays\n    multiply([1, 2, 3, 4, 5]);\n    // -> 120\n"
             ],
             "class": "funkyJS",
-            "module": "experiments"
+            "module": "decorators.extensions"
         },
         {
             "file": "sources\\extensions\\decorators.js",
@@ -779,14 +927,14 @@
                 "\n    var add = function (a, b) {\n        return a + b;\n    }\n\n    add('a', 'z');\n    // -> 'az'\n\n    var revAdd = funkyJS.displaceArgs(add, [1, 0]);\n\n    revAdd('z', 'a');\n    // -> 'az'\n"
             ],
             "class": "funkyJS",
-            "module": "experiments"
+            "module": "decorators.extensions"
         },
         {
             "file": "sources\\extensions\\decorators.js",
             "line": 393,
             "description": "EXPORT\n======",
             "class": "funkyJS",
-            "module": "experiments"
+            "module": "decorators.extensions"
         },
         {
             "file": "sources\\extensions\\functors.js",
@@ -814,7 +962,7 @@
                 "\n    var squared = [],\n        square = funkyJS.forEachWith(function (x) { squared.push(x * x) });\n\n    square([1, 2, 3]);\n\n    squared;\n    // -> [1, 4, 9]\n"
             ],
             "class": "funkyJS",
-            "module": "experiments"
+            "module": "functors"
         },
         {
             "file": "sources\\extensions\\functors.js",
@@ -842,7 +990,7 @@
                 "\n    var square = funkyJS.mapWith(function (x) { return (x * x) });\n\n    square([1, 2, 3]);\n    // -> [1, 4, 9]\n"
             ],
             "class": "funkyJS",
-            "module": "experiments"
+            "module": "functors"
         },
         {
             "file": "sources\\extensions\\functors.js",
@@ -870,7 +1018,7 @@
                 "\n    var greater1 = funkyJS.filterWith(function (x) { return x > 1; });\n\n    greater1([1, 2, 3]);\n    // -> [2, 3]\n"
             ],
             "class": "funkyJS",
-            "module": "experiments"
+            "module": "functors"
         },
         {
             "file": "sources\\extensions\\functors.js",
@@ -903,7 +1051,7 @@
                 "\n    var sum = funkyJS.foldWith(function (acc, x) {\n        return acc + x;\n    });\n\n    sum([1, 2, 3], 0);\n    // -> 6\n"
             ],
             "class": "funkyJS",
-            "module": "experiments"
+            "module": "functors"
         },
         {
             "file": "sources\\extensions\\functors.js",
@@ -936,7 +1084,7 @@
                 "\n    var catRight = funkyJS.foldRightWith(function (acc, x) {\n        return acc + x;\n    });\n\n    catRight(['hello', 'why', 'there'], '');\n    // -> 'therewhyhello'\n"
             ],
             "class": "funkyJS",
-            "module": "experiments"
+            "module": "functors"
         },
         {
             "file": "sources\\extensions\\functors.js",
@@ -964,7 +1112,7 @@
                 "\n    var allNumbers = funkyJS.everyWith(funkyJS.isNumber);\n\n    allNumbers([1, 2, 3, 4]);\n    // -> true\n\n    allNumbers([1, null, 3, 4]);\n    // -> false\n"
             ],
             "class": "funkyJS",
-            "module": "experiments"
+            "module": "functors"
         },
         {
             "file": "sources\\extensions\\functors.js",
@@ -992,14 +1140,14 @@
                 "\n    var someNumbers = funkyJS.someWith(funkyJS.isNumber);\n\n    someNumbers([1, null, 3, 4]);\n    // -> true\n\n    someNumbers([null, '', {}]);\n    // -> false\n"
             ],
             "class": "funkyJS",
-            "module": "experiments"
+            "module": "functors"
         },
         {
             "file": "sources\\extensions\\functors.js",
             "line": 346,
             "description": "EXPORT\n======",
             "class": "funkyJS",
-            "module": "experiments"
+            "module": "functors"
         },
         {
             "file": "sources\\extensions\\iterators.js",
@@ -1027,14 +1175,14 @@
                 "\n    var nums = funkyJS.numIterator(5); // counts 5 -> Infinity\n\n    nums.next().value();\n    // -> 5\n\n    nums.next().value();\n    // -> 6\n\n    nums.next().value();\n    // -> 7\n"
             ],
             "class": "funkyJS",
-            "module": "experiments"
+            "module": "iterators"
         },
         {
             "file": "sources\\extensions\\iterators.js",
             "line": 292,
             "description": "EXPORT\n======",
             "class": "funkyJS",
-            "module": "experiments"
+            "module": "iterators"
         },
         {
             "file": "sources\\extensions\\strings.js",
@@ -1057,7 +1205,7 @@
                 "\n    var str = '   a string   ';\n\n    funkyJS.trimLeft(str);\n    // -> 'a string   '\n"
             ],
             "class": "funkyJS",
-            "module": "experiments"
+            "module": "strings"
         },
         {
             "file": "sources\\extensions\\strings.js",
@@ -1080,7 +1228,7 @@
                 "\n    var str = '   a string   ';\n\n    funkyJS.trimRight(str);\n    // -> '   a string'\n"
             ],
             "class": "funkyJS",
-            "module": "experiments"
+            "module": "strings"
         },
         {
             "file": "sources\\extensions\\strings.js",
@@ -1103,7 +1251,7 @@
                 "\n    var str = '   a string   ';\n\n    funkyJS.trim(str);\n    // -> 'a string'\n"
             ],
             "class": "funkyJS",
-            "module": "experiments"
+            "module": "strings"
         },
         {
             "file": "sources\\extensions\\strings.js",
@@ -1126,7 +1274,7 @@
                 "\n    var str = 'string-separated';\n\n    funkyJS.camelize(str);\n    // -> 'stringSeparated'\n"
             ],
             "class": "funkyJS",
-            "module": "experiments"
+            "module": "strings"
         },
         {
             "file": "sources\\extensions\\strings.js",
@@ -1149,7 +1297,7 @@
                 "\n    var str = 'stringSeparated';\n\n    funkyJS.dasherize(str);\n    // -> 'string-separated'\n"
             ],
             "class": "funkyJS",
-            "module": "experiments"
+            "module": "strings"
         },
         {
             "file": "sources\\extensions\\strings.js",
@@ -1172,7 +1320,7 @@
                 "\n    var str = 'string-separated';\n\n    funkyJS.underscore(str);\n    // -> 'string_separated'\n"
             ],
             "class": "funkyJS",
-            "module": "experiments"
+            "module": "strings"
         },
         {
             "file": "sources\\extensions\\strings.js",
@@ -1205,7 +1353,7 @@
                 "\n    function toInt (n) {\n        return parseInt(n, 10);\n    }\n\n    var isoDateToInts = funkyJS.splitParse(toInt, /\\s|\\-|\\:/g);\n\n    isoDateToInts('2015-02-25 06:00:00');\n    // -> [2015, 2, 25, 6, 0, 0]\n"
             ],
             "class": "funkyJS",
-            "module": "experiments"
+            "module": "strings"
         },
         {
             "file": "sources\\extensions\\strings.js",
@@ -1233,14 +1381,14 @@
                 "\n    var tpl = 'This is ${subject} and ${does}.';\n\n    var desc = funkyJS.substitude(tpl);\n\n    desc({subject: 'John Doe', does: 'he codes JavaScript'});\n    // -> 'This is John Doe and his computer.'\n\n    desc({subject: 'Steve Smith', does: 'he does nothing'});\n    // 'This is Steve Smith and he does nothing.'\n\n\n\n    funkyJS.substitude(tpl, {\n        subject: 'me',\n        does: 'I test substitude'\n    });\n    // -> 'This is me and I test substitude.'\n"
             ],
             "class": "funkyJS",
-            "module": "experiments"
+            "module": "strings"
         },
         {
             "file": "sources\\extensions\\strings.js",
             "line": 300,
             "description": "EXPORT\n======",
             "class": "funkyJS",
-            "module": "experiments"
+            "module": "strings"
         },
         {
             "file": "sources\\extensions\\trampolines.js",
@@ -1260,7 +1408,7 @@
                 "type": "Thunk"
             },
             "class": "funkyJS",
-            "module": "experiments"
+            "module": "trampolines"
         },
         {
             "file": "sources\\extensions\\trampolines.js",
@@ -1283,14 +1431,14 @@
                 "\n    var _vanilla = function (n1, n2) {\n        if (n2 < 1) {\n            return n1;\n        }\n        return _vanilla(n1 * n2, n2 - 1);\n    }\n\n    var _thunkedInner = function (n1, n2) {\n        if (n2 < 1) {\n            return n1;\n        }\n        return funkyJS.thunk(function () {\n            return _thunkedInner(n1 * n2, n2 - 1);\n        });\n    }\n\n    var thunked = function (n) {\n        return funkyJS.trampoline(_thunkedInner(1, Math.abs(n)));\n    }\n\n\n    vanilla(10);\n    // -> 362880\n\n    vanilla(50325);\n    // -> RangeError\n\n\n    thunked(10);\n    // -> 3628800\n\n    thunked(50325);\n    // -> ... Wait until finished :)\n"
             ],
             "class": "funkyJS",
-            "module": "experiments"
+            "module": "trampolines"
         },
         {
             "file": "sources\\extensions\\trampolines.js",
             "line": 123,
             "description": "EXPORT\n======",
             "class": "funkyJS",
-            "module": "experiments"
+            "module": "trampolines"
         },
         {
             "file": "sources\\_birds.js",
@@ -3628,6 +3776,10 @@
         {
             "message": "Missing item type\nEXPORT\n======",
             "line": " sources\\extensions\\_template.js:40"
+        },
+        {
+            "message": "Missing item type\nEXPORT\n======",
+            "line": " sources\\extensions\\advices.js:179"
         },
         {
             "message": "Missing item type\nEXPORT\n======",

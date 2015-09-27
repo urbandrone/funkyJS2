@@ -30,7 +30,7 @@
 })(this, function (type, arity) {
 
     /**
-    @module experiments
+    @module combinators.extensions
     **/
     var api = {};
 

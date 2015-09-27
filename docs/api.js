@@ -4,17 +4,29 @@ YUI.add("yuidoc-meta", function(Y) {
         "funkyJS"
     ],
     "modules": [
+        "advices",
         "arity",
         "arrays",
         "birds",
         "combinators",
+        "combinators.extensions",
+        "contracts",
         "decorators",
+        "decorators.extensions",
         "experiments",
+        "functors",
+        "iterators",
         "lenses",
         "objects",
+        "strings",
+        "trampolines",
         "type"
     ],
     "allModules": [
+        {
+            "displayName": "advices",
+            "name": "advices"
+        },
         {
             "displayName": "arity",
             "name": "arity"
@@ -32,12 +44,32 @@ YUI.add("yuidoc-meta", function(Y) {
             "name": "combinators"
         },
         {
+            "displayName": "combinators.extensions",
+            "name": "combinators.extensions"
+        },
+        {
+            "displayName": "contracts",
+            "name": "contracts"
+        },
+        {
             "displayName": "decorators",
             "name": "decorators"
         },
         {
+            "displayName": "decorators.extensions",
+            "name": "decorators.extensions"
+        },
+        {
             "displayName": "experiments",
             "name": "experiments"
+        },
+        {
+            "displayName": "functors",
+            "name": "functors"
+        },
+        {
+            "displayName": "iterators",
+            "name": "iterators"
         },
         {
             "displayName": "lenses",
@@ -46,6 +78,14 @@ YUI.add("yuidoc-meta", function(Y) {
         {
             "displayName": "objects",
             "name": "objects"
+        },
+        {
+            "displayName": "strings",
+            "name": "strings"
+        },
+        {
+            "displayName": "trampolines",
+            "name": "trampolines"
         },
         {
             "displayName": "type",

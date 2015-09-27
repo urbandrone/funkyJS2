@@ -52,18 +52,19 @@
             iterators: ['type'],
             decorators2: ['type', 'arity'],
             combinators2: ['type', 'arity'],
+            advices: ['type', 'arity'],
             functors: ['type'],
             contracts: ['type']
         };
 
-        function dependsOn (module) {
+        function getDependencies (module) {
             if (f.has(module, managed)) {
                 return managed[module];
             }
             return [];
         }
 
-        function hasDependends (module) {
+        function getDependend (module) {
             return f.keys(managed).reduce(function (acc, dep) {
                 if (managed[dep].indexOf(module) > -1) {
                     acc.push(dep);
@@ -73,8 +74,8 @@
         }
 
         return {
-            needs: dependsOn,
-            dependend: hasDependends
+            needs: getDependencies,
+            dependend: getDependend
         }
     })();
 

@@ -27,7 +27,7 @@
 })(this, function (type) {
 
     /**
-    @module experiments
+    @module functors
     **/
     var api = {};
 

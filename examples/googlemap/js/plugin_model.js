@@ -42,10 +42,13 @@
      * @return {object} Normalized representation
      */
     function normalizeJson (data) {
-        return f.keys(plugin.utils.dataConfig('dataFields')).reduce(function (acc, field) {
-            acc[field] = data[field];
-            return acc;
-        }, {});
+        var fieldNames = plugin.utils.dataConfig('dataFields');
+
+        return f.keys(fieldNames).
+            reduce(function (acc, field) {
+                acc[field] = data[fieldNames[field]];
+                return acc;
+            }, {});
     }
 
     function ifReady (fn) {

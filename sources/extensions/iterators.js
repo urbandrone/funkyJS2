@@ -30,7 +30,7 @@
 })(this, function (type) {
 
     /**
-    @module experiments
+    @module iterators
     **/
     var api = {};
 
@@ -62,8 +62,8 @@
 
     **/
     api.numIterator = function numIterator (start, max) {
-        var _now = type.isNotInt32(start) ? 0 : start,
-            _end = type.isNotInt32(max) ? Infinity : max,
+        var _now = type.isNotNumber(start) ? 0 : start,
+            _end = typeof max !== 'number' || isNaN(max) ? Infinity : max,
             _add = 1;
 
         if (_end < _now) {
