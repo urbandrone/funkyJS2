@@ -1,3 +1,3 @@
-/*! funkyjs-2 1.8.0
+/*! funkyjs-2 1.8.5
  *  David Hofmann <the.urban.drone@gmail.com>, MIT license */
 /* globals define, module, exports, require */!function(a,b){var c,d;if("function"==typeof define&&define.amd)define(["arity"],b);else if("object"==typeof exports)module.exports=b(require("arity"));else{c=b(a.funkyJS);for(d in c)c.hasOwnProperty(d)&&(a.funkyJS[d]=c[d])}}(this,function(a){function b(a,b){return function(c,d){return a(c(b(d)),d)}}function c(c,d){var e=function(a){return c(a)};return e.get=c,e.set=a.dyadic(d),e.over=a.dyadic(b(d,c)),e}function d(a){return c(function(b){return b[a]},function(b,c){var d=Object.create(c);return d[a]=b,d})}var e={};return e.makeLense=function(a){if(!Array.isArray(a))throw new Error("makeLense() expects argument to be array but saw: "+a);return a.reduce(function(a,b){return a[b]=d(b),a},{})},e});

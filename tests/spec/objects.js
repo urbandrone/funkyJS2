@@ -181,4 +181,28 @@ describe('funkyJS Objects Module', function () {
         expect(o1.now).toBeUndefined();
     });
 
+    it('testing immutable :: f -> o -> o', function () {
+        var o = funkyJS.immutable({a: 1});
+        o.a = 2;
+        expect(o.a).toBe(1);
+        expect(o.hasOwnProperty('a')).toBe(true);
+    });
+
+    it('testing fAccess :: f -> o -> f', function () {
+        var o = funkyJS.fAccess({v: 10});
+        expect(o('v')).toBe(10);
+        expect(['v'].map(o)).toEqual([10]);
+    });
+
+    it('testing factory :: f -> f -> f', function () {
+        var cTor = function (n) { this.v = n; };
+        cTor.prototype.inc = function () {
+            this.v += 1;
+            return this;
+        };
+
+        var fCtor = funkyJS.factory(cTor);
+        expect(fCtor(9).inc().v).toBe(10);
+        expect(fCtor(10)).toEqual(new cTor(10));
+    });
 });

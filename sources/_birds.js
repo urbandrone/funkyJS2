@@ -61,6 +61,36 @@
         }
     }
 
+    /*
+    The tap function (Thrush) takes a argument and a function and returns the
+        result of applying the function to the argument.
+
+    @method tap
+    @for funkyJS
+    @param {any} x Anything
+    @return {function} A function to call on x
+
+    @example
+        var process = funkyJS.tap(function process (x) {
+            var y = process.step1(x);
+            var z = process.step2(y);
+            return process.step3(z);
+        })(function (fn) {
+            fn.step1 = function (v) { return v + 1; }
+            fn.step2 = function (v) { return v * 2; }
+            fn.step3 = function (v) { return v * v; }
+            return fn;
+        });
+
+        process(1);
+        // -> 16
+    */
+    api.tap = function tap (x) {
+        return function (y) {
+            return y.call(this, x);
+        };
+    }
+
     /**
     The cmps function (Bluebird) is the basic functional higher-order function
         for function composition. It takes a function, returns a function which

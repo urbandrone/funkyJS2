@@ -1,7 +1,7 @@
 {
     "project": {
         "name": "funkyjs-2",
-        "version": "1.8.0",
+        "version": "1.8.5",
         "description": "Second version of funkyJS",
         "logo": "logo.png"
     },
@@ -32,7 +32,9 @@
                 "combinators.extensions": 1
             },
             "classes": {},
-            "fors": {},
+            "fors": {
+                "funkyJS": 1
+            },
             "namespaces": {}
         },
         "sources\\extensions\\contracts.js": {
@@ -219,7 +221,9 @@
             "name": "combinators.extensions",
             "submodules": {},
             "classes": {},
-            "fors": {},
+            "fors": {
+                "funkyJS": 1
+            },
             "namespaces": {},
             "tag": "module",
             "file": "sources\\extensions\\combinators.js",
@@ -447,8 +451,95 @@
         },
         {
             "file": "sources\\extensions\\combinators.js",
-            "line": 342,
-            "description": "EXPORT\n======",
+            "line": 46,
+            "description": "Allows the compose asynchronous working function, as long as they provide a\n    a compatible interface. A function is considered compatible if it\n    accepts at least three arguments. The first and the second argument are\n    assumed to be (1) the continuation function and (2) the error handler.\n    The third argument given to the returned function should be the data/arguments with which to start. The composed function executes the given\n    function from right to left, much like the core compose() function. For\n    usage information please see the example below",
+            "itemtype": "method",
+            "name": "composeAsync",
+            "params": [
+                {
+                    "name": "fn1",
+                    "description": "One to N asynchronous function to compose",
+                    "type": "Function",
+                    "multiple": true
+                }
+            ],
+            "return": {
+                "description": "The composed functions as a new function",
+                "type": "Function"
+            },
+            "example": [
+                "\n    function findUser (id, cont, fail) {\n        users.byId(id, function (err, user) {\n            // note: the err argument is completely optional, this is just\n            //       a mapping from node's convention\n            if (err != null) {\n                return fail(err);\n            }\n\n            // call of cont() with user to proceed\n            cont(user);\n        });\n    }\n\n    function formatUser (user, cont, fail) {\n        avatars.byId(user.id, function (err, avatar) {\n            if (avatar.isCorrupt()) {\n                return fail(new Error('Falsy avatar, only .jpg allowed'));\n            }\n\n            cont(funkyJS.inherits(user, avatar));\n        });\n    }\n    \n\n    var showUser = funkyJS.composeAsync(formatUser, findUser);\n\n\n    // this is the exit function\n    function showCard (userAndAccount) {\n        ui.addUserCard(userAndAccount).makeEventConnections();\n    }\n\n    // this is the fail function\n    function catchError (err) {\n        console.log(err.message);\n    }\n\n    // get user with id 'user012a37fb'\n    showUser(addCard, catchError, 'user012a37fb');"
+            ],
+            "class": "funkyJS",
+            "module": "combinators.extensions"
+        },
+        {
+            "file": "sources\\extensions\\combinators.js",
+            "line": 126,
+            "description": "Allows the pipe asynchronous working function, as long as they provide a\n    a compatible interface. A function is considered compatible if it\n    accepts at least three arguments. The first and the second argument are\n    assumed to be (1) the continuation function and (2) the error handler.\n    The third argument given to the returned function should be the data/arguments with which to start. The piped function executes the given\n    function from left to right, much like the core pipe() function. For\n    usage information please see the example below",
+            "itemtype": "method",
+            "name": "pipeAsync",
+            "params": [
+                {
+                    "name": "fn1",
+                    "description": "One to N asynchronous function to pipe",
+                    "type": "Function",
+                    "multiple": true
+                }
+            ],
+            "return": {
+                "description": "The piped functions as a new function",
+                "type": "Function"
+            },
+            "example": [
+                "\n    function findUser (id, cont, fail) {\n        users.byId(id, function (err, user) {\n            // note: the err argument is completely optional, this is just\n            //       a mapping from node's convention\n            if (err != null) {\n                return fail(err);\n            }\n\n            // call of cont() with user to proceed\n            cont(user);\n        });\n    }\n\n    function formatUser (user, cont, fail) {\n        avatars.byId(user.id, function (err, avatar) {\n            if (avatar.isCorrupt()) {\n                return fail(new Error('Falsy avatar, only .jpg allowed'));\n            }\n\n            cont(funkyJS.inherits(user, avatar));\n        });\n    }\n\n    // this is the exit function\n    function showCard (userAndAccount) {\n        ui.addUserCard(userAndAccount).makeEventConnections();\n    }\n\n    // this is the fail function\n    function catchError (err) {\n        console.log(err.message);\n    }\n    \n\n    var getUser = funkyJS.pipeAsync(findUser, formatUser);\n\n    // get user with id 'user0c2a37fb'\n    getUser('user0c2a37fb', showCard, catchError);"
+            ],
+            "class": "funkyJS",
+            "module": "combinators.extensions"
+        },
+        {
+            "file": "sources\\extensions\\combinators.js",
+            "line": 204,
+            "description": "Lifts a synchronous working function into a function which can be composed\n    and piped in a asynchronous chain",
+            "itemtype": "method",
+            "name": "liftAsync",
+            "params": [
+                {
+                    "name": "fn",
+                    "description": "The synchronous function",
+                    "type": "Function"
+                }
+            ],
+            "return": {
+                "description": "A function with asynchronous style wrapper",
+                "type": "Function"
+            },
+            "example": [
+                "\n    var f = funkyJS; // readability\n\n    function getUser(id, cont, fail) {\n        users.byId(id, function (err, user) {\n            if (err) {\n                return fail(err);\n            }\n            cont(user);\n        });\n    }\n\n    function getAvatar (id, cont, fail) {\n        avatars.byId(id, function (err, avatar) {\n            if (err) {\n                return fail(err);\n            }\n            cont(avatar);\n        });\n    }\n\n    var getUserAvatar = f.pipeAsync(\n        getUser,\n        f.liftAsync(f.get('id')),\n        getAvatar\n    );\n\n    getUserAvatar('user0c2a37fb', function (avatar) {\n        ui.showAvatar(avatar);\n    }, function (err) {\n        ui.showError(err.message);\n    });"
+            ],
+            "class": "funkyJS",
+            "module": "combinators.extensions"
+        },
+        {
+            "file": "sources\\extensions\\combinators.js",
+            "line": 270,
+            "description": "Allows to savely wrap functions which have side effects (like UI updates)\n    with a wrapper ready to be used in asynchronous control flows. This\n    allows to savely perform side effects inside asynchronous function\n    compositions or pipes",
+            "itemtype": "method",
+            "name": "sideEffect",
+            "params": [
+                {
+                    "name": "fn",
+                    "description": "The function which has side effects",
+                    "type": "Function"
+                }
+            ],
+            "return": {
+                "description": "A function with asynchronous style wrapper",
+                "type": "Function"
+            },
+            "example": [
+                "\n    var f = funkyJS; // readability\n\n    function getUser(id, cont, fail) {\n        users.byId(id, function (err, user) {\n            if (err) {\n                return fail(err);\n            }\n            cont(user);\n        });\n    }\n\n    function getAvatar (id, cont, fail) {\n        avatars.byId(id, function (err, avatar) {\n            if (err) {\n                return fail(err);\n            }\n            cont(avatar);\n        });\n    }\n\n    var getUserAvatar = f.pipeAsync(\n        f.sideEffect(ui.showProgressIndicator), // fn with side effect\n        getUser, // async operation\n        f.liftAsync(f.get('id')), // sync <=> async mapping\n        getAvatar,\n        f.sideEffect(ui.hideProgressIndicator)\n    );\n\n    getUserAvatar('user0c2a37fb', function (avatar) {\n        ui.showAvatar(avatar);\n    }, function (err) {\n        ui.showError(err.message);\n    });"
+            ],
             "class": "funkyJS",
             "module": "combinators.extensions"
         },
@@ -1488,7 +1579,7 @@
         },
         {
             "file": "sources\\_birds.js",
-            "line": 64,
+            "line": 94,
             "description": "The cmps function (Bluebird) is the basic functional higher-order function\n    for function composition. It takes a function, returns a function which\n    again takes a function and returns a function taking any value which is\n    piped through both given functions from right to left",
             "itemtype": "method",
             "name": "cmps",
@@ -2548,6 +2639,35 @@
         },
         {
             "file": "sources\\decorators.js",
+            "line": 690,
+            "description": "The callRight function kind of works much like the native Function.prototype.bind\n    function, but skips the setting of a specific context until execution.\n    The returned function awaits the context as the first argument given. If\n    a function with a arity of zero is passed into call, the returned function\n    has a arity of one, because at least the context argument must be given",
+            "itemtype": "method",
+            "name": "callRight",
+            "params": [
+                {
+                    "name": "fn",
+                    "description": "The function to call",
+                    "type": "Function"
+                },
+                {
+                    "name": "...leftArgs",
+                    "description": "Any arguments to pass through from the right",
+                    "type": "Any",
+                    "optional": true
+                }
+            ],
+            "return": {
+                "description": "Function awaiting a context and optionally more arguments",
+                "type": "Function"
+            },
+            "example": [
+                "\n    var slice = funkyJS.callRight(Array.prototype.slice);\n\n    slice(['a', 'b', 'c'], 2, 1);\n    // -> ['b']\n\n    var slice2 = funkyJS.callRight(Array.prototype.slice, 2);\n\n    slice2(['a', 'b', 'c'], 0);\n    // -> ['a', 'b']\n"
+            ],
+            "class": "funkyJS",
+            "module": "decorators"
+        },
+        {
+            "file": "sources\\decorators.js",
             "line": 794,
             "description": "EXPORT\n======",
             "class": "funkyJS",
@@ -2806,7 +2926,7 @@
                 "type": "Object"
             },
             "example": [
-                "\n    function thing (value) {\n        var self = funkyJS.instance(thing, this);\n        self.value = function () {\n            return value;\n        }\n        return self;\n    }\n\n    function isAThing (x) {\n        return x instanceof thing;\n    }\n\n    var _t = thing(10);\n\n    isAThing(_t);\n    // -> true\n\n    _t.value();\n    // -> 10\n"
+                "\n    function thing (value) {\n        var self = funkyJS.instance(thing, this);\n        self.value = function () {\n            return value;\n        }\n        return self;\n    }\n\n    thing.is = function (x) {\n        return x instanceof thing;\n    }\n\n    var _t = thing(10);\n\n    thing.is(_t);\n    // -> true\n\n    _t.value();\n    // -> 10\n"
             ],
             "class": "funkyJS",
             "module": "objects"
@@ -2814,6 +2934,29 @@
         {
             "file": "sources\\objects.js",
             "line": 406,
+            "description": "The factory function allows to create a factory for any given constructor\n    function",
+            "itemtype": "method",
+            "name": "factory",
+            "params": [
+                {
+                    "name": "Ctor",
+                    "description": "Constructor function",
+                    "type": "Function"
+                }
+            ],
+            "return": {
+                "description": "The factory for Ctor",
+                "type": "Function"
+            },
+            "example": [
+                "\n    var It = function (val) {\n        this.value = val;\n    }\n    It.prototype.type = function () {\n        return typeof this.value;\n    }\n\n    var makeIt = funkyJS.factory(It);\n\n    var it = makeIt('Hello World');\n    it.type();\n    // -> string\n\n    it.value;\n    // -> 'Hello World'\n"
+            ],
+            "class": "funkyJS",
+            "module": "objects"
+        },
+        {
+            "file": "sources\\objects.js",
+            "line": 445,
             "description": "The extend method takes in two objects and extends the first one with the\n    last one. See also the extendWith method",
             "itemtype": "method",
             "name": "extend",
@@ -2841,7 +2984,7 @@
         },
         {
             "file": "sources\\objects.js",
-            "line": 462,
+            "line": 501,
             "description": "The extendWith method takes in two objects and extends the last one with the\n    first one. See also the extend method",
             "itemtype": "method",
             "name": "extendWith",
@@ -2869,7 +3012,7 @@
         },
         {
             "file": "sources\\objects.js",
-            "line": 511,
+            "line": 550,
             "description": "The inherits method is designed to work particularly well with constructor\n    functions. It takes a two object, from which the first one is the source\n    and the second one is the extension on the source. The returned value is\n    a new object to use as prototype",
             "itemtype": "method",
             "name": "inherits",
@@ -2897,7 +3040,7 @@
         },
         {
             "file": "sources\\objects.js",
-            "line": 574,
+            "line": 613,
             "description": "The delegate function is a way to delegate the behaviour of one object to\n    other objects. It allows to specify the methods which are available\n    exclusive. This means, if no method is specified or none of the given\n    method names exists on the provider, no method will be available\n    on the receiver either. It is mostly useful if you have a certain\n    behaviour you want to share across instances or classes/prototypes",
             "itemtype": "method",
             "name": "delegate",
@@ -2923,14 +3066,14 @@
                 "type": "Object"
             },
             "example": [
-                "\n    var earnsMoney = {\n        _parseCurrency: function (input) {\n            return '$' + (funkyJS.isNumber(input) ? input.toFixed(2) : '0.00');\n        },\n        income: function (input) {\n            var income = earnsMoney._parseCurrency(input);\n            this.salary = income;\n        },\n        incrementByPercentage: function (perc) {\n            var money = +(this.salary.replace('$', '')),\n                inc = funkyJS.isNumber(perc) && perc > 1 ? perc : 1;\n\n            this.income(money + (money/100 * inc));\n        }\n    }\n\n    var joe = {\n        name: 'joe'\n    }\n\n    joe = funkyJS.delegate(earnsMoney, joe, [\n        'income',\n        'incrementByPercentage'\n    ]);\n\n    joe.name;\n    // -> 'joe'\n\n    joe.income(1500);\n    joe.salary;\n    // -> '$1500.00'\n\n    joe.incrementByPercentage(6);\n    joe.salary;\n    // -> '$1590.00'\n\n    joe._parseCurrency;\n    // -> undefined\n"
+                "\n    var earnsMoney = funkyJS.delegate({\n        _parseCurrency: function (input) {\n            return '$' + (funkyJS.isNumber(input) ? input.toFixed(2) : '0.00');\n        },\n        income: function (input) {\n            var income = this._parseCurrency(input);\n            this.salary = income;\n        },\n        incrementByPercentage: function (perc) {\n            var money = +(this.salary.replace('$', '')),\n                inc = funkyJS.isNumber(perc) && perc > 1 ? perc : 1;\n\n            this.income(money + (money/100 * inc));\n        }\n    });\n\n    var joe = {\n        name: 'joe'\n    }\n\n    earnsMoney(joe, [\n        'income',\n        'incrementByPercentage'\n    ]);\n\n    joe.name;\n    // -> 'joe'\n\n    joe.income(1500);\n    joe.salary;\n    // -> '$1500.00'\n\n    joe.incrementByPercentage(6);\n    joe.salary;\n    // -> '$1590.00'\n"
             ],
             "class": "funkyJS",
             "module": "objects"
         },
         {
             "file": "sources\\objects.js",
-            "line": 658,
+            "line": 694,
             "description": "The forward function can be used to achieve forwarding of method calls from\n    one object to another. This is useful if you want to use a object as\n    a property of some other object and want to share some methods from\n    the inner object on the outer one. It allows to specify the methods\n    exclusive. This means, if no method is specified or none of the given\n    method names exists on the receiver, no method will be available\n    on the forwarder either.",
             "itemtype": "method",
             "name": "forward",
@@ -2956,7 +3099,53 @@
                 "type": "Object"
             },
             "example": [
-                "\n    var joe = {\n        name: 'joe'\n    }\n\n    var familyStateManager =  {\n        marry: function () {\n            this.partner = 1;\n        }\n        divorce: function () {\n            this.partner = 0;\n        },\n        isMarried: function () {\n            return !!this.partner;\n        }\n    }\n\n    funkyJS.forward(joe, familyStateManager, [\n        'marry',\n        'divorce',\n        'isMarried'\n    ]);\n\n    joe.name;\n    // -> joe\n\n    joe.isMarried();\n    // -> false\n\n    joe.marry();\n    joe.isMarried();\n    // -> true\n\n    joe.divorce();\n    joe.isMarried();\n    // -> false\n\n    joe.partner;\n    // -> undefined\n"
+                "\n    var joe = {\n        name: 'joe'\n    }\n\n    var familyStateManager = function () {\n        var partner;\n        return {\n            marry: function () {\n                partner = 1;\n            }\n            divorce: function () {\n                partner = 0;\n            },\n            isMarried: function () {\n                return !!partner;\n            }\n        };\n    }\n\n    funkyJS.forward(joe, familyStateManager(), [\n        'marry',\n        'divorce',\n        'isMarried'\n    ]);\n\n    joe.name;\n    // -> joe\n\n    joe.isMarried();\n    // -> false\n\n    joe.marry();\n    joe.isMarried();\n    // -> true\n\n    joe.divorce();\n    joe.isMarried();\n    // -> false\n"
+            ],
+            "class": "funkyJS",
+            "module": "objects"
+        },
+        {
+            "file": "sources\\objects.js",
+            "line": 779,
+            "description": "The immutable function takes an object and returns a immutable copy of it",
+            "itemtype": "method",
+            "name": "immutable",
+            "params": [
+                {
+                    "name": "o",
+                    "description": "Base object",
+                    "type": "Object"
+                }
+            ],
+            "return": {
+                "description": "Immutable copy of the base object",
+                "type": "Object"
+            },
+            "example": [
+                "\n    var money = funkyJS.immutable({\n        dollar: 4,\n        cents: 50\n    });\n\n    money.dollar;\n    // -> 4\n\n    money.dollar = 5;\n\n    money.dollar;\n    // -> 4\n"
+            ],
+            "class": "funkyJS",
+            "module": "objects"
+        },
+        {
+            "file": "sources\\objects.js",
+            "line": 821,
+            "description": "The fAccess function allows to turn a object or array into a function",
+            "itemtype": "method",
+            "name": "fAccess",
+            "params": [
+                {
+                    "name": "o",
+                    "description": "Any plain object or array",
+                    "type": "Object|array"
+                }
+            ],
+            "return": {
+                "description": "Accessor function",
+                "type": "Function"
+            },
+            "example": [
+                "\n    var john = funkyJS.fAccess({\n        name: 'John Doe',\n        age: 30\n    });\n\n    ['name', 'age'].map(john);\n    // -> ['John Doe', 30]\n\n\n\n    var abc = funkyJS.fAccess([\n        'a', 'b', 'c', 'd', 'e', 'f', 'g',\n        'h', 'i', 'j', 'k', 'l', 'm', 'n',\n        'o', 'p', 'q', 'r', 's', 't', 'u',\n        'v', 'w', 'x', 'y', 'z', ' ', '!'\n    ]);\n\n    [7, 4, 11, 11, 14, 26, 23, 14, 18, 12, 3, 27].map(abc).join('');\n    // -> 'hello world!'\n"
             ],
             "class": "funkyJS",
             "module": "objects"
@@ -3780,10 +3969,6 @@
         {
             "message": "Missing item type\nEXPORT\n======",
             "line": " sources\\extensions\\advices.js:179"
-        },
-        {
-            "message": "Missing item type\nEXPORT\n======",
-            "line": " sources\\extensions\\combinators.js:342"
         },
         {
             "message": "Missing item type\nEXPORT\n======",

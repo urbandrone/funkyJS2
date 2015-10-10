@@ -19,7 +19,7 @@
             
         </div>
         <div class="yui3-u-1-4 version">
-            <em>API Docs for: 1.8.0</em>
+            <em>API Docs for: 1.8.5</em>
         </div>
     </div>
     <div id="bd" class="yui3-g">
@@ -318,6 +318,13 @@
                             </li>
                         
                             <li class="index-item method">
+                                <a href="#method_callRight">callRight</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
                                 <a href="#method_camelize">camelize</a>
 
                                 
@@ -333,6 +340,13 @@
                         
                             <li class="index-item method">
                                 <a href="#method_compose">compose</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_composeAsync">composeAsync</a>
 
                                 
                                 
@@ -424,6 +438,20 @@
                         
                             <li class="index-item method">
                                 <a href="#method_extendWith">extendWith</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_fAccess">fAccess</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_factory">factory</a>
 
                                 
                                 
@@ -529,6 +557,13 @@
                         
                             <li class="index-item method">
                                 <a href="#method_identity">identity</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_immutable">immutable</a>
 
                                 
                                 
@@ -822,6 +857,13 @@
                             </li>
                         
                             <li class="index-item method">
+                                <a href="#method_liftAsync">liftAsync</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
                                 <a href="#method_makeLense">makeLense</a>
 
                                 
@@ -934,6 +976,13 @@
                             </li>
                         
                             <li class="index-item method">
+                                <a href="#method_pipeAsync">pipeAsync</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
                                 <a href="#method_pluck">pluck</a>
 
                                 
@@ -949,6 +998,13 @@
                         
                             <li class="index-item method">
                                 <a href="#method_prepend">prepend</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_sideEffect">sideEffect</a>
 
                                 
                                 
@@ -3962,6 +4018,159 @@ sliceTail([&#39;a&#39;, &#39;b&#39;, &#39;c&#39;]);
 </div>
 
                 
+                    <div id="method_callRight" class="method item">
+    <h3 class="name"><code>callRight</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>fn</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code class="optional">[...leftArgs]</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">Function</span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                    <p>Provided by the <a href="../modules/decorators.html">decorators</a> module.</p>
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/sources_decorators.js.html#l690"><code>sources\decorators.js:690</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>The callRight function kind of works much like the native Function.prototype.bind
+    function, but skips the setting of a specific context until execution.
+    The returned function awaits the context as the first argument given. If
+    a function with a arity of zero is passed into call, the returned function
+    has a arity of one, because at least the context argument must be given</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">fn</code>
+                        <span class="type">Function</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>The function to call</p>
+
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name optional">[...leftArgs]</code>
+                        <span class="type">Any</span>
+                        <span class="flag optional" title="This parameter is optional.">optional</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>Any arguments to pass through from the right</p>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type">Function</span>:
+                    
+                    <p>Function awaiting a context and optionally more arguments</p>
+
+                
+            </div>
+        </div>
+    
+
+    
+        <div class="example">
+            <h4>Example:</h4>
+
+            <div class="example-content">
+                <pre class="code prettyprint"><code>var slice = funkyJS.callRight(Array.prototype.slice);
+
+slice([&#39;a&#39;, &#39;b&#39;, &#39;c&#39;], 2, 1);
+// -&gt; [&#39;b&#39;]
+
+var slice2 = funkyJS.callRight(Array.prototype.slice, 2);
+
+slice2([&#39;a&#39;, &#39;b&#39;, &#39;c&#39;], 0);
+// -&gt; [&#39;a&#39;, &#39;b&#39;]</code></pre>
+
+            </div>
+        </div>
+    
+</div>
+
+                
                     <div id="method_camelize" class="method item">
     <h3 class="name"><code>camelize</code></h3>
 
@@ -4132,7 +4341,7 @@ funkyJS.camelize(str);
             
         
         
-        <a href="../files/sources__birds.js.html#l64"><code>sources\_birds.js:64</code></a>
+        <a href="../files/sources__birds.js.html#l94"><code>sources\_birds.js:94</code></a>
         
         </p>
 
@@ -4341,6 +4550,170 @@ shout(&#39;joe&#39;);
 
 shoutHello(&#39;joe&#39;);
 // -&gt; &#39;HELLO JOE!&#39;</code></pre>
+
+            </div>
+        </div>
+    
+</div>
+
+                
+                    <div id="method_composeAsync" class="method item">
+    <h3 class="name"><code>composeAsync</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>fn1</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">Function</span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                    <p>Provided by the <a href="../modules/combinators.extensions.html">combinators.extensions</a> module.</p>
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/sources_extensions_combinators.js.html#l46"><code>sources\extensions\combinators.js:46</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Allows the compose asynchronous working function, as long as they provide a
+    a compatible interface. A function is considered compatible if it
+    accepts at least three arguments. The first and the second argument are
+    assumed to be (1) the continuation function and (2) the error handler.
+    The third argument given to the returned function should be the data/arguments with which to start. The composed function executes the given
+    function from right to left, much like the core compose() function. For
+    usage information please see the example below</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">fn1</code>
+                        <span class="type">Function</span>
+                    
+
+                    
+                        <span class="flag multiple" title="This argument may occur one or more times.">multiple</span>
+                    
+
+                    <div class="param-description">
+                        <p>One to N asynchronous function to compose</p>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type">Function</span>:
+                    
+                    <p>The composed functions as a new function</p>
+
+                
+            </div>
+        </div>
+    
+
+    
+        <div class="example">
+            <h4>Example:</h4>
+
+            <div class="example-content">
+                <pre class="code prettyprint"><code>function findUser (id, cont, fail) {
+    users.byId(id, function (err, user) {
+        // note: the err argument is completely optional, this is just
+        //       a mapping from node&#39;s convention
+        if (err != null) {
+            return fail(err);
+        }
+
+        // call of cont() with user to proceed
+        cont(user);
+    });
+}
+
+function formatUser (user, cont, fail) {
+    avatars.byId(user.id, function (err, avatar) {
+        if (avatar.isCorrupt()) {
+            return fail(new Error(&#39;Falsy avatar, only .jpg allowed&#39;));
+        }
+
+        cont(funkyJS.inherits(user, avatar));
+    });
+}
+
+
+var showUser = funkyJS.composeAsync(formatUser, findUser);
+
+
+// this is the exit function
+function showCard (userAndAccount) {
+    ui.addUserCard(userAndAccount).makeEventConnections();
+}
+
+// this is the fail function
+function catchError (err) {
+    console.log(err.message);
+}
+
+// get user with id &#39;user012a37fb&#39;
+showUser(addCard, catchError, &#39;user012a37fb&#39;);</code></pre>
 
             </div>
         </div>
@@ -5056,7 +5429,7 @@ window.onresize = funkyJS.debounce(250, recalcComplexLayout);
             
         
         
-        <a href="../files/sources_objects.js.html#l574"><code>sources\objects.js:574</code></a>
+        <a href="../files/sources_objects.js.html#l613"><code>sources\objects.js:613</code></a>
         
         </p>
 
@@ -5155,12 +5528,12 @@ window.onresize = funkyJS.debounce(250, recalcComplexLayout);
             <h4>Example:</h4>
 
             <div class="example-content">
-                <pre class="code prettyprint"><code>var earnsMoney = {
+                <pre class="code prettyprint"><code>var earnsMoney = funkyJS.delegate({
     _parseCurrency: function (input) {
         return &#39;$&#39; + (funkyJS.isNumber(input) ? input.toFixed(2) : &#39;0.00&#39;);
     },
     income: function (input) {
-        var income = earnsMoney._parseCurrency(input);
+        var income = this._parseCurrency(input);
         this.salary = income;
     },
     incrementByPercentage: function (perc) {
@@ -5169,13 +5542,13 @@ window.onresize = funkyJS.debounce(250, recalcComplexLayout);
 
         this.income(money + (money/100 * inc));
     }
-}
+});
 
 var joe = {
     name: &#39;joe&#39;
 }
 
-joe = funkyJS.delegate(earnsMoney, joe, [
+earnsMoney(joe, [
     &#39;income&#39;,
     &#39;incrementByPercentage&#39;
 ]);
@@ -5189,10 +5562,7 @@ joe.salary;
 
 joe.incrementByPercentage(6);
 joe.salary;
-// -&gt; &#39;$1590.00&#39;
-
-joe._parseCurrency;
-// -&gt; undefined</code></pre>
+// -&gt; &#39;$1590.00&#39;</code></pre>
 
             </div>
         </div>
@@ -5988,7 +6358,7 @@ allNumbers([1, null, 3, 4]);
             
         
         
-        <a href="../files/sources_objects.js.html#l406"><code>sources\objects.js:406</code></a>
+        <a href="../files/sources_objects.js.html#l445"><code>sources\objects.js:445</code></a>
         
         </p>
 
@@ -6150,7 +6520,7 @@ funkyJS.extend(dict)()(ext);
             
         
         
-        <a href="../files/sources_objects.js.html#l462"><code>sources\objects.js:462</code></a>
+        <a href="../files/sources_objects.js.html#l501"><code>sources\objects.js:501</code></a>
         
         </p>
 
@@ -6251,6 +6621,275 @@ funkyJS.extendWith(null, null);
 
 funkyJS.extendWith(ext)()(dict);
 // -&gt; { foo: &#39;bar&#39;, goo: &#39;car&#39; }</code></pre>
+
+            </div>
+        </div>
+    
+</div>
+
+                
+                    <div id="method_fAccess" class="method item">
+    <h3 class="name"><code>fAccess</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>o</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">Function</span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                    <p>Provided by the <a href="../modules/objects.html">objects</a> module.</p>
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/sources_objects.js.html#l821"><code>sources\objects.js:821</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>The fAccess function allows to turn a object or array into a function</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">o</code>
+                        <span class="type">Object | Array</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>Any plain object or array</p>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type">Function</span>:
+                    
+                    <p>Accessor function</p>
+
+                
+            </div>
+        </div>
+    
+
+    
+        <div class="example">
+            <h4>Example:</h4>
+
+            <div class="example-content">
+                <pre class="code prettyprint"><code>var john = funkyJS.fAccess({
+    name: &#39;John Doe&#39;,
+    age: 30
+});
+
+[&#39;name&#39;, &#39;age&#39;].map(john);
+// -&gt; [&#39;John Doe&#39;, 30]
+
+
+
+var abc = funkyJS.fAccess([
+    &#39;a&#39;, &#39;b&#39;, &#39;c&#39;, &#39;d&#39;, &#39;e&#39;, &#39;f&#39;, &#39;g&#39;,
+    &#39;h&#39;, &#39;i&#39;, &#39;j&#39;, &#39;k&#39;, &#39;l&#39;, &#39;m&#39;, &#39;n&#39;,
+    &#39;o&#39;, &#39;p&#39;, &#39;q&#39;, &#39;r&#39;, &#39;s&#39;, &#39;t&#39;, &#39;u&#39;,
+    &#39;v&#39;, &#39;w&#39;, &#39;x&#39;, &#39;y&#39;, &#39;z&#39;, &#39; &#39;, &#39;!&#39;
+]);
+
+[7, 4, 11, 11, 14, 26, 23, 14, 18, 12, 3, 27].map(abc).join(&#39;&#39;);
+// -&gt; &#39;hello world!&#39;</code></pre>
+
+            </div>
+        </div>
+    
+</div>
+
+                
+                    <div id="method_factory" class="method item">
+    <h3 class="name"><code>factory</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>Ctor</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">Function</span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                    <p>Provided by the <a href="../modules/objects.html">objects</a> module.</p>
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/sources_objects.js.html#l406"><code>sources\objects.js:406</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>The factory function allows to create a factory for any given constructor
+    function</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">Ctor</code>
+                        <span class="type">Function</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>Constructor function</p>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type">Function</span>:
+                    
+                    <p>The factory for Ctor</p>
+
+                
+            </div>
+        </div>
+    
+
+    
+        <div class="example">
+            <h4>Example:</h4>
+
+            <div class="example-content">
+                <pre class="code prettyprint"><code>var It = function (val) {
+    this.value = val;
+}
+It.prototype.type = function () {
+    return typeof this.value;
+}
+
+var makeIt = funkyJS.factory(It);
+
+var it = makeIt(&#39;Hello World&#39;);
+it.type();
+// -&gt; string
+
+it.value;
+// -&gt; &#39;Hello World&#39;</code></pre>
 
             </div>
         </div>
@@ -7470,7 +8109,7 @@ squared;
             
         
         
-        <a href="../files/sources_objects.js.html#l658"><code>sources\objects.js:658</code></a>
+        <a href="../files/sources_objects.js.html#l694"><code>sources\objects.js:694</code></a>
         
         </p>
 
@@ -7574,19 +8213,22 @@ squared;
     name: &#39;joe&#39;
 }
 
-var familyStateManager =  {
-    marry: function () {
-        this.partner = 1;
-    }
-    divorce: function () {
-        this.partner = 0;
-    },
-    isMarried: function () {
-        return !!this.partner;
-    }
+var familyStateManager = function () {
+    var partner;
+    return {
+        marry: function () {
+            partner = 1;
+        }
+        divorce: function () {
+            partner = 0;
+        },
+        isMarried: function () {
+            return !!partner;
+        }
+    };
 }
 
-funkyJS.forward(joe, familyStateManager, [
+funkyJS.forward(joe, familyStateManager(), [
     &#39;marry&#39;,
     &#39;divorce&#39;,
     &#39;isMarried&#39;
@@ -7604,10 +8246,7 @@ joe.isMarried();
 
 joe.divorce();
 joe.isMarried();
-// -&gt; false
-
-joe.partner;
-// -&gt; undefined</code></pre>
+// -&gt; false</code></pre>
 
             </div>
         </div>
@@ -8558,6 +9197,135 @@ var makeLabel = fromStrDateMake(isLabel)(labelDelivery);</code></pre>
 </div>
 
                 
+                    <div id="method_immutable" class="method item">
+    <h3 class="name"><code>immutable</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>o</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">Object</span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                    <p>Provided by the <a href="../modules/objects.html">objects</a> module.</p>
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/sources_objects.js.html#l779"><code>sources\objects.js:779</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>The immutable function takes an object and returns a immutable copy of it</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">o</code>
+                        <span class="type">Object</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>Base object</p>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type">Object</span>:
+                    
+                    <p>Immutable copy of the base object</p>
+
+                
+            </div>
+        </div>
+    
+
+    
+        <div class="example">
+            <h4>Example:</h4>
+
+            <div class="example-content">
+                <pre class="code prettyprint"><code>var money = funkyJS.immutable({
+    dollar: 4,
+    cents: 50
+});
+
+money.dollar;
+// -&gt; 4
+
+money.dollar = 5;
+
+money.dollar;
+// -&gt; 4</code></pre>
+
+            </div>
+        </div>
+    
+</div>
+
+                
                     <div id="method_inherits" class="method item">
     <h3 class="name"><code>inherits</code></h3>
 
@@ -8612,7 +9380,7 @@ var makeLabel = fromStrDateMake(isLabel)(labelDelivery);</code></pre>
             
         
         
-        <a href="../files/sources_objects.js.html#l511"><code>sources\objects.js:511</code></a>
+        <a href="../files/sources_objects.js.html#l550"><code>sources\objects.js:550</code></a>
         
         </p>
 
@@ -8878,13 +9646,13 @@ Extended.subClass = function (ext) {
     return self;
 }
 
-function isAThing (x) {
+thing.is = function (x) {
     return x instanceof thing;
 }
 
 var _t = thing(10);
 
-isAThing(_t);
+thing.is(_t);
 // -&gt; true
 
 _t.value();
@@ -13787,6 +14555,155 @@ funkyJS.last()([&#39;a&#39;, &#39;b&#39;, &#39;c&#39;]);
 </div>
 
                 
+                    <div id="method_liftAsync" class="method item">
+    <h3 class="name"><code>liftAsync</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>fn</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">Function</span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                    <p>Provided by the <a href="../modules/combinators.extensions.html">combinators.extensions</a> module.</p>
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/sources_extensions_combinators.js.html#l204"><code>sources\extensions\combinators.js:204</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Lifts a synchronous working function into a function which can be composed
+    and piped in a asynchronous chain</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">fn</code>
+                        <span class="type">Function</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>The synchronous function</p>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type">Function</span>:
+                    
+                    <p>A function with asynchronous style wrapper</p>
+
+                
+            </div>
+        </div>
+    
+
+    
+        <div class="example">
+            <h4>Example:</h4>
+
+            <div class="example-content">
+                <pre class="code prettyprint"><code>var f = funkyJS; // readability
+
+function getUser(id, cont, fail) {
+    users.byId(id, function (err, user) {
+        if (err) {
+            return fail(err);
+        }
+        cont(user);
+    });
+}
+
+function getAvatar (id, cont, fail) {
+    avatars.byId(id, function (err, avatar) {
+        if (err) {
+            return fail(err);
+        }
+        cont(avatar);
+    });
+}
+
+var getUserAvatar = f.pipeAsync(
+    getUser,
+    f.liftAsync(f.get(&#39;id&#39;)),
+    getAvatar
+);
+
+getUserAvatar(&#39;user0c2a37fb&#39;, function (avatar) {
+    ui.showAvatar(avatar);
+}, function (err) {
+    ui.showError(err.message);
+});</code></pre>
+
+            </div>
+        </div>
+    
+</div>
+
+                
                     <div id="method_makeLense" class="method item">
     <h3 class="name"><code>makeLense</code></h3>
 
@@ -16091,6 +17008,169 @@ greetAndBePoliteTo(&#39;joe&#39;);
 </div>
 
                 
+                    <div id="method_pipeAsync" class="method item">
+    <h3 class="name"><code>pipeAsync</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>fn1</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">Function</span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                    <p>Provided by the <a href="../modules/combinators.extensions.html">combinators.extensions</a> module.</p>
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/sources_extensions_combinators.js.html#l126"><code>sources\extensions\combinators.js:126</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Allows the pipe asynchronous working function, as long as they provide a
+    a compatible interface. A function is considered compatible if it
+    accepts at least three arguments. The first and the second argument are
+    assumed to be (1) the continuation function and (2) the error handler.
+    The third argument given to the returned function should be the data/arguments with which to start. The piped function executes the given
+    function from left to right, much like the core pipe() function. For
+    usage information please see the example below</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">fn1</code>
+                        <span class="type">Function</span>
+                    
+
+                    
+                        <span class="flag multiple" title="This argument may occur one or more times.">multiple</span>
+                    
+
+                    <div class="param-description">
+                        <p>One to N asynchronous function to pipe</p>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type">Function</span>:
+                    
+                    <p>The piped functions as a new function</p>
+
+                
+            </div>
+        </div>
+    
+
+    
+        <div class="example">
+            <h4>Example:</h4>
+
+            <div class="example-content">
+                <pre class="code prettyprint"><code>function findUser (id, cont, fail) {
+    users.byId(id, function (err, user) {
+        // note: the err argument is completely optional, this is just
+        //       a mapping from node&#39;s convention
+        if (err != null) {
+            return fail(err);
+        }
+
+        // call of cont() with user to proceed
+        cont(user);
+    });
+}
+
+function formatUser (user, cont, fail) {
+    avatars.byId(user.id, function (err, avatar) {
+        if (avatar.isCorrupt()) {
+            return fail(new Error(&#39;Falsy avatar, only .jpg allowed&#39;));
+        }
+
+        cont(funkyJS.inherits(user, avatar));
+    });
+}
+
+// this is the exit function
+function showCard (userAndAccount) {
+    ui.addUserCard(userAndAccount).makeEventConnections();
+}
+
+// this is the fail function
+function catchError (err) {
+    console.log(err.message);
+}
+
+
+var getUser = funkyJS.pipeAsync(findUser, formatUser);
+
+// get user with id &#39;user0c2a37fb&#39;
+getUser(&#39;user0c2a37fb&#39;, showCard, catchError);</code></pre>
+
+            </div>
+        </div>
+    
+</div>
+
+                
                     <div id="method_pluck" class="method item">
     <h3 class="name"><code>pluck</code></h3>
 
@@ -16532,6 +17612,159 @@ funkyJS.prepend(newHead, null);
 
 funkyJS.prepend(newHead)()([&#39;a&#39;, &#39;b&#39;, &#39;c&#39;]);
 // -&gt; [1, 2, 3, &#39;a&#39;, &#39;b&#39;, &#39;c&#39;]</code></pre>
+
+            </div>
+        </div>
+    
+</div>
+
+                
+                    <div id="method_sideEffect" class="method item">
+    <h3 class="name"><code>sideEffect</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>fn</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">Function</span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                    <p>Provided by the <a href="../modules/combinators.extensions.html">combinators.extensions</a> module.</p>
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/sources_extensions_combinators.js.html#l270"><code>sources\extensions\combinators.js:270</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Allows to savely wrap functions which have side effects (like UI updates)
+    with a wrapper ready to be used in asynchronous control flows. This
+    allows to savely perform side effects inside asynchronous function
+    compositions or pipes</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">fn</code>
+                        <span class="type">Function</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>The function which has side effects</p>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type">Function</span>:
+                    
+                    <p>A function with asynchronous style wrapper</p>
+
+                
+            </div>
+        </div>
+    
+
+    
+        <div class="example">
+            <h4>Example:</h4>
+
+            <div class="example-content">
+                <pre class="code prettyprint"><code>var f = funkyJS; // readability
+
+function getUser(id, cont, fail) {
+    users.byId(id, function (err, user) {
+        if (err) {
+            return fail(err);
+        }
+        cont(user);
+    });
+}
+
+function getAvatar (id, cont, fail) {
+    avatars.byId(id, function (err, avatar) {
+        if (err) {
+            return fail(err);
+        }
+        cont(avatar);
+    });
+}
+
+var getUserAvatar = f.pipeAsync(
+    f.sideEffect(ui.showProgressIndicator), // fn with side effect
+    getUser, // async operation
+    f.liftAsync(f.get(&#39;id&#39;)), // sync &lt;=&gt; async mapping
+    getAvatar,
+    f.sideEffect(ui.hideProgressIndicator)
+);
+
+getUserAvatar(&#39;user0c2a37fb&#39;, function (avatar) {
+    ui.showAvatar(avatar);
+}, function (err) {
+    ui.showError(err.message);
+});</code></pre>
 
             </div>
         </div>

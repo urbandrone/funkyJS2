@@ -1,4 +1,7 @@
-/* global funkyJS */
+// This file contains multiple example for class creation without using the "new"
+//   keyword
+//
+/* globals funkyJS */
 ;(function (f) {
 
     /**
@@ -105,5 +108,29 @@
     */
 
     window.thing = thing;
+
+})(funkyJS);
+;(function (f) {
+
+    /**
+    Here is an example of using just the basic birds module to create a class
+        out of a single function and without any prototype, just the function's
+        original one. Actually, the class does not do anything, it is just a
+        example. If it would do anything, the class would be used like this (no
+        new):
+
+    var instance = Noop({selector: '#some-id'}).init();
+    **/
+    window.Noop = f.tap(function noop (config) {
+        return noop.setup(config);
+    })(function (fn) {
+        fn.setup = function (conf) {
+            return {
+                $node: document.querySelector(conf.selector),
+                init: f.fluent(function () {})
+            };
+        }
+        return fn;
+    });
 
 })(funkyJS);

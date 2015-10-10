@@ -1,3 +1,4 @@
+/* globals funkyJS */
 describe('funkyJS Birds Module', function () {
 
     it('testing identity :: f -> x -> x', function () {
@@ -29,6 +30,21 @@ describe('funkyJS Birds Module', function () {
 
         expect(incInt32('1px')).toEqual(2);
         expect(inc(int32('1px'))).toEqual(2);
+    });
+
+    it('testing tap :: f -> x -> g -> gx', function () {
+        var f = funkyJS.tap(function tapped (v) {
+            return tapped.process(v);
+        })(function (fn) {
+            fn.process = function (v) {
+                return v * v;
+            }
+            return fn;
+        });
+
+        expect(f(2)).toBe(4);
+        expect(typeof f.process).toBe('function');
+        expect(f(2)).toBe(f.process(2));
     });
 
 });

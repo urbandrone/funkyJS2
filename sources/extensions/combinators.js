@@ -43,7 +43,7 @@
     }
 
 
-    /*
+    /**
     Allows the compose asynchronous working function, as long as they provide a
         a compatible interface. A function is considered compatible if it
         accepts at least three arguments. The first and the second argument are
@@ -97,7 +97,7 @@
 
         // get user with id 'user012a37fb'
         showUser(addCard, catchError, 'user012a37fb');
-    */
+    **/
     api.composeAsync = function composeAsync (/* fn1, ...fnN */) {
         var fns;
 
@@ -123,7 +123,7 @@
     }
 
 
-    /*
+    /**
     Allows the pipe asynchronous working function, as long as they provide a
         a compatible interface. A function is considered compatible if it
         accepts at least three arguments. The first and the second argument are
@@ -176,7 +176,7 @@
 
         // get user with id 'user0c2a37fb'
         getUser('user0c2a37fb', showCard, catchError);
-    */
+    **/
     api.pipeAsync = function pipeAsync (/* fn1, ...fnN */) {
         var fns;
 
@@ -201,9 +201,9 @@
         });
     }
 
-    /*
+    /**
     Lifts a synchronous working function into a function which can be composed
-        and piped in a asynchronous execution
+        and piped in a asynchronous chain
 
     @method liftAsync
     @for funkyJS
@@ -237,12 +237,12 @@
             getAvatar
         );
 
-        getUserAvatar('user0c2a37fb', function (user) {
-            ui.showContact(user);
+        getUserAvatar('user0c2a37fb', function (avatar) {
+            ui.showAvatar(avatar);
         }, function (err) {
             ui.showError(err.message);
         });
-    */
+    **/
     api.liftAsync = function liftAsync (fn) {
         if (arguments.length < 1) {
             return liftAsync;
@@ -267,7 +267,7 @@
         });
     }
 
-    /*
+    /**
     Allows to savely wrap functions which have side effects (like UI updates)
         with a wrapper ready to be used in asynchronous control flows. This
         allows to savely perform side effects inside asynchronous function
@@ -307,10 +307,12 @@
             f.sideEffect(ui.hideProgressIndicator)
         );
 
-        getUserAvatar('user0c2a37fb', function (user) {
-            ui.showContact(user);
-        }, ui.showError.bind(ui));
-    */
+        getUserAvatar('user0c2a37fb', function (avatar) {
+            ui.showAvatar(avatar);
+        }, function (err) {
+            ui.showError(err.message);
+        });
+    **/
     api.sideEffect = function sideEffect (fn) {
         if (arguments.length < 1) {
             return sideEffect;
@@ -339,7 +341,7 @@
 
 
 
-    /***
+    /*
      * EXPORT
      * ======
      */

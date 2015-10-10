@@ -687,14 +687,14 @@
         });
     }
 
-    /*
+    /**
     The callRight function kind of works much like the native Function.prototype.bind
         function, but skips the setting of a specific context until execution.
         The returned function awaits the context as the first argument given. If
         a function with a arity of zero is passed into call, the returned function
         has a arity of one, because at least the context argument must be given
 
-    @method call
+    @method callRight
     @for funkyJS
     @param {function} fn The function to call
     @param {any} [...leftArgs] Any arguments to pass through from the right
@@ -711,7 +711,7 @@
         slice2(['a', 'b', 'c'], 0);
         // -> ['a', 'b']
 
-    */
+    **/
     api.callRight = function callRight (fn /*, rightArgs*/) {
         var rArgs;
         if (fn === undefined) {

@@ -19,7 +19,7 @@
             
         </div>
         <div class="yui3-u-1-4 version">
-            <em>API Docs for: 1.8.0</em>
+            <em>API Docs for: 1.8.5</em>
         </div>
     </div>
     <div id="bd" class="yui3-g">
@@ -498,13 +498,13 @@
             return self;
         }
 
-        function isAThing (x) {
+        thing.is = function (x) {
             return x instanceof thing;
         }
 
         var _t = thing(10);
 
-        isAThing(_t);
+        thing.is(_t);
         // -&gt; true
 
         _t.value();
@@ -523,6 +523,45 @@
         }
 
         return Object.create(Ctor.prototype);
+    }
+
+    /**
+    The factory function allows to create a factory for any given constructor
+        function
+
+    @method factory
+    @for funkyJS
+    @param {function} Ctor Constructor function
+    @return {function} The factory for Ctor
+
+    @example
+        var It = function (val) {
+            this.value = val;
+        }
+        It.prototype.type = function () {
+            return typeof this.value;
+        }
+
+        var makeIt = funkyJS.factory(It);
+
+        var it = makeIt(&#x27;Hello World&#x27;);
+        it.type();
+        // -&gt; string
+
+        it.value;
+        // -&gt; &#x27;Hello World&#x27;
+
+    **/
+    api.factory = function factory (Ctor) {
+        if (type.isNotFunction(Ctor)) {
+            throw new Error(&#x27;factory expected Ctor to be function but saw &#x27; + Ctor);
+        }
+
+        return function (/* args */) {
+            var it = Object.create(Ctor.prototype);
+            Ctor.apply(it, arguments);
+            return it;
+        }
     }
 
     /**
@@ -709,12 +748,12 @@
     @return {object} The receiver
 
     @example
-        var earnsMoney = {
+        var earnsMoney = funkyJS.delegate({
             _parseCurrency: function (input) {
                 return &#x27;$&#x27; + (funkyJS.isNumber(input) ? input.toFixed(2) : &#x27;0.00&#x27;);
             },
             income: function (input) {
-                var income = earnsMoney._parseCurrency(input);
+                var income = this._parseCurrency(input);
                 this.salary = income;
             },
             incrementByPercentage: function (perc) {
@@ -723,13 +762,13 @@
 
                 this.income(money + (money/100 * inc));
             }
-        }
+        });
 
         var joe = {
             name: &#x27;joe&#x27;
         }
 
-        joe = funkyJS.delegate(earnsMoney, joe, [
+        earnsMoney(joe, [
             &#x27;income&#x27;,
             &#x27;incrementByPercentage&#x27;
         ]);
@@ -744,9 +783,6 @@
         joe.incrementByPercentage(6);
         joe.salary;
         // -&gt; &#x27;$1590.00&#x27;
-
-        joe._parseCurrency;
-        // -&gt; undefined
 
     **/
     api.delegate = function delegate (provider, receiver, methods) {
@@ -798,19 +834,22 @@
             name: &#x27;joe&#x27;
         }
 
-        var familyStateManager =  {
-            marry: function () {
-                this.partner = 1;
-            }
-            divorce: function () {
-                this.partner = 0;
-            },
-            isMarried: function () {
-                return !!this.partner;
-            }
+        var familyStateManager = function () {
+            var partner;
+            return {
+                marry: function () {
+                    partner = 1;
+                }
+                divorce: function () {
+                    partner = 0;
+                },
+                isMarried: function () {
+                    return !!partner;
+                }
+            };
         }
 
-        funkyJS.forward(joe, familyStateManager, [
+        funkyJS.forward(joe, familyStateManager(), [
             &#x27;marry&#x27;,
             &#x27;divorce&#x27;,
             &#x27;isMarried&#x27;
@@ -829,9 +868,6 @@
         joe.divorce();
         joe.isMarried();
         // -&gt; false
-
-        joe.partner;
-        // -&gt; undefined
 
     **/
     api.forward = function forward (forwarder, receiver, methods) {
@@ -860,6 +896,94 @@
         });
 
         return forwarder;
+    }
+
+    /**
+    The immutable function takes an object and returns a immutable copy of it
+
+    @method immutable
+    @for funkyJS
+    @param {object} o Base object
+    @return {object} Immutable copy of the base object
+
+    @example
+        var money = funkyJS.immutable({
+            dollar: 4,
+            cents: 50
+        });
+
+        money.dollar;
+        // -&gt; 4
+
+        money.dollar = 5;
+
+        money.dollar;
+        // -&gt; 4
+
+    **/
+    api.immutable = function immutable (o) {
+        if (arguments.length &lt; 1) {
+            return immutable;
+        }
+
+        if (type.isNotObject(o)) {
+            return o;
+        }
+
+        return Object.keys(o).reduce(function (acc, k) {
+            Object.defineProperty(acc, k, {
+                enumerable: true,
+                writable: false,
+                value: o[k]
+            });
+            return acc;
+        }, {});
+    }
+
+    /**
+    The fAccess function allows to turn a object or array into a function
+
+    @method fAccess
+    @for funkyJS
+    @param {object|array} o Any plain object or array
+    @return {function} Accessor function
+
+    @example
+        var john = funkyJS.fAccess({
+            name: &#x27;John Doe&#x27;,
+            age: 30
+        });
+
+        [&#x27;name&#x27;, &#x27;age&#x27;].map(john);
+        // -&gt; [&#x27;John Doe&#x27;, 30]
+
+
+
+        var abc = funkyJS.fAccess([
+            &#x27;a&#x27;, &#x27;b&#x27;, &#x27;c&#x27;, &#x27;d&#x27;, &#x27;e&#x27;, &#x27;f&#x27;, &#x27;g&#x27;,
+            &#x27;h&#x27;, &#x27;i&#x27;, &#x27;j&#x27;, &#x27;k&#x27;, &#x27;l&#x27;, &#x27;m&#x27;, &#x27;n&#x27;,
+            &#x27;o&#x27;, &#x27;p&#x27;, &#x27;q&#x27;, &#x27;r&#x27;, &#x27;s&#x27;, &#x27;t&#x27;, &#x27;u&#x27;,
+            &#x27;v&#x27;, &#x27;w&#x27;, &#x27;x&#x27;, &#x27;y&#x27;, &#x27;z&#x27;, &#x27; &#x27;, &#x27;!&#x27;
+        ]);
+
+        [7, 4, 11, 11, 14, 26, 23, 14, 18, 12, 3, 27].map(abc).join(&#x27;&#x27;);
+        // -&gt; &#x27;hello world!&#x27;
+
+    **/
+    api.fAccess = function fAccess (o) {
+        if (type.isNotObject(o) &amp;&amp; type.isNotArray(o)) {
+            throw new Error(&#x27;fAccess expected argument to be object but saw &#x27; + o);
+        }
+
+        function fobj (key) {
+            return fobj.o[key];
+        }
+        Object.defineProperty(fobj, &#x27;o&#x27;, {
+            enumerable: false,
+            writable: false,
+            value: o
+        });
+        return fobj;
     }
 
 
