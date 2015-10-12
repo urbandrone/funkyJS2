@@ -40,7 +40,7 @@
     Allows to create a numerical iterator, with a optional start and end number.
         If the end number is below the start number, the returned iterator counts
         down. If no arguments are given, the iterator counts up to positive
-        infinity
+        infinity, starting by zero
 
     @method numIterator
     @for funkyJS
@@ -59,6 +59,30 @@
 
         nums.next().value();
         // -> 7
+
+
+        var nums2 = funkyJS.numIterator();
+
+        nums2.next().value();
+        // -> 0
+
+        nums2.next().value();
+        // -> 1
+
+        nums2.next().value();
+        // -> 2
+
+
+        var nums3 = funkyJS.numIterator(10, 0);
+
+        nums3.next().value();
+        // -> 10
+
+        nums3.next().value();
+        // -> 9
+
+        nums3.next().value();
+        // -> 8
 
     **/
     api.numIterator = function numIterator (start, max) {
@@ -92,6 +116,40 @@
         };
     }
 
+    /**
+    Creates a sequencial iterator. Sequencial iterators allow to iterate over
+        strings, arrays, arguments and nodelist
+
+    @method seqIterator
+    @for funkyJS
+    @param {array|string|arguments|nodelist} seq Sequencial value
+    @return {object} Iterator object
+
+    @example
+        var itAbc = funkyJS.seqIterator(['a', 'b', 'c']);
+
+        itAbc.next().value();
+        // -> 'a'
+
+        itAbc.next().value();
+        // -> 'b'
+
+        itAbc.next().value();
+        // -> 'c'
+
+
+        var itStr = funkyJS.seqIterator('string');
+
+        itStr.next().value();
+        // -> 's'
+
+        itStr.next().value();
+        // -> 't'
+
+        itStr.next().value();
+        // -> 'r'
+
+    **/
     api.seqIterator = function seqIterator (seq) {
         var _index;
 
@@ -123,6 +181,33 @@
         };
     }
 
+    /**
+    Creates a object/hashtable iterator. Please note that the returned iterator
+        might iterate randomly through the object, depending on the behaviour of
+        the underlying JavaScript engine
+
+    @method objIterator
+    @for funkyJS
+    @param {object} obj Hashtable to iterate over
+    @return {object} Iterator object
+
+    @example
+        var itAbc = funkyJS.objIterator({
+            a: 'first',
+            b: 'second',
+            c: 'third'
+        });
+
+        itAbc.next().value();
+        // -> 'first'
+
+        itAbc.next().value();
+        // -> 'second'
+
+        itAbc.next().value();
+        // -> 'third'
+
+    **/
     api.objIterator = function objIterator (obj) {
         var _keys,
             _index;
@@ -156,8 +241,37 @@
         };
     }
 
+    /**
+    Returns a lazy iterator, which maps a given function to a given iterator. The
+        returned iterator is lazy, as it only maps when calling it's next() method
 
+    @method mapLazy
+    @for funkyJS
+    @param {function} fn The function to apply
+    @param {object} iterator The iterator to map over
+    @return {object} Iterator object
 
+    @example
+        var itAbc = funkyJS.objIterator({
+            a: 'first',
+            b: 'second',
+            c: 'third'
+        });
+
+        var upper = funkyJS.call(String.prototype.toUpperCase);
+
+        var lazyMap = funkyJS.mapLazy(upper, itAbc);
+
+        lazyMap.next().value();
+        // -> 'FIRST'
+
+        lazyMap.next().value();
+        // -> 'SECOND'
+
+        lazyMap.next().value();
+        // -> 'THIRD'
+
+    **/
     api.mapLazy = function mapLazy (fn, iterator) {
         if (typeof fn !== 'function') {
             throw new Error('mapLazy expected first argument to be function but saw ' + fn);
@@ -196,6 +310,37 @@
         };
     }
 
+    /**
+    Returns a lazy iterator, which filters with a given function a given iterator.
+        The returned iterator is lazy, as it only filters when calling it's
+        next() method
+
+    @method filterLazy
+    @for funkyJS
+    @param {function} fn The predicate function
+    @param {object} iterator The iterator to filter
+    @return {object} Iterator object
+
+    @example
+        var itAbc = funkyJS.objIterator({
+            a: 'first',
+            b: 'second',
+            c: 'third'
+        });
+
+        var startsEitherFT = function (s) {
+            return s[0] === 't' || s[0] === 'f';
+        }
+
+        var lazyFilter = funkyJS.filterLazy(startsEitherFT, itAbc);
+
+        lazyFilter.next().value();
+        // -> 'first'
+
+        lazyFilter.next().value();
+        // -> 'third'
+
+    **/
     api.filterLazy = function filterLazy (fn, iterator) {
         if (typeof fn !== 'function') {
             throw new Error('filterLazy expected first argument to be function but saw ' + fn);
@@ -237,6 +382,41 @@
         };
     }
 
+    /**
+    Returns a lazy iterator, which folds a given iterator to one value. The
+        returned iterator is lazy as it only folds one when calling it's next()
+        method
+
+    @method foldLazy
+    @for funkyJS
+    @param {function} fn The function to fold with
+    @param {object} iterator The iterator to fold
+    @param {*} seed The initial value to start from
+    @return {object} Iterator object
+
+    @example
+        var itAbc = funkyJS.objIterator({
+            a: 'first',
+            b: 'second',
+            c: 'third'
+        });
+
+        var cat = function (a, b) {
+            return !a ? b : a + ', ' + b;
+        }
+
+        var lazyFold = funkyJS.foldLazy(cat, itAbc, '');
+
+        lazyFold.next().value();
+        // -> 'first'
+
+        lazyFold.next().value();
+        // -> 'first, second'
+
+        lazyFold.next().value();
+        // -> 'first, second, third'
+
+    **/
     api.foldLazy = function foldLazy (fn, iterator, seed) {
         var _acc;
         if (typeof fn !== 'function') {

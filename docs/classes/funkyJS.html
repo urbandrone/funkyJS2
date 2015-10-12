@@ -458,6 +458,13 @@
                             </li>
                         
                             <li class="index-item method">
+                                <a href="#method_filterLazy">filterLazy</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
                                 <a href="#method_filterWith">filterWith</a>
 
                                 
@@ -487,6 +494,13 @@
                         
                             <li class="index-item method">
                                 <a href="#method_fluent">fluent</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_foldLazy">foldLazy</a>
 
                                 
                                 
@@ -871,6 +885,13 @@
                             </li>
                         
                             <li class="index-item method">
+                                <a href="#method_mapLazy">mapLazy</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
                                 <a href="#method_mapWith">mapWith</a>
 
                                 
@@ -941,6 +962,13 @@
                             </li>
                         
                             <li class="index-item method">
+                                <a href="#method_objIterator">objIterator</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
                                 <a href="#method_or">or</a>
 
                                 
@@ -998,6 +1026,13 @@
                         
                             <li class="index-item method">
                                 <a href="#method_prepend">prepend</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_seqIterator">seqIterator</a>
 
                                 
                                 
@@ -6897,6 +6932,164 @@ it.value;
 </div>
 
                 
+                    <div id="method_filterLazy" class="method item">
+    <h3 class="name"><code>filterLazy</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>fn</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>iterator</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">Object</span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                    <p>Provided by the <a href="../modules/iterators.html">iterators</a> module.</p>
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/sources_extensions_iterators.js.html#l313"><code>sources\extensions\iterators.js:313</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Returns a lazy iterator, which filters with a given function a given iterator.
+    The returned iterator is lazy, as it only filters when calling it&#39;s
+    next() method</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">fn</code>
+                        <span class="type">Function</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>The predicate function</p>
+
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">iterator</code>
+                        <span class="type">Object</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>The iterator to filter</p>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type">Object</span>:
+                    
+                    <p>Iterator object</p>
+
+                
+            </div>
+        </div>
+    
+
+    
+        <div class="example">
+            <h4>Example:</h4>
+
+            <div class="example-content">
+                <pre class="code prettyprint"><code>var itAbc = funkyJS.objIterator({
+    a: &#39;first&#39;,
+    b: &#39;second&#39;,
+    c: &#39;third&#39;
+});
+
+var startsEitherFT = function (s) {
+    return s[0] === &#39;t&#39; || s[0] === &#39;f&#39;;
+}
+
+var lazyFilter = funkyJS.filterLazy(startsEitherFT, itAbc);
+
+lazyFilter.next().value();
+// -&gt; &#39;first&#39;
+
+lazyFilter.next().value();
+// -&gt; &#39;third&#39;</code></pre>
+
+            </div>
+        </div>
+    
+</div>
+
+                
                     <div id="method_filterWith" class="method item">
     <h3 class="name"><code>filterWith</code></h3>
 
@@ -7553,6 +7746,189 @@ staticClass.bar = funkyJS.fluent(staticClass.bar);
 
 staticClass.foo().bar();
 // -&gt; Works like a charm now</code></pre>
+
+            </div>
+        </div>
+    
+</div>
+
+                
+                    <div id="method_foldLazy" class="method item">
+    <h3 class="name"><code>foldLazy</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>fn</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>iterator</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>seed</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">Object</span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                    <p>Provided by the <a href="../modules/iterators.html">iterators</a> module.</p>
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/sources_extensions_iterators.js.html#l385"><code>sources\extensions\iterators.js:385</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Returns a lazy iterator, which folds a given iterator to one value. The
+    returned iterator is lazy as it only folds one when calling it&#39;s next()
+    method</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">fn</code>
+                        <span class="type">Function</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>The function to fold with</p>
+
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">iterator</code>
+                        <span class="type">Object</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>The iterator to fold</p>
+
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">seed</code>
+                        <span class="type"></span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>The initial value to start from</p>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type">Object</span>:
+                    
+                    <p>Iterator object</p>
+
+                
+            </div>
+        </div>
+    
+
+    
+        <div class="example">
+            <h4>Example:</h4>
+
+            <div class="example-content">
+                <pre class="code prettyprint"><code>var itAbc = funkyJS.objIterator({
+    a: &#39;first&#39;,
+    b: &#39;second&#39;,
+    c: &#39;third&#39;
+});
+
+var cat = function (a, b) {
+    return !a ? b : a + &#39;, &#39; + b;
+}
+
+var lazyFold = funkyJS.foldLazy(cat, itAbc, &#39;&#39;);
+
+lazyFold.next().value();
+// -&gt; &#39;first&#39;
+
+lazyFold.next().value();
+// -&gt; &#39;first, second&#39;
+
+lazyFold.next().value();
+// -&gt; &#39;first, second, third&#39;</code></pre>
 
             </div>
         </div>
@@ -14857,6 +15233,164 @@ processComment(comment);
 </div>
 
                 
+                    <div id="method_mapLazy" class="method item">
+    <h3 class="name"><code>mapLazy</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>fn</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>iterator</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">Object</span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                    <p>Provided by the <a href="../modules/iterators.html">iterators</a> module.</p>
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/sources_extensions_iterators.js.html#l244"><code>sources\extensions\iterators.js:244</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Returns a lazy iterator, which maps a given function to a given iterator. The
+    returned iterator is lazy, as it only maps when calling it&#39;s next() method</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">fn</code>
+                        <span class="type">Function</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>The function to apply</p>
+
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">iterator</code>
+                        <span class="type">Object</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>The iterator to map over</p>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type">Object</span>:
+                    
+                    <p>Iterator object</p>
+
+                
+            </div>
+        </div>
+    
+
+    
+        <div class="example">
+            <h4>Example:</h4>
+
+            <div class="example-content">
+                <pre class="code prettyprint"><code>var itAbc = funkyJS.objIterator({
+    a: &#39;first&#39;,
+    b: &#39;second&#39;,
+    c: &#39;third&#39;
+});
+
+var upper = funkyJS.call(String.prototype.toUpperCase);
+
+var lazyMap = funkyJS.mapLazy(upper, itAbc);
+
+lazyMap.next().value();
+// -&gt; &#39;FIRST&#39;
+
+lazyMap.next().value();
+// -&gt; &#39;SECOND&#39;
+
+lazyMap.next().value();
+// -&gt; &#39;THIRD&#39;</code></pre>
+
+            </div>
+        </div>
+    
+</div>
+
+                
                     <div id="method_mapWith" class="method item">
     <h3 class="name"><code>mapWith</code></h3>
 
@@ -16195,7 +16729,7 @@ funkyJS.nth(1)()([&#39;a&#39;, &#39;b&#39;, &#39;c&#39;]);
         <p>Allows to create a numerical iterator, with a optional start and end number.
     If the end number is below the start number, the returned iterator counts
     down. If no arguments are given, the iterator counts up to positive
-    infinity</p>
+    infinity, starting by zero</p>
 
     </div>
 
@@ -16271,7 +16805,164 @@ nums.next().value();
 // -&gt; 6
 
 nums.next().value();
-// -&gt; 7</code></pre>
+// -&gt; 7
+
+
+var nums2 = funkyJS.numIterator();
+
+nums2.next().value();
+// -&gt; 0
+
+nums2.next().value();
+// -&gt; 1
+
+nums2.next().value();
+// -&gt; 2
+
+
+var nums3 = funkyJS.numIterator(10, 0);
+
+nums3.next().value();
+// -&gt; 10
+
+nums3.next().value();
+// -&gt; 9
+
+nums3.next().value();
+// -&gt; 8</code></pre>
+
+            </div>
+        </div>
+    
+</div>
+
+                
+                    <div id="method_objIterator" class="method item">
+    <h3 class="name"><code>objIterator</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>obj</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">Object</span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                    <p>Provided by the <a href="../modules/iterators.html">iterators</a> module.</p>
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/sources_extensions_iterators.js.html#l184"><code>sources\extensions\iterators.js:184</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Creates a object/hashtable iterator. Please note that the returned iterator
+    might iterate randomly through the object, depending on the behaviour of
+    the underlying JavaScript engine</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">obj</code>
+                        <span class="type">Object</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>Hashtable to iterate over</p>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type">Object</span>:
+                    
+                    <p>Iterator object</p>
+
+                
+            </div>
+        </div>
+    
+
+    
+        <div class="example">
+            <h4>Example:</h4>
+
+            <div class="example-content">
+                <pre class="code prettyprint"><code>var itAbc = funkyJS.objIterator({
+    a: &#39;first&#39;,
+    b: &#39;second&#39;,
+    c: &#39;third&#39;
+});
+
+itAbc.next().value();
+// -&gt; &#39;first&#39;
+
+itAbc.next().value();
+// -&gt; &#39;second&#39;
+
+itAbc.next().value();
+// -&gt; &#39;third&#39;</code></pre>
 
             </div>
         </div>
@@ -17612,6 +18303,146 @@ funkyJS.prepend(newHead, null);
 
 funkyJS.prepend(newHead)()([&#39;a&#39;, &#39;b&#39;, &#39;c&#39;]);
 // -&gt; [1, 2, 3, &#39;a&#39;, &#39;b&#39;, &#39;c&#39;]</code></pre>
+
+            </div>
+        </div>
+    
+</div>
+
+                
+                    <div id="method_seqIterator" class="method item">
+    <h3 class="name"><code>seqIterator</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>seq</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">Object</span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                    <p>Provided by the <a href="../modules/iterators.html">iterators</a> module.</p>
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/sources_extensions_iterators.js.html#l119"><code>sources\extensions\iterators.js:119</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Creates a sequencial iterator. Sequencial iterators allow to iterate over
+    strings, arrays, arguments and nodelist</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">seq</code>
+                        <span class="type">Array | String | Arguments | Nodelist</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>Sequencial value</p>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type">Object</span>:
+                    
+                    <p>Iterator object</p>
+
+                
+            </div>
+        </div>
+    
+
+    
+        <div class="example">
+            <h4>Example:</h4>
+
+            <div class="example-content">
+                <pre class="code prettyprint"><code>var itAbc = funkyJS.seqIterator([&#39;a&#39;, &#39;b&#39;, &#39;c&#39;]);
+
+itAbc.next().value();
+// -&gt; &#39;a&#39;
+
+itAbc.next().value();
+// -&gt; &#39;b&#39;
+
+itAbc.next().value();
+// -&gt; &#39;c&#39;
+
+
+var itStr = funkyJS.seqIterator(&#39;string&#39;);
+
+itStr.next().value();
+// -&gt; &#39;s&#39;
+
+itStr.next().value();
+// -&gt; &#39;t&#39;
+
+itStr.next().value();
+// -&gt; &#39;r&#39;</code></pre>
 
             </div>
         </div>

@@ -1243,7 +1243,7 @@
         {
             "file": "sources\\extensions\\iterators.js",
             "line": 39,
-            "description": "Allows to create a numerical iterator, with a optional start and end number.\n    If the end number is below the start number, the returned iterator counts\n    down. If no arguments are given, the iterator counts up to positive\n    infinity",
+            "description": "Allows to create a numerical iterator, with a optional start and end number.\n    If the end number is below the start number, the returned iterator counts\n    down. If no arguments are given, the iterator counts up to positive\n    infinity, starting by zero",
             "itemtype": "method",
             "name": "numIterator",
             "params": [
@@ -1263,14 +1263,149 @@
                 "type": "Object"
             },
             "example": [
-                "\n    var nums = funkyJS.numIterator(5); // counts 5 -> Infinity\n\n    nums.next().value();\n    // -> 5\n\n    nums.next().value();\n    // -> 6\n\n    nums.next().value();\n    // -> 7\n"
+                "\n    var nums = funkyJS.numIterator(5); // counts 5 -> Infinity\n\n    nums.next().value();\n    // -> 5\n\n    nums.next().value();\n    // -> 6\n\n    nums.next().value();\n    // -> 7\n\n\n    var nums2 = funkyJS.numIterator();\n\n    nums2.next().value();\n    // -> 0\n\n    nums2.next().value();\n    // -> 1\n\n    nums2.next().value();\n    // -> 2\n\n\n    var nums3 = funkyJS.numIterator(10, 0);\n\n    nums3.next().value();\n    // -> 10\n\n    nums3.next().value();\n    // -> 9\n\n    nums3.next().value();\n    // -> 8\n"
             ],
             "class": "funkyJS",
             "module": "iterators"
         },
         {
             "file": "sources\\extensions\\iterators.js",
-            "line": 292,
+            "line": 119,
+            "description": "Creates a sequencial iterator. Sequencial iterators allow to iterate over\n    strings, arrays, arguments and nodelist",
+            "itemtype": "method",
+            "name": "seqIterator",
+            "params": [
+                {
+                    "name": "seq",
+                    "description": "Sequencial value",
+                    "type": "Array|string|arguments|nodelist"
+                }
+            ],
+            "return": {
+                "description": "Iterator object",
+                "type": "Object"
+            },
+            "example": [
+                "\n    var itAbc = funkyJS.seqIterator(['a', 'b', 'c']);\n\n    itAbc.next().value();\n    // -> 'a'\n\n    itAbc.next().value();\n    // -> 'b'\n\n    itAbc.next().value();\n    // -> 'c'\n\n\n    var itStr = funkyJS.seqIterator('string');\n\n    itStr.next().value();\n    // -> 's'\n\n    itStr.next().value();\n    // -> 't'\n\n    itStr.next().value();\n    // -> 'r'\n"
+            ],
+            "class": "funkyJS",
+            "module": "iterators"
+        },
+        {
+            "file": "sources\\extensions\\iterators.js",
+            "line": 184,
+            "description": "Creates a object/hashtable iterator. Please note that the returned iterator\n    might iterate randomly through the object, depending on the behaviour of\n    the underlying JavaScript engine",
+            "itemtype": "method",
+            "name": "objIterator",
+            "params": [
+                {
+                    "name": "obj",
+                    "description": "Hashtable to iterate over",
+                    "type": "Object"
+                }
+            ],
+            "return": {
+                "description": "Iterator object",
+                "type": "Object"
+            },
+            "example": [
+                "\n    var itAbc = funkyJS.objIterator({\n        a: 'first',\n        b: 'second',\n        c: 'third'\n    });\n\n    itAbc.next().value();\n    // -> 'first'\n\n    itAbc.next().value();\n    // -> 'second'\n\n    itAbc.next().value();\n    // -> 'third'\n"
+            ],
+            "class": "funkyJS",
+            "module": "iterators"
+        },
+        {
+            "file": "sources\\extensions\\iterators.js",
+            "line": 244,
+            "description": "Returns a lazy iterator, which maps a given function to a given iterator. The\n    returned iterator is lazy, as it only maps when calling it's next() method",
+            "itemtype": "method",
+            "name": "mapLazy",
+            "params": [
+                {
+                    "name": "fn",
+                    "description": "The function to apply",
+                    "type": "Function"
+                },
+                {
+                    "name": "iterator",
+                    "description": "The iterator to map over",
+                    "type": "Object"
+                }
+            ],
+            "return": {
+                "description": "Iterator object",
+                "type": "Object"
+            },
+            "example": [
+                "\n    var itAbc = funkyJS.objIterator({\n        a: 'first',\n        b: 'second',\n        c: 'third'\n    });\n\n    var upper = funkyJS.call(String.prototype.toUpperCase);\n\n    var lazyMap = funkyJS.mapLazy(upper, itAbc);\n\n    lazyMap.next().value();\n    // -> 'FIRST'\n\n    lazyMap.next().value();\n    // -> 'SECOND'\n\n    lazyMap.next().value();\n    // -> 'THIRD'\n"
+            ],
+            "class": "funkyJS",
+            "module": "iterators"
+        },
+        {
+            "file": "sources\\extensions\\iterators.js",
+            "line": 313,
+            "description": "Returns a lazy iterator, which filters with a given function a given iterator.\n    The returned iterator is lazy, as it only filters when calling it's\n    next() method",
+            "itemtype": "method",
+            "name": "filterLazy",
+            "params": [
+                {
+                    "name": "fn",
+                    "description": "The predicate function",
+                    "type": "Function"
+                },
+                {
+                    "name": "iterator",
+                    "description": "The iterator to filter",
+                    "type": "Object"
+                }
+            ],
+            "return": {
+                "description": "Iterator object",
+                "type": "Object"
+            },
+            "example": [
+                "\n    var itAbc = funkyJS.objIterator({\n        a: 'first',\n        b: 'second',\n        c: 'third'\n    });\n\n    var startsEitherFT = function (s) {\n        return s[0] === 't' || s[0] === 'f';\n    }\n\n    var lazyFilter = funkyJS.filterLazy(startsEitherFT, itAbc);\n\n    lazyFilter.next().value();\n    // -> 'first'\n\n    lazyFilter.next().value();\n    // -> 'third'\n"
+            ],
+            "class": "funkyJS",
+            "module": "iterators"
+        },
+        {
+            "file": "sources\\extensions\\iterators.js",
+            "line": 385,
+            "description": "Returns a lazy iterator, which folds a given iterator to one value. The\n    returned iterator is lazy as it only folds one when calling it's next()\n    method",
+            "itemtype": "method",
+            "name": "foldLazy",
+            "params": [
+                {
+                    "name": "fn",
+                    "description": "The function to fold with",
+                    "type": "Function"
+                },
+                {
+                    "name": "iterator",
+                    "description": "The iterator to fold",
+                    "type": "Object"
+                },
+                {
+                    "name": "seed",
+                    "description": "The initial value to start from",
+                    "type": "*"
+                }
+            ],
+            "return": {
+                "description": "Iterator object",
+                "type": "Object"
+            },
+            "example": [
+                "\n    var itAbc = funkyJS.objIterator({\n        a: 'first',\n        b: 'second',\n        c: 'third'\n    });\n\n    var cat = function (a, b) {\n        return !a ? b : a + ', ' + b;\n    }\n\n    var lazyFold = funkyJS.foldLazy(cat, itAbc, '');\n\n    lazyFold.next().value();\n    // -> 'first'\n\n    lazyFold.next().value();\n    // -> 'first, second'\n\n    lazyFold.next().value();\n    // -> 'first, second, third'\n"
+            ],
+            "class": "funkyJS",
+            "module": "iterators"
+        },
+        {
+            "file": "sources\\extensions\\iterators.js",
+            "line": 472,
             "description": "EXPORT\n======",
             "class": "funkyJS",
             "module": "iterators"
@@ -3984,7 +4119,7 @@
         },
         {
             "message": "Missing item type\nEXPORT\n======",
-            "line": " sources\\extensions\\iterators.js:292"
+            "line": " sources\\extensions\\iterators.js:472"
         },
         {
             "message": "Missing item type\nEXPORT\n======",
