@@ -20,14 +20,14 @@
     // 
     // factCalculator(100, function (fact) { ... do something with fact ... });
     
-    function _fact (n) {
+    var _fact = f.memoize(function _fact (n) {
         if (n < 1) {
             return 1;
         }
         return f.thunk(function () {
             return n * _fact(n - 1);
         });
-    }
+    });
 
     function factorial (n) {
         return f.trampoline(_fact(Math.abs(n)));
