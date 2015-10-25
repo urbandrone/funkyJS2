@@ -27,10 +27,10 @@
         return n * fact(n - 1);
     });
 
-    return f.liftAsync(function factCalculator (n) {
+    return f.defaults(f.liftAsync(function factCalculator (n) {
         if (f.isNotNumber(n)) {
             return n;
         }
         return fact(Math.abs(n));
-    });
+    }), [null, f.identity, f.identity]);
 });
