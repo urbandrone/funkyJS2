@@ -80,8 +80,8 @@
             return flip;
         }
 
-        if (type.isNotFunction(fn)) {
-            throw new Error('Expected to wrap a function with flip but saw ' + fn);
+        if (!type.isFunction(fn)) {
+            throw 'Expected to wrap a function with flip but saw ' + fn;
         }
 
         function acc (collected) {
@@ -120,8 +120,9 @@
         staticClass.foo().bar();
         // -> Error: Cannot call method "bar" of undefined
 
-        staticClass.foo = funkyJS.fluent(staticClass.foo);
-        staticClass.bar = funkyJS.fluent(staticClass.bar);
+        ['foo', 'bar'].forEach(function (method) {
+            staticClass[method] = funkyJS.fluent(staticClass[method]);
+        });
 
         staticClass.foo().bar();
         // -> Works like a charm now
@@ -132,8 +133,8 @@
             return fluent;
         }
 
-        if (type.isNotFunction(fn)) {
-            throw new Error('Expected to wrap a function with fluent but saw ' + fn);
+        if (!type.isFunction(fn)) {
+            throw 'Expected to wrap a function with fluent but saw ' + fn;
         }
 
         return arity.aritize(fn.length, true)(function (/* arg1, ...argN */) {
@@ -184,12 +185,12 @@
             }
         }
 
-        if (type.isNotFunction(predicate)) {
-            throw new Error('Expected to guard with a function but saw ' + predicate);
+        if (!type.isFunction(predicate)) {
+            throw 'Expected to guard with a function but saw ' + predicate;
         }
 
-        if (type.isNotFunction(fn)) {
-            throw new Error('Expected to guard a function but saw ' + fn);
+        if (!type.isFunction(fn)) {
+            throw 'Expected to guard a function but saw ' + fn;
         }
 
         return arity.aritize(fn.length, true)(function (/* arg1, ...argN */) {
@@ -238,12 +239,12 @@
             return maybe;
         }
 
-        if (type.isNotFunction(fn)) {
-            throw new Error('Expected to maybe execute a function but saw ' + fn);
+        if (!type.isFunction(fn)) {
+            throw 'Expected to maybe execute a function but saw ' + fn;
         }
 
         return arity.aritize(fn.length)(function (args) {
-            return args.every(type.isNotNil) ? fn.apply(this, args) : null;
+            return args.some(type.isNil) ? null : fn.apply(this, args);
         });
     }
 
@@ -272,8 +273,8 @@
             return not;
         }
 
-        if (type.isNotFunction(fn)) {
-            throw new Error('Expected to negate a function but saw ' + fn);
+        if (!type.isFunction(fn)) {
+            throw 'Expected to negate a function but saw ' + fn;
         }
 
         return arity.aritize(fn.length, true)(function () {
@@ -316,20 +317,20 @@
                 }
             }
 
-            if (type.isNotFunction(ticks)) {
-                throw new Error('Expected to debounce a function but saw ' + ticks + ' / ' + fn);
+            if (!type.isFunction(ticks)) {
+                throw 'Expected to debounce a function but saw ' + ticks + ' / ' + fn;
             }
 
             fn = ticks;
             ticks = 250;
         }
 
-        if (type.isNotInt32(ticks)) {
-            throw new Error('Ticks to debounce must be given as 32 bit integer');
+        if (!type.isInt32(ticks)) {
+            throw 'Ticks to debounce must be given as integer';
         }
 
-        if (type.isNotFunction(fn)) {
-            throw new Error('Expected to debounce a function but instead saw ' + fn);
+        if (!type.isFunction(fn)) {
+            throw 'Expected to debounce a function but instead saw ' + fn;
         }
 
         return arity.aritize(fn.length)(function () {
@@ -337,7 +338,7 @@
             clearTimeout(timeout);
             timeout = setTimeout(function () {
                 fn.apply(this, args);
-            }.bind(this), type.isInt32(ticks) ? ticks : 250);
+            }.bind(this), ticks);
         });
     }
 
@@ -364,8 +365,8 @@
             return memoize;
         }
 
-        if (type.isNotFunction(fn)) {
-            throw new Error('Expected to memoize a function but saw ' + fn);
+        if (!type.isFunction(fn)) {
+            throw 'Expected to memoize a function but saw ' + fn;
         }
 
         function memoized (/* arg1, ...argN */) {
@@ -407,8 +408,8 @@
             return curry;
         }
 
-        if (type.isNotFunction(fn)) {
-            throw new Error('Expected to curry a function but saw ' + fn);
+        if (!type.isFunction(fn)) {
+            throw 'Expected to curry a function but saw ' + fn;
         }
 
         function acc (collected) {
@@ -451,8 +452,8 @@
             return curryRight;
         }
 
-        if (type.isNotFunction(fn)) {
-            throw new Error('Expected to curryRight a function but saw ' + fn);
+        if (!type.isFunction(fn)) {
+            throw 'Expected to curryRight a function but saw ' + fn;
         }
 
         function acc (collected) {
@@ -508,8 +509,8 @@
             return partial;
         }
 
-        if (type.isNotFunction(fn)) {
-            throw new Error('partial expected to see a function but saw ' + fn);
+        if (!type.isFunction(fn)) {
+            throw 'partial expected to see a function but saw ' + fn;
         }
 
         if (arguments.length < 2) {
@@ -597,8 +598,8 @@
             return partialRight;
         }
 
-        if (type.isNotFunction(fn)) {
-            throw new Error('partialRight expected to see a function but saw ' + fn);
+        if (!type.isFunction(fn)) {
+            throw 'partialRight expected to see a function but saw ' + fn;
         }
 
         if (arguments.length < 2) {
@@ -677,8 +678,8 @@
             return call;
         }
 
-        if (type.isNotFunction(fn)) {
-            throw new Error('call expected to see a function but saw ' + fn);
+        if (!type.isFunction(fn)) {
+            throw 'call expected to see a function but saw ' + fn;
         }
 
         lArgs = slice(arguments, 1);
@@ -718,8 +719,8 @@
             return callRight;
         }
 
-        if (type.isNotFunction(fn)) {
-            throw new Error('callRight expected to see a function but saw ' + fn);
+        if (!type.isFunction(fn)) {
+            throw 'callRight expected to see a function but saw ' + fn;
         }
 
         rArgs = slice(arguments, 1);
@@ -767,21 +768,21 @@
             return defaults;
         }
 
-        if (type.isNotFunction(fn)) {
-            throw new Error('defaults expected to see a function but saw ' + fn);
+        if (!type.isFunction(fn)) {
+            throw 'defaults expected to see a function but saw ' + fn;
         }
 
-        if (type.isNotArray(defs)) {
+        if (!type.isArray(defs)) {
             return fn;
         }
 
         if (defs.length < fn.length) {
-            throw new Error('defaults misses parameters, expected ' + fn.length + ' but saw ' + defs.length);
+            throw 'defaults misses parameters, expected ' + fn.length + ' but saw ' + defs.length;
         }
 
         return arity.aritize(fn.length)(function (args) {
             return fn.apply(this, defs.map(function (def, idx) {
-                if (idx < args.length && type.isNotVoid(args[idx])) {
+                if (idx < args.length && !type.isVoid(args[idx])) {
                     return args[idx];
                 }
                 return def;

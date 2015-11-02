@@ -118,12 +118,12 @@
     **/
     api.cmps = function cmps (f) {
         if (typeof f !== 'function') {
-            throw new TypeError('funkyJS.cmps: ' + f + ' is not a function');
+            throw 'funkyJS.cmps: ' + f + ' is not a function';
         }
 
         return function (g) {
             if (typeof g !== 'function') {
-                throw new TypeError('funkyJS.cmps: ' + g + ' is not a function');
+                throw 'funkyJS.cmps: ' + g + ' is not a function';
             }
 
             return function (x) {

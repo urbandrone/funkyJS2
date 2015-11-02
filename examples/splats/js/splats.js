@@ -238,7 +238,7 @@
      * @return {undefined} Nothing
      */
     function log (exc) {
-        if (f.isNotVoid(window.console) && f.isFunction(window.console.log)) {
+        if (!f.isNil(window.console) && f.isFunction(window.console.log)) {
             window.console.log('Exception thrown with message:');
             window.console.log(exc.message);
         }

@@ -27,6 +27,13 @@ describe('funkyJS Advices Extension Module', function () {
         gLastUUID = err.message;
     });
 
+    var beforeO = {
+        test: f.advisable(f.identity)
+    };
+    beforeO.test.adviceBefore(function (input) {
+        return f.isNumber(input) ? input : [-1]
+    });
+
 
 
     var o2 = {
@@ -51,6 +58,9 @@ describe('funkyJS Advices Extension Module', function () {
         expect(oldGValue).toBe(0);
         expect(uuid).toBe('id1');
         expect(gValue).toBe(1);
+
+        expect(beforeO.test(1)).toBe(1);
+        expect(beforeO.test(null)).toBe(-1);
 
         expect(o2._id).toBe(0);
         expect(o2.getUUID()).toBe('id1');

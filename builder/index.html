@@ -20,8 +20,6 @@
             <button type="reset" class="button">Restart</button>
             <code id="output" class="code"></code>
             <fieldset class="form_group form_group--left size-at-border">
-                <legend class="form_group_label h4">Core</legend>
-
                 <div class="form_pair">
                     <input class="checkbox" type="checkbox" name="modules[]" value="birds" checked disabled>
                     <label class="label">Birds</label>
@@ -29,7 +27,7 @@
                 <p class="descriptor">
                     <b>Provided functions:</b>
                     <br>
-                    .identity, .constant, .cmps
+                    .identity, .constant, .cmps, .tap
                 </p>
                 <p class="descriptor">
                     <b>Depends on:</b>
@@ -44,7 +42,7 @@
                 <p class="descriptor">
                     <b>Provided functions:</b>
                     <br>
-                    .is, .isBool, .isString, .isNumber, .isInt32, .isFloat32, .isNil, .isVoid, .isFunction, .isObject, .isArray, .isSequencial, .isNode, .isNodeList, .isEnumerable, .isDate, .isRegex, .isNotBool, .isNotString, .isNotNumber, .isNotInt32, .isNotFloat32, .isNotNil, .isNotVoid, .isNotFunction, .isNotObject, .isNotArray, .isNotSequencial, .isNotNode, .isNotNodeList, .isNotEnumerable, .isNotDate, .isNotRegex
+                    .is, .isBool, .isString, .isNumber, .isInt32, .isFloat32, .isNil, .isVoid, .isFunction, .isObject, .isArray, .isSequencial, .isNode, .isNodeList, .isEnumerable, .isDate, .isRegex
                 </p>
                 <p class="descriptor">
                     <b>Depends on:</b>
@@ -143,8 +141,6 @@
                 </p>
             </fieldset>
             <fieldset class="form_group form_group--right size-at-border">
-                <legend class="form_group_label h4">Extensions</legend>
-
                 <div class="form_pair">
                     <input class="checkbox" type="checkbox" name="modules[]" value="trampolines">
                     <label class="label">Trampolines</label>
@@ -268,7 +264,6 @@
         </form>
     </div>
     <script src="libs/funkyjs2.bundled.min.js"></script>
-    <script src="libs/funkyjs2.ext.bundled.min.js"></script>
     <script src="libs/promise.min.js"></script>
     <script src="builder.js"></script>
     <script>

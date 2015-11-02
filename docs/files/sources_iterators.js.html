@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>sources\iterators.js - funkyjs-2</title>
+    <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
+    <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
+    <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
+    <link rel="shortcut icon" type="image/png" href="../assets/favicon.png">
+    <script src="http://yui.yahooapis.com/combo?3.9.1/build/yui/yui-min.js"></script>
+</head>
+<body class="yui3-skin-sam">
+
+<div id="doc">
+    <div id="hd" class="yui3-g header">
+        <div class="yui3-u-3-4">
+            
+                <h1><img src="..\logo.png" title="funkyjs-2"></h1>
+            
+        </div>
+        <div class="yui3-u-1-4 version">
+            <em>API Docs for: 2.0.0</em>
+        </div>
+    </div>
+    <div id="bd" class="yui3-g">
+
+        <div class="yui3-u-1-4">
+            <div id="docs-sidebar" class="sidebar apidocs">
+                <div id="api-list">
+    <h2 class="off-left">APIs</h2>
+    <div id="api-tabview" class="tabview">
+        <ul class="tabs">
+            <li><a href="#api-classes">Classes</a></li>
+            <li><a href="#api-modules">Modules</a></li>
+        </ul>
+
+        <div id="api-tabview-filter">
+            <input type="search" id="api-filter" placeholder="Type to filter APIs">
+        </div>
+
+        <div id="api-tabview-panel">
+            <ul id="api-classes" class="apis classes">
+            
+                <li><a href="../classes/funkyJS.html">funkyJS</a></li>
+            
+            </ul>
+
+            <ul id="api-modules" class="apis modules">
+            
+                <li><a href="../modules/advices.html">advices</a></li>
+            
+                <li><a href="../modules/arity.html">arity</a></li>
+            
+                <li><a href="../modules/arrays.html">arrays</a></li>
+            
+                <li><a href="../modules/birds.html">birds</a></li>
+            
+                <li><a href="../modules/combinators.html">combinators</a></li>
+            
+                <li><a href="../modules/combinators.extensions.html">combinators.extensions</a></li>
+            
+                <li><a href="../modules/contracts.html">contracts</a></li>
+            
+                <li><a href="../modules/decorators.html">decorators</a></li>
+            
+                <li><a href="../modules/decorators.extensions.html">decorators.extensions</a></li>
+            
+                <li><a href="../modules/functors.html">functors</a></li>
+            
+                <li><a href="../modules/iterators.html">iterators</a></li>
+            
+                <li><a href="../modules/lenses.html">lenses</a></li>
+            
+                <li><a href="../modules/objects.html">objects</a></li>
+            
+                <li><a href="../modules/strings.html">strings</a></li>
+            
+                <li><a href="../modules/trampolines.html">trampolines</a></li>
+            
+                <li><a href="../modules/type.html">type</a></li>
+            
+            </ul>
+        </div>
+    </div>
+</div>
+
+            </div>
+        </div>
+        <div class="yui3-u-3-4">
+                <div id="api-options">
+        Show:
+        <label for="api-show-inherited">
+            <input type="checkbox" id="api-show-inherited" checked>
+            Inherited
+        </label>
+
+        <label for="api-show-protected">
+            <input type="checkbox" id="api-show-protected">
+            Protected
+        </label>
+
+        <label for="api-show-private">
+            <input type="checkbox" id="api-show-private">
+            Private
+        </label>
+        <label for="api-show-deprecated">
+            <input type="checkbox" id="api-show-deprecated">
+            Deprecated
+        </label>
+
+    </div>
+
+
+            <div class="apidocs">
+                <div id="docs-main">
+                    <div class="content">
+                        <h1 class="file-heading">File: sources\iterators.js</h1>
+
+<div class="file">
+    <pre class="code prettyprint linenums">
+;(function (global, factory) {
+    var ext,
+        it;
+
+    if (typeof define === &#x27;function&#x27; &amp;&amp; define.amd) {
+        define([
+            &#x27;../type&#x27;,
+            &#x27;../array&#x27;
+        ], factory);
+
+    } else if (typeof exports === &#x27;object&#x27;) {
+        module.exports = factory(
+            require(&#x27;type&#x27;),
+            require(&#x27;array&#x27;)
+        );
+
+    } else {
+        ext = factory(
+            global.funkyJS,
+            global.funkyJS
+        );
+
+        for (it in ext) {
+            if (ext.hasOwnProperty(it)) {
+                global.funkyJS[it] = ext[it];
+            }
+        }
+    }
+
+})(this, function (type) {
+
+    /**
+    @module iterators
+    **/
+    var api = {};
+
+
+
+    /**
+    Allows to create a numerical iterator, with a optional start and end number.
+        If the end number is below the start number, the returned iterator counts
+        down. If no arguments are given, the iterator counts up to positive
+        infinity, starting by zero
+
+    @method numIterator
+    @for funkyJS
+    @param {number} [start = 0] Optional start number
+    @param {number} [max = Infinity] Optional end number
+    @return {object} Iterator object
+
+    @example
+        var nums = funkyJS.numIterator(5); // counts 5 -&gt; Infinity
+
+        nums.next().value();
+        // -&gt; 5
+
+        nums.next().value();
+        // -&gt; 6
+
+        nums.next().value();
+        // -&gt; 7
+
+
+        var nums2 = funkyJS.numIterator();
+
+        nums2.next().value();
+        // -&gt; 0
+
+        nums2.next().value();
+        // -&gt; 1
+
+        nums2.next().value();
+        // -&gt; 2
+
+
+        var nums3 = funkyJS.numIterator(10, 0);
+
+        nums3.next().value();
+        // -&gt; 10
+
+        nums3.next().value();
+        // -&gt; 9
+
+        nums3.next().value();
+        // -&gt; 8
+
+    **/
+    api.numIterator = function numIterator (start, max) {
+        var _now = !type.isNumber(start) ? 0 : start,
+            _end = typeof max !== &#x27;number&#x27; || isNaN(max) ? Infinity : max,
+            _add = 1;
+
+        if (_end &lt; _now) {
+            _add = -1;
+        }
+
+        return {
+            next: function () {
+                var _cur = _now;
+                _now += _add;
+                if (_cur === _end) {
+                    return {
+                        done: true,
+                        value: function () {
+                            return undefined;
+                        }
+                    };
+                }
+                return {
+                    done: false,
+                    value: function () {
+                        return _cur;
+                    }
+                };
+            }
+        };
+    }
+
+    /**
+    Creates a sequencial iterator. Sequencial iterators allow to iterate over
+        strings, arrays, arguments and nodelist
+
+    @method seqIterator
+    @for funkyJS
+    @param {array|string|arguments|nodelist} seq Sequencial value
+    @return {object} Iterator object
+
+    @example
+        var itAbc = funkyJS.seqIterator([&#x27;a&#x27;, &#x27;b&#x27;, &#x27;c&#x27;]);
+
+        itAbc.next().value();
+        // -&gt; &#x27;a&#x27;
+
+        itAbc.next().value();
+        // -&gt; &#x27;b&#x27;
+
+        itAbc.next().value();
+        // -&gt; &#x27;c&#x27;
+
+
+        var itStr = funkyJS.seqIterator(&#x27;string&#x27;);
+
+        itStr.next().value();
+        // -&gt; &#x27;s&#x27;
+
+        itStr.next().value();
+        // -&gt; &#x27;t&#x27;
+
+        itStr.next().value();
+        // -&gt; &#x27;r&#x27;
+
+    **/
+    api.seqIterator = function seqIterator (seq) {
+        var _index;
+
+        if (!type.isSequencial(seq)) {
+            throw &#x27;seqIterator expected argument to be sequencial but saw &#x27; + seq;
+        }
+
+        _index = -1;
+        return {
+            next: function () {
+                _index += 1;
+
+                if (_index &gt;= seq.length) {
+                    return {
+                        done: true,
+                        value: function () {
+                            return undefined;
+                        }
+                    };
+                }
+
+                return {
+                    done: false,
+                    value: function () {
+                        return seq[_index];
+                    }
+                };
+            }
+        };
+    }
+
+    /**
+    Creates a object/hashtable iterator. Please note that the returned iterator
+        might iterate randomly through the object, depending on the behaviour of
+        the underlying JavaScript engine
+
+    @method objIterator
+    @for funkyJS
+    @param {object} obj Hashtable to iterate over
+    @return {object} Iterator object
+
+    @example
+        var itAbc = funkyJS.objIterator({
+            a: &#x27;first&#x27;,
+            b: &#x27;second&#x27;,
+            c: &#x27;third&#x27;
+        });
+
+        itAbc.next().value();
+        // -&gt; &#x27;first&#x27;
+
+        itAbc.next().value();
+        // -&gt; &#x27;second&#x27;
+
+        itAbc.next().value();
+        // -&gt; &#x27;third&#x27;
+
+    **/
+    api.objIterator = function objIterator (obj) {
+        var _keys,
+            _index;
+
+        if (!type.isObject(obj)) {
+            throw &#x27;objIterator expected argument to be object but saw &#x27; + obj;
+        }
+
+        _keys = Object.keys(obj);
+        _index = -1;
+        return {
+            next: function () {
+                _index += 1;
+
+                if (_index &gt;= _keys.length) {
+                    return {
+                        done: true,
+                        value: function () {
+                            return undefined;
+                        }
+                    };
+                }
+
+                return {
+                    done: false,
+                    value: function () {
+                        return obj[_keys[_index]];
+                    }
+                };
+            }
+        };
+    }
+
+    /**
+    Returns a lazy iterator, which maps a given function to a given iterator. The
+        returned iterator is lazy, as it only maps when calling it&#x27;s next() method
+
+    @method mapLazy
+    @for funkyJS
+    @param {function} fn The function to apply
+    @param {object} iterator The iterator to map over
+    @return {object} Iterator object
+
+    @example
+        var itAbc = funkyJS.objIterator({
+            a: &#x27;first&#x27;,
+            b: &#x27;second&#x27;,
+            c: &#x27;third&#x27;
+        });
+
+        var upper = funkyJS.call(String.prototype.toUpperCase);
+
+        var lazyMap = funkyJS.mapLazy(upper, itAbc);
+
+        lazyMap.next().value();
+        // -&gt; &#x27;FIRST&#x27;
+
+        lazyMap.next().value();
+        // -&gt; &#x27;SECOND&#x27;
+
+        lazyMap.next().value();
+        // -&gt; &#x27;THIRD&#x27;
+
+    **/
+    api.mapLazy = function mapLazy (fn, iterator) {
+        if (typeof fn !== &#x27;function&#x27;) {
+            throw &#x27;mapLazy expected first argument to be function but saw &#x27; + fn;
+        }
+
+        if (iterator === undefined) {
+            return function (iterator) {
+                return mapLazy(fn, iterator);
+            }
+        }
+
+        if (!type.isObject(iterator) || !type.isFunction(iterator.next)) {
+            throw &#x27;mapLazy expected second argument to be iterator but was &#x27; + iterator;
+        }
+
+        return {
+            next: function () {
+                var _it = iterator.next();
+
+                if (_it.done) {
+                    return {
+                        done: true,
+                        value: function () {
+                            return undefined;
+                        }
+                    }
+                }
+
+                return {
+                    done: false,
+                    value: function () {
+                        return fn(_it.value());
+                    }
+                }
+            }
+        };
+    }
+
+    /**
+    Returns a lazy iterator, which filters with a given function a given iterator.
+        The returned iterator is lazy, as it only filters when calling it&#x27;s
+        next() method
+
+    @method filterLazy
+    @for funkyJS
+    @param {function} fn The predicate function
+    @param {object} iterator The iterator to filter
+    @return {object} Iterator object
+
+    @example
+        var itAbc = funkyJS.objIterator({
+            a: &#x27;first&#x27;,
+            b: &#x27;second&#x27;,
+            c: &#x27;third&#x27;
+        });
+
+        var startsEitherFT = function (s) {
+            return s[0] === &#x27;t&#x27; || s[0] === &#x27;f&#x27;;
+        }
+
+        var lazyFilter = funkyJS.filterLazy(startsEitherFT, itAbc);
+
+        lazyFilter.next().value();
+        // -&gt; &#x27;first&#x27;
+
+        lazyFilter.next().value();
+        // -&gt; &#x27;third&#x27;
+
+    **/
+    api.filterLazy = function filterLazy (fn, iterator) {
+        if (typeof fn !== &#x27;function&#x27;) {
+            throw &#x27;filterLazy expected first argument to be function but saw &#x27; + fn;
+        }
+
+        if (iterator === undefined) {
+            return function (iterator) {
+                return filterLazy(fn, iterator);
+            }
+        }
+
+        if (!type.isObject(iterator) || !type.isFunction(iterator.next)) {
+            throw &#x27;filterLazy expected second argument to be iterator but was &#x27; + iterator;
+        }
+
+        return {
+            next: function () {
+                var _it = iterator.next();
+                while (!_it.done &amp;&amp; !fn(_it.value())) {
+                    _it = iterator.next();
+                }
+
+                if (_it.done) {
+                    return {
+                        done: true,
+                        value: function () {
+                            return undefined;
+                        }
+                    };
+                }
+
+                return {
+                    done: false,
+                    value: function () {
+                        return _it.value();
+                    }
+                }
+            }
+        };
+    }
+
+    /**
+    Returns a lazy iterator, which folds a given iterator to one value. The
+        returned iterator is lazy as it only folds one when calling it&#x27;s next()
+        method
+
+    @method foldLazy
+    @for funkyJS
+    @param {function} fn The function to fold with
+    @param {object} iterator The iterator to fold
+    @param {*} seed The initial value to start from
+    @return {object} Iterator object
+
+    @example
+        var itAbc = funkyJS.objIterator({
+            a: &#x27;first&#x27;,
+            b: &#x27;second&#x27;,
+            c: &#x27;third&#x27;
+        });
+
+        var cat = function (a, b) {
+            return !a ? b : a + &#x27;, &#x27; + b;
+        }
+
+        var lazyFold = funkyJS.foldLazy(cat, itAbc, &#x27;&#x27;);
+
+        lazyFold.next().value();
+        // -&gt; &#x27;first&#x27;
+
+        lazyFold.next().value();
+        // -&gt; &#x27;first, second&#x27;
+
+        lazyFold.next().value();
+        // -&gt; &#x27;first, second, third&#x27;
+
+    **/
+    api.foldLazy = function foldLazy (fn, iterator, seed) {
+        var _acc;
+        if (typeof fn !== &#x27;function&#x27;) {
+            throw &#x27;foldLazy expected first argument to be function but saw &#x27; + fn;
+        }
+
+        if (iterator === undefined) {
+            return function (iterator, seed) {
+                return foldLazy(fn, iterator, seed);
+            }
+        }
+
+        if (seed === undefined) {
+            return function (seed) {
+                return foldLazy(fn, iterator, seed);
+            }
+        }
+
+        if (!type.isObject(iterator) || !type.isFunction(iterator.next)) {
+            throw &#x27;foldLazy expected second argument to be iterator but was &#x27; + iterator;
+        }
+
+        _acc = seed;
+        return {
+            next: function () {
+                var _it = iterator.next();
+
+                if (_it.done) {
+                    return {
+                        done: true,
+                        value: function () {
+                            return undefined;
+                        }
+                    };
+                }
+
+                return {
+                    done: false,
+                    value: function () {
+                        _acc = fn(_acc, _it.value());
+                        return _acc;
+                    }
+                }
+            }
+        };
+    }
+
+
+
+
+
+
+    /***
+     * EXPORT
+     * ======
+     */
+
+    return api;
+
+});
+    </pre>
+</div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="../assets/vendor/prettify/prettify-min.js"></script>
+<script>prettyPrint();</script>
+<script src="../assets/js/yui-prettify.js"></script>
+<script src="../assets/../api.js"></script>
+<script src="../assets/js/api-filter.js"></script>
+<script src="../assets/js/api-list.js"></script>
+<script src="../assets/js/api-search.js"></script>
+<script src="../assets/js/apidocs.js"></script>
+</body>
+</html>

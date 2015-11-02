@@ -13,7 +13,6 @@ YUI.add("yuidoc-meta", function(Y) {
         "contracts",
         "decorators",
         "decorators.extensions",
-        "experiments",
         "functors",
         "iterators",
         "lenses",
@@ -58,10 +57,6 @@ YUI.add("yuidoc-meta", function(Y) {
         {
             "displayName": "decorators.extensions",
             "name": "decorators.extensions"
-        },
-        {
-            "displayName": "experiments",
-            "name": "experiments"
         },
         {
             "displayName": "functors",

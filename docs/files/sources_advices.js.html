@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>sources\advices.js - funkyjs-2</title>
+    <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
+    <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
+    <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
+    <link rel="shortcut icon" type="image/png" href="../assets/favicon.png">
+    <script src="http://yui.yahooapis.com/combo?3.9.1/build/yui/yui-min.js"></script>
+</head>
+<body class="yui3-skin-sam">
+
+<div id="doc">
+    <div id="hd" class="yui3-g header">
+        <div class="yui3-u-3-4">
+            
+                <h1><img src="..\logo.png" title="funkyjs-2"></h1>
+            
+        </div>
+        <div class="yui3-u-1-4 version">
+            <em>API Docs for: 2.0.0</em>
+        </div>
+    </div>
+    <div id="bd" class="yui3-g">
+
+        <div class="yui3-u-1-4">
+            <div id="docs-sidebar" class="sidebar apidocs">
+                <div id="api-list">
+    <h2 class="off-left">APIs</h2>
+    <div id="api-tabview" class="tabview">
+        <ul class="tabs">
+            <li><a href="#api-classes">Classes</a></li>
+            <li><a href="#api-modules">Modules</a></li>
+        </ul>
+
+        <div id="api-tabview-filter">
+            <input type="search" id="api-filter" placeholder="Type to filter APIs">
+        </div>
+
+        <div id="api-tabview-panel">
+            <ul id="api-classes" class="apis classes">
+            
+                <li><a href="../classes/funkyJS.html">funkyJS</a></li>
+            
+            </ul>
+
+            <ul id="api-modules" class="apis modules">
+            
+                <li><a href="../modules/advices.html">advices</a></li>
+            
+                <li><a href="../modules/arity.html">arity</a></li>
+            
+                <li><a href="../modules/arrays.html">arrays</a></li>
+            
+                <li><a href="../modules/birds.html">birds</a></li>
+            
+                <li><a href="../modules/combinators.html">combinators</a></li>
+            
+                <li><a href="../modules/combinators.extensions.html">combinators.extensions</a></li>
+            
+                <li><a href="../modules/contracts.html">contracts</a></li>
+            
+                <li><a href="../modules/decorators.html">decorators</a></li>
+            
+                <li><a href="../modules/decorators.extensions.html">decorators.extensions</a></li>
+            
+                <li><a href="../modules/functors.html">functors</a></li>
+            
+                <li><a href="../modules/iterators.html">iterators</a></li>
+            
+                <li><a href="../modules/lenses.html">lenses</a></li>
+            
+                <li><a href="../modules/objects.html">objects</a></li>
+            
+                <li><a href="../modules/strings.html">strings</a></li>
+            
+                <li><a href="../modules/trampolines.html">trampolines</a></li>
+            
+                <li><a href="../modules/type.html">type</a></li>
+            
+            </ul>
+        </div>
+    </div>
+</div>
+
+            </div>
+        </div>
+        <div class="yui3-u-3-4">
+                <div id="api-options">
+        Show:
+        <label for="api-show-inherited">
+            <input type="checkbox" id="api-show-inherited" checked>
+            Inherited
+        </label>
+
+        <label for="api-show-protected">
+            <input type="checkbox" id="api-show-protected">
+            Protected
+        </label>
+
+        <label for="api-show-private">
+            <input type="checkbox" id="api-show-private">
+            Private
+        </label>
+        <label for="api-show-deprecated">
+            <input type="checkbox" id="api-show-deprecated">
+            Deprecated
+        </label>
+
+    </div>
+
+
+            <div class="apidocs">
+                <div id="docs-main">
+                    <div class="content">
+                        <h1 class="file-heading">File: sources\advices.js</h1>
+
+<div class="file">
+    <pre class="code prettyprint linenums">
+;(function (global, factory) {
+    var ext,
+        it;
+
+    if (typeof define === &#x27;function&#x27; &amp;&amp; define.amd) {
+        define([
+            &#x27;../type&#x27;,
+            &#x27;../arity&#x27;
+        ], factory);
+
+    } else if (typeof exports === &#x27;object&#x27;) {
+        module.exports = factory(
+            require(&#x27;type&#x27;),
+            require(&#x27;arity&#x27;)
+        );
+
+    } else {
+        ext = factory(
+            global.funkyJS,
+            global.funkyJS
+        );
+
+        for (it in ext) {
+            if (ext.hasOwnProperty(it)) {
+                global.funkyJS[it] = ext[it];
+            }
+        }
+    }
+
+})(this, function (type, arity) {
+
+    /**
+    @module advices
+    **/
+    var api = {};
+
+
+
+    // utilities
+    function weave (fn, wrapper) {
+        if (!wrapper.__funkyAdviced__) {
+            Object.defineProperties(wrapper, {
+                __funkyAdviced__: {
+                    enumerable: false,
+                    writable: false,
+                    value: true
+                },
+                befores: {
+                    enumerable: false,
+                    writable: false,
+                    value: []
+                },
+                body: {
+                    enumerable: false,
+                    writable: false,
+                    value: fn
+                },
+                throwings: {
+                    enumerable: false,
+                    writable: false,
+                    value: []
+                },
+                afters: {
+                    enumerable: false,
+                    writable: false,
+                    value: []
+                },
+                adviceBefore: {
+                    enumerable: false,
+                    writable: false,
+                    value: function (fn) {
+                        this.befores.unshift(fn);
+                        return this;
+                    }
+                },
+                adviceError: {
+                    enumerable: false,
+                    writable: false,
+                    value: function (fn) {
+                        this.throwings.push(fn);
+                        return this;
+                    }
+                },
+                adviceAfter: {
+                    enumerable: false,
+                    writable: false,
+                    value: function (fn) {
+                        this.afters.push(fn);
+                        return this;
+                    }
+                }
+            });
+        }
+        return wrapper;
+    }
+
+
+
+    /**
+    The advisable function allows to implement some kind of aspect oriented
+        programming techniques on other functions by adding a adviceBefore,
+        adviceAfter and adviceError method on the function. The advice- methods
+        have a fluent interface so that chained calls are possible. While any
+        attached after advices are executed in the same order as they are attached,
+        all before advices are executed in reversed order. Please see the example
+        for details
+
+    @method advisable
+    @for funkyJS
+    @param {function} fn The function/method which should be advisable
+    @return {function} A advisable wrapper function around fn
+
+    @example
+        var idMaker = {
+            id: 0,
+            uuid: funkyJS.advisable(function () {
+                return &#x27;uuid&#x27; + this.id;
+            })
+        };
+
+        // add before advice to idMaker.uuid
+        idMaker.uuid.adviceBefore(function () {
+            this.id += 1;
+        });
+
+        idMaker.uuid();
+        // -&gt; &#x27;uuid1&#x27;
+
+        idMaker.uuid();
+        // -&gt; &#x27;uuid2&#x27;
+
+
+        // adding a second before advice
+        idMaker.uuid.adviceBefore(function () {
+            console.log(&#x27;last uuid was: uuid&#x27; + this.id);
+        
+        }).adviceAfter(function (result, allArgs) {
+            console.log(&#x27;new uuid is: &#x27; + result);
+        });
+
+        idMaker.uuid();
+        // -&gt; logs &#x27;last uuid was: uuid2&#x27; in console
+        // -&gt; logs &#x27;new uuid is: uuid3&#x27; in console
+        // -&gt; &#x27;uuid3&#x27;
+
+    **/
+    api.advisable = function advisable (fn) {
+        var woven;
+        if (arguments.length &lt; 1) {
+            return advisable;
+        }
+
+        if (!type.isFunction(fn)) {
+            throw &#x27;advisable expects fn to be function but saw &#x27; + fn;
+        }
+
+        woven = weave(fn, arity.aritize(fn.length)(function (args) {
+            var _args = args, self = this;
+            try {
+                woven.befores.forEach(function (advice) {
+                    var __args = advice.apply(self, _args);
+                    if (type.isArray(__args)) {
+                        _args = __args;
+                    }
+                });
+                _args = [woven.body.apply(this, _args), _args];
+                woven.afters.forEach(function (advice) {
+                    advice.apply(self, _args);
+                });
+            } catch (exc) {
+                return woven.throwings.forEach(function (advice) {
+                    advice.call(self, exc, _args);
+                });
+            }
+            return _args[0];
+        }));
+        return woven;
+    }
+
+
+
+    /***
+     * EXPORT
+     * ======
+     */
+
+    return api;
+
+});
+    </pre>
+</div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="../assets/vendor/prettify/prettify-min.js"></script>
+<script>prettyPrint();</script>
+<script src="../assets/js/yui-prettify.js"></script>
+<script src="../assets/../api.js"></script>
+<script src="../assets/js/api-filter.js"></script>
+<script src="../assets/js/api-list.js"></script>
+<script src="../assets/js/api-search.js"></script>
+<script src="../assets/js/apidocs.js"></script>
+</body>
+</html>

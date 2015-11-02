@@ -8,7 +8,7 @@ module.exports = function(grunt) {
                 banner: ([
                     '/*! <%= pkg.name %> <%= pkg.version %>',
                     ' *  <%= pkg.author %>, <%= pkg.license %> license */',
-                    '/* globals define, module, exports, require */'
+                    '/* globals define, module, exports, require */\n'
                 ].join('\n')),
                 mangle: {
                     except: [
@@ -35,20 +35,15 @@ module.exports = function(grunt) {
                         'sources/objects.js',
                         'sources/arrays.js',
                         'sources/decorators.js',
-                        'sources/combinators.js'
-                    ],
-                    /**
-                    Extensions
-                    **/
-                    'builds/funkyjs2.ext.bundled.min.js': [
-                        'sources/extensions/contracts.js',
-                        'sources/extensions/functors.js',
-                        'sources/extensions/combinators.js',
-                        'sources/extensions/decorators.js',
-                        'sources/extensions/iterators.js',
-                        'sources/extensions/trampolines.js',
-                        'sources/extensions/strings.js',
-                        'sources/extensions/advices.js'
+                        'sources/combinators.js',
+                        'sources/contracts.js',
+                        'sources/functors.js',
+                        'sources/combinators.async.js',
+                        'sources/decorators.more.js',
+                        'sources/iterators.js',
+                        'sources/trampolines.js',
+                        'sources/strings.js',
+                        'sources/advices.js'
                     ],
 
                     /**
@@ -65,17 +60,14 @@ module.exports = function(grunt) {
                     'builds/amd-cjs/lenses.js': 'sources/lenses.js',
                     'builds/amd-cjs/decorators.js': 'sources/decorators.js',
                     'builds/amd-cjs/combinators.js': 'sources/combinators.js',
-                    /**
-                    Extensions
-                    **/
-                    'builds/amd-cjs/ext/contracts.js': 'sources/extensions/contracts.js',
-                    'builds/amd-cjs/ext/functors.js': 'sources/extensions/functors.js',
-                    'builds/amd-cjs/ext/combinators.js': 'sources/extensions/combinators.js',
-                    'builds/amd-cjs/ext/decorators.js': 'sources/extensions/decorators.js',
-                    'builds/amd-cjs/ext/iterators.js': 'sources/extensions/iterators.js',
-                    'builds/amd-cjs/ext/trampolines.js': 'sources/extensions/trampolines.js',
-                    'builds/amd-cjs/ext/strings.js': 'sources/extensions/strings.js',
-                    'builds/amd-cjs/ext/advices.js': 'sources/extensions/advices.js'
+                    'builds/amd-cjs/contracts.js': 'sources/contracts.js',
+                    'builds/amd-cjs/functors.js': 'sources/functors.js',
+                    'builds/amd-cjs/combinators2.js': 'sources/combinators.async.js',
+                    'builds/amd-cjs/decorators2.js': 'sources/decorators.more.js',
+                    'builds/amd-cjs/iterators.js': 'sources/iterators.js',
+                    'builds/amd-cjs/trampolines.js': 'sources/trampolines.js',
+                    'builds/amd-cjs/strings.js': 'sources/strings.js',
+                    'builds/amd-cjs/advices.js': 'sources/advices.js'
                 }
             }
         },
@@ -92,6 +84,13 @@ module.exports = function(grunt) {
                     cwd: 'builds/amd-cjs/',
                     src: ['**/*.js'],
                     dest: 'builder/sources/',
+                    filter: 'isFile'
+                }, {
+                    expand: true,
+                    flatten: false,
+                    cwd: 'builds/',
+                    src: ['funkyjs2.*.js'],
+                    dest: 'builder/libs/',
                     filter: 'isFile'
                 }, {
                     expand: true,

@@ -1,0 +1,126 @@
+html {
+  background-color: #232323;
+}
+
+body {
+  font-family: 'Noto Sans', Verdana, sans-serif;
+  font-weight: 400;
+}
+
+strong,
+b {
+  font-weight: 600;
+}
+
+
+/* Application
+=========== */
+.app {
+  max-width: 1200px;
+  background-color: #ffffff;
+}
+
+@media screen and (min-width: 1200px) {
+  .app {
+    margin: 50px auto;
+    border: 1px solid #cdcdcd;
+  }
+}
+
+
+
+/* Header */
+.bar {
+  padding: 8px 12px;
+  border-bottom: 1px solid #cdcdcd;
+  background-color: #efefef;
+}
+
+.logo {
+  font-size: 20px;
+}
+
+
+
+.form {
+  padding: 8px 12px;
+}
+
+label {
+  margin-top: 22px;
+  margin-bottom: 4px;
+  font-size: 0.75rem;
+}
+
+.input,
+.select {
+  display: block;
+  width: 100%;
+  max-width: 600px;
+  margin-bottom: 18px;
+}
+
+
+.list {}
+
+.list--nobullet {
+  list-style: none;
+}
+
+
+/* Todos
+===== */
+.app_todos {
+  padding: 0;
+  background-color: #ffffff;
+}
+
+.todo {
+  position: relative;
+  padding: 24px 12px 8px 12px;
+  border-top: 1px solid #cdcdcd;
+}
+
+.todo--done {
+  background-color: #efffef;
+}
+
+.todo_name,
+.todo_desc,
+.todo_dead {
+  display: block;
+}
+
+.todo--done .todo_name,
+.todo--done .todo_desc,
+.todo--done .todo_dead {
+  color: #ababab;
+  text-decoration: line-through;
+}
+
+.todo_name {
+  font-size: 2rem;
+}
+
+.todo_controls {
+  position: absolute;
+  top: 5px;
+  right: 12px;
+  background-color: #ffffff;
+}
+
+.todo_controls .button {
+  margin-left: 5px;
+  border: 1px solid #cdcdcd;
+  padding: 3px 6px;
+  background: #ffffff;
+  color: #232323;
+  cursor: pointer;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.todo_controls .button.is--disabled {
+  visibility: hidden;
+}

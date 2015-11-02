@@ -19,7 +19,7 @@
             
         </div>
         <div class="yui3-u-1-4 version">
-            <em>API Docs for: 1.8.5</em>
+            <em>API Docs for: 2.0.0</em>
         </div>
     </div>
     <div id="bd" class="yui3-g">
@@ -64,8 +64,6 @@
                 <li><a href="../modules/decorators.html">decorators</a></li>
             
                 <li><a href="../modules/decorators.extensions.html">decorators.extensions</a></li>
-            
-                <li><a href="../modules/experiments.html">experiments</a></li>
             
                 <li><a href="../modules/functors.html">functors</a></li>
             
@@ -211,7 +209,7 @@
 
         fns = slice(arguments).filter(type.isFunction);
         if (fns.length &lt; 1) {
-            throw new Error(&#x27;Expected at least one function to compose but found none&#x27;);
+            throw &#x27;Expected at least one function to compose but found none&#x27;;
         }
 
         return arity.aritize(fns[fns.length - 1].length)(function (args) {
@@ -255,7 +253,7 @@
 
         fns = slice(arguments).filter(type.isFunction);
         if (fns.length &lt; 1) {
-            throw new Error(&#x27;Expected at least one function to pipe but found none&#x27;);
+            throw &#x27;Expected at least one function to pipe but found none&#x27;;
         }
 
         return arity.aritize(fns[0].length)(function (args) {
@@ -310,7 +308,7 @@
         fns = slice(arguments).filter(type.isFunction);
         max = Math.max.apply(Math, fns.map(function (f) { return f.length; }));
         if (fns.length &lt; 1) {
-            throw new Error(&#x27;and expected at least two functions but found none&#x27;);
+            throw &#x27;and expected at least two functions but found none&#x27;;
         }
 
         return arity.aritize(max)(function (args) {
@@ -367,7 +365,7 @@
         fns = slice(arguments).filter(type.isFunction);
         max = Math.max.apply(Math, fns.map(function (f) { return f.length; }));
         if (fns.length &lt; 1) {
-            throw new Error(&#x27;or expected at least two functions but found none&#x27;);
+            throw &#x27;or expected at least two functions but found none&#x27;;
         }
 
         return arity.aritize(max)(function (args) {
@@ -406,8 +404,8 @@
             return splat;
         }
 
-        if (type.isNotArray(fns) || fns.some(type.isNotFunction)) {
-            throw new Error(&#x27;splat expected arguments to be array of functions but saw &#x27; + fns);
+        if (!type.isArray(fns) || !fns.every(type.isFunction)) {
+            throw &#x27;splat expects arguments to be array of functions but saw &#x27; + fns;
         }
 
         return arity.aritize(

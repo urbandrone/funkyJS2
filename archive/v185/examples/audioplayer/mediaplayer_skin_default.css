@@ -1,0 +1,63 @@
+/* Mediaplayer
+=========== */
+.mediaplayer {
+  border: 1px solid #333333;
+  background-color: #000000;
+  color: #dfdfdf;
+}
+
+
+
+/* Mediaplayer timeline */
+.mediaplayer_timeline {
+  background-color: #333333;
+}
+
+.mediaplayer_timeline_buffered {
+  background-color: #666666;
+}
+
+.mediaplayer_timeline_played {
+  background-color: #b30505;
+}
+
+
+
+/* Mediaplayer controls */
+.mediaplayer_ui {
+  border-top: 1px solid #666666;
+  background-color: #333333;
+}
+
+.mediaplayer_control {
+  border: 0;
+  padding: 6px 12px;
+  background-color: #333333;
+  color: inherit;
+}
+
+.mediaplayer_control:hover {
+  color: #ffffff;
+}
+
+.mediaplayer_control:focus {
+  color: #ffffff;
+  outline: none;
+}
+
+/*.mediaplayer_control_label {}*/
+
+
+
+/* Mediaplayer timetable */
+.timetable {
+  width: 120px;
+}
+
+.timetable_divider:before {
+  content: ' /';
+  color: #666666;
+}
+.timetable_divider:after {
+  content: ' ';
+}

@@ -152,7 +152,7 @@
             return niladic;
         }
 
-        if (type.isNotFunction(f)) {
+        if (!type.isFunction(f)) {
             return f;
         }
 
@@ -192,7 +192,7 @@
             return monadic;
         }
 
-        if (type.isNotFunction(f)) {
+        if (!type.isFunction(f)) {
             return f;
         }
 
@@ -238,7 +238,7 @@
             return dyadic;
         }
 
-        if (type.isNotFunction(f)) {
+        if (!type.isFunction(f)) {
             return f;
         }
 
@@ -290,7 +290,7 @@
             return triadic;
         }
 
-        if (type.isNotFunction(f)) {
+        if (!type.isFunction(f)) {
             return f;
         }
 
@@ -346,7 +346,7 @@
             return tetradic;
         }
 
-        if (type.isNotFunction(f)) {
+        if (!type.isFunction(f)) {
             return f;
         }
 
@@ -414,7 +414,7 @@
             return polyadic;
         }
 
-        if (type.isNotFunction(f)) {
+        if (!type.isFunction(f)) {
             return f;
         }
 
@@ -475,7 +475,7 @@
             return variadic;
         }
 
-        if (type.isNotFunction(f) || f.length < 1) {
+        if (!type.isFunction(f) || f.length < 1) {
             return f;
         }
 

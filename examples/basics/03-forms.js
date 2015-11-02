@@ -17,7 +17,7 @@
             return descriptor.regex.test(descriptor.field.value);
         },
         checkbox: function (descriptor) {
-            return f.isNotNil(descriptor.field.checked);
+            return !f.isNil(descriptor.field.checked);
         },
     };
 

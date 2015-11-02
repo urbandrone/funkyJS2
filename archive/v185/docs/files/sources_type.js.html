@@ -1,0 +1,1099 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>sources\type.js - funkyjs-2</title>
+    <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
+    <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
+    <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
+    <link rel="shortcut icon" type="image/png" href="../assets/favicon.png">
+    <script src="http://yui.yahooapis.com/combo?3.9.1/build/yui/yui-min.js"></script>
+</head>
+<body class="yui3-skin-sam">
+
+<div id="doc">
+    <div id="hd" class="yui3-g header">
+        <div class="yui3-u-3-4">
+            
+                <h1><img src="..\logo.png" title="funkyjs-2"></h1>
+            
+        </div>
+        <div class="yui3-u-1-4 version">
+            <em>API Docs for: 1.8.5</em>
+        </div>
+    </div>
+    <div id="bd" class="yui3-g">
+
+        <div class="yui3-u-1-4">
+            <div id="docs-sidebar" class="sidebar apidocs">
+                <div id="api-list">
+    <h2 class="off-left">APIs</h2>
+    <div id="api-tabview" class="tabview">
+        <ul class="tabs">
+            <li><a href="#api-classes">Classes</a></li>
+            <li><a href="#api-modules">Modules</a></li>
+        </ul>
+
+        <div id="api-tabview-filter">
+            <input type="search" id="api-filter" placeholder="Type to filter APIs">
+        </div>
+
+        <div id="api-tabview-panel">
+            <ul id="api-classes" class="apis classes">
+            
+                <li><a href="../classes/funkyJS.html">funkyJS</a></li>
+            
+            </ul>
+
+            <ul id="api-modules" class="apis modules">
+            
+                <li><a href="../modules/advices.html">advices</a></li>
+            
+                <li><a href="../modules/arity.html">arity</a></li>
+            
+                <li><a href="../modules/arrays.html">arrays</a></li>
+            
+                <li><a href="../modules/birds.html">birds</a></li>
+            
+                <li><a href="../modules/combinators.html">combinators</a></li>
+            
+                <li><a href="../modules/combinators.extensions.html">combinators.extensions</a></li>
+            
+                <li><a href="../modules/contracts.html">contracts</a></li>
+            
+                <li><a href="../modules/decorators.html">decorators</a></li>
+            
+                <li><a href="../modules/decorators.extensions.html">decorators.extensions</a></li>
+            
+                <li><a href="../modules/experiments.html">experiments</a></li>
+            
+                <li><a href="../modules/functors.html">functors</a></li>
+            
+                <li><a href="../modules/iterators.html">iterators</a></li>
+            
+                <li><a href="../modules/lenses.html">lenses</a></li>
+            
+                <li><a href="../modules/objects.html">objects</a></li>
+            
+                <li><a href="../modules/strings.html">strings</a></li>
+            
+                <li><a href="../modules/trampolines.html">trampolines</a></li>
+            
+                <li><a href="../modules/type.html">type</a></li>
+            
+            </ul>
+        </div>
+    </div>
+</div>
+
+            </div>
+        </div>
+        <div class="yui3-u-3-4">
+                <div id="api-options">
+        Show:
+        <label for="api-show-inherited">
+            <input type="checkbox" id="api-show-inherited" checked>
+            Inherited
+        </label>
+
+        <label for="api-show-protected">
+            <input type="checkbox" id="api-show-protected">
+            Protected
+        </label>
+
+        <label for="api-show-private">
+            <input type="checkbox" id="api-show-private">
+            Private
+        </label>
+        <label for="api-show-deprecated">
+            <input type="checkbox" id="api-show-deprecated">
+            Deprecated
+        </label>
+
+    </div>
+
+
+            <div class="apidocs">
+                <div id="docs-main">
+                    <div class="content">
+                        <h1 class="file-heading">File: sources\type.js</h1>
+
+<div class="file">
+    <pre class="code prettyprint linenums">
+;(function (global, factory) {
+    var ext,
+        it;
+
+    if (typeof define === &#x27;function&#x27; &amp;&amp; define.amd) {
+        define(factory);
+
+    } else if (typeof exports === &#x27;object&#x27;) {
+        module.exports = factory();
+
+    } else {
+        ext = factory();
+        for (it in ext) {
+            if (ext.hasOwnProperty(it)) {
+                global.funkyJS[it] = ext[it];
+            }
+        }
+
+    }
+
+})(this, function () {
+
+    /**
+    @module type
+    **/
+    var api = {};
+
+
+
+
+    // INTERNAL UTILS
+    // ==============
+    var toStr = function (x) {
+        return Object.prototype.toString.call(x).toLowerCase();
+    }
+
+
+
+
+
+    /**
+    The is function takes in the name of any internal [[Class]] and a value and
+        checks if the internal [[Class]] of the given value matches the given
+        name
+
+    @method is
+    @for funkyJS
+    @param {string} cls Name of the internal [[Class]]
+    @param {any} x The value
+    @return {boolean} True on match, false otherwise
+
+    @example
+        var aString = &#x27;string&#x27;;
+        var aArray = [];
+
+        typeof aString === &#x27;string&#x27;;
+        // -&gt; true
+
+        typeof aArray === &#x27;array&#x27;;
+        // -&gt; false
+
+        funkyJS.is(&#x27;string&#x27;, aString);
+        // -&gt; true
+
+        funkyJS.is(&#x27;array&#x27;, aArray);
+        // -&gt; true
+
+        var isArray = funkyJS.is(&#x27;array&#x27;);
+
+        isArray(aArray);
+        // -&gt; true
+
+    **/
+    api.is = function is (cls, x) {
+        if (arguments.length &lt; 1) {
+            return is;
+        }
+
+        if (arguments.length &lt; 2) {
+            return function (x) {
+                return is(cls, x);
+            }
+        }
+
+        return toStr(x) === &#x27;[object &#x27; + cls + &#x27;]&#x27;;
+    }
+
+    /**
+    The isNull function takes in a value and checks if it is null
+
+    @method isNull
+    @for funkyJS
+    @param {any} x Value to check against
+    @return {boolean} True if x is null, false otherwise
+
+    @example
+        funkyJS.isNull(null);
+        // -&gt; true
+
+        funkyJS.isNull(undefined);
+        // -&gt; false
+
+        funkyJS.isNull(0);
+        // -&gt; false
+
+    **/
+    api.isNull = function isNull (x) {
+        if (arguments.length &lt; 1) {
+            return isNull;
+        }
+
+        return x === null;
+    }
+
+    /**
+    The isNotNull function takes in a value and checks if it is not null
+
+    @method isNotNull
+    @for funkyJS
+    @param {any} x Value to check against
+    @return {boolean} True if x is not null, false otherwise
+
+    @example
+        funkyJS.isNotNull(null);
+        // -&gt; false
+
+        funkyJS.isNotNull(undefined);
+        // -&gt; true
+
+        funkyJS.isNotNull(0);
+        // -&gt; true
+
+    **/
+    api.isNotNull = function isNotNull (x) {
+        if (arguments.length &lt; 1) {
+            return isNotNull;
+        }
+
+        return x !== null;
+    }
+
+    /**
+    The isVoid function takes in a value and checks if it is undefined
+
+    @method isVoid
+    @for funkyJS
+    @param {any} x Value to check against
+    @return {boolean} True if x is undefined, false otherwise
+
+    @example
+        funkyJS.isVoid(undefined);
+        // -&gt; true
+
+        funkyJS.isVoid(null);
+        // -&gt; false
+
+        funkyJS.isVoid(0);
+        // -&gt; false
+
+    **/
+    api.isVoid = function isVoid (x) {
+        if (arguments.length &lt; 1) {
+            return isVoid;
+        }
+
+        return x === undefined;
+    }
+
+    /**
+    The isNotVoid function takes in a value and checks if it is not undefined
+
+    @method isNotVoid
+    @for funkyJS
+    @param {any} x Value to check against
+    @return {boolean} True if x is not undefined, false otherwise
+
+    @example
+        funkyJS.isNotVoid(undefined);
+        // -&gt; false
+
+        funkyJS.isNotVoid(null);
+        // -&gt; true
+
+        funkyJS.isNotVoid(0);
+        // -&gt; true
+
+    **/
+    api.isNotVoid = function isNotVoid (x) {
+        if (arguments.length &lt; 1) {
+            return isNotVoid;
+        }
+
+        return x !== undefined;
+    }
+
+    /**
+    The isNil function takes in a value and checks if it is null or undefined
+
+    @method isNil
+    @for funkyJS
+    @param {any} x Value to check against
+    @return {boolean} True if x is null or undefined, false otherwise
+
+    @example
+        funkyJS.isNil(null);
+        // -&gt; true
+
+        funkyJS.isNil(undefined);
+        // -&gt; true
+
+        funkyJS.isNil(0);
+        // -&gt; false
+
+    **/
+    api.isNil = function isNil (x) {
+        if (arguments.length &lt; 1) {
+            return isNil;
+        }
+
+        return x == null;
+    }
+
+    /**
+    The isNotNil function takes in a value and checks if it is not null or undefined
+
+    @method isNotNil
+    @for funkyJS
+    @param {any} x Value to check against
+    @return {boolean} True if x is not null or undefined, false otherwise
+
+    @example
+        funkyJS.isNotNil(0);
+        // -&gt; true
+
+        funkyJS.isNotNil(null);
+        // -&gt; false
+
+        funkyJS.isNotNil(undefined);
+        // -&gt; false
+
+    **/
+    api.isNotNil = function isNotNil (x) {
+        if (arguments.length &lt; 1) {
+            return isNotNil;
+        }
+
+        return !api.isNil(x);
+    }
+
+    /**
+    The isBool function takes in a value and checks if it is a boolean
+
+    @method isBool
+    @for funkyJS
+    @param {any} x Value to check against
+    @return {boolean} True if x is a boolean, false otherwise
+
+    @example
+        funkyJS.isBool(false);
+        // -&gt; true
+
+        funkyJS.isBool(&#x27;true&#x27;);
+        // -&gt; false
+
+        funkyJS.isBool(0);
+        // -&gt; false
+
+    **/
+    api.isBool = function isBool (x) {
+        if (arguments.length &lt; 1) {
+            return isBool;
+        }
+
+        return typeof x === &#x27;boolean&#x27;;
+    }
+
+    /**
+    The isNotBool function takes in a value and checks if it is not a boolean
+
+    @method isNotBool
+    @for funkyJS
+    @param {any} x Value to check against
+    @return {boolean} True if x is not a boolean, false otherwise
+
+    @example
+        funkyJS.isNotBool(0);
+        // -&gt; true
+
+        funkyJS.isNotBool(&#x27;false&#x27;);
+        // -&gt; true
+
+        funkyJS.isNotBool(true);
+        // -&gt; false
+
+    **/
+    api.isNotBool = function isNotBool (x) {
+        if (arguments.length &lt; 1) {
+            return isNotBool;
+        }
+
+        return !api.isBool(x);
+    }
+
+    /**
+    The isString function takes in a value and checks if it is a string
+
+    @method isString
+    @for funkyJS
+    @param {any} x Value to check against
+    @return {boolean} True if x is a string, false otherwise
+
+    @example
+        funkyJS.isString(&#x27;string&#x27;);
+        // -&gt; true
+
+        funkyJS.isString(undefined);
+        // -&gt; false
+
+        funkyJS.isString(0);
+        // -&gt; false
+
+    **/
+    api.isString = function isString (x) {
+        if (arguments.length &lt; 1) {
+            return isString;
+        }
+
+        return typeof x === &#x27;string&#x27;;
+    }
+
+    /**
+    The isNotString function takes in a value and checks if it is not a string
+
+    @method isNotString
+    @for funkyJS
+    @param {any} x Value to check against
+    @return {boolean} True if x is not a string, false otherwise
+
+    @example
+        funkyJS.isNotString(0);
+        // -&gt; true
+
+        funkyJS.isNotString(undefined);
+        // -&gt; true
+
+        funkyJS.isNotString(&#x27;string&#x27;);
+        // -&gt; false
+
+    **/
+    api.isNotString = function isNotString (x) {
+        if (arguments.length &lt; 1) {
+            return isNotString;
+        }
+
+        return !api.isString(x);
+    }
+
+    /**
+    The isNumber function takes in a value and checks if it is a number (not NaN
+        and finite)
+
+    @method isNumber
+    @for funkyJS
+    @param {any} x Value to check against
+    @return {boolean} True if x is a number, false otherwise
+
+    @example
+        funkyJS.isNumber(0);
+        // -&gt; true
+
+        funkyJS.isNumber(NaN);
+        // -&gt; false
+
+    **/
+    api.isNumber = function isNumber (x) {
+        if (arguments.length &lt; 1) {
+            return isNumber;
+        }
+
+        return typeof x === &#x27;number&#x27; &amp;&amp; !isNaN(x) &amp;&amp; isFinite(x);
+    }
+
+    /**
+    The isNotNumber function takes in a value and checks if it is not a number
+
+    @method isNotNumber
+    @for funkyJS
+    @param {any} x Value to check against
+    @return {boolean} True if x is not a number, false otherwise
+
+    @example
+        funkyJS.isNotNumber(0);
+        // -&gt; false
+
+        funkyJS.isNotNumber(NaN);
+        // -&gt; true
+
+    **/
+    api.isNotNumber = function isNotNumber (x) {
+        if (arguments.length &lt; 1) {
+            return isNotNumber;
+        }
+
+        return !api.isNumber(x);
+    }
+
+    /**
+    The isInt32 function takes in a value and checks if it is a integer
+
+    @method isInt32
+    @for funkyJS
+    @param {any} x Value to check against
+    @return {boolean} True if x is a integer, false otherwise
+
+    @example
+        funkyJS.isInt32(1);
+        // -&gt; true
+
+        funkyJS.isInt32(1.5);
+        // -&gt; false
+
+    **/
+    api.isInt32 = function isInt32 (x) {
+        if (arguments.length &lt; 1) {
+            return isInt32;
+        }
+
+        return api.isNumber(x) &amp;&amp; x % 1 === 0 || api.isNumber(x) &amp;&amp; x === 1;
+    }
+
+    /**
+    The isNotInt32 function takes in a value and checks if it is not a integer
+
+    @method isNotInt32
+    @for funkyJS
+    @param {any} x Value to check against
+    @return {boolean} True if x is not a integer, false otherwise
+
+    @example
+        funkyJS.isNotInt32(1);
+        // -&gt; false
+
+        funkyJS.isNotInt32(1.5);
+        // -&gt; true
+
+    **/
+    api.isNotInt32 = function isNotInt32 (x) {
+        if (arguments.length &lt; 1) {
+            return isNotInt32;
+        }
+
+        return !api.isInt32(x);
+    }
+
+    /**
+    The isFloat32 function takes in a value and checks if it is a floating point number
+
+    @method isFloat32
+    @for funkyJS
+    @param {any} x Value to check against
+    @return {boolean} True if x is a floating point number, false otherwise
+
+    @example
+        funkyJS.isFloat32(1.5);
+        // -&gt; true
+
+        funkyJS.isFloat32(1);
+        // -&gt; false
+
+    **/
+    api.isFloat32 = function isFloat32 (x) {
+        if (arguments.length &lt; 1) {
+            return isFloat32;
+        }
+
+        return api.isNumber(x) &amp;&amp; x % 1 !== 0;
+    }
+
+    /**
+    The isNotFloat32 function takes in a value and checks if it is not a floating point number
+
+    @method isNotFloat32
+    @for funkyJS
+    @param {any} x Value to check against
+    @return {boolean} True if x is not a floating point number, false otherwise
+
+    @example
+        funkyJS.isNotFloat32(1.5);
+        // -&gt; false
+
+        funkyJS.isNotFloat32(1);
+        // -&gt; true
+
+    **/
+    api.isNotFloat32 = function isNotFloat32 (x) {
+        if (arguments.length &lt; 1) {
+            return isNotFloat32;
+        }
+
+        return !api.isFloat32(x);
+    }
+
+    /**
+    The isFunction function takes in a value and checks if it is a function
+
+    @method isFunction
+    @for funkyJS
+    @param {any} x Value to check against
+    @return {boolean} True if x is a function, false otherwise
+
+    @example
+        funkyJS.isFunction(function () {});
+        // -&gt; true
+
+        funkyJS.isFunction(&#x27;function&#x27;);
+        // -&gt; false
+
+    **/
+    api.isFunction = function isFunction (x) {
+        if (arguments.length &lt; 1) {
+            return isFunction;
+        }
+
+        return typeof x === &#x27;function&#x27;;
+    }
+
+    /**
+    The isNotFunction function takes in a value and checks if it is not a function
+
+    @method isNotFunction
+    @for funkyJS
+    @param {any} x Value to check against
+    @return {boolean} True if x is not a function, false otherwise
+
+    @example
+        funkyJS.isNotFunction(function () {});
+        // -&gt; false
+
+        funkyJS.isNotFunction(&#x27;function&#x27;);
+        // -&gt; true
+
+    **/
+    api.isNotFunction = function isNotFunction (x) {
+        if (arguments.length &lt; 1) {
+            return isNotFunction;
+        }
+
+        return !api.isFunction(x);
+    }
+
+    /**
+    The isArray function takes in a value and checks if it is a array
+
+    @method isArray
+    @for funkyJS
+    @param {any} x Value to check against
+    @return {boolean} True if x is a array, false otherwise
+
+    @example
+        funkyJS.isArray([]);
+        // -&gt; true
+
+        funkyJS.isArray({});
+        // -&gt; false
+
+    **/
+    api.isArray = function isArray (x) {
+        if (arguments.length &lt; 1) {
+            return isArray;
+        }
+
+        return Array.isArray(x);
+    }
+
+    /**
+    The isNotArray function takes in a value and checks if it is not a array
+
+    @method isNotArray
+    @for funkyJS
+    @param {any} x Value to check against
+    @return {boolean} True if x is not a array, false otherwise
+
+    @example
+        funkyJS.isNotArray([]);
+        // -&gt; false
+
+        funkyJS.isNotArray({});
+        // -&gt; true
+
+    **/
+    api.isNotArray = function isNotArray (x) {
+        if (arguments.length &lt; 1) {
+            return isNotArray;
+        }
+
+        return !Array.isArray(x);
+    }
+
+    /**
+    The isObject function takes in a value and checks if it is a object
+
+    @method isObject
+    @for funkyJS
+    @param {any} x Value to check against
+    @return {boolean} True if x is a object, false otherwise
+
+    @example
+        funkyJS.isObject({});
+        // -&gt; true
+
+        funkyJS.isObject([]);
+        // -&gt; false
+
+    **/
+    api.isObject = function isObject (x) {
+        if (arguments.length &lt; 1) {
+            return isObject;
+        }
+
+        return api.is(&#x27;object&#x27;, x);
+    }
+
+    /**
+    The isNotObject function takes in a value and checks if it is not a object
+
+    @method isNotObject
+    @for funkyJS
+    @param {any} x Value to check against
+    @return {boolean} True if x is not a object, false otherwise
+
+    @example
+        funkyJS.isNotObject({});
+        // -&gt; false
+
+        funkyJS.isNotObject([]);
+        // -&gt; true
+
+    **/
+    api.isNotObject = function isNotObject (x) {
+        if (arguments.length &lt; 1) {
+            return isNotObject;
+        }
+
+        return !api.isObject(x);
+    }
+
+    /**
+    The isDate function takes in a value and checks if it is a Date() instance
+
+    @method isDate
+    @for funkyJS
+    @param {any} x Value to check against
+    @return {boolean} True if x is a Date() instance, false otherwise
+
+    @example
+        funkyJS.isDate(new Date());
+        // -&gt; true
+
+        funkyJS.isDate(&#x27;2014-01-01&#x27;);
+        // -&gt; false
+
+    **/
+    api.isDate = function isDate (x) {
+        if (arguments.length &lt; 1) {
+            return isDate;
+        }
+
+        return api.is(&#x27;date&#x27;, x);
+    }
+
+    /**
+    The isNotDate function takes in a value and checks if it is not a Date() instance
+
+    @method isNotDate
+    @for funkyJS
+    @param {any} x Value to check against
+    @return {boolean} True if x is not a Date() instance, false otherwise
+
+    @example
+        funkyJS.isNotDate(new Date());
+        // -&gt; false
+
+        funkyJS.isNotDate(&#x27;2014-01-01&#x27;);
+        // -&gt; true
+
+    **/
+    api.isNotDate = function isNotDate (x) {
+        if (arguments.length &lt; 1) {
+            return isNotDate;
+        }
+
+        return !api.isDate(x);
+    }
+
+    /**
+    The isRegex function takes in a value and checks if it is a regular expression
+
+    @method isRegex
+    @for funkyJS
+    @param {any} x Value to check against
+    @return {boolean} True if x is a regular expression, false otherwise
+
+    @example
+        funkyJS.isRegex(/.+/);
+        // -&gt; true
+
+        funkyJS.isRegex(&#x27; &#x27;);
+        // -&gt; false
+
+    **/
+    api.isRegex = function isRegex (x) {
+        if (arguments.length &lt; 1) {
+            return isRegex;
+        }
+
+        return api.is(&#x27;regexp&#x27;, x);
+    }
+
+    /**
+    The isNotRegex function takes in a value and checks if it is not a regular expression
+
+    @method isNotRegex
+    @for funkyJS
+    @param {any} x Value to check against
+    @return {boolean} True if x is not a regular expression, false otherwise
+
+    @example
+        funkyJS.isNotRegex(/.+/);
+        // -&gt; false
+
+        funkyJS.isNotRegex(&#x27; &#x27;);
+        // -&gt; true
+
+    **/
+    api.isNotRegex = function isNotRegex (x) {
+        if (arguments.length &lt; 1) {
+            return isNotRegex;
+        }
+
+        return !api.isRegex(x);
+    }
+
+    /**
+    The isNode function takes in a value and checks if it is a DOM-Node
+
+    @method isNode
+    @for funkyJS
+    @param {any} x Value to check against
+    @return {boolean} True if x is a DOM-Node, false otherwise
+
+    @example
+        funkyJS.isNode(document.createElement(&#x27;div&#x27;));
+        // -&gt; true
+
+        funkyJS.isNode(&#x27;&lt;div&gt;&lt;/div&gt;&#x27;);
+        // -&gt; false
+
+    **/
+    api.isNode = function isNode (x) {
+        if (arguments.length &lt; 1) {
+            return isNode;
+        }
+
+        return api.isNotNil(x) &amp;&amp; api.isInt32(x.nodeType);
+    }
+
+    /**
+    The isNotNode function takes in a value and checks if it is not a DOM-Node
+
+    @method isNotNode
+    @for funkyJS
+    @param {any} x Value to check against
+    @return {boolean} True if x is not a DOM-Node, false otherwise
+
+    @example
+        funkyJS.isNotNode(document.createElement(&#x27;div&#x27;));
+        // -&gt; false
+
+        funkyJS.isNotNode(&#x27;&lt;div&gt;&lt;/div&gt;&#x27;);
+        // -&gt; true
+
+    **/
+    api.isNotNode = function isNotNode (x) {
+        if (arguments.length &lt; 1) {
+            return isNotNode;
+        }
+
+        return !api.isNode(x);
+    }
+
+    /**
+    The isNodeList function takes in a value and checks if it is a list of DOM-Nodes
+
+    @method isNodeList
+    @for funkyJS
+    @param {any} x Value to check against
+    @return {boolean} True if x is a list of DOM-Nodes, false otherwise
+
+    @example
+        funkyJS.isNodeList(document.querySelectorAll(&#x27;div&#x27;));
+        // -&gt; true
+
+        funkyJS.isNodeList([]);
+        // -&gt; false
+
+    **/
+    api.isNodeList = function isNodeList (x) {
+        if (arguments.length &lt; 1) {
+            return isNodeList;
+        }
+
+        return (/^((\[object\s)(html(options)?collection|nodelist)(\]))$/).test(toStr(x));
+    }
+
+    /**
+    The isNotNodeList function takes in a value and checks if it is not a list of DOM-Nodes
+
+    @method isNotNodeList
+    @for funkyJS
+    @param {any} x Value to check against
+    @return {boolean} True if x is not a list of DOM-Nodes, false otherwise
+
+    @example
+        funkyJS.isNotNodeList(document.querySelectorAll(&#x27;div&#x27;));
+        // -&gt; false
+
+        funkyJS.isNotNodeList([]);
+        // -&gt; true
+
+    **/
+    api.isNotNodeList = function isNotNodeList (x) {
+        if (arguments.length &lt; 1) {
+            return isNotNodeList;
+        }
+
+        return !api.isNodeList(x);
+    }
+
+    /**
+    The isSequencial function takes in a value and checks if it is a sequencial
+        enumerable. A enumerable is considered sequencial, if it validates against
+        the following tests:
+        1) Is not null or undefined AND
+        2) Has a length property with int32 value AND
+        3) Is not a function AND
+        4) Is not a object
+
+    @method isSequencial
+    @for funkyJS
+    @param {any} x Value to check against
+    @return {boolean} True if x is a sequencial enumerable, false otherwise
+
+    @example
+        funkyJS.isSequencial(document.querySelectorAll(&#x27;div&#x27;));
+        // -&gt; true
+
+    **/
+    api.isSequencial = function isSequencial (x) {
+        if (arguments.length &lt; 1) {
+            return isSequencial;
+        }
+
+        return api.isNotNil(x) &amp;&amp;
+               api.isInt32(x.length) &amp;&amp;
+               api.isNotFunction(x) &amp;&amp;
+               api.isNotObject(x);
+    }
+
+    /**
+    The isNotSequencial function takes in a value and checks if it is not a
+        sequencial enumerable. A enumerable is not considered sequencial, if it
+        fails in any of the following tests:
+        1) Is not null or undefined AND
+        2) Has a length property with int32 value AND
+        3) Is not a function AND
+        4) Is not a object
+
+    @method isNotSequencial
+    @for funkyJS
+    @param {any} x Value to check against
+    @return {boolean} True if x is not a sequencial enumerable, false otherwise
+
+    @example
+        funkyJS.isNotSequencial(document.querySelectorAll(&#x27;div&#x27;));
+        // -&gt; false
+
+    **/
+    api.isNotSequencial = function isNotSequencial (x) {
+        if (arguments.length &lt; 1) {
+            return isNotSequencial;
+        }
+
+        return !api.isSequencial(x);
+    }
+
+    /**
+    The isEnumerable function takes in a value and checks if it is a enumerable.
+        A enumerable must validate against the following tests:
+        1) Is object
+        OR
+        1) Is not null or undefined AND
+        2) Has a length property with int32 value AND
+        3) Is not a function AND
+        4) Is not a object
+
+    @method isEnumerable
+    @for funkyJS
+    @param {any} x Value to check against
+    @return {boolean} True if x is a enumerable, false otherwise
+
+    @example
+        funkyJS.isEnumerable(document.querySelectorAll(&#x27;div&#x27;));
+        // -&gt; true
+
+    **/
+    api.isEnumerable = function isEnumerable (x) {
+        if (arguments.length &lt; 1) {
+            return isEnumerable;
+        }
+
+        return api.isObject(x) || api.isSequencial(x);
+    }
+
+    /**
+    The isNotEnumerable function takes in a value and checks if it is not a enumerable.
+        A value is not considered enumerable if it fails in any of the following
+        tests:
+        1) Is object
+        OR
+        1) Is not null or undefined AND
+        2) Has a length property with int32 value AND
+        3) Is not a function AND
+        4) Is not a object
+
+
+    @method isNotEnumerable
+    @for funkyJS
+    @param {any} x Value to check against
+    @return {boolean} True if x is not a enumerable, false otherwise
+
+    @example
+        funkyJS.isNotEnumerable(document.querySelectorAll(&#x27;div&#x27;));
+        // -&gt; false
+
+    **/
+    api.isNotEnumerable = function isNotEnumerable (x) {
+        if (arguments.length &lt; 1) {
+            return isNotEnumerable;
+        }
+
+        return !api.isEnumerable(x);
+    }
+
+
+
+    return api;
+
+});
+    </pre>
+</div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="../assets/vendor/prettify/prettify-min.js"></script>
+<script>prettyPrint();</script>
+<script src="../assets/js/yui-prettify.js"></script>
+<script src="../assets/../api.js"></script>
+<script src="../assets/js/api-filter.js"></script>
+<script src="../assets/js/api-list.js"></script>
+<script src="../assets/js/api-search.js"></script>
+<script src="../assets/js/apidocs.js"></script>
+</body>
+</html>

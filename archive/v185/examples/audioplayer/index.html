@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="de">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="keywords" content="">
+        <meta name="description" content="">
+        <meta name="author" content="D. Hofmann">
+        <meta name="robots" content="index, follow">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        <title>funkyJS Audioplayer Example</title>
+        <link rel='stylesheet' href='//fonts.googleapis.com/css?family=Noto+Sans:400,700'>
+        <link rel="stylesheet" href="mediaplayer.css">
+        <link rel="stylesheet" href="mediaplayer_skin_default.css">
+    </head>
+    <body>
+        <div class="mediaplayer" data-widget="Mediaplayer">
+            <!-- required -->
+            <audio preload="metadata" class="mediaplayer_media mediaplayer_audio" data-point="mediasrc">
+            </audio>
+            <!-- OR:
+            <video preload="metadata" class="mediaplayer_media mediaplayer_video" data-point="mediasrc"></video>
+            -->
+            <ul class="mediaplayer_sources">
+            <!-- Note: Even if ugly, there is no other way than this one to get
+                       proper cross-browser error handling if a mediaressource
+                       fails to load
+            -->
+                <li class="mediaplayer_source" data-uri="path/to/first.mp3"></li>
+                <li class="mediaplayer_source" data-uri="path/to/second.ogg"></li>
+            </ul>
+            <!-- /required -->
+            <!-- optional -->
+            <div class="mediaplayer_timeline">
+                <div class="mediaplayer_timeline_buffered" style="width:66%"></div>
+                <div class="mediaplayer_timeline_played" style="width:33%"></div>
+            </div>
+            <!-- /optional -->
+            <div class="mediaplayer_ui">
+                <!-- required -->
+                <button type="button" class="mediaplayer_control" data-cmd="playpause">
+                    <span class="mediaplayer_control_label">Start/Pause</span>
+                </button>
+                <button type="button" class="mediaplayer_control" data-cmd="stop">
+                    <span class="mediaplayer_control_label">Stop</span>
+                </button>
+                <!-- required -->
+                <!-- optional -->
+                <button type="button" class="mediaplayer_control" data-cmd="volume">
+                    <span class="mediaplayer_control_label">Vol.</span>
+                </button>
+                <div class="timetable">
+                    <span class="timetable_elapsed">0:0</span>
+                    <span class="timetable_divider"></span>
+                    <span class="timetable_duration">0:0</span>
+                </div>
+                <!-- /optional -->
+            </div>
+        </div>
+    </body>
+    <script src="../../builds/funkyjs2.browser.min.js"></script>
+    <script src="../../builds/funkyjs2.ext.browser.min.js"></script>
+    <!-- Mediaplayer Scripts -->
+    <script src="dom.js"></script>
+    <script src="thing.js"></script>
+    <script src="mediaplayer.js"></script>
+</html>

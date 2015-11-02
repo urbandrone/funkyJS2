@@ -89,7 +89,7 @@
 
         fns = slice(arguments).filter(type.isFunction);
         if (fns.length < 1) {
-            throw new Error('Expected at least one function to compose but found none');
+            throw 'Expected at least one function to compose but found none';
         }
 
         return arity.aritize(fns[fns.length - 1].length)(function (args) {
@@ -133,7 +133,7 @@
 
         fns = slice(arguments).filter(type.isFunction);
         if (fns.length < 1) {
-            throw new Error('Expected at least one function to pipe but found none');
+            throw 'Expected at least one function to pipe but found none';
         }
 
         return arity.aritize(fns[0].length)(function (args) {
@@ -188,7 +188,7 @@
         fns = slice(arguments).filter(type.isFunction);
         max = Math.max.apply(Math, fns.map(function (f) { return f.length; }));
         if (fns.length < 1) {
-            throw new Error('and expected at least two functions but found none');
+            throw 'and expected at least two functions but found none';
         }
 
         return arity.aritize(max)(function (args) {
@@ -245,7 +245,7 @@
         fns = slice(arguments).filter(type.isFunction);
         max = Math.max.apply(Math, fns.map(function (f) { return f.length; }));
         if (fns.length < 1) {
-            throw new Error('or expected at least two functions but found none');
+            throw 'or expected at least two functions but found none';
         }
 
         return arity.aritize(max)(function (args) {
@@ -284,8 +284,8 @@
             return splat;
         }
 
-        if (type.isNotArray(fns) || fns.some(type.isNotFunction)) {
-            throw new Error('splat expected arguments to be array of functions but saw ' + fns);
+        if (!type.isArray(fns) || !fns.every(type.isFunction)) {
+            throw 'splat expects arguments to be array of functions but saw ' + fns;
         }
 
         return arity.aritize(

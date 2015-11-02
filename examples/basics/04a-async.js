@@ -20,17 +20,5 @@
     // 
     // factCalculator(100, function (fact) { ... do something with fact ... });
     
-    var fact = f.memoize(function fact (n) {
-        if (n < 1) {
-            return 1;
-        }
-        return n * fact(n - 1);
-    });
-
-    return f.defaults(f.liftAsync(function factCalculator (n) {
-        if (f.isNotNumber(n)) {
-            return n;
-        }
-        return fact(Math.abs(n));
-    }), [null, f.identity, f.identity]);
+    
 });

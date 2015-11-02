@@ -1,0 +1,836 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>sources\arrays.js - funkyjs-2</title>
+    <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
+    <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
+    <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
+    <link rel="shortcut icon" type="image/png" href="../assets/favicon.png">
+    <script src="http://yui.yahooapis.com/combo?3.9.1/build/yui/yui-min.js"></script>
+</head>
+<body class="yui3-skin-sam">
+
+<div id="doc">
+    <div id="hd" class="yui3-g header">
+        <div class="yui3-u-3-4">
+            
+                <h1><img src="..\logo.png" title="funkyjs-2"></h1>
+            
+        </div>
+        <div class="yui3-u-1-4 version">
+            <em>API Docs for: 1.8.5</em>
+        </div>
+    </div>
+    <div id="bd" class="yui3-g">
+
+        <div class="yui3-u-1-4">
+            <div id="docs-sidebar" class="sidebar apidocs">
+                <div id="api-list">
+    <h2 class="off-left">APIs</h2>
+    <div id="api-tabview" class="tabview">
+        <ul class="tabs">
+            <li><a href="#api-classes">Classes</a></li>
+            <li><a href="#api-modules">Modules</a></li>
+        </ul>
+
+        <div id="api-tabview-filter">
+            <input type="search" id="api-filter" placeholder="Type to filter APIs">
+        </div>
+
+        <div id="api-tabview-panel">
+            <ul id="api-classes" class="apis classes">
+            
+                <li><a href="../classes/funkyJS.html">funkyJS</a></li>
+            
+            </ul>
+
+            <ul id="api-modules" class="apis modules">
+            
+                <li><a href="../modules/advices.html">advices</a></li>
+            
+                <li><a href="../modules/arity.html">arity</a></li>
+            
+                <li><a href="../modules/arrays.html">arrays</a></li>
+            
+                <li><a href="../modules/birds.html">birds</a></li>
+            
+                <li><a href="../modules/combinators.html">combinators</a></li>
+            
+                <li><a href="../modules/combinators.extensions.html">combinators.extensions</a></li>
+            
+                <li><a href="../modules/contracts.html">contracts</a></li>
+            
+                <li><a href="../modules/decorators.html">decorators</a></li>
+            
+                <li><a href="../modules/decorators.extensions.html">decorators.extensions</a></li>
+            
+                <li><a href="../modules/experiments.html">experiments</a></li>
+            
+                <li><a href="../modules/functors.html">functors</a></li>
+            
+                <li><a href="../modules/iterators.html">iterators</a></li>
+            
+                <li><a href="../modules/lenses.html">lenses</a></li>
+            
+                <li><a href="../modules/objects.html">objects</a></li>
+            
+                <li><a href="../modules/strings.html">strings</a></li>
+            
+                <li><a href="../modules/trampolines.html">trampolines</a></li>
+            
+                <li><a href="../modules/type.html">type</a></li>
+            
+            </ul>
+        </div>
+    </div>
+</div>
+
+            </div>
+        </div>
+        <div class="yui3-u-3-4">
+                <div id="api-options">
+        Show:
+        <label for="api-show-inherited">
+            <input type="checkbox" id="api-show-inherited" checked>
+            Inherited
+        </label>
+
+        <label for="api-show-protected">
+            <input type="checkbox" id="api-show-protected">
+            Protected
+        </label>
+
+        <label for="api-show-private">
+            <input type="checkbox" id="api-show-private">
+            Private
+        </label>
+        <label for="api-show-deprecated">
+            <input type="checkbox" id="api-show-deprecated">
+            Deprecated
+        </label>
+
+    </div>
+
+
+            <div class="apidocs">
+                <div id="docs-main">
+                    <div class="content">
+                        <h1 class="file-heading">File: sources\arrays.js</h1>
+
+<div class="file">
+    <pre class="code prettyprint linenums">
+;(function (global, factory) {
+    var ext,
+        it;
+
+    if (typeof define === &#x27;function&#x27; &amp;&amp; define.amd) {
+        define([&#x27;./type&#x27;], factory);
+
+    } else if (typeof exports === &#x27;object&#x27;) {
+        module.exports = factory(require(&#x27;type&#x27;));
+
+    } else {
+        ext = factory(global.funkyJS);
+        for (it in ext) {
+            if (ext.hasOwnProperty(it)) {
+                global.funkyJS[it] = ext[it];
+            }
+        }
+
+    }
+})(this, function (type) {
+
+    /**
+    @module arrays
+    **/
+    var api = {};
+
+
+
+    // INTERNAL UTILITES
+    // =================
+    var slice = Array.prototype.slice;
+
+
+
+    /**
+    The toArray function takes in any enumerable value (arrays, nodelists, strings,
+        objects, arguments) and transforms it into a real array. If the given
+        value is not enumerable, it will be wrapped into a array
+
+    @method toArray
+    @for funkyJS
+    @param {any} x Anything
+    @return {array} Array from enumerable or array with given value
+
+    @example
+        funkyJS.toArray([1, 2, 3]);
+        // -&gt; [1, 2, 3]
+
+        funkyJS.toArray({ a: 1, b: 2, c: 3 });
+        // -&gt; [1, 2, 3]
+
+        funkyJS.toArray(null);
+        // -&gt; [null]
+
+    **/
+    api.toArray = function toArray (x) {
+        if (arguments.length &lt; 1) {
+            return toArray;
+        }
+
+        if (type.isArray(x)) {
+            return x;
+        }
+
+        if (type.isNotEnumerable(x)) {
+            return [x];
+        }
+
+        if (type.isString(x)) {
+            return x.split(&#x27;&#x27;);
+        }
+
+        if (type.isObject(x)) {
+            return Object.keys(x).map(function (key) {
+                return x[key];
+            });
+        }
+
+        return slice.call(x);
+    }
+
+    /**
+    The first function returns the first item of any sequencial value given. For
+        not sequencial values the given value is returned
+
+    @method first
+    @for funkyJS
+    @param {array|nodelist|arguments|string} a The sequencial value
+    @return {any} The first item
+
+    @example
+        funkyJS.first([&#x27;a&#x27;, &#x27;b&#x27;, &#x27;c&#x27;]);
+        // -&gt; &#x27;a&#x27;
+
+        funkyJS.first(&#x27;some string&#x27;);
+        // -&gt; &#x27;s&#x27;
+
+        funkyJS.first(null);
+        // -&gt; null
+
+        funkyJS.first()([&#x27;a&#x27;, &#x27;b&#x27;, &#x27;c&#x27;]);
+        // -&gt; &#x27;a&#x27;
+
+    **/
+    api.first = function first (a) {
+        if (arguments.length &lt; 1) {
+            return first;
+        }
+
+        if (type.isSequencial(a) &amp;&amp; a.length) {
+            return a[0];
+        }
+
+        return a;
+    }
+
+    /**
+    The last function returns the last item of any sequencial value given. For
+        not sequencial values the given value is returned
+
+    @method last
+    @for funkyJS
+    @param {array|nodelist|arguments|string} a The sequencial value
+    @return {any} The last item
+
+    @example
+        funkyJS.last([&#x27;a&#x27;, &#x27;b&#x27;, &#x27;c&#x27;]);
+        // -&gt; &#x27;c&#x27;
+
+        funkyJS.last(&#x27;some string&#x27;);
+        // -&gt; &#x27;g&#x27;
+
+        funkyJS.last(null);
+        // -&gt; null
+
+        funkyJS.last()([&#x27;a&#x27;, &#x27;b&#x27;, &#x27;c&#x27;]);
+        // -&gt; &#x27;c&#x27;
+
+    **/
+    api.last = function last (a) {
+        if (arguments.length &lt; 1) {
+            return last;
+        }
+
+        if (type.isSequencial(a) &amp;&amp; a.length) {
+            return a[a.length - 1];
+        }
+
+        return a;
+    }
+
+    /**
+    The head function returns all but the last item of any sequencial value given.
+        For not sequencial values the given value is returned
+
+    @method head
+    @for funkyJS
+    @param {array|nodelist|arguments|string} a The sequencial value
+    @return {array} The head items
+
+    @example
+        funkyJS.head([&#x27;a&#x27;, &#x27;b&#x27;, &#x27;c&#x27;]);
+        // -&gt; [&#x27;a&#x27;, &#x27;b&#x27;]
+
+        funkyJS.head(&#x27;some string&#x27;);
+        // -&gt; &#x27;some strin&#x27;
+
+        funkyJS.head(null);
+        // -&gt; null
+
+        funkyJS.head()([&#x27;a&#x27;, &#x27;b&#x27;, &#x27;c&#x27;]);
+        // -&gt; [&#x27;a&#x27;, &#x27;b&#x27;]
+
+    **/
+    api.head = function head (a) {
+        if (arguments.length &lt; 1) {
+            return head;
+        }
+
+        if (type.isSequencial(a) &amp;&amp; a.length) {
+            return api.toArray(a).slice(0, a.length - 1);
+        }
+
+        return a;
+    }
+
+    /**
+    The tail function returns all but the first item of any sequencial value given.
+        For not sequencial values the given value is returned
+
+    @method tail
+    @for funkyJS
+    @param {array|nodelist|arguments|string} a The sequencial value
+    @return {array} The tail items
+
+    @example
+        funkyJS.tail([&#x27;a&#x27;, &#x27;b&#x27;, &#x27;c&#x27;]);
+        // -&gt; [&#x27;b&#x27;, &#x27;c&#x27;]
+
+        funkyJS.tail(&#x27;some string&#x27;);
+        // -&gt; &#x27;ome string&#x27;
+
+        funkyJS.tail(null);
+        // -&gt; null
+
+        funkyJS.tail()([&#x27;a&#x27;, &#x27;b&#x27;, &#x27;c&#x27;]);
+        // -&gt; [&#x27;b&#x27;, &#x27;c&#x27;]
+
+    **/
+    api.tail = function tail (a) {
+        if (arguments.length &lt; 1) {
+            return tail;
+        }
+
+        if (type.isSequencial(a) &amp;&amp; a.length) {
+            return api.toArray(a).slice(1);
+        }
+
+        return a;
+    }
+
+    /**
+    Given a index number and any sequencial value, the nth function returns the
+        item on the given index position or null if no such item can be found or
+        the given value is not sequencial
+
+    @method nth
+    @for funkyJS
+    @param {number} n Index of the item to return
+    @param {array|nodelist|arguments|string} a The sequencial value
+    @return {any} The item on position n or null
+
+    @example
+        funkyJS.nth(1, [&#x27;a&#x27;, &#x27;b&#x27;, &#x27;c&#x27;]);
+        // -&gt; &#x27;b&#x27;
+
+        funkyJS.nth(1, &#x27;some string&#x27;);
+        // -&gt; &#x27;o&#x27;
+
+        funkyJS.nth(1, null);
+        // -&gt; null
+
+        funkyJS.nth(1)()([&#x27;a&#x27;, &#x27;b&#x27;, &#x27;c&#x27;]);
+        // -&gt; &#x27;b&#x27;
+
+    **/
+    api.nth = function nth (n, a) {
+        if (arguments.length &lt; 1) {
+            return nth;
+        }
+
+        if (arguments.length &lt; 2) {
+            return function (a) {
+                return nth(n, a);
+            }
+        }
+
+        if (type.isNotNumber(n) || n &lt; 0) {
+            n = 0;
+        }
+
+        if (type.isSequencial(a) &amp;&amp; a.length &gt;= 1) {
+            return a[n] || null;
+        }
+
+        return null;
+    }
+
+    /**
+    The take function returns a new array from a given sequencial with as many
+        items taken from the beginning of the given value as specified
+
+    @method take
+    @for funkyJS
+    @param {number} n The amount of items to take into a new array
+    @param {array|nodelist|arguments|string} a The sequencial value
+    @return {array} Array of n items from the left of the given sequencial value
+
+    @example
+        funkyJS.take(2, [&#x27;a&#x27;, &#x27;b&#x27;, &#x27;c&#x27;, &#x27;d&#x27;]);
+        // -&gt; [&#x27;a&#x27;, &#x27;b&#x27;]
+
+        funkyJS.take(4, &#x27;some string&#x27;);
+        // -&gt; [&#x27;s&#x27;, &#x27;o&#x27;, &#x27;m&#x27;, &#x27;e&#x27;]
+
+        funkyJS.take(2, null);
+        // -&gt; null
+
+        funkyJS.take(2)()([&#x27;a&#x27;, &#x27;b&#x27;, &#x27;c&#x27;, &#x27;d&#x27;]);
+        // -&gt; [&#x27;a&#x27;, &#x27;b&#x27;]
+
+    **/
+    api.take = function take (n, a) {
+        if (arguments.length &lt; 1) {
+            return take;
+        }
+
+        if (arguments.length &lt; 2) {
+            return function (a) {
+                return take(n, a);
+            }
+        }
+
+        if (type.isNotNumber(n)) {
+            n = 0;
+        }
+
+        if (type.isSequencial(a) &amp;&amp; a.length) {
+            return api.toArray(a).slice(0, Math.min(a.length, n));
+        }
+
+        return a;
+    }
+
+    /**
+    The drop function returns a new array from a given sequencial with as many
+        items dropn from the beginning of the given value as specified
+
+    @method drop
+    @for funkyJS
+    @param {number} n The amount of items to drop into a new array
+    @param {array|nodelist|arguments|string} a The sequencial value
+    @return {array} Array of n items from the left of the given sequencial value
+
+    @example
+        funkyJS.drop(2, [&#x27;a&#x27;, &#x27;b&#x27;, &#x27;c&#x27;, &#x27;d&#x27;]);
+        // -&gt; [&#x27;c&#x27;, &#x27;d&#x27;]
+
+        funkyJS.drop(5, &#x27;some string&#x27;);
+        // -&gt; [&#x27;s&#x27;, &#x27;t&#x27;, &#x27;r&#x27;, &#x27;i&#x27;, &#x27;n&#x27;, &#x27;g&#x27;]
+
+        funkyJS.drop(2, null);
+        // -&gt; null
+
+        funkyJS.drop(2)()([&#x27;a&#x27;, &#x27;b&#x27;, &#x27;c&#x27;, &#x27;d&#x27;]);
+        // -&gt; [&#x27;c&#x27;, &#x27;d&#x27;]
+
+    **/
+    api.drop = function drop (n, a) {
+        if (arguments.length &lt; 1) {
+            return drop;
+        }
+
+        if (arguments.length &lt; 2) {
+            return function (a) {
+                return drop(n, a);
+            }
+        }
+
+        if (type.isNotNumber(n)) {
+            n = a &amp;&amp; a.length ? a.length : Infinity;
+        }
+
+        if (type.isSequencial(a) &amp;&amp; a.length) {
+            return api.toArray(a).slice(Math.min(a.length, n));
+        }
+
+        return a;
+    }
+
+    /**
+    Given two sequencial values, the append function adds the first one to the
+        end of the second one
+
+    @method append
+    @for funkyJS
+    @param {array|nodelist|arguments|string} a1 The sequence to append
+    @param {array|nodelist|arguments|string} a2 The sequence to append a1 to
+    @return {array} a1 after the sequence of a2
+
+    @example
+        var newTail = [1, 2, 3];
+
+        funkyJS.append(newTail, [&#x27;a&#x27;, &#x27;b&#x27;, &#x27;c&#x27;]);
+        // -&gt; [&#x27;a&#x27;, &#x27;b&#x27;, &#x27;c&#x27;, 1, 2, 3]
+
+        funkyJS.append(newTail, null);
+        // -&gt; null
+
+        funkyJS.append(newTail)()([&#x27;a&#x27;, &#x27;b&#x27;, &#x27;c&#x27;]);
+        // -&gt; [&#x27;a&#x27;, &#x27;b&#x27;, &#x27;c&#x27;, 1, 2, 3]
+
+    **/
+    api.append = function append (a1, a2) {
+        if (arguments.length &lt; 1) {
+            return append;
+        }
+
+        if (arguments.length &lt; 2) {
+            return function (a2) {
+                return append(a1, a2);
+            }
+        }
+
+        a1 = type.isSequencial(a1) ? api.toArray(a1) : [];
+        if (type.isSequencial(a2)) {
+            return api.toArray(a2).concat(a1);
+        }
+
+        return a2;
+    }
+
+    /**
+    Given two sequencial values, the prepend function adds the first one to the
+        end of the second one
+
+    @method prepend
+    @for funkyJS
+    @param {array|nodelist|arguments|string} a1 The sequence to prepend
+    @param {array|nodelist|arguments|string} a2 The sequence a1 should preceede
+    @return {array} a1 before the sequence of a2
+
+    @example
+        var newHead = [1, 2, 3];
+
+        funkyJS.prepend(newHead, [&#x27;a&#x27;, &#x27;b&#x27;, &#x27;c&#x27;]);
+        // -&gt; [1, 2, 3, &#x27;a&#x27;, &#x27;b&#x27;, &#x27;c&#x27;]
+
+        funkyJS.prepend(newHead, null);
+        // -&gt; null
+
+        funkyJS.prepend(newHead)()([&#x27;a&#x27;, &#x27;b&#x27;, &#x27;c&#x27;]);
+        // -&gt; [1, 2, 3, &#x27;a&#x27;, &#x27;b&#x27;, &#x27;c&#x27;]
+
+    **/
+    api.prepend = function prepend (a1, a2) {
+        if (arguments.length &lt; 1) {
+            return prepend;
+        }
+
+        if (arguments.length &lt; 2) {
+            return function (a2) {
+                return prepend(a1, a2);
+            }
+        }
+
+        a1 = type.isSequencial(a1) ? api.toArray(a1) : [];
+        if (type.isSequencial(a2)) {
+            return a1.concat(api.toArray(a2));
+        }
+
+        return a2;
+    }
+
+    /**
+    Given three sequencial values, the surround function adds the first one to the
+        head and the second one to the tail of the third value.
+
+    @method surround
+    @for funkyJS
+    @param {array|nodelist|arguments|string} a1 The head sequence
+    @param {array|nodelist|arguments|string} a2 The tail sequence
+    @param {array|nodelist|arguments|string} target The sequence to be surrounded
+    @return {array} Target between a1 and a2
+
+    @example
+        var newHead = [&#x27;a&#x27;, &#x27;b&#x27;, &#x27;c&#x27;];
+        var newTail = [&#x27;x&#x27;, &#x27;y&#x27;, &#x27;z&#x27;];
+
+        funkyJS.surround(newHead, newTail, [&#x27;m&#x27;, &#x27;n&#x27;, &#x27;o&#x27;]);
+        // -&gt; [&#x27;a&#x27;, &#x27;b&#x27;, &#x27;c&#x27;, &#x27;m&#x27;, &#x27;n&#x27;, &#x27;o&#x27;, &#x27;x&#x27;, &#x27;y&#x27;, &#x27;z&#x27;]
+
+        funkyJS.surround(newHead, newTail, null);
+        // -&gt; null
+
+        funkyJS.surround(newHead)(newTail)([&#x27;m&#x27;, &#x27;n&#x27;, &#x27;o&#x27;]);
+        // -&gt; [&#x27;a&#x27;, &#x27;b&#x27;, &#x27;c&#x27;, &#x27;m&#x27;, &#x27;n&#x27;, &#x27;o&#x27;, &#x27;x&#x27;, &#x27;y&#x27;, &#x27;z&#x27;]
+
+    **/
+    api.surround = function surround (head, tail, target) {
+        if (arguments.length &lt; 1) {
+            return surround;
+        }
+
+        if (arguments.length &lt; 2) {
+            return function (tail, target) {
+                return surround(head, tail, target);
+            }
+        }
+
+        if (arguments.length &lt; 3) {
+            return function (target) {
+                return surround(head, tail, target);
+            }
+        }
+
+        head = type.isSequencial(head) ? api.toArray(head) : [];
+        tail = type.isSequencial(tail) ? api.toArray(tail) : [];
+        if (type.isSequencial(target)) {
+            return head.concat(api.toArray(target)).concat(tail);
+        }
+
+        return target;
+    }
+
+    /**
+    The unique function takes a sequencial value and returns a new array from it
+        which contains only the unique items
+
+    @method unique
+    @for funkyJS
+    @param {array|nodelist|arguments|string} a The original sequencial
+    @return {array} Array with only the unique values from a
+
+    @example
+        var original = [&#x27;a&#x27;, &#x27;c&#x27;, &#x27;b&#x27;, &#x27;b&#x27;, &#x27;a&#x27;, &#x27;a&#x27;, &#x27;f&#x27;, &#x27;k&#x27;, &#x27;a&#x27;, &#x27;b&#x27;, &#x27;f&#x27;, &#x27;c&#x27;];
+
+        funkyJS.unique(original);
+        // -&gt; [&#x27;a&#x27;, &#x27;c&#x27;, &#x27;b&#x27;, &#x27;f&#x27;, &#x27;k&#x27;]
+
+    **/
+    api.unique = function unique (a) {
+        var clone;
+
+        if (arguments.length &lt; 1) {
+            return unique;
+        }
+
+        clone = [];
+        a = type.isSequencial(a) ? api.toArray(a) : [];
+        a.forEach(function (value) {
+            if (clone.indexOf(value) &lt; 0) {
+                clone.push(value)
+            }
+        });
+        return clone;
+    }
+
+    /**
+    The flatten function flattens any given nested sequencial value
+
+    @method flatten
+    @for funkyJS
+    @param {array|nodelist|arguments|string} a1 The nested sequencial
+    @return {array} A new flat version of the given array
+
+    @example
+        var singleLevel = [[&#x27;a&#x27;, &#x27;b&#x27;], [&#x27;c&#x27;, &#x27;d&#x27;], &#x27;e&#x27;];
+        var multiLevel = [[[[&#x27;a&#x27;, &#x27;b&#x27;]], [&#x27;c&#x27;]], &#x27;d&#x27;, [[[[&#x27;e&#x27;]]]]];
+
+        funkyJS.flatten(singleLevel);
+        // -&gt; [&#x27;a&#x27;, &#x27;b&#x27;, &#x27;c&#x27;, &#x27;d&#x27;, &#x27;e&#x27;];
+
+        funkyJS.flatten(multiLevel);
+        // -&gt; [&#x27;a&#x27;, &#x27;b&#x27;, &#x27;c&#x27;, &#x27;d&#x27;, &#x27;e&#x27;];
+
+    **/
+    api.flatten = (function () {
+        function flattenTCO (list, acc) {
+            if (list.length &lt; 1) {
+                return acc;
+            }
+
+            return function () {
+                if (Array.isArray(list[0])) {
+                    return flattenTCO(list[0].concat(list.slice(1)), acc);
+                }
+
+                return flattenTCO(list.slice(1), acc.concat(list[0]));
+            }
+        }
+
+        return function flatten (a1) {
+            var _list = api.toArray(a1);
+            if (arguments.length &lt; 1) {
+                return flatten;
+            }
+
+            _list = flattenTCO(a1, []);
+            while (type.isFunction(_list)) {
+                _list = _list();
+            }
+
+            return _list;
+        }
+
+    })();
+
+    /**
+    Given two sequencial values, the union function returns a new array which
+        contains the unique values of both
+
+    @method union
+    @for funkyJS
+    @param {array|nodelist|arguments|string} a1 First sequencial
+    @param {array|nodelist|arguments|string} a2 Second sequencial
+    @return {array} New array containing the union of a1 and a2
+
+    @example
+        var first = [&#x27;a&#x27;, &#x27;h&#x27;, &#x27;e&#x27;, &#x27;c&#x27;, &#x27;b&#x27;, &#x27;f&#x27;];
+        var second = [&#x27;c&#x27;, &#x27;d&#x27;, &#x27;a&#x27;, &#x27;f&#x27;, &#x27;e&#x27;, &#x27;h&#x27;];
+
+        funkyJS.union(first, second);
+        // -&gt; [&#x27;a&#x27;, &#x27;h&#x27;, &#x27;e&#x27;, &#x27;c&#x27;, &#x27;b&#x27;, &#x27;f&#x27;, &#x27;d&#x27;]
+
+    **/
+    api.union = function union (a1, a2) {
+        if (arguments.length &lt; 1) {
+            return union;
+        }
+
+        if (arguments.length &lt; 2) {
+            return function (a2) {
+                return union(a1, a2);
+            }
+        }
+
+        a1 = type.isSequencial(a1) ? api.toArray(a1) : [];
+        a2 = type.isSequencial(a2) ? api.toArray(a2) : [];
+        return api.unique(a1.concat(a2));
+    }
+
+    /**
+    Given two sequencial values, the intersect function returns a new array which
+        contains the intersection of both
+
+    @method intersect
+    @for funkyJS
+    @param {array|nodelist|arguments|string} a1 First sequencial
+    @param {array|nodelist|arguments|string} a2 Second sequencial
+    @return {array} New array containing the intersection of a1 and a2
+
+    @example
+        var first = [&#x27;a&#x27;, &#x27;h&#x27;, &#x27;e&#x27;, &#x27;c&#x27;, &#x27;b&#x27;, &#x27;f&#x27;];
+        var second = [&#x27;c&#x27;, &#x27;d&#x27;, &#x27;a&#x27;, &#x27;f&#x27;, &#x27;e&#x27;, &#x27;h&#x27;];
+
+        funkyJS.intersect(first, second);
+        // -&gt; [&#x27;a&#x27;, &#x27;h&#x27;, &#x27;e&#x27;, &#x27;c&#x27;, &#x27;f&#x27;]
+
+    **/
+    api.intersect = function intersect (a1, a2) {
+        if (arguments.length &lt; 1) {
+            return intersect;
+        }
+
+        if (arguments.length &lt; 2) {
+            return function (a2) {
+                return intersect(a1, a2);
+            }
+        }
+
+        a1 = type.isSequencial(a1) ? api.unique(api.toArray(a1)) : [];
+        a2 = type.isSequencial(a2) ? api.unique(api.toArray(a2)) : [];
+        if (a2.length &gt; a1.length) {
+            return a2.filter(function (v) {
+                return a1.indexOf(v) &gt;= 0;
+            });
+        }
+
+        return a1.filter(function (v) {
+            return a2.indexOf(v) &gt;= 0;
+        });
+    }
+
+    /**
+    Given two sequencial values, the difference function returns a new array which
+        contains the difference of both
+
+    @method difference
+    @for funkyJS
+    @param {array|nodelist|arguments|string} a1 First sequencial
+    @param {array|nodelist|arguments|string} a2 Second sequencial
+    @return {array} New array containing the difference of a1 and a2
+
+    @example
+        var first = [&#x27;a&#x27;, &#x27;h&#x27;, &#x27;e&#x27;, &#x27;c&#x27;, &#x27;b&#x27;, &#x27;f&#x27;];
+        var second = [&#x27;c&#x27;, &#x27;d&#x27;, &#x27;a&#x27;, &#x27;f&#x27;, &#x27;e&#x27;, &#x27;h&#x27;];
+
+        funkyJS.difference(first, second);
+        // -&gt; [&#x27;b&#x27;, &#x27;d&#x27;]
+
+    **/
+    api.difference = function difference (a1, a2) {
+        if (arguments.length &lt; 1) {
+            return difference;
+        }
+
+        if (arguments.length &lt; 2) {
+            return function (a2) {
+                return difference(a1, a2);
+            }
+        }
+
+        a1 = type.isSequencial(a1) ? api.toArray(a1) : [];
+        a2 = type.isSequencial(a2) ? api.toArray(a2) : [];
+        return api.union(a1, a2).filter(function (v) {
+            return a1.indexOf(v) &lt; 0 || a2.indexOf(v) &lt; 0;
+        });
+    }
+
+
+
+    return api;
+
+});
+    </pre>
+</div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="../assets/vendor/prettify/prettify-min.js"></script>
+<script>prettyPrint();</script>
+<script src="../assets/js/yui-prettify.js"></script>
+<script src="../assets/../api.js"></script>
+<script src="../assets/js/api-filter.js"></script>
+<script src="../assets/js/api-list.js"></script>
+<script src="../assets/js/api-search.js"></script>
+<script src="../assets/js/apidocs.js"></script>
+</body>
+</html>

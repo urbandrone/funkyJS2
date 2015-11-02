@@ -62,7 +62,7 @@
             return x;
         }
 
-        if (type.isNotEnumerable(x)) {
+        if (!type.isEnumerable(x)) {
             return [x];
         }
 
@@ -255,7 +255,7 @@
             }
         }
 
-        if (type.isNotNumber(n) || n < 0) {
+        if (!type.isNumber(n) || n < 0) {
             n = 0;
         }
 
@@ -301,7 +301,7 @@
             }
         }
 
-        if (type.isNotNumber(n)) {
+        if (!type.isNumber(n)) {
             n = 0;
         }
 
@@ -347,7 +347,7 @@
             }
         }
 
-        if (type.isNotNumber(n)) {
+        if (!type.isNumber(n)) {
             n = a && a.length ? a.length : Infinity;
         }
 

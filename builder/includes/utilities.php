@@ -45,18 +45,18 @@ class Utils
             'type' => 'sources/type.js',
             'arity' => 'sources/arity.js',
             'decorators' => 'sources/decorators.js',
-            'decorators2' => 'sources/ext/decorators.js',
+            'decorators2' => 'sources/decorators2.js',
             'combinators' => 'sources/combinators.js',
-            'combinators2' => 'sources/ext/combinators.js',
+            'combinators2' => 'sources/combinators2.js',
             'arrays' => 'sources/arrays.js',
             'objects' => 'sources/objects.js',
-            'strings' => 'sources/ext/strings.js',
+            'strings' => 'sources/strings.js',
             'lenses' => 'sources/lenses.js',
-            'trampolines' => 'sources/ext/trampolines.js',
-            'advices' => 'sources/ext/advices.js',
-            'iterators' => 'sources/ext/iterators.js',
-            'functors' => 'sources/ext/functors.js',
-            'contracts' => 'sources/ext/contracts.js'
+            'trampolines' => 'sources/trampolines.js',
+            'advices' => 'sources/advices.js',
+            'iterators' => 'sources/iterators.js',
+            'functors' => 'sources/functors.js',
+            'contracts' => 'sources/contracts.js'
         );
         return $map;
     }

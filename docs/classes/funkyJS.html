@@ -19,7 +19,7 @@
             
         </div>
         <div class="yui3-u-1-4 version">
-            <em>API Docs for: 1.8.5</em>
+            <em>API Docs for: 2.0.0</em>
         </div>
     </div>
     <div id="bd" class="yui3-g">
@@ -64,8 +64,6 @@
                 <li><a href="../modules/decorators.html">decorators</a></li>
             
                 <li><a href="../modules/decorators.extensions.html">decorators.extensions</a></li>
-            
-                <li><a href="../modules/experiments.html">experiments</a></li>
             
                 <li><a href="../modules/functors.html">functors</a></li>
             
@@ -126,7 +124,7 @@
 
     
         
-            Module: <a href="../modules/advices.html">advices</a>
+            Module: <a href="../modules/birds.html">birds</a>
         
     
 
@@ -689,125 +687,6 @@
                             </li>
                         
                             <li class="index-item method">
-                                <a href="#method_isNotArray">isNotArray</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item method">
-                                <a href="#method_isNotBool">isNotBool</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item method">
-                                <a href="#method_isNotDate">isNotDate</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item method">
-                                <a href="#method_isNotEnumerable">isNotEnumerable</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item method">
-                                <a href="#method_isNotFloat32">isNotFloat32</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item method">
-                                <a href="#method_isNotFunction">isNotFunction</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item method">
-                                <a href="#method_isNotInt32">isNotInt32</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item method">
-                                <a href="#method_isNotNil">isNotNil</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item method">
-                                <a href="#method_isNotNode">isNotNode</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item method">
-                                <a href="#method_isNotNodeList">isNotNodeList</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item method">
-                                <a href="#method_isNotNull">isNotNull</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item method">
-                                <a href="#method_isNotNumber">isNotNumber</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item method">
-                                <a href="#method_isNotObject">isNotObject</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item method">
-                                <a href="#method_isNotRegex">isNotRegex</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item method">
-                                <a href="#method_isNotSequencial">isNotSequencial</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item method">
-                                <a href="#method_isNotString">isNotString</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item method">
-                                <a href="#method_isNotVoid">isNotVoid</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item method">
                                 <a href="#method_isNull">isNull</a>
 
                                 
@@ -1240,6 +1119,8 @@
         
             
                 
+                    <p>Provided by the <a href="../modules/advices.html">advices</a> module.</p>
+                
                 <p>
                 
                 Defined in
@@ -1247,7 +1128,7 @@
             
         
         
-        <a href="../files/sources_extensions_advices.js.html#l99"><code>sources\extensions\advices.js:99</code></a>
+        <a href="../files/sources_advices.js.html#l99"><code>sources\advices.js:99</code></a>
         
         </p>
 
@@ -1338,14 +1219,14 @@ idMaker.uuid();
 idMaker.uuid.adviceBefore(function () {
     console.log(&#39;last uuid was: uuid&#39; + this.id);
 
-}).adviceAfter(function (result) {
+}).adviceAfter(function (result, allArgs) {
     console.log(&#39;new uuid is: &#39; + result);
 });
 
 idMaker.uuid();
 // -&gt; logs &#39;last uuid was: uuid2&#39; in console
-// -&gt; &#39;uuid3&#39;
-// -&gt; logs &#39;new uuid is: uuid3&#39; in console</code></pre>
+// -&gt; logs &#39;new uuid is: uuid3&#39; in console
+// -&gt; &#39;uuid3&#39;</code></pre>
 
             </div>
         </div>
@@ -1867,7 +1748,7 @@ strictMax.length;
             
         
         
-        <a href="../files/sources_extensions_contracts.js.html#l213"><code>sources\extensions\contracts.js:213</code></a>
+        <a href="../files/sources_contracts.js.html#l213"><code>sources\contracts.js:213</code></a>
         
         </p>
 
@@ -1989,7 +1870,7 @@ funkyJS.beArray({});
             
         
         
-        <a href="../files/sources_extensions_contracts.js.html#l123"><code>sources\extensions\contracts.js:123</code></a>
+        <a href="../files/sources_contracts.js.html#l123"><code>sources\contracts.js:123</code></a>
         
         </p>
 
@@ -2111,7 +1992,7 @@ funkyJS.beBool(undefined);
             
         
         
-        <a href="../files/sources_extensions_contracts.js.html#l249"><code>sources\extensions\contracts.js:249</code></a>
+        <a href="../files/sources_contracts.js.html#l249"><code>sources\contracts.js:249</code></a>
         
         </p>
 
@@ -2233,7 +2114,7 @@ funkyJS.beDate({});
             
         
         
-        <a href="../files/sources_extensions_contracts.js.html#l341"><code>sources\extensions\contracts.js:341</code></a>
+        <a href="../files/sources_contracts.js.html#l341"><code>sources\contracts.js:341</code></a>
         
         </p>
 
@@ -2357,7 +2238,7 @@ funkyJS.beEnumerable(undefined);
             
         
         
-        <a href="../files/sources_extensions_contracts.js.html#l177"><code>sources\extensions\contracts.js:177</code></a>
+        <a href="../files/sources_contracts.js.html#l177"><code>sources\contracts.js:177</code></a>
         
         </p>
 
@@ -2479,7 +2360,7 @@ funkyJS.beFloat32(2);
             
         
         
-        <a href="../files/sources_extensions_contracts.js.html#l195"><code>sources\extensions\contracts.js:195</code></a>
+        <a href="../files/sources_contracts.js.html#l195"><code>sources\contracts.js:195</code></a>
         
         </p>
 
@@ -2601,7 +2482,7 @@ funkyJS.beFunction(undefined);
             
         
         
-        <a href="../files/sources_extensions_contracts.js.html#l159"><code>sources\extensions\contracts.js:159</code></a>
+        <a href="../files/sources_contracts.js.html#l159"><code>sources\contracts.js:159</code></a>
         
         </p>
 
@@ -2723,7 +2604,7 @@ funkyJS.beInt32(2.5);
             
         
         
-        <a href="../files/sources_extensions_contracts.js.html#l48"><code>sources\extensions\contracts.js:48</code></a>
+        <a href="../files/sources_contracts.js.html#l48"><code>sources\contracts.js:48</code></a>
         
         </p>
 
@@ -2848,7 +2729,7 @@ funkyJS.beNil(1);
             
         
         
-        <a href="../files/sources_extensions_contracts.js.html#l285"><code>sources\extensions\contracts.js:285</code></a>
+        <a href="../files/sources_contracts.js.html#l285"><code>sources\contracts.js:285</code></a>
         
         </p>
 
@@ -2970,7 +2851,7 @@ funkyJS.beNode(null);
             
         
         
-        <a href="../files/sources_extensions_contracts.js.html#l303"><code>sources\extensions\contracts.js:303</code></a>
+        <a href="../files/sources_contracts.js.html#l303"><code>sources\contracts.js:303</code></a>
         
         </p>
 
@@ -3092,7 +2973,7 @@ funkyJS.beNodeList([]);
             
         
         
-        <a href="../files/sources_extensions_contracts.js.html#l69"><code>sources\extensions\contracts.js:69</code></a>
+        <a href="../files/sources_contracts.js.html#l69"><code>sources\contracts.js:69</code></a>
         
         </p>
 
@@ -3214,7 +3095,7 @@ funkyJS.beNull(undefined);
             
         
         
-        <a href="../files/sources_extensions_contracts.js.html#l141"><code>sources\extensions\contracts.js:141</code></a>
+        <a href="../files/sources_contracts.js.html#l141"><code>sources\contracts.js:141</code></a>
         
         </p>
 
@@ -3336,7 +3217,7 @@ funkyJS.beNumber(undefined);
             
         
         
-        <a href="../files/sources_extensions_contracts.js.html#l231"><code>sources\extensions\contracts.js:231</code></a>
+        <a href="../files/sources_contracts.js.html#l231"><code>sources\contracts.js:231</code></a>
         
         </p>
 
@@ -3458,7 +3339,7 @@ funkyJS.beObject([]);
             
         
         
-        <a href="../files/sources_extensions_contracts.js.html#l267"><code>sources\extensions\contracts.js:267</code></a>
+        <a href="../files/sources_contracts.js.html#l267"><code>sources\contracts.js:267</code></a>
         
         </p>
 
@@ -3580,7 +3461,7 @@ funkyJS.beRegex(&#39;.*&#39;);
             
         
         
-        <a href="../files/sources_extensions_contracts.js.html#l321"><code>sources\extensions\contracts.js:321</code></a>
+        <a href="../files/sources_contracts.js.html#l321"><code>sources\contracts.js:321</code></a>
         
         </p>
 
@@ -3704,7 +3585,7 @@ funkyJS.beSequencial(undefined);
             
         
         
-        <a href="../files/sources_extensions_contracts.js.html#l105"><code>sources\extensions\contracts.js:105</code></a>
+        <a href="../files/sources_contracts.js.html#l105"><code>sources\contracts.js:105</code></a>
         
         </p>
 
@@ -3826,7 +3707,7 @@ funkyJS.beString(undefined);
             
         
         
-        <a href="../files/sources_extensions_contracts.js.html#l87"><code>sources\extensions\contracts.js:87</code></a>
+        <a href="../files/sources_contracts.js.html#l87"><code>sources\contracts.js:87</code></a>
         
         </p>
 
@@ -3954,7 +3835,7 @@ funkyJS.beVoid(null);
             
         
         
-        <a href="../files/sources_decorators.js.html#l649"><code>sources\decorators.js:649</code></a>
+        <a href="../files/sources_decorators.js.html#l650"><code>sources\decorators.js:650</code></a>
         
         </p>
 
@@ -4107,7 +3988,7 @@ sliceTail([&#39;a&#39;, &#39;b&#39;, &#39;c&#39;]);
             
         
         
-        <a href="../files/sources_decorators.js.html#l690"><code>sources\decorators.js:690</code></a>
+        <a href="../files/sources_decorators.js.html#l691"><code>sources\decorators.js:691</code></a>
         
         </p>
 
@@ -4254,7 +4135,7 @@ slice2([&#39;a&#39;, &#39;b&#39;, &#39;c&#39;], 0);
             
         
         
-        <a href="../files/sources_extensions_strings.js.html#l106"><code>sources\extensions\strings.js:106</code></a>
+        <a href="../files/sources_strings.js.html#l106"><code>sources\strings.js:106</code></a>
         
         </p>
 
@@ -4366,8 +4247,6 @@ funkyJS.camelize(str);
     <div class="meta">
         
             
-                
-                    <p>Provided by the <a href="../modules/birds.html">birds</a> module.</p>
                 
                 <p>
                 
@@ -4640,7 +4519,7 @@ shoutHello(&#39;joe&#39;);
             
         
         
-        <a href="../files/sources_extensions_combinators.js.html#l46"><code>sources\extensions\combinators.js:46</code></a>
+        <a href="../files/sources_combinators.async.js.html#l46"><code>sources\combinators.async.js:46</code></a>
         
         </p>
 
@@ -4795,8 +4674,6 @@ showUser(addCard, catchError, &#39;user012a37fb&#39;);</code></pre>
         
             
                 
-                    <p>Provided by the <a href="../modules/birds.html">birds</a> module.</p>
-                
                 <p>
                 
                 Defined in
@@ -4929,7 +4806,7 @@ getZero(100);
             
         
         
-        <a href="../files/sources_decorators.js.html#l385"><code>sources\decorators.js:385</code></a>
+        <a href="../files/sources_decorators.js.html#l386"><code>sources\decorators.js:386</code></a>
         
         </p>
 
@@ -5055,7 +4932,7 @@ add(&#39;a&#39;)(&#39;z&#39;);
             
         
         
-        <a href="../files/sources_decorators.js.html#l428"><code>sources\decorators.js:428</code></a>
+        <a href="../files/sources_decorators.js.html#l429"><code>sources\decorators.js:429</code></a>
         
         </p>
 
@@ -5182,7 +5059,7 @@ add(&#39;a&#39;)(&#39;z&#39;);
             
         
         
-        <a href="../files/sources_extensions_strings.js.html#l132"><code>sources\extensions\strings.js:132</code></a>
+        <a href="../files/sources_strings.js.html#l132"><code>sources\strings.js:132</code></a>
         
         </p>
 
@@ -5310,7 +5187,7 @@ funkyJS.dasherize(str);
             
         
         
-        <a href="../files/sources_decorators.js.html#l284"><code>sources\decorators.js:284</code></a>
+        <a href="../files/sources_decorators.js.html#l285"><code>sources\decorators.js:285</code></a>
         
         </p>
 
@@ -5804,7 +5681,7 @@ funkyJS.difference(first, second);
             
         
         
-        <a href="../files/sources_extensions_decorators.js.html#l330"><code>sources\extensions\decorators.js:330</code></a>
+        <a href="../files/sources_decorators.more.js.html#l330"><code>sources\decorators.more.js:330</code></a>
         
         </p>
 
@@ -6244,7 +6121,7 @@ greet({name: &#39;joe&#39;});
             
         
         
-        <a href="../files/sources_extensions_functors.js.html#l258"><code>sources\extensions\functors.js:258</code></a>
+        <a href="../files/sources_functors.js.html#l258"><code>sources\functors.js:258</code></a>
         
         </p>
 
@@ -6986,7 +6863,7 @@ it.value;
             
         
         
-        <a href="../files/sources_extensions_iterators.js.html#l313"><code>sources\extensions\iterators.js:313</code></a>
+        <a href="../files/sources_iterators.js.html#l313"><code>sources\iterators.js:313</code></a>
         
         </p>
 
@@ -7144,7 +7021,7 @@ lazyFilter.next().value();
             
         
         
-        <a href="../files/sources_extensions_functors.js.html#l120"><code>sources\extensions\functors.js:120</code></a>
+        <a href="../files/sources_functors.js.html#l120"><code>sources\functors.js:120</code></a>
         
         </p>
 
@@ -7741,8 +7618,9 @@ funkyJS.flip(greets)(&#39;joe&#39;, &#39;jane&#39;);
 staticClass.foo().bar();
 // -&gt; Error: Cannot call method &quot;bar&quot; of undefined
 
-staticClass.foo = funkyJS.fluent(staticClass.foo);
-staticClass.bar = funkyJS.fluent(staticClass.bar);
+[&#39;foo&#39;, &#39;bar&#39;].forEach(function (method) {
+    staticClass[method] = funkyJS.fluent(staticClass[method]);
+});
 
 staticClass.foo().bar();
 // -&gt; Works like a charm now</code></pre>
@@ -7813,7 +7691,7 @@ staticClass.foo().bar();
             
         
         
-        <a href="../files/sources_extensions_iterators.js.html#l385"><code>sources\extensions\iterators.js:385</code></a>
+        <a href="../files/sources_iterators.js.html#l385"><code>sources\iterators.js:385</code></a>
         
         </p>
 
@@ -7996,7 +7874,7 @@ lazyFold.next().value();
             
         
         
-        <a href="../files/sources_extensions_functors.js.html#l209"><code>sources\extensions\functors.js:209</code></a>
+        <a href="../files/sources_functors.js.html#l209"><code>sources\functors.js:209</code></a>
         
         </p>
 
@@ -8166,7 +8044,7 @@ catRight([&#39;hello&#39;, &#39;why&#39;, &#39;there&#39;], &#39;&#39;);
             
         
         
-        <a href="../files/sources_extensions_functors.js.html#l160"><code>sources\extensions\functors.js:160</code></a>
+        <a href="../files/sources_functors.js.html#l160"><code>sources\functors.js:160</code></a>
         
         </p>
 
@@ -8330,7 +8208,7 @@ sum([1, 2, 3], 0);
             
         
         
-        <a href="../files/sources_extensions_functors.js.html#l36"><code>sources\extensions\functors.js:36</code></a>
+        <a href="../files/sources_functors.js.html#l36"><code>sources\functors.js:36</code></a>
         
         </p>
 
@@ -8836,7 +8714,7 @@ funkyJS.get(&#39;foo&#39;)(dict);
             
         
         
-        <a href="../files/sources_decorators.js.html#l145"><code>sources\decorators.js:145</code></a>
+        <a href="../files/sources_decorators.js.html#l146"><code>sources\decorators.js:146</code></a>
         
         </p>
 
@@ -9275,7 +9153,7 @@ funkyJS.head()([&#39;a&#39;, &#39;b&#39;, &#39;c&#39;]);
             
         
         
-        <a href="../files/sources_extensions_decorators.js.html#l65"><code>sources\extensions\decorators.js:65</code></a>
+        <a href="../files/sources_decorators.more.js.html#l65"><code>sources\decorators.more.js:65</code></a>
         
         </p>
 
@@ -9492,8 +9370,6 @@ var makeLabel = fromStrDateMake(isLabel)(labelDelivery);</code></pre>
     <div class="meta">
         
             
-                
-                    <p>Provided by the <a href="../modules/birds.html">birds</a> module.</p>
                 
                 <p>
                 
@@ -10525,7 +10401,7 @@ isArray(aArray);
             
         
         
-        <a href="../files/sources_type.js.html#l551"><code>sources\type.js:551</code></a>
+        <a href="../files/sources_type.js.html#l320"><code>sources\type.js:320</code></a>
         
         </p>
 
@@ -10647,7 +10523,7 @@ funkyJS.isArray({});
             
         
         
-        <a href="../files/sources_type.js.html#l250"><code>sources\type.js:250</code></a>
+        <a href="../files/sources_type.js.html#l169"><code>sources\type.js:169</code></a>
         
         </p>
 
@@ -10772,7 +10648,7 @@ funkyJS.isBool(0);
             
         
         
-        <a href="../files/sources_type.js.html#l647"><code>sources\type.js:647</code></a>
+        <a href="../files/sources_type.js.html#l368"><code>sources\type.js:368</code></a>
         
         </p>
 
@@ -10894,7 +10770,7 @@ funkyJS.isDate(&#39;2014-01-01&#39;);
             
         
         
-        <a href="../files/sources_type.js.html#l896"><code>sources\type.js:896</code></a>
+        <a href="../files/sources_type.js.html#l494"><code>sources\type.js:494</code></a>
         
         </p>
 
@@ -11020,7 +10896,7 @@ funkyJS.isDate(&#39;2014-01-01&#39;);
             
         
         
-        <a href="../files/sources_type.js.html#l455"><code>sources\type.js:455</code></a>
+        <a href="../files/sources_type.js.html#l272"><code>sources\type.js:272</code></a>
         
         </p>
 
@@ -11142,7 +11018,7 @@ funkyJS.isFloat32(1);
             
         
         
-        <a href="../files/sources_type.js.html#l503"><code>sources\type.js:503</code></a>
+        <a href="../files/sources_type.js.html#l296"><code>sources\type.js:296</code></a>
         
         </p>
 
@@ -11264,7 +11140,7 @@ funkyJS.isFunction(&#39;function&#39;);
             
         
         
-        <a href="../files/sources_type.js.html#l407"><code>sources\type.js:407</code></a>
+        <a href="../files/sources_type.js.html#l248"><code>sources\type.js:248</code></a>
         
         </p>
 
@@ -11386,7 +11262,7 @@ funkyJS.isInt32(1.5);
             
         
         
-        <a href="../files/sources_type.js.html#l196"><code>sources\type.js:196</code></a>
+        <a href="../files/sources_type.js.html#l142"><code>sources\type.js:142</code></a>
         
         </p>
 
@@ -11511,7 +11387,7 @@ funkyJS.isNil(0);
             
         
         
-        <a href="../files/sources_type.js.html#l743"><code>sources\type.js:743</code></a>
+        <a href="../files/sources_type.js.html#l416"><code>sources\type.js:416</code></a>
         
         </p>
 
@@ -11633,7 +11509,7 @@ funkyJS.isNode(&#39;&lt;div&gt;&lt;/div&gt;&#39;);
             
         
         
-        <a href="../files/sources_type.js.html#l791"><code>sources\type.js:791</code></a>
+        <a href="../files/sources_type.js.html#l440"><code>sources\type.js:440</code></a>
         
         </p>
 
@@ -11700,2103 +11576,6 @@ funkyJS.isNode(&#39;&lt;div&gt;&lt;/div&gt;&#39;);
 
 funkyJS.isNodeList([]);
 // -&gt; false</code></pre>
-
-            </div>
-        </div>
-    
-</div>
-
-                
-                    <div id="method_isNotArray" class="method item">
-    <h3 class="name"><code>isNotArray</code></h3>
-
-    
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-            
-                <li class="arg">
-                    
-                        <code>x</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
-    
-
-    
-        <span class="returns-inline">
-            <span class="type">Boolean</span>
-        </span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                    <p>Provided by the <a href="../modules/type.html">type</a> module.</p>
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/sources_type.js.html#l575"><code>sources\type.js:575</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>The isNotArray function takes in a value and checks if it is not a array</p>
-
-    </div>
-
-    
-        <div class="params">
-            <h4>Parameters:</h4>
-
-            <ul class="params-list">
-            
-                <li class="param">
-                    
-                        <code class="param-name">x</code>
-                        <span class="type">Any</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <p>Value to check against</p>
-
-                    </div>
-
-                    
-                </li>
-            
-            </ul>
-        </div>
-    
-
-    
-        <div class="returns">
-            <h4>Returns:</h4>
-
-            <div class="returns-description">
-                
-                    
-                        <span class="type">Boolean</span>:
-                    
-                    <p>True if x is not a array, false otherwise</p>
-
-                
-            </div>
-        </div>
-    
-
-    
-        <div class="example">
-            <h4>Example:</h4>
-
-            <div class="example-content">
-                <pre class="code prettyprint"><code>funkyJS.isNotArray([]);
-// -&gt; false
-
-funkyJS.isNotArray({});
-// -&gt; true</code></pre>
-
-            </div>
-        </div>
-    
-</div>
-
-                
-                    <div id="method_isNotBool" class="method item">
-    <h3 class="name"><code>isNotBool</code></h3>
-
-    
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-            
-                <li class="arg">
-                    
-                        <code>x</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
-    
-
-    
-        <span class="returns-inline">
-            <span class="type">Boolean</span>
-        </span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                    <p>Provided by the <a href="../modules/type.html">type</a> module.</p>
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/sources_type.js.html#l277"><code>sources\type.js:277</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>The isNotBool function takes in a value and checks if it is not a boolean</p>
-
-    </div>
-
-    
-        <div class="params">
-            <h4>Parameters:</h4>
-
-            <ul class="params-list">
-            
-                <li class="param">
-                    
-                        <code class="param-name">x</code>
-                        <span class="type">Any</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <p>Value to check against</p>
-
-                    </div>
-
-                    
-                </li>
-            
-            </ul>
-        </div>
-    
-
-    
-        <div class="returns">
-            <h4>Returns:</h4>
-
-            <div class="returns-description">
-                
-                    
-                        <span class="type">Boolean</span>:
-                    
-                    <p>True if x is not a boolean, false otherwise</p>
-
-                
-            </div>
-        </div>
-    
-
-    
-        <div class="example">
-            <h4>Example:</h4>
-
-            <div class="example-content">
-                <pre class="code prettyprint"><code>funkyJS.isNotBool(0);
-// -&gt; true
-
-funkyJS.isNotBool(&#39;false&#39;);
-// -&gt; true
-
-funkyJS.isNotBool(true);
-// -&gt; false</code></pre>
-
-            </div>
-        </div>
-    
-</div>
-
-                
-                    <div id="method_isNotDate" class="method item">
-    <h3 class="name"><code>isNotDate</code></h3>
-
-    
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-            
-                <li class="arg">
-                    
-                        <code>x</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
-    
-
-    
-        <span class="returns-inline">
-            <span class="type">Boolean</span>
-        </span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                    <p>Provided by the <a href="../modules/type.html">type</a> module.</p>
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/sources_type.js.html#l671"><code>sources\type.js:671</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>The isNotDate function takes in a value and checks if it is not a Date() instance</p>
-
-    </div>
-
-    
-        <div class="params">
-            <h4>Parameters:</h4>
-
-            <ul class="params-list">
-            
-                <li class="param">
-                    
-                        <code class="param-name">x</code>
-                        <span class="type">Any</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <p>Value to check against</p>
-
-                    </div>
-
-                    
-                </li>
-            
-            </ul>
-        </div>
-    
-
-    
-        <div class="returns">
-            <h4>Returns:</h4>
-
-            <div class="returns-description">
-                
-                    
-                        <span class="type">Boolean</span>:
-                    
-                    <p>True if x is not a Date() instance, false otherwise</p>
-
-                
-            </div>
-        </div>
-    
-
-    
-        <div class="example">
-            <h4>Example:</h4>
-
-            <div class="example-content">
-                <pre class="code prettyprint"><code>funkyJS.isNotDate(new Date());
-// -&gt; false
-
-funkyJS.isNotDate(&#39;2014-01-01&#39;);
-// -&gt; true</code></pre>
-
-            </div>
-        </div>
-    
-</div>
-
-                
-                    <div id="method_isNotEnumerable" class="method item">
-    <h3 class="name"><code>isNotEnumerable</code></h3>
-
-    
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-            
-                <li class="arg">
-                    
-                        <code>x</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
-    
-
-    
-        <span class="returns-inline">
-            <span class="type">Boolean</span>
-        </span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                    <p>Provided by the <a href="../modules/type.html">type</a> module.</p>
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/sources_type.js.html#l924"><code>sources\type.js:924</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>The isNotEnumerable function takes in a value and checks if it is not a enumerable.
-    A value is not considered enumerable if it fails in any of the following
-    tests:
-    1) Is object
-    OR
-    1) Is not null or undefined AND
-    2) Has a length property with int32 value AND
-    3) Is not a function AND
-    4) Is not a object</p>
-
-    </div>
-
-    
-        <div class="params">
-            <h4>Parameters:</h4>
-
-            <ul class="params-list">
-            
-                <li class="param">
-                    
-                        <code class="param-name">x</code>
-                        <span class="type">Any</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <p>Value to check against</p>
-
-                    </div>
-
-                    
-                </li>
-            
-            </ul>
-        </div>
-    
-
-    
-        <div class="returns">
-            <h4>Returns:</h4>
-
-            <div class="returns-description">
-                
-                    
-                        <span class="type">Boolean</span>:
-                    
-                    <p>True if x is not a enumerable, false otherwise</p>
-
-                
-            </div>
-        </div>
-    
-
-    
-        <div class="example">
-            <h4>Example:</h4>
-
-            <div class="example-content">
-                <pre class="code prettyprint"><code>funkyJS.isNotEnumerable(document.querySelectorAll(&#39;div&#39;));
-// -&gt; false</code></pre>
-
-            </div>
-        </div>
-    
-</div>
-
-                
-                    <div id="method_isNotFloat32" class="method item">
-    <h3 class="name"><code>isNotFloat32</code></h3>
-
-    
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-            
-                <li class="arg">
-                    
-                        <code>x</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
-    
-
-    
-        <span class="returns-inline">
-            <span class="type">Boolean</span>
-        </span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                    <p>Provided by the <a href="../modules/type.html">type</a> module.</p>
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/sources_type.js.html#l479"><code>sources\type.js:479</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>The isNotFloat32 function takes in a value and checks if it is not a floating point number</p>
-
-    </div>
-
-    
-        <div class="params">
-            <h4>Parameters:</h4>
-
-            <ul class="params-list">
-            
-                <li class="param">
-                    
-                        <code class="param-name">x</code>
-                        <span class="type">Any</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <p>Value to check against</p>
-
-                    </div>
-
-                    
-                </li>
-            
-            </ul>
-        </div>
-    
-
-    
-        <div class="returns">
-            <h4>Returns:</h4>
-
-            <div class="returns-description">
-                
-                    
-                        <span class="type">Boolean</span>:
-                    
-                    <p>True if x is not a floating point number, false otherwise</p>
-
-                
-            </div>
-        </div>
-    
-
-    
-        <div class="example">
-            <h4>Example:</h4>
-
-            <div class="example-content">
-                <pre class="code prettyprint"><code>funkyJS.isNotFloat32(1.5);
-// -&gt; false
-
-funkyJS.isNotFloat32(1);
-// -&gt; true</code></pre>
-
-            </div>
-        </div>
-    
-</div>
-
-                
-                    <div id="method_isNotFunction" class="method item">
-    <h3 class="name"><code>isNotFunction</code></h3>
-
-    
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-            
-                <li class="arg">
-                    
-                        <code>x</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
-    
-
-    
-        <span class="returns-inline">
-            <span class="type">Boolean</span>
-        </span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                    <p>Provided by the <a href="../modules/type.html">type</a> module.</p>
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/sources_type.js.html#l527"><code>sources\type.js:527</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>The isNotFunction function takes in a value and checks if it is not a function</p>
-
-    </div>
-
-    
-        <div class="params">
-            <h4>Parameters:</h4>
-
-            <ul class="params-list">
-            
-                <li class="param">
-                    
-                        <code class="param-name">x</code>
-                        <span class="type">Any</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <p>Value to check against</p>
-
-                    </div>
-
-                    
-                </li>
-            
-            </ul>
-        </div>
-    
-
-    
-        <div class="returns">
-            <h4>Returns:</h4>
-
-            <div class="returns-description">
-                
-                    
-                        <span class="type">Boolean</span>:
-                    
-                    <p>True if x is not a function, false otherwise</p>
-
-                
-            </div>
-        </div>
-    
-
-    
-        <div class="example">
-            <h4>Example:</h4>
-
-            <div class="example-content">
-                <pre class="code prettyprint"><code>funkyJS.isNotFunction(function () {});
-// -&gt; false
-
-funkyJS.isNotFunction(&#39;function&#39;);
-// -&gt; true</code></pre>
-
-            </div>
-        </div>
-    
-</div>
-
-                
-                    <div id="method_isNotInt32" class="method item">
-    <h3 class="name"><code>isNotInt32</code></h3>
-
-    
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-            
-                <li class="arg">
-                    
-                        <code>x</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
-    
-
-    
-        <span class="returns-inline">
-            <span class="type">Boolean</span>
-        </span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                    <p>Provided by the <a href="../modules/type.html">type</a> module.</p>
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/sources_type.js.html#l431"><code>sources\type.js:431</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>The isNotInt32 function takes in a value and checks if it is not a integer</p>
-
-    </div>
-
-    
-        <div class="params">
-            <h4>Parameters:</h4>
-
-            <ul class="params-list">
-            
-                <li class="param">
-                    
-                        <code class="param-name">x</code>
-                        <span class="type">Any</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <p>Value to check against</p>
-
-                    </div>
-
-                    
-                </li>
-            
-            </ul>
-        </div>
-    
-
-    
-        <div class="returns">
-            <h4>Returns:</h4>
-
-            <div class="returns-description">
-                
-                    
-                        <span class="type">Boolean</span>:
-                    
-                    <p>True if x is not a integer, false otherwise</p>
-
-                
-            </div>
-        </div>
-    
-
-    
-        <div class="example">
-            <h4>Example:</h4>
-
-            <div class="example-content">
-                <pre class="code prettyprint"><code>funkyJS.isNotInt32(1);
-// -&gt; false
-
-funkyJS.isNotInt32(1.5);
-// -&gt; true</code></pre>
-
-            </div>
-        </div>
-    
-</div>
-
-                
-                    <div id="method_isNotNil" class="method item">
-    <h3 class="name"><code>isNotNil</code></h3>
-
-    
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-            
-                <li class="arg">
-                    
-                        <code>x</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
-    
-
-    
-        <span class="returns-inline">
-            <span class="type">Boolean</span>
-        </span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                    <p>Provided by the <a href="../modules/type.html">type</a> module.</p>
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/sources_type.js.html#l223"><code>sources\type.js:223</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>The isNotNil function takes in a value and checks if it is not null or undefined</p>
-
-    </div>
-
-    
-        <div class="params">
-            <h4>Parameters:</h4>
-
-            <ul class="params-list">
-            
-                <li class="param">
-                    
-                        <code class="param-name">x</code>
-                        <span class="type">Any</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <p>Value to check against</p>
-
-                    </div>
-
-                    
-                </li>
-            
-            </ul>
-        </div>
-    
-
-    
-        <div class="returns">
-            <h4>Returns:</h4>
-
-            <div class="returns-description">
-                
-                    
-                        <span class="type">Boolean</span>:
-                    
-                    <p>True if x is not null or undefined, false otherwise</p>
-
-                
-            </div>
-        </div>
-    
-
-    
-        <div class="example">
-            <h4>Example:</h4>
-
-            <div class="example-content">
-                <pre class="code prettyprint"><code>funkyJS.isNotNil(0);
-// -&gt; true
-
-funkyJS.isNotNil(null);
-// -&gt; false
-
-funkyJS.isNotNil(undefined);
-// -&gt; false</code></pre>
-
-            </div>
-        </div>
-    
-</div>
-
-                
-                    <div id="method_isNotNode" class="method item">
-    <h3 class="name"><code>isNotNode</code></h3>
-
-    
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-            
-                <li class="arg">
-                    
-                        <code>x</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
-    
-
-    
-        <span class="returns-inline">
-            <span class="type">Boolean</span>
-        </span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                    <p>Provided by the <a href="../modules/type.html">type</a> module.</p>
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/sources_type.js.html#l767"><code>sources\type.js:767</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>The isNotNode function takes in a value and checks if it is not a DOM-Node</p>
-
-    </div>
-
-    
-        <div class="params">
-            <h4>Parameters:</h4>
-
-            <ul class="params-list">
-            
-                <li class="param">
-                    
-                        <code class="param-name">x</code>
-                        <span class="type">Any</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <p>Value to check against</p>
-
-                    </div>
-
-                    
-                </li>
-            
-            </ul>
-        </div>
-    
-
-    
-        <div class="returns">
-            <h4>Returns:</h4>
-
-            <div class="returns-description">
-                
-                    
-                        <span class="type">Boolean</span>:
-                    
-                    <p>True if x is not a DOM-Node, false otherwise</p>
-
-                
-            </div>
-        </div>
-    
-
-    
-        <div class="example">
-            <h4>Example:</h4>
-
-            <div class="example-content">
-                <pre class="code prettyprint"><code>funkyJS.isNotNode(document.createElement(&#39;div&#39;));
-// -&gt; false
-
-funkyJS.isNotNode(&#39;&lt;div&gt;&lt;/div&gt;&#39;);
-// -&gt; true</code></pre>
-
-            </div>
-        </div>
-    
-</div>
-
-                
-                    <div id="method_isNotNodeList" class="method item">
-    <h3 class="name"><code>isNotNodeList</code></h3>
-
-    
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-            
-                <li class="arg">
-                    
-                        <code>x</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
-    
-
-    
-        <span class="returns-inline">
-            <span class="type">Boolean</span>
-        </span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                    <p>Provided by the <a href="../modules/type.html">type</a> module.</p>
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/sources_type.js.html#l815"><code>sources\type.js:815</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>The isNotNodeList function takes in a value and checks if it is not a list of DOM-Nodes</p>
-
-    </div>
-
-    
-        <div class="params">
-            <h4>Parameters:</h4>
-
-            <ul class="params-list">
-            
-                <li class="param">
-                    
-                        <code class="param-name">x</code>
-                        <span class="type">Any</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <p>Value to check against</p>
-
-                    </div>
-
-                    
-                </li>
-            
-            </ul>
-        </div>
-    
-
-    
-        <div class="returns">
-            <h4>Returns:</h4>
-
-            <div class="returns-description">
-                
-                    
-                        <span class="type">Boolean</span>:
-                    
-                    <p>True if x is not a list of DOM-Nodes, false otherwise</p>
-
-                
-            </div>
-        </div>
-    
-
-    
-        <div class="example">
-            <h4>Example:</h4>
-
-            <div class="example-content">
-                <pre class="code prettyprint"><code>funkyJS.isNotNodeList(document.querySelectorAll(&#39;div&#39;));
-// -&gt; false
-
-funkyJS.isNotNodeList([]);
-// -&gt; true</code></pre>
-
-            </div>
-        </div>
-    
-</div>
-
-                
-                    <div id="method_isNotNull" class="method item">
-    <h3 class="name"><code>isNotNull</code></h3>
-
-    
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-            
-                <li class="arg">
-                    
-                        <code>x</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
-    
-
-    
-        <span class="returns-inline">
-            <span class="type">Boolean</span>
-        </span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                    <p>Provided by the <a href="../modules/type.html">type</a> module.</p>
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/sources_type.js.html#l115"><code>sources\type.js:115</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>The isNotNull function takes in a value and checks if it is not null</p>
-
-    </div>
-
-    
-        <div class="params">
-            <h4>Parameters:</h4>
-
-            <ul class="params-list">
-            
-                <li class="param">
-                    
-                        <code class="param-name">x</code>
-                        <span class="type">Any</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <p>Value to check against</p>
-
-                    </div>
-
-                    
-                </li>
-            
-            </ul>
-        </div>
-    
-
-    
-        <div class="returns">
-            <h4>Returns:</h4>
-
-            <div class="returns-description">
-                
-                    
-                        <span class="type">Boolean</span>:
-                    
-                    <p>True if x is not null, false otherwise</p>
-
-                
-            </div>
-        </div>
-    
-
-    
-        <div class="example">
-            <h4>Example:</h4>
-
-            <div class="example-content">
-                <pre class="code prettyprint"><code>funkyJS.isNotNull(null);
-// -&gt; false
-
-funkyJS.isNotNull(undefined);
-// -&gt; true
-
-funkyJS.isNotNull(0);
-// -&gt; true</code></pre>
-
-            </div>
-        </div>
-    
-</div>
-
-                
-                    <div id="method_isNotNumber" class="method item">
-    <h3 class="name"><code>isNotNumber</code></h3>
-
-    
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-            
-                <li class="arg">
-                    
-                        <code>x</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
-    
-
-    
-        <span class="returns-inline">
-            <span class="type">Boolean</span>
-        </span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                    <p>Provided by the <a href="../modules/type.html">type</a> module.</p>
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/sources_type.js.html#l383"><code>sources\type.js:383</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>The isNotNumber function takes in a value and checks if it is not a number</p>
-
-    </div>
-
-    
-        <div class="params">
-            <h4>Parameters:</h4>
-
-            <ul class="params-list">
-            
-                <li class="param">
-                    
-                        <code class="param-name">x</code>
-                        <span class="type">Any</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <p>Value to check against</p>
-
-                    </div>
-
-                    
-                </li>
-            
-            </ul>
-        </div>
-    
-
-    
-        <div class="returns">
-            <h4>Returns:</h4>
-
-            <div class="returns-description">
-                
-                    
-                        <span class="type">Boolean</span>:
-                    
-                    <p>True if x is not a number, false otherwise</p>
-
-                
-            </div>
-        </div>
-    
-
-    
-        <div class="example">
-            <h4>Example:</h4>
-
-            <div class="example-content">
-                <pre class="code prettyprint"><code>funkyJS.isNotNumber(0);
-// -&gt; false
-
-funkyJS.isNotNumber(NaN);
-// -&gt; true</code></pre>
-
-            </div>
-        </div>
-    
-</div>
-
-                
-                    <div id="method_isNotObject" class="method item">
-    <h3 class="name"><code>isNotObject</code></h3>
-
-    
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-            
-                <li class="arg">
-                    
-                        <code>x</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
-    
-
-    
-        <span class="returns-inline">
-            <span class="type">Boolean</span>
-        </span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                    <p>Provided by the <a href="../modules/type.html">type</a> module.</p>
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/sources_type.js.html#l623"><code>sources\type.js:623</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>The isNotObject function takes in a value and checks if it is not a object</p>
-
-    </div>
-
-    
-        <div class="params">
-            <h4>Parameters:</h4>
-
-            <ul class="params-list">
-            
-                <li class="param">
-                    
-                        <code class="param-name">x</code>
-                        <span class="type">Any</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <p>Value to check against</p>
-
-                    </div>
-
-                    
-                </li>
-            
-            </ul>
-        </div>
-    
-
-    
-        <div class="returns">
-            <h4>Returns:</h4>
-
-            <div class="returns-description">
-                
-                    
-                        <span class="type">Boolean</span>:
-                    
-                    <p>True if x is not a object, false otherwise</p>
-
-                
-            </div>
-        </div>
-    
-
-    
-        <div class="example">
-            <h4>Example:</h4>
-
-            <div class="example-content">
-                <pre class="code prettyprint"><code>funkyJS.isNotObject({});
-// -&gt; false
-
-funkyJS.isNotObject([]);
-// -&gt; true</code></pre>
-
-            </div>
-        </div>
-    
-</div>
-
-                
-                    <div id="method_isNotRegex" class="method item">
-    <h3 class="name"><code>isNotRegex</code></h3>
-
-    
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-            
-                <li class="arg">
-                    
-                        <code>x</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
-    
-
-    
-        <span class="returns-inline">
-            <span class="type">Boolean</span>
-        </span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                    <p>Provided by the <a href="../modules/type.html">type</a> module.</p>
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/sources_type.js.html#l719"><code>sources\type.js:719</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>The isNotRegex function takes in a value and checks if it is not a regular expression</p>
-
-    </div>
-
-    
-        <div class="params">
-            <h4>Parameters:</h4>
-
-            <ul class="params-list">
-            
-                <li class="param">
-                    
-                        <code class="param-name">x</code>
-                        <span class="type">Any</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <p>Value to check against</p>
-
-                    </div>
-
-                    
-                </li>
-            
-            </ul>
-        </div>
-    
-
-    
-        <div class="returns">
-            <h4>Returns:</h4>
-
-            <div class="returns-description">
-                
-                    
-                        <span class="type">Boolean</span>:
-                    
-                    <p>True if x is not a regular expression, false otherwise</p>
-
-                
-            </div>
-        </div>
-    
-
-    
-        <div class="example">
-            <h4>Example:</h4>
-
-            <div class="example-content">
-                <pre class="code prettyprint"><code>funkyJS.isNotRegex(/.+/);
-// -&gt; false
-
-funkyJS.isNotRegex(&#39; &#39;);
-// -&gt; true</code></pre>
-
-            </div>
-        </div>
-    
-</div>
-
-                
-                    <div id="method_isNotSequencial" class="method item">
-    <h3 class="name"><code>isNotSequencial</code></h3>
-
-    
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-            
-                <li class="arg">
-                    
-                        <code>x</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
-    
-
-    
-        <span class="returns-inline">
-            <span class="type">Boolean</span>
-        </span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                    <p>Provided by the <a href="../modules/type.html">type</a> module.</p>
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/sources_type.js.html#l869"><code>sources\type.js:869</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>The isNotSequencial function takes in a value and checks if it is not a
-    sequencial enumerable. A enumerable is not considered sequencial, if it
-    fails in any of the following tests:
-    1) Is not null or undefined AND
-    2) Has a length property with int32 value AND
-    3) Is not a function AND
-    4) Is not a object</p>
-
-    </div>
-
-    
-        <div class="params">
-            <h4>Parameters:</h4>
-
-            <ul class="params-list">
-            
-                <li class="param">
-                    
-                        <code class="param-name">x</code>
-                        <span class="type">Any</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <p>Value to check against</p>
-
-                    </div>
-
-                    
-                </li>
-            
-            </ul>
-        </div>
-    
-
-    
-        <div class="returns">
-            <h4>Returns:</h4>
-
-            <div class="returns-description">
-                
-                    
-                        <span class="type">Boolean</span>:
-                    
-                    <p>True if x is not a sequencial enumerable, false otherwise</p>
-
-                
-            </div>
-        </div>
-    
-
-    
-        <div class="example">
-            <h4>Example:</h4>
-
-            <div class="example-content">
-                <pre class="code prettyprint"><code>funkyJS.isNotSequencial(document.querySelectorAll(&#39;div&#39;));
-// -&gt; false</code></pre>
-
-            </div>
-        </div>
-    
-</div>
-
-                
-                    <div id="method_isNotString" class="method item">
-    <h3 class="name"><code>isNotString</code></h3>
-
-    
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-            
-                <li class="arg">
-                    
-                        <code>x</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
-    
-
-    
-        <span class="returns-inline">
-            <span class="type">Boolean</span>
-        </span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                    <p>Provided by the <a href="../modules/type.html">type</a> module.</p>
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/sources_type.js.html#l331"><code>sources\type.js:331</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>The isNotString function takes in a value and checks if it is not a string</p>
-
-    </div>
-
-    
-        <div class="params">
-            <h4>Parameters:</h4>
-
-            <ul class="params-list">
-            
-                <li class="param">
-                    
-                        <code class="param-name">x</code>
-                        <span class="type">Any</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <p>Value to check against</p>
-
-                    </div>
-
-                    
-                </li>
-            
-            </ul>
-        </div>
-    
-
-    
-        <div class="returns">
-            <h4>Returns:</h4>
-
-            <div class="returns-description">
-                
-                    
-                        <span class="type">Boolean</span>:
-                    
-                    <p>True if x is not a string, false otherwise</p>
-
-                
-            </div>
-        </div>
-    
-
-    
-        <div class="example">
-            <h4>Example:</h4>
-
-            <div class="example-content">
-                <pre class="code prettyprint"><code>funkyJS.isNotString(0);
-// -&gt; true
-
-funkyJS.isNotString(undefined);
-// -&gt; true
-
-funkyJS.isNotString(&#39;string&#39;);
-// -&gt; false</code></pre>
-
-            </div>
-        </div>
-    
-</div>
-
-                
-                    <div id="method_isNotVoid" class="method item">
-    <h3 class="name"><code>isNotVoid</code></h3>
-
-    
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-            
-                <li class="arg">
-                    
-                        <code>x</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
-    
-
-    
-        <span class="returns-inline">
-            <span class="type">Boolean</span>
-        </span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                    <p>Provided by the <a href="../modules/type.html">type</a> module.</p>
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/sources_type.js.html#l169"><code>sources\type.js:169</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>The isNotVoid function takes in a value and checks if it is not undefined</p>
-
-    </div>
-
-    
-        <div class="params">
-            <h4>Parameters:</h4>
-
-            <ul class="params-list">
-            
-                <li class="param">
-                    
-                        <code class="param-name">x</code>
-                        <span class="type">Any</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <p>Value to check against</p>
-
-                    </div>
-
-                    
-                </li>
-            
-            </ul>
-        </div>
-    
-
-    
-        <div class="returns">
-            <h4>Returns:</h4>
-
-            <div class="returns-description">
-                
-                    
-                        <span class="type">Boolean</span>:
-                    
-                    <p>True if x is not undefined, false otherwise</p>
-
-                
-            </div>
-        </div>
-    
-
-    
-        <div class="example">
-            <h4>Example:</h4>
-
-            <div class="example-content">
-                <pre class="code prettyprint"><code>funkyJS.isNotVoid(undefined);
-// -&gt; false
-
-funkyJS.isNotVoid(null);
-// -&gt; true
-
-funkyJS.isNotVoid(0);
-// -&gt; true</code></pre>
 
             </div>
         </div>
@@ -13977,7 +11756,7 @@ funkyJS.isNull(0);
             
         
         
-        <a href="../files/sources_type.js.html#l358"><code>sources\type.js:358</code></a>
+        <a href="../files/sources_type.js.html#l223"><code>sources\type.js:223</code></a>
         
         </p>
 
@@ -14100,7 +11879,7 @@ funkyJS.isNumber(NaN);
             
         
         
-        <a href="../files/sources_type.js.html#l599"><code>sources\type.js:599</code></a>
+        <a href="../files/sources_type.js.html#l344"><code>sources\type.js:344</code></a>
         
         </p>
 
@@ -14222,7 +12001,7 @@ funkyJS.isObject([]);
             
         
         
-        <a href="../files/sources_type.js.html#l695"><code>sources\type.js:695</code></a>
+        <a href="../files/sources_type.js.html#l392"><code>sources\type.js:392</code></a>
         
         </p>
 
@@ -14344,7 +12123,7 @@ funkyJS.isRegex(&#39; &#39;);
             
         
         
-        <a href="../files/sources_type.js.html#l839"><code>sources\type.js:839</code></a>
+        <a href="../files/sources_type.js.html#l464"><code>sources\type.js:464</code></a>
         
         </p>
 
@@ -14469,7 +12248,7 @@ funkyJS.isRegex(&#39; &#39;);
             
         
         
-        <a href="../files/sources_type.js.html#l304"><code>sources\type.js:304</code></a>
+        <a href="../files/sources_type.js.html#l196"><code>sources\type.js:196</code></a>
         
         </p>
 
@@ -14594,7 +12373,7 @@ funkyJS.isString(0);
             
         
         
-        <a href="../files/sources_type.js.html#l142"><code>sources\type.js:142</code></a>
+        <a href="../files/sources_type.js.html#l115"><code>sources\type.js:115</code></a>
         
         </p>
 
@@ -14979,7 +12758,7 @@ funkyJS.last()([&#39;a&#39;, &#39;b&#39;, &#39;c&#39;]);
             
         
         
-        <a href="../files/sources_extensions_combinators.js.html#l204"><code>sources\extensions\combinators.js:204</code></a>
+        <a href="../files/sources_combinators.async.js.html#l204"><code>sources\combinators.async.js:204</code></a>
         
         </p>
 
@@ -15287,7 +13066,7 @@ processComment(comment);
             
         
         
-        <a href="../files/sources_extensions_iterators.js.html#l244"><code>sources\extensions\iterators.js:244</code></a>
+        <a href="../files/sources_iterators.js.html#l244"><code>sources\iterators.js:244</code></a>
         
         </p>
 
@@ -15445,7 +13224,7 @@ lazyMap.next().value();
             
         
         
-        <a href="../files/sources_extensions_functors.js.html#l80"><code>sources\extensions\functors.js:80</code></a>
+        <a href="../files/sources_functors.js.html#l80"><code>sources\functors.js:80</code></a>
         
         </p>
 
@@ -15585,7 +13364,7 @@ square([1, 2, 3]);
             
         
         
-        <a href="../files/sources_decorators.js.html#l203"><code>sources\decorators.js:203</code></a>
+        <a href="../files/sources_decorators.js.html#l204"><code>sources\decorators.js:204</code></a>
         
         </p>
 
@@ -15724,7 +13503,7 @@ maybeQueryAll(&#39;div&#39;);
             
         
         
-        <a href="../files/sources_decorators.js.html#l344"><code>sources\decorators.js:344</code></a>
+        <a href="../files/sources_decorators.js.html#l345"><code>sources\decorators.js:345</code></a>
         
         </p>
 
@@ -16115,7 +13894,7 @@ sayToNobody(&#39;hello&#39;, {name: &#39;joe&#39;});
             
         
         
-        <a href="../files/sources_extensions_decorators.js.html#l214"><code>sources\extensions\decorators.js:214</code></a>
+        <a href="../files/sources_decorators.more.js.html#l214"><code>sources\decorators.more.js:214</code></a>
         
         </p>
 
@@ -16431,7 +14210,7 @@ dontSay(&#39;hello&#39;);
             
         
         
-        <a href="../files/sources_decorators.js.html#l250"><code>sources\decorators.js:250</code></a>
+        <a href="../files/sources_decorators.js.html#l251"><code>sources\decorators.js:251</code></a>
         
         </p>
 
@@ -16715,7 +14494,7 @@ funkyJS.nth(1)()([&#39;a&#39;, &#39;b&#39;, &#39;c&#39;]);
             
         
         
-        <a href="../files/sources_extensions_iterators.js.html#l39"><code>sources\extensions\iterators.js:39</code></a>
+        <a href="../files/sources_iterators.js.html#l39"><code>sources\iterators.js:39</code></a>
         
         </p>
 
@@ -16885,7 +14664,7 @@ nums3.next().value();
             
         
         
-        <a href="../files/sources_extensions_iterators.js.html#l184"><code>sources\extensions\iterators.js:184</code></a>
+        <a href="../files/sources_iterators.js.html#l184"><code>sources\iterators.js:184</code></a>
         
         </p>
 
@@ -17301,7 +15080,7 @@ funkyJS.pairs()(dict);
             
         
         
-        <a href="../files/sources_decorators.js.html#l472"><code>sources\decorators.js:472</code></a>
+        <a href="../files/sources_decorators.js.html#l473"><code>sources\decorators.js:473</code></a>
         
         </p>
 
@@ -17460,7 +15239,7 @@ formatBtn(&#39;a&#39;);
             
         
         
-        <a href="../files/sources_decorators.js.html#l560"><code>sources\decorators.js:560</code></a>
+        <a href="../files/sources_decorators.js.html#l561"><code>sources\decorators.js:561</code></a>
         
         </p>
 
@@ -17747,7 +15526,7 @@ greetAndBePoliteTo(&#39;joe&#39;);
             
         
         
-        <a href="../files/sources_extensions_combinators.js.html#l126"><code>sources\extensions\combinators.js:126</code></a>
+        <a href="../files/sources_combinators.async.js.html#l126"><code>sources\combinators.async.js:126</code></a>
         
         </p>
 
@@ -18358,7 +16137,7 @@ funkyJS.prepend(newHead)()([&#39;a&#39;, &#39;b&#39;, &#39;c&#39;]);
             
         
         
-        <a href="../files/sources_extensions_iterators.js.html#l119"><code>sources\extensions\iterators.js:119</code></a>
+        <a href="../files/sources_iterators.js.html#l119"><code>sources\iterators.js:119</code></a>
         
         </p>
 
@@ -18498,7 +16277,7 @@ itStr.next().value();
             
         
         
-        <a href="../files/sources_extensions_combinators.js.html#l270"><code>sources\extensions\combinators.js:270</code></a>
+        <a href="../files/sources_combinators.async.js.html#l270"><code>sources\combinators.async.js:270</code></a>
         
         </p>
 
@@ -18657,7 +16436,7 @@ getUserAvatar(&#39;user0c2a37fb&#39;, function (avatar) {
             
         
         
-        <a href="../files/sources_extensions_functors.js.html#l301"><code>sources\extensions\functors.js:301</code></a>
+        <a href="../files/sources_functors.js.html#l301"><code>sources\functors.js:301</code></a>
         
         </p>
 
@@ -18944,7 +16723,7 @@ logMultAdd(4);
             
         
         
-        <a href="../files/sources_extensions_strings.js.html#l184"><code>sources\extensions\strings.js:184</code></a>
+        <a href="../files/sources_strings.js.html#l184"><code>sources\strings.js:184</code></a>
         
         </p>
 
@@ -19108,7 +16887,7 @@ isoDateToInts(&#39;2015-02-25 06:00:00&#39;);
             
         
         
-        <a href="../files/sources_extensions_strings.js.html#l234"><code>sources\extensions\strings.js:234</code></a>
+        <a href="../files/sources_strings.js.html#l234"><code>sources\strings.js:234</code></a>
         
         </p>
 
@@ -19847,7 +17626,7 @@ takeFour(1, 2, 3, 4, 5);
             
         
         
-        <a href="../files/sources_extensions_trampolines.js.html#l46"><code>sources\extensions\trampolines.js:46</code></a>
+        <a href="../files/sources_trampolines.js.html#l46"><code>sources\trampolines.js:46</code></a>
         
         </p>
 
@@ -20085,7 +17864,7 @@ funkyJS.toArray(null);
             
         
         
-        <a href="../files/sources_extensions_trampolines.js.html#l65"><code>sources\extensions\trampolines.js:65</code></a>
+        <a href="../files/sources_trampolines.js.html#l65"><code>sources\trampolines.js:65</code></a>
         
         </p>
 
@@ -20373,7 +18152,7 @@ greet({name: &#39;joe&#39;});
             
         
         
-        <a href="../files/sources_extensions_strings.js.html#l83"><code>sources\extensions\strings.js:83</code></a>
+        <a href="../files/sources_strings.js.html#l83"><code>sources\strings.js:83</code></a>
         
         </p>
 
@@ -20494,7 +18273,7 @@ funkyJS.trim(str);
             
         
         
-        <a href="../files/sources_extensions_strings.js.html#l36"><code>sources\extensions\strings.js:36</code></a>
+        <a href="../files/sources_strings.js.html#l36"><code>sources\strings.js:36</code></a>
         
         </p>
 
@@ -20616,7 +18395,7 @@ funkyJS.trimLeft(str);
             
         
         
-        <a href="../files/sources_extensions_strings.js.html#l60"><code>sources\extensions\strings.js:60</code></a>
+        <a href="../files/sources_strings.js.html#l60"><code>sources\strings.js:60</code></a>
         
         </p>
 
@@ -20737,7 +18516,7 @@ funkyJS.trimRight(str);
             
         
         
-        <a href="../files/sources_extensions_strings.js.html#l158"><code>sources\extensions\strings.js:158</code></a>
+        <a href="../files/sources_strings.js.html#l158"><code>sources\strings.js:158</code></a>
         
         </p>
 

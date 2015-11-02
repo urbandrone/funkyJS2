@@ -14,7 +14,7 @@
         });
 
         contact.render.adviceBefore(function () {
-            if (f.isNotFunction(this._template)) {
+            if (!f.isFunction(this._template)) {
                 this._template = f.constant('Template missing');
             }
         }).adviceAfter(function () {

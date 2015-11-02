@@ -19,7 +19,7 @@
             
         </div>
         <div class="yui3-u-1-4 version">
-            <em>API Docs for: 1.8.5</em>
+            <em>API Docs for: 2.0.0</em>
         </div>
     </div>
     <div id="bd" class="yui3-g">
@@ -64,8 +64,6 @@
                 <li><a href="../modules/decorators.html">decorators</a></li>
             
                 <li><a href="../modules/decorators.extensions.html">decorators.extensions</a></li>
-            
-                <li><a href="../modules/experiments.html">experiments</a></li>
             
                 <li><a href="../modules/functors.html">functors</a></li>
             
@@ -193,7 +191,7 @@
             }
         }
 
-        return type.isNotNil(o) &amp;&amp; hasOwn.call(o, (&#x27;&#x27; + s));
+        return !type.isNil(o) &amp;&amp; hasOwn.call(o, (&#x27;&#x27; + s));
     }
 
     /**
@@ -235,7 +233,7 @@
         }
 
         p = &#x27;&#x27; + s;
-        if (type.isNotNil(o) &amp;&amp; type.isNotNil(o[p])) {
+        if (!type.isNil(o) &amp;&amp; !type.isNil(o[p])) {
             return o[p];
         }
 
@@ -323,7 +321,7 @@
             return keys;
         }
 
-        if (type.isNotObject(o)) {
+        if (!type.isObject(o)) {
             return [];
         }
 
@@ -466,7 +464,7 @@
             return inverse;
         }
 
-        if (type.isNotObject(o)) {
+        if (!type.isObject(o)) {
             return null;
         }
 
@@ -512,8 +510,8 @@
 
     **/
     api.instance = function instance (Ctor, context) {
-        if (type.isNotFunction(Ctor)) {
-            throw new Error(&#x27;instance expected Ctor to be function but saw &#x27; + Ctor);
+        if (!type.isFunction(Ctor)) {
+            throw &#x27;instance expected Ctor to be function but saw &#x27; + Ctor;
         }
 
         if (context !== undefined) {
@@ -553,8 +551,8 @@
 
     **/
     api.factory = function factory (Ctor) {
-        if (type.isNotFunction(Ctor)) {
-            throw new Error(&#x27;factory expected Ctor to be function but saw &#x27; + Ctor);
+        if (!type.isFunction(Ctor)) {
+            throw &#x27;factory expected Ctor to be function but saw &#x27; + Ctor;
         }
 
         return function (/* args */) {
@@ -610,7 +608,7 @@
             }
         }
 
-        if (type.isNotObject(o) || type.isNotObject(s)) {
+        if (!type.isObject(o) || !type.isObject(s)) {
             return o;
         }
 
@@ -786,17 +784,17 @@
 
     **/
     api.delegate = function delegate (provider, receiver, methods) {
-        if (arguments.length &lt; 1 || type.isNotObject(provider)) {
+        if (arguments.length &lt; 1 || !type.isObject(provider)) {
             return delegate;
         }
 
-        if (arguments.length &lt; 2 || type.isNotObject(receiver)) {
+        if (arguments.length &lt; 2 || !type.isObject(receiver)) {
             return function (receiver, methods) {
                 return delegate(provider, receiver, methods);
             }
         }
 
-        if (arguments.length &lt; 3 || type.isNotArray(methods)) {
+        if (arguments.length &lt; 3 || !type.isArray(methods)) {
             return function (methods) {
                 return delegate(provider, receiver, methods);
             }
@@ -871,17 +869,17 @@
 
     **/
     api.forward = function forward (forwarder, receiver, methods) {
-        if (arguments.length &lt; 1 || type.isNotObject(forwarder)) {
+        if (arguments.length &lt; 1 || !type.isObject(forwarder)) {
             return forward;
         }
 
-        if (arguments.length &lt; 2 || type.isNotObject(receiver)) {
+        if (arguments.length &lt; 2 || !type.isObject(receiver)) {
             return function (receiver, methods) {
                 return forward(forwarder, receiver, methods);
             }
         }
 
-        if (arguments.length &lt; 3 || type.isNotArray(methods)) {
+        if (arguments.length &lt; 3 || !type.isArray(methods)) {
             return function (methods) {
                 return forward(forwarder, receiver, methods);
             }
@@ -926,7 +924,7 @@
             return immutable;
         }
 
-        if (type.isNotObject(o)) {
+        if (!type.isObject(o)) {
             return o;
         }
 
@@ -971,8 +969,8 @@
 
     **/
     api.fAccess = function fAccess (o) {
-        if (type.isNotObject(o) &amp;&amp; type.isNotArray(o)) {
-            throw new Error(&#x27;fAccess expected argument to be object but saw &#x27; + o);
+        if (!type.isObject(o) &amp;&amp; !type.isArray(o)) {
+            throw &#x27;fAccess expected argument to be object but saw &#x27; + o;
         }
 
         function fobj (key) {

@@ -71,7 +71,7 @@
             }
         }
 
-        return type.isNotNil(o) && hasOwn.call(o, ('' + s));
+        return !type.isNil(o) && hasOwn.call(o, ('' + s));
     }
 
     /**
@@ -113,7 +113,7 @@
         }
 
         p = '' + s;
-        if (type.isNotNil(o) && type.isNotNil(o[p])) {
+        if (!type.isNil(o) && !type.isNil(o[p])) {
             return o[p];
         }
 
@@ -201,7 +201,7 @@
             return keys;
         }
 
-        if (type.isNotObject(o)) {
+        if (!type.isObject(o)) {
             return [];
         }
 
@@ -344,7 +344,7 @@
             return inverse;
         }
 
-        if (type.isNotObject(o)) {
+        if (!type.isObject(o)) {
             return null;
         }
 
@@ -390,8 +390,8 @@
 
     **/
     api.instance = function instance (Ctor, context) {
-        if (type.isNotFunction(Ctor)) {
-            throw new Error('instance expected Ctor to be function but saw ' + Ctor);
+        if (!type.isFunction(Ctor)) {
+            throw 'instance expected Ctor to be function but saw ' + Ctor;
         }
 
         if (context !== undefined) {
@@ -431,8 +431,8 @@
 
     **/
     api.factory = function factory (Ctor) {
-        if (type.isNotFunction(Ctor)) {
-            throw new Error('factory expected Ctor to be function but saw ' + Ctor);
+        if (!type.isFunction(Ctor)) {
+            throw 'factory expected Ctor to be function but saw ' + Ctor;
         }
 
         return function (/* args */) {
@@ -488,7 +488,7 @@
             }
         }
 
-        if (type.isNotObject(o) || type.isNotObject(s)) {
+        if (!type.isObject(o) || !type.isObject(s)) {
             return o;
         }
 
@@ -664,17 +664,17 @@
 
     **/
     api.delegate = function delegate (provider, receiver, methods) {
-        if (arguments.length < 1 || type.isNotObject(provider)) {
+        if (arguments.length < 1 || !type.isObject(provider)) {
             return delegate;
         }
 
-        if (arguments.length < 2 || type.isNotObject(receiver)) {
+        if (arguments.length < 2 || !type.isObject(receiver)) {
             return function (receiver, methods) {
                 return delegate(provider, receiver, methods);
             }
         }
 
-        if (arguments.length < 3 || type.isNotArray(methods)) {
+        if (arguments.length < 3 || !type.isArray(methods)) {
             return function (methods) {
                 return delegate(provider, receiver, methods);
             }
@@ -749,17 +749,17 @@
 
     **/
     api.forward = function forward (forwarder, receiver, methods) {
-        if (arguments.length < 1 || type.isNotObject(forwarder)) {
+        if (arguments.length < 1 || !type.isObject(forwarder)) {
             return forward;
         }
 
-        if (arguments.length < 2 || type.isNotObject(receiver)) {
+        if (arguments.length < 2 || !type.isObject(receiver)) {
             return function (receiver, methods) {
                 return forward(forwarder, receiver, methods);
             }
         }
 
-        if (arguments.length < 3 || type.isNotArray(methods)) {
+        if (arguments.length < 3 || !type.isArray(methods)) {
             return function (methods) {
                 return forward(forwarder, receiver, methods);
             }
@@ -804,7 +804,7 @@
             return immutable;
         }
 
-        if (type.isNotObject(o)) {
+        if (!type.isObject(o)) {
             return o;
         }
 
@@ -849,8 +849,8 @@
 
     **/
     api.fAccess = function fAccess (o) {
-        if (type.isNotObject(o) && type.isNotArray(o)) {
-            throw new Error('fAccess expected argument to be object but saw ' + o);
+        if (!type.isObject(o) && !type.isArray(o)) {
+            throw 'fAccess expected argument to be object but saw ' + o;
         }
 
         function fobj (key) {

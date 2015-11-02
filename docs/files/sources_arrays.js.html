@@ -19,7 +19,7 @@
             
         </div>
         <div class="yui3-u-1-4 version">
-            <em>API Docs for: 1.8.5</em>
+            <em>API Docs for: 2.0.0</em>
         </div>
     </div>
     <div id="bd" class="yui3-g">
@@ -64,8 +64,6 @@
                 <li><a href="../modules/decorators.html">decorators</a></li>
             
                 <li><a href="../modules/decorators.extensions.html">decorators.extensions</a></li>
-            
-                <li><a href="../modules/experiments.html">experiments</a></li>
             
                 <li><a href="../modules/functors.html">functors</a></li>
             
@@ -184,7 +182,7 @@
             return x;
         }
 
-        if (type.isNotEnumerable(x)) {
+        if (!type.isEnumerable(x)) {
             return [x];
         }
 
@@ -377,7 +375,7 @@
             }
         }
 
-        if (type.isNotNumber(n) || n &lt; 0) {
+        if (!type.isNumber(n) || n &lt; 0) {
             n = 0;
         }
 
@@ -423,7 +421,7 @@
             }
         }
 
-        if (type.isNotNumber(n)) {
+        if (!type.isNumber(n)) {
             n = 0;
         }
 
@@ -469,7 +467,7 @@
             }
         }
 
-        if (type.isNotNumber(n)) {
+        if (!type.isNumber(n)) {
             n = a &amp;&amp; a.length ? a.length : Infinity;
         }
 

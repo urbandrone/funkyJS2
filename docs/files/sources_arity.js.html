@@ -19,7 +19,7 @@
             
         </div>
         <div class="yui3-u-1-4 version">
-            <em>API Docs for: 1.8.5</em>
+            <em>API Docs for: 2.0.0</em>
         </div>
     </div>
     <div id="bd" class="yui3-g">
@@ -64,8 +64,6 @@
                 <li><a href="../modules/decorators.html">decorators</a></li>
             
                 <li><a href="../modules/decorators.extensions.html">decorators.extensions</a></li>
-            
-                <li><a href="../modules/experiments.html">experiments</a></li>
             
                 <li><a href="../modules/functors.html">functors</a></li>
             
@@ -274,7 +272,7 @@
             return niladic;
         }
 
-        if (type.isNotFunction(f)) {
+        if (!type.isFunction(f)) {
             return f;
         }
 
@@ -314,7 +312,7 @@
             return monadic;
         }
 
-        if (type.isNotFunction(f)) {
+        if (!type.isFunction(f)) {
             return f;
         }
 
@@ -360,7 +358,7 @@
             return dyadic;
         }
 
-        if (type.isNotFunction(f)) {
+        if (!type.isFunction(f)) {
             return f;
         }
 
@@ -412,7 +410,7 @@
             return triadic;
         }
 
-        if (type.isNotFunction(f)) {
+        if (!type.isFunction(f)) {
             return f;
         }
 
@@ -468,7 +466,7 @@
             return tetradic;
         }
 
-        if (type.isNotFunction(f)) {
+        if (!type.isFunction(f)) {
             return f;
         }
 
@@ -536,7 +534,7 @@
             return polyadic;
         }
 
-        if (type.isNotFunction(f)) {
+        if (!type.isFunction(f)) {
             return f;
         }
 
@@ -597,7 +595,7 @@
             return variadic;
         }
 
-        if (type.isNotFunction(f) || f.length &lt; 1) {
+        if (!type.isFunction(f) || f.length &lt; 1) {
             return f;
         }
 

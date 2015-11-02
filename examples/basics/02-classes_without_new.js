@@ -67,7 +67,7 @@
 
         // copy properties and methods (with a twist)
         f.pairs(desc).forEach(function (pair) {
-            if (f.isNotFunction(pair[1])) {
+            if (!f.isFunction(pair[1])) {
                 // copy properties directly
                 _self[pair[0]] = pair[1];
 
@@ -114,7 +114,7 @@
 
     /**
     Here is an example of using just the basic birds module to create a class
-        out of a single function and without any prototype, just the function's
+        out of a single function and without any prototype except the function's
         original one. Actually, the class does not do anything, it is just a
         example. If it would do anything, the class would be used like this (no
         new):

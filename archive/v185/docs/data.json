@@ -1,0 +1,4145 @@
+{
+    "project": {
+        "name": "funkyjs-2",
+        "version": "1.8.5",
+        "description": "Second version of funkyJS",
+        "logo": "logo.png"
+    },
+    "files": {
+        "sources\\extensions\\_template.js": {
+            "name": "sources\\extensions\\_template.js",
+            "modules": {
+                "experiments": 1
+            },
+            "classes": {},
+            "fors": {},
+            "namespaces": {}
+        },
+        "sources\\extensions\\advices.js": {
+            "name": "sources\\extensions\\advices.js",
+            "modules": {
+                "advices": 1
+            },
+            "classes": {},
+            "fors": {
+                "funkyJS": 1
+            },
+            "namespaces": {}
+        },
+        "sources\\extensions\\combinators.js": {
+            "name": "sources\\extensions\\combinators.js",
+            "modules": {
+                "combinators.extensions": 1
+            },
+            "classes": {},
+            "fors": {
+                "funkyJS": 1
+            },
+            "namespaces": {}
+        },
+        "sources\\extensions\\contracts.js": {
+            "name": "sources\\extensions\\contracts.js",
+            "modules": {
+                "contracts": 1
+            },
+            "classes": {},
+            "fors": {
+                "funkyJS": 1
+            },
+            "namespaces": {}
+        },
+        "sources\\extensions\\decorators.js": {
+            "name": "sources\\extensions\\decorators.js",
+            "modules": {
+                "decorators.extensions": 1
+            },
+            "classes": {},
+            "fors": {
+                "funkyJS": 1
+            },
+            "namespaces": {}
+        },
+        "sources\\extensions\\functors.js": {
+            "name": "sources\\extensions\\functors.js",
+            "modules": {
+                "functors": 1
+            },
+            "classes": {},
+            "fors": {
+                "funkyJS": 1
+            },
+            "namespaces": {}
+        },
+        "sources\\extensions\\iterators.js": {
+            "name": "sources\\extensions\\iterators.js",
+            "modules": {
+                "iterators": 1
+            },
+            "classes": {},
+            "fors": {
+                "funkyJS": 1
+            },
+            "namespaces": {}
+        },
+        "sources\\extensions\\strings.js": {
+            "name": "sources\\extensions\\strings.js",
+            "modules": {
+                "strings": 1
+            },
+            "classes": {},
+            "fors": {
+                "funkyJS": 1
+            },
+            "namespaces": {}
+        },
+        "sources\\extensions\\trampolines.js": {
+            "name": "sources\\extensions\\trampolines.js",
+            "modules": {
+                "trampolines": 1
+            },
+            "classes": {},
+            "fors": {
+                "funkyJS": 1
+            },
+            "namespaces": {}
+        },
+        "sources\\_birds.js": {
+            "name": "sources\\_birds.js",
+            "modules": {
+                "birds": 1
+            },
+            "classes": {},
+            "fors": {
+                "funkyJS": 1
+            },
+            "namespaces": {}
+        },
+        "sources\\arity.js": {
+            "name": "sources\\arity.js",
+            "modules": {
+                "arity": 1
+            },
+            "classes": {},
+            "fors": {
+                "funkyJS": 1
+            },
+            "namespaces": {}
+        },
+        "sources\\arrays.js": {
+            "name": "sources\\arrays.js",
+            "modules": {
+                "arrays": 1
+            },
+            "classes": {},
+            "fors": {
+                "funkyJS": 1
+            },
+            "namespaces": {}
+        },
+        "sources\\combinators.js": {
+            "name": "sources\\combinators.js",
+            "modules": {
+                "combinators": 1
+            },
+            "classes": {},
+            "fors": {
+                "funkyJS": 1
+            },
+            "namespaces": {}
+        },
+        "sources\\decorators.js": {
+            "name": "sources\\decorators.js",
+            "modules": {
+                "decorators": 1
+            },
+            "classes": {},
+            "fors": {
+                "funkyJS": 1
+            },
+            "namespaces": {}
+        },
+        "sources\\lenses.js": {
+            "name": "sources\\lenses.js",
+            "modules": {
+                "lenses": 1
+            },
+            "classes": {},
+            "fors": {
+                "funkyJS": 1
+            },
+            "namespaces": {}
+        },
+        "sources\\objects.js": {
+            "name": "sources\\objects.js",
+            "modules": {
+                "objects": 1
+            },
+            "classes": {},
+            "fors": {
+                "funkyJS": 1
+            },
+            "namespaces": {}
+        },
+        "sources\\type.js": {
+            "name": "sources\\type.js",
+            "modules": {
+                "type": 1
+            },
+            "classes": {},
+            "fors": {
+                "funkyJS": 1
+            },
+            "namespaces": {}
+        }
+    },
+    "modules": {
+        "experiments": {
+            "name": "experiments",
+            "submodules": {},
+            "classes": {},
+            "fors": {},
+            "namespaces": {},
+            "tag": "module",
+            "file": "sources\\extensions\\_template.js",
+            "line": 29
+        },
+        "advices": {
+            "name": "advices",
+            "submodules": {},
+            "classes": {
+                "funkyJS": 1
+            },
+            "fors": {
+                "funkyJS": 1
+            },
+            "namespaces": {},
+            "tag": "module",
+            "file": "sources\\extensions\\advices.js",
+            "line": 32
+        },
+        "combinators.extensions": {
+            "name": "combinators.extensions",
+            "submodules": {},
+            "classes": {},
+            "fors": {
+                "funkyJS": 1
+            },
+            "namespaces": {},
+            "tag": "module",
+            "file": "sources\\extensions\\combinators.js",
+            "line": 32
+        },
+        "contracts": {
+            "name": "contracts",
+            "submodules": {},
+            "classes": {},
+            "fors": {
+                "funkyJS": 1
+            },
+            "namespaces": {},
+            "tag": "module",
+            "file": "sources\\extensions\\contracts.js",
+            "line": 29
+        },
+        "decorators.extensions": {
+            "name": "decorators.extensions",
+            "submodules": {},
+            "classes": {},
+            "fors": {
+                "funkyJS": 1
+            },
+            "namespaces": {},
+            "tag": "module",
+            "file": "sources\\extensions\\decorators.js",
+            "line": 32
+        },
+        "functors": {
+            "name": "functors",
+            "submodules": {},
+            "classes": {},
+            "fors": {
+                "funkyJS": 1
+            },
+            "namespaces": {},
+            "tag": "module",
+            "file": "sources\\extensions\\functors.js",
+            "line": 29
+        },
+        "iterators": {
+            "name": "iterators",
+            "submodules": {},
+            "classes": {},
+            "fors": {
+                "funkyJS": 1
+            },
+            "namespaces": {},
+            "tag": "module",
+            "file": "sources\\extensions\\iterators.js",
+            "line": 32
+        },
+        "strings": {
+            "name": "strings",
+            "submodules": {},
+            "classes": {},
+            "fors": {
+                "funkyJS": 1
+            },
+            "namespaces": {},
+            "tag": "module",
+            "file": "sources\\extensions\\strings.js",
+            "line": 29
+        },
+        "trampolines": {
+            "name": "trampolines",
+            "submodules": {},
+            "classes": {},
+            "fors": {
+                "funkyJS": 1
+            },
+            "namespaces": {},
+            "tag": "module",
+            "file": "sources\\extensions\\trampolines.js",
+            "line": 29
+        },
+        "birds": {
+            "name": "birds",
+            "submodules": {},
+            "classes": {},
+            "fors": {
+                "funkyJS": 1
+            },
+            "namespaces": {},
+            "tag": "module",
+            "file": "sources\\_birds.js",
+            "line": 14
+        },
+        "arity": {
+            "name": "arity",
+            "submodules": {},
+            "classes": {},
+            "fors": {
+                "funkyJS": 1
+            },
+            "namespaces": {},
+            "tag": "module",
+            "file": "sources\\arity.js",
+            "line": 23
+        },
+        "arrays": {
+            "name": "arrays",
+            "submodules": {},
+            "classes": {},
+            "fors": {
+                "funkyJS": 1
+            },
+            "namespaces": {},
+            "tag": "module",
+            "file": "sources\\arrays.js",
+            "line": 22
+        },
+        "combinators": {
+            "name": "combinators",
+            "submodules": {},
+            "classes": {},
+            "fors": {
+                "funkyJS": 1
+            },
+            "namespaces": {},
+            "tag": "module",
+            "file": "sources\\combinators.js",
+            "line": 22
+        },
+        "decorators": {
+            "name": "decorators",
+            "submodules": {},
+            "classes": {},
+            "fors": {
+                "funkyJS": 1
+            },
+            "namespaces": {},
+            "tag": "module",
+            "file": "sources\\decorators.js",
+            "line": 22
+        },
+        "lenses": {
+            "name": "lenses",
+            "submodules": {},
+            "classes": {},
+            "fors": {
+                "funkyJS": 1
+            },
+            "namespaces": {},
+            "tag": "module",
+            "file": "sources\\lenses.js",
+            "line": 30
+        },
+        "objects": {
+            "name": "objects",
+            "submodules": {},
+            "classes": {},
+            "fors": {
+                "funkyJS": 1
+            },
+            "namespaces": {},
+            "tag": "module",
+            "file": "sources\\objects.js",
+            "line": 22
+        },
+        "type": {
+            "name": "type",
+            "submodules": {},
+            "classes": {},
+            "fors": {
+                "funkyJS": 1
+            },
+            "namespaces": {},
+            "tag": "module",
+            "file": "sources\\type.js",
+            "line": 23
+        }
+    },
+    "classes": {
+        "funkyJS": {
+            "name": "funkyJS",
+            "shortname": "funkyJS",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "advices",
+            "namespace": ""
+        }
+    },
+    "classitems": [
+        {
+            "file": "sources\\extensions\\_template.js",
+            "line": 40,
+            "description": "EXPORT\n======",
+            "class": "funkyJS",
+            "module": "experiments"
+        },
+        {
+            "file": "sources\\extensions\\advices.js",
+            "line": 99,
+            "description": "The advisable function allows to implement some kind of aspect oriented\n    programming techniques on other functions by adding a adviceBefore,\n    adviceAfter and adviceError method on the function. The advice- methods\n    have a fluent interface so that chained calls are possible. While any\n    attached after advices are executed in the same order as they are attached,\n    all before advices are executed in reversed order. Please see the example\n    for details",
+            "itemtype": "method",
+            "name": "advisable",
+            "params": [
+                {
+                    "name": "fn",
+                    "description": "The function/method which should be advisable",
+                    "type": "Function"
+                }
+            ],
+            "return": {
+                "description": "A advisable wrapper function around fn",
+                "type": "Function"
+            },
+            "example": [
+                "\n    var idMaker = {\n        id: 0,\n        uuid: funkyJS.advisable(function () {\n            return 'uuid' + this.id;\n        })\n    };\n\n    // add before advice to idMaker.uuid\n    idMaker.uuid.adviceBefore(function () {\n        this.id += 1;\n    });\n\n    idMaker.uuid();\n    // -> 'uuid1'\n\n    idMaker.uuid();\n    // -> 'uuid2'\n\n\n    // adding a second before advice\n    idMaker.uuid.adviceBefore(function () {\n        console.log('last uuid was: uuid' + this.id);\n    \n    }).adviceAfter(function (result) {\n        console.log('new uuid is: ' + result);\n    });\n\n    idMaker.uuid();\n    // -> logs 'last uuid was: uuid2' in console\n    // -> 'uuid3'\n    // -> logs 'new uuid is: uuid3' in console\n"
+            ],
+            "class": "funkyJS",
+            "module": "advices"
+        },
+        {
+            "file": "sources\\extensions\\advices.js",
+            "line": 179,
+            "description": "EXPORT\n======",
+            "class": "funkyJS",
+            "module": "advices"
+        },
+        {
+            "file": "sources\\extensions\\combinators.js",
+            "line": 46,
+            "description": "Allows the compose asynchronous working function, as long as they provide a\n    a compatible interface. A function is considered compatible if it\n    accepts at least three arguments. The first and the second argument are\n    assumed to be (1) the continuation function and (2) the error handler.\n    The third argument given to the returned function should be the data/arguments with which to start. The composed function executes the given\n    function from right to left, much like the core compose() function. For\n    usage information please see the example below",
+            "itemtype": "method",
+            "name": "composeAsync",
+            "params": [
+                {
+                    "name": "fn1",
+                    "description": "One to N asynchronous function to compose",
+                    "type": "Function",
+                    "multiple": true
+                }
+            ],
+            "return": {
+                "description": "The composed functions as a new function",
+                "type": "Function"
+            },
+            "example": [
+                "\n    function findUser (id, cont, fail) {\n        users.byId(id, function (err, user) {\n            // note: the err argument is completely optional, this is just\n            //       a mapping from node's convention\n            if (err != null) {\n                return fail(err);\n            }\n\n            // call of cont() with user to proceed\n            cont(user);\n        });\n    }\n\n    function formatUser (user, cont, fail) {\n        avatars.byId(user.id, function (err, avatar) {\n            if (avatar.isCorrupt()) {\n                return fail(new Error('Falsy avatar, only .jpg allowed'));\n            }\n\n            cont(funkyJS.inherits(user, avatar));\n        });\n    }\n    \n\n    var showUser = funkyJS.composeAsync(formatUser, findUser);\n\n\n    // this is the exit function\n    function showCard (userAndAccount) {\n        ui.addUserCard(userAndAccount).makeEventConnections();\n    }\n\n    // this is the fail function\n    function catchError (err) {\n        console.log(err.message);\n    }\n\n    // get user with id 'user012a37fb'\n    showUser(addCard, catchError, 'user012a37fb');"
+            ],
+            "class": "funkyJS",
+            "module": "combinators.extensions"
+        },
+        {
+            "file": "sources\\extensions\\combinators.js",
+            "line": 126,
+            "description": "Allows the pipe asynchronous working function, as long as they provide a\n    a compatible interface. A function is considered compatible if it\n    accepts at least three arguments. The first and the second argument are\n    assumed to be (1) the continuation function and (2) the error handler.\n    The third argument given to the returned function should be the data/arguments with which to start. The piped function executes the given\n    function from left to right, much like the core pipe() function. For\n    usage information please see the example below",
+            "itemtype": "method",
+            "name": "pipeAsync",
+            "params": [
+                {
+                    "name": "fn1",
+                    "description": "One to N asynchronous function to pipe",
+                    "type": "Function",
+                    "multiple": true
+                }
+            ],
+            "return": {
+                "description": "The piped functions as a new function",
+                "type": "Function"
+            },
+            "example": [
+                "\n    function findUser (id, cont, fail) {\n        users.byId(id, function (err, user) {\n            // note: the err argument is completely optional, this is just\n            //       a mapping from node's convention\n            if (err != null) {\n                return fail(err);\n            }\n\n            // call of cont() with user to proceed\n            cont(user);\n        });\n    }\n\n    function formatUser (user, cont, fail) {\n        avatars.byId(user.id, function (err, avatar) {\n            if (avatar.isCorrupt()) {\n                return fail(new Error('Falsy avatar, only .jpg allowed'));\n            }\n\n            cont(funkyJS.inherits(user, avatar));\n        });\n    }\n\n    // this is the exit function\n    function showCard (userAndAccount) {\n        ui.addUserCard(userAndAccount).makeEventConnections();\n    }\n\n    // this is the fail function\n    function catchError (err) {\n        console.log(err.message);\n    }\n    \n\n    var getUser = funkyJS.pipeAsync(findUser, formatUser);\n\n    // get user with id 'user0c2a37fb'\n    getUser('user0c2a37fb', showCard, catchError);"
+            ],
+            "class": "funkyJS",
+            "module": "combinators.extensions"
+        },
+        {
+            "file": "sources\\extensions\\combinators.js",
+            "line": 204,
+            "description": "Lifts a synchronous working function into a function which can be composed\n    and piped in a asynchronous chain",
+            "itemtype": "method",
+            "name": "liftAsync",
+            "params": [
+                {
+                    "name": "fn",
+                    "description": "The synchronous function",
+                    "type": "Function"
+                }
+            ],
+            "return": {
+                "description": "A function with asynchronous style wrapper",
+                "type": "Function"
+            },
+            "example": [
+                "\n    var f = funkyJS; // readability\n\n    function getUser(id, cont, fail) {\n        users.byId(id, function (err, user) {\n            if (err) {\n                return fail(err);\n            }\n            cont(user);\n        });\n    }\n\n    function getAvatar (id, cont, fail) {\n        avatars.byId(id, function (err, avatar) {\n            if (err) {\n                return fail(err);\n            }\n            cont(avatar);\n        });\n    }\n\n    var getUserAvatar = f.pipeAsync(\n        getUser,\n        f.liftAsync(f.get('id')),\n        getAvatar\n    );\n\n    getUserAvatar('user0c2a37fb', function (avatar) {\n        ui.showAvatar(avatar);\n    }, function (err) {\n        ui.showError(err.message);\n    });"
+            ],
+            "class": "funkyJS",
+            "module": "combinators.extensions"
+        },
+        {
+            "file": "sources\\extensions\\combinators.js",
+            "line": 270,
+            "description": "Allows to savely wrap functions which have side effects (like UI updates)\n    with a wrapper ready to be used in asynchronous control flows. This\n    allows to savely perform side effects inside asynchronous function\n    compositions or pipes",
+            "itemtype": "method",
+            "name": "sideEffect",
+            "params": [
+                {
+                    "name": "fn",
+                    "description": "The function which has side effects",
+                    "type": "Function"
+                }
+            ],
+            "return": {
+                "description": "A function with asynchronous style wrapper",
+                "type": "Function"
+            },
+            "example": [
+                "\n    var f = funkyJS; // readability\n\n    function getUser(id, cont, fail) {\n        users.byId(id, function (err, user) {\n            if (err) {\n                return fail(err);\n            }\n            cont(user);\n        });\n    }\n\n    function getAvatar (id, cont, fail) {\n        avatars.byId(id, function (err, avatar) {\n            if (err) {\n                return fail(err);\n            }\n            cont(avatar);\n        });\n    }\n\n    var getUserAvatar = f.pipeAsync(\n        f.sideEffect(ui.showProgressIndicator), // fn with side effect\n        getUser, // async operation\n        f.liftAsync(f.get('id')), // sync <=> async mapping\n        getAvatar,\n        f.sideEffect(ui.hideProgressIndicator)\n    );\n\n    getUserAvatar('user0c2a37fb', function (avatar) {\n        ui.showAvatar(avatar);\n    }, function (err) {\n        ui.showError(err.message);\n    });"
+            ],
+            "class": "funkyJS",
+            "module": "combinators.extensions"
+        },
+        {
+            "file": "sources\\extensions\\contracts.js",
+            "line": 48,
+            "description": "The beNil function allows only null or undefined values to pass",
+            "itemtype": "method",
+            "name": "beNil",
+            "params": [
+                {
+                    "name": "value",
+                    "description": "The value to check",
+                    "type": "Any"
+                }
+            ],
+            "return": {
+                "description": "No others pass",
+                "type": "Null|undefined"
+            },
+            "example": [
+                "\n    funkyJS.beNil(null);\n    // -> null\n\n    funkyJS.beNil(undefined);\n    // -> undefined\n\n    funkyJS.beNil(1);\n    // -> Error\n"
+            ],
+            "class": "funkyJS",
+            "module": "contracts"
+        },
+        {
+            "file": "sources\\extensions\\contracts.js",
+            "line": 69,
+            "description": "The beNull function allows only null values to pass",
+            "itemtype": "method",
+            "name": "beNull",
+            "params": [
+                {
+                    "name": "value",
+                    "description": "The value to check",
+                    "type": "Any"
+                }
+            ],
+            "return": {
+                "description": "No others pass",
+                "type": "Null"
+            },
+            "example": [
+                "\n    funkyJS.beNull(null);\n    // -> null\n\n    funkyJS.beNull(undefined);\n    // -> Error\n"
+            ],
+            "class": "funkyJS",
+            "module": "contracts"
+        },
+        {
+            "file": "sources\\extensions\\contracts.js",
+            "line": 87,
+            "description": "The beVoid function allows only undefined values to pass",
+            "itemtype": "method",
+            "name": "beVoid",
+            "params": [
+                {
+                    "name": "value",
+                    "description": "The value to check",
+                    "type": "Any"
+                }
+            ],
+            "return": {
+                "description": "No others pass",
+                "type": "Undefined"
+            },
+            "example": [
+                "\n    funkyJS.beVoid(undefined);\n    // -> undefined\n\n    funkyJS.beVoid(null);\n    // -> Error\n"
+            ],
+            "class": "funkyJS",
+            "module": "contracts"
+        },
+        {
+            "file": "sources\\extensions\\contracts.js",
+            "line": 105,
+            "description": "The beString function allows only strings to pass",
+            "itemtype": "method",
+            "name": "beString",
+            "params": [
+                {
+                    "name": "value",
+                    "description": "The value to check",
+                    "type": "Any"
+                }
+            ],
+            "return": {
+                "description": "No others pass",
+                "type": "String"
+            },
+            "example": [
+                "\n    funkyJS.beString('a string');\n    // -> 'a string'\n\n    funkyJS.beString(undefined);\n    // -> Error\n"
+            ],
+            "class": "funkyJS",
+            "module": "contracts"
+        },
+        {
+            "file": "sources\\extensions\\contracts.js",
+            "line": 123,
+            "description": "The beBool function allows only boolean values to pass",
+            "itemtype": "method",
+            "name": "beBool",
+            "params": [
+                {
+                    "name": "value",
+                    "description": "The value to check",
+                    "type": "Any"
+                }
+            ],
+            "return": {
+                "description": "No others pass",
+                "type": "Boolean"
+            },
+            "example": [
+                "\n    funkyJS.beBool(true);\n    // -> true\n\n    funkyJS.beBool(undefined);\n    // -> Error\n"
+            ],
+            "class": "funkyJS",
+            "module": "contracts"
+        },
+        {
+            "file": "sources\\extensions\\contracts.js",
+            "line": 141,
+            "description": "The beNumber function allows only number values to pass",
+            "itemtype": "method",
+            "name": "beNumber",
+            "params": [
+                {
+                    "name": "value",
+                    "description": "The value to check",
+                    "type": "Any"
+                }
+            ],
+            "return": {
+                "description": "No others pass",
+                "type": "Number"
+            },
+            "example": [
+                "\n    funkyJS.beNumber(2);\n    // -> 2\n\n    funkyJS.beNumber(undefined);\n    // -> Error\n"
+            ],
+            "class": "funkyJS",
+            "module": "contracts"
+        },
+        {
+            "file": "sources\\extensions\\contracts.js",
+            "line": 159,
+            "description": "The beInt32 function allows only integer values to pass",
+            "itemtype": "method",
+            "name": "beInt32",
+            "params": [
+                {
+                    "name": "value",
+                    "description": "The value to check",
+                    "type": "Any"
+                }
+            ],
+            "return": {
+                "description": "No others pass",
+                "type": "Int32"
+            },
+            "example": [
+                "\n    funkyJS.beInt32(2);\n    // -> 2\n\n    funkyJS.beInt32(2.5);\n    // -> Error\n"
+            ],
+            "class": "funkyJS",
+            "module": "contracts"
+        },
+        {
+            "file": "sources\\extensions\\contracts.js",
+            "line": 177,
+            "description": "The beFloat32 function allows only floating point number values to pass",
+            "itemtype": "method",
+            "name": "beFloat32",
+            "params": [
+                {
+                    "name": "value",
+                    "description": "The value to check",
+                    "type": "Any"
+                }
+            ],
+            "return": {
+                "description": "No others pass",
+                "type": "Float"
+            },
+            "example": [
+                "\n    funkyJS.beFloat32(2.5);\n    // -> 2.5\n\n    funkyJS.beFloat32(2);\n    // -> Error\n"
+            ],
+            "class": "funkyJS",
+            "module": "contracts"
+        },
+        {
+            "file": "sources\\extensions\\contracts.js",
+            "line": 195,
+            "description": "The beFunction function allows only function values to pass",
+            "itemtype": "method",
+            "name": "beFunction",
+            "params": [
+                {
+                    "name": "value",
+                    "description": "The value to check",
+                    "type": "Any"
+                }
+            ],
+            "return": {
+                "description": "No others pass",
+                "type": "Function"
+            },
+            "example": [
+                "\n    funkyJS.beFunction(function (a) { return a; });\n    // -> function (a) { return a; }\n\n    funkyJS.beFunction(undefined);\n    // -> Error\n"
+            ],
+            "class": "funkyJS",
+            "module": "contracts"
+        },
+        {
+            "file": "sources\\extensions\\contracts.js",
+            "line": 213,
+            "description": "The beArray function allows only array values to pass",
+            "itemtype": "method",
+            "name": "beArray",
+            "params": [
+                {
+                    "name": "value",
+                    "description": "The value to check",
+                    "type": "Any"
+                }
+            ],
+            "return": {
+                "description": "No others pass",
+                "type": "Array"
+            },
+            "example": [
+                "\n    funkyJS.beArray([]);\n    // -> []\n\n    funkyJS.beArray({});\n    // -> Error\n"
+            ],
+            "class": "funkyJS",
+            "module": "contracts"
+        },
+        {
+            "file": "sources\\extensions\\contracts.js",
+            "line": 231,
+            "description": "The beObject function allows only object values to pass",
+            "itemtype": "method",
+            "name": "beObject",
+            "params": [
+                {
+                    "name": "value",
+                    "description": "The value to check",
+                    "type": "Any"
+                }
+            ],
+            "return": {
+                "description": "No others pass",
+                "type": "Object"
+            },
+            "example": [
+                "\n    funkyJS.beObject({});\n    // -> {}\n\n    funkyJS.beObject([]);\n    // -> Error\n"
+            ],
+            "class": "funkyJS",
+            "module": "contracts"
+        },
+        {
+            "file": "sources\\extensions\\contracts.js",
+            "line": 249,
+            "description": "The beDate function allows only date values to pass",
+            "itemtype": "method",
+            "name": "beDate",
+            "params": [
+                {
+                    "name": "value",
+                    "description": "The value to check",
+                    "type": "Any"
+                }
+            ],
+            "return": {
+                "description": "No others pass",
+                "type": "Date"
+            },
+            "example": [
+                "\n    funkyJS.beDate(new Date(2015, 2, 25));\n    // -> Date(2015-2-25 00:00:00)\n\n    funkyJS.beDate({});\n    // -> Error\n"
+            ],
+            "class": "funkyJS",
+            "module": "contracts"
+        },
+        {
+            "file": "sources\\extensions\\contracts.js",
+            "line": 267,
+            "description": "The beRegex function allows only regular expression values to pass",
+            "itemtype": "method",
+            "name": "beRegex",
+            "params": [
+                {
+                    "name": "value",
+                    "description": "The value to check",
+                    "type": "Any"
+                }
+            ],
+            "return": {
+                "description": "No others pass",
+                "type": "Regular expression"
+            },
+            "example": [
+                "\n    funkyJS.beRegex(new RegExp('.*', 'g'));\n    // -> RegExp\n\n    funkyJS.beRegex('.*');\n    // -> Error\n"
+            ],
+            "class": "funkyJS",
+            "module": "contracts"
+        },
+        {
+            "file": "sources\\extensions\\contracts.js",
+            "line": 285,
+            "description": "The beNode function allows only DOMNode values to pass",
+            "itemtype": "method",
+            "name": "beNode",
+            "params": [
+                {
+                    "name": "value",
+                    "description": "The value to check",
+                    "type": "Any"
+                }
+            ],
+            "return": {
+                "description": "No others pass",
+                "type": "DOMNode"
+            },
+            "example": [
+                "\n    funkyJS.beNode(document.body);\n    // -> <body>\n\n    funkyJS.beNode(null);\n    // -> Error\n"
+            ],
+            "class": "funkyJS",
+            "module": "contracts"
+        },
+        {
+            "file": "sources\\extensions\\contracts.js",
+            "line": 303,
+            "description": "The beNodeList function allows only DOMNodeList values to pass",
+            "itemtype": "method",
+            "name": "beNodeList",
+            "params": [
+                {
+                    "name": "value",
+                    "description": "The value to check",
+                    "type": "Any"
+                }
+            ],
+            "return": {
+                "description": "No others pass",
+                "type": "DOMNodeList"
+            },
+            "example": [
+                "\n    funkyJS.beNodeList(document.querySelectorAll('div'));\n    // -> DOMNodeList\n\n    funkyJS.beNodeList([]);\n    // -> Error\n"
+            ],
+            "class": "funkyJS",
+            "module": "contracts"
+        },
+        {
+            "file": "sources\\extensions\\contracts.js",
+            "line": 321,
+            "description": "The beSequencial function allows only sequencial values to pass. For a description\n    of when a value is considered sequencial, please see the isSequencial\n    function",
+            "itemtype": "method",
+            "name": "beSequencial",
+            "params": [
+                {
+                    "name": "value",
+                    "description": "The value to check",
+                    "type": "Any"
+                }
+            ],
+            "return": {
+                "description": "No others pass",
+                "type": "Sequencial"
+            },
+            "example": [
+                "\n    funkyJS.beSequencial('abc');\n    // -> 'abc'\n\n    funkyJS.beSequencial(undefined);\n    // -> Error\n"
+            ],
+            "class": "funkyJS",
+            "module": "contracts"
+        },
+        {
+            "file": "sources\\extensions\\contracts.js",
+            "line": 341,
+            "description": "The beEnumerable function allows only enumerable values to pass. For a description\n    of when a value is considered enumerable, please see the isEnumerable\n    function",
+            "itemtype": "method",
+            "name": "beEnumerable",
+            "params": [
+                {
+                    "name": "value",
+                    "description": "The value to check",
+                    "type": "Any"
+                }
+            ],
+            "return": {
+                "description": "No others pass",
+                "type": "Enumerable"
+            },
+            "example": [
+                "\n    funkyJS.beEnumerable({});\n    // -> {}\n\n    funkyJS.beEnumerable(undefined);\n    // -> Error\n"
+            ],
+            "class": "funkyJS",
+            "module": "contracts"
+        },
+        {
+            "file": "sources\\extensions\\contracts.js",
+            "line": 363,
+            "description": "EXPORT\n======",
+            "class": "funkyJS",
+            "module": "contracts"
+        },
+        {
+            "file": "sources\\extensions\\decorators.js",
+            "line": 65,
+            "description": "The hom function allows to fix the types of arguments a function accepts and\n    the type of output value a function must return to any type of function\n    by passing input contracts and a output contract. This allows to implement\n    some kind of typesafe functions known from for example Java into the JS\n    world. The first call to hom returns a function, which accepts a function\n    descibing the operation to perform.",
+            "itemtype": "method",
+            "name": "hom",
+            "params": [
+                {
+                    "name": "ins",
+                    "description": "Array of input contract functions",
+                    "type": "Array"
+                },
+                {
+                    "name": "out",
+                    "description": "The output contract function",
+                    "type": "Function"
+                }
+            ],
+            "return": {
+                "description": "Function awaiting a operation",
+                "type": "Function"
+            },
+            "example": [
+                "\n    // a \"Person\" constructor, which is highly dependend on the types of\n    //   arguments passed to it to function correctly\n    var Person = function (name, birthdate) {\n        var _now = +(new Date()) - (+birthdate);\n\n        this.name = Person.formatName(name);\n        this.age = Person.calcAge(_now);\n        return this;\n    }\n\n    // a \"isPerson\" contract\n    Person.is = function (instance) {\n        return Person.prototype.isPrototypeOf(instance);\n    }\n\n    Person.formatName = function (name) { ... }\n    Person.calcAge = function (msSinceBirth) { ... }\n\n\n\n    // create a factory function which is typesafe\n    Person.make = funkyJS.hom(\n        // enforce incoming arguments to be a string and\n        //   a date object. any function which returns a\n        //   boolean result may be used here\n        [funkyJS.isString, funkyJS.isDate],\n        Person.is\n    )(function (name, birthday) {\n        if (+birthday > +(new Date())) {\n            // this throws error because it violates the\n            //   output contract, so we are able to detect\n            //   persons created with a date in future\n            return null;\n        }\n        return new Person(name, birthday);\n    });\n\n\n\n    Person.make('john doe', new Date(1985, 2, 25));\n    // -> Person(name:'John Doe', age: ... );\n\n    Person.make(1, 0);\n    // -> Error\n\n    Person.make('john doe', 0);\n    // -> Error\n\n    Person.make('john doe', new Date());\n    // -> Person(name:'John Doe', age: 0); // just born\n\n    Person.make('john doe', new Date(2320, 2, 25));\n    // -> Error\n\n\n\n    // the behaviour of hom allows also to store for example a creation\n    //   process before defining the type of output\n    var fromStrDateMake = funkyJS.hom([\n        funkyJS.isString,\n        funkyJS.isDate\n    ]);\n\n    // a delivery label factory\n    var labelDelivery = function (id, deliveryDate) {\n        return {\n            id: 'label-' + id,\n            delivered: deliveryDate.toISOString()\n        };\n    }\n\n    var isLabel = funkyJS.hom(\n        [funkyJS.isObject],\n        funkyJS.isObject\n    )(function (label) {\n        if (funkyJS.has('id', label) && funkyJS.has('delivered', label)) {\n            return label;\n        }\n        return null;\n    });\n\n\n    // the factory for Person rewritten\n    Person.make = fromStrDateMake(Person.is)(function (name, bDay) {\n        return new Person(name, bDay);\n    });\n\n    // the label factory\n    var makeLabel = fromStrDateMake(isLabel)(labelDelivery);\n"
+            ],
+            "class": "funkyJS",
+            "module": "decorators.extensions"
+        },
+        {
+            "file": "sources\\extensions\\decorators.js",
+            "line": 214,
+            "description": "The multiDispatch function allows to create so called multi methods, known\n    from LISP, which makes it possible to define a single function, composed\n    out of multiple functions which are called depending on the type of the\n    input arguments. Please note that the arity of a multi method/multiple\n    dispatched function is zero, so it might be useful to use the aritize\n    function after creating a multi dispatched function depending on the\n    usecase",
+            "itemtype": "method",
+            "name": "multiDispatch",
+            "params": [
+                {
+                    "name": "defs",
+                    "description": "Definition objects of a function in a multi method",
+                    "type": "Array"
+                }
+            ],
+            "return": {
+                "description": "The multi method",
+                "type": "Function"
+            },
+            "example": [
+                "\n\n    var multiply = funkyJS.multiDispatch([{\n        // this definition says:\n        // -> input must be 2 arguments of type number\n        // -> output must be of type number\n        // -> operation to perform if input validates\n        args: [funkyJS.isNumber, funkyJS.isNumber],\n        out: funkyJS.isNumber,\n        proc: function (n1, n2) {\n            return n1 * n2;\n        }\n    }, {\n        // this definition says:\n        // -> input must be 1 argument of type number\n        // -> any output accepted\n        // -> operation to perform if input validates\n        args: [funkyJS.isNumber],\n        proc: function (n) {\n            return n * n;\n        }\n    }, {\n        args: [funkyJS.isArray],\n        out: funkyJS.isNumber,\n        proc: function (list) {\n            return list.slice(1).reduce(function (acc, n) {\n                return acc * n;\n            }, list[0]);\n        }\n    }]);\n\n    multiply(2, 3);\n    // -> 6\n\n    multiply(9);\n    // -> 81\n\n    multiply([1, 2, 3, 4, 5]);\n    // -> 120\n\n    multiply(null);\n    // -> undefined\n\n    multiply.length;\n    // -> 0\n\n    // uses the aritize function to create the arity wanted\n    multiply = funkyJS.aritize(2, true)(multiply);\n\n    multiply.length;\n    // -> 2\n\n    // works like before\n    multiply(2, 3);\n    // -> 6\n\n    // works also with single argument like before\n    multiply(9);\n    // -> 81\n\n    // or with arrays\n    multiply([1, 2, 3, 4, 5]);\n    // -> 120\n"
+            ],
+            "class": "funkyJS",
+            "module": "decorators.extensions"
+        },
+        {
+            "file": "sources\\extensions\\decorators.js",
+            "line": 330,
+            "description": "The displaceArgs function allows to rearrange the position of arguments passed\n    to a function before the function is applied to them. This is especially\n    useful if a function should be reused, but the order of arguments it\n    consumes does not match for any reason with the new implementation (for\n    example: a incoming array should be applied to a existing function, but\n    the order of items is incorrect)",
+            "itemtype": "method",
+            "name": "displaceArgs",
+            "params": [
+                {
+                    "name": "fn",
+                    "description": "A function with the operation",
+                    "type": "Function"
+                },
+                {
+                    "name": "positions",
+                    "description": "Index:value pairs where the values or the argument positions",
+                    "type": "Array"
+                }
+            ],
+            "return": {
+                "description": "A wrapper function",
+                "type": "Function"
+            },
+            "example": [
+                "\n    var add = function (a, b) {\n        return a + b;\n    }\n\n    add('a', 'z');\n    // -> 'az'\n\n    var revAdd = funkyJS.displaceArgs(add, [1, 0]);\n\n    revAdd('z', 'a');\n    // -> 'az'\n"
+            ],
+            "class": "funkyJS",
+            "module": "decorators.extensions"
+        },
+        {
+            "file": "sources\\extensions\\decorators.js",
+            "line": 393,
+            "description": "EXPORT\n======",
+            "class": "funkyJS",
+            "module": "decorators.extensions"
+        },
+        {
+            "file": "sources\\extensions\\functors.js",
+            "line": 36,
+            "description": "The forEachWith function is a more functional style of an array's .forEach, as it\n    allows to pass in the function first and defer giving the array to iterate\n    over. Please note that any function which should be executed in a certain\n    context must be bound before being passed",
+            "itemtype": "method",
+            "name": "forEachWith",
+            "params": [
+                {
+                    "name": "fn",
+                    "description": "The function to call on each iteration",
+                    "type": "Function"
+                },
+                {
+                    "name": "list",
+                    "description": "The array to iterate over",
+                    "type": "Array"
+                }
+            ],
+            "return": {
+                "description": "The given list",
+                "type": "Array"
+            },
+            "example": [
+                "\n    var squared = [],\n        square = funkyJS.forEachWith(function (x) { squared.push(x * x) });\n\n    square([1, 2, 3]);\n\n    squared;\n    // -> [1, 4, 9]\n"
+            ],
+            "class": "funkyJS",
+            "module": "functors"
+        },
+        {
+            "file": "sources\\extensions\\functors.js",
+            "line": 80,
+            "description": "The mapWith function is a more functional style of an array's .map, as it\n    allows to pass in the function first and defer giving the array to iterate\n    over. Please note that any function which should be executed in a certain\n    context must be bound before being passed",
+            "itemtype": "method",
+            "name": "mapWith",
+            "params": [
+                {
+                    "name": "fn",
+                    "description": "The function to call on each iteration",
+                    "type": "Function"
+                },
+                {
+                    "name": "list",
+                    "description": "The array to iterate over",
+                    "type": "Array"
+                }
+            ],
+            "return": {
+                "description": "The mapped list",
+                "type": "Array"
+            },
+            "example": [
+                "\n    var square = funkyJS.mapWith(function (x) { return (x * x) });\n\n    square([1, 2, 3]);\n    // -> [1, 4, 9]\n"
+            ],
+            "class": "funkyJS",
+            "module": "functors"
+        },
+        {
+            "file": "sources\\extensions\\functors.js",
+            "line": 120,
+            "description": "The filterWith function is a more functional style of an array's .filter, as it\n    allows to pass in the function first and defer giving the array to iterate\n    over. Please note that any function which should be executed in a certain\n    context must be bound before being passed",
+            "itemtype": "method",
+            "name": "filterWith",
+            "params": [
+                {
+                    "name": "fn",
+                    "description": "The function to filter values with",
+                    "type": "Function"
+                },
+                {
+                    "name": "list",
+                    "description": "The array to iterate over",
+                    "type": "Array"
+                }
+            ],
+            "return": {
+                "description": "The filtered list",
+                "type": "Array"
+            },
+            "example": [
+                "\n    var greater1 = funkyJS.filterWith(function (x) { return x > 1; });\n\n    greater1([1, 2, 3]);\n    // -> [2, 3]\n"
+            ],
+            "class": "funkyJS",
+            "module": "functors"
+        },
+        {
+            "file": "sources\\extensions\\functors.js",
+            "line": 160,
+            "description": "The foldWith function is a more functional style of an array's .reduce, as it\n    allows to pass in the function first and defer giving the array to iterate\n    over. Please note that any function which should be executed in a certain\n    context must be bound before being passed",
+            "itemtype": "method",
+            "name": "foldWith",
+            "params": [
+                {
+                    "name": "fn",
+                    "description": "The function to fold with",
+                    "type": "Function"
+                },
+                {
+                    "name": "list",
+                    "description": "The array to iterate over",
+                    "type": "Array"
+                },
+                {
+                    "name": "any",
+                    "description": "The base value",
+                    "type": "Seed"
+                }
+            ],
+            "return": {
+                "description": "The folded/reduced list",
+                "type": "Array"
+            },
+            "example": [
+                "\n    var sum = funkyJS.foldWith(function (acc, x) {\n        return acc + x;\n    });\n\n    sum([1, 2, 3], 0);\n    // -> 6\n"
+            ],
+            "class": "funkyJS",
+            "module": "functors"
+        },
+        {
+            "file": "sources\\extensions\\functors.js",
+            "line": 209,
+            "description": "The foldWith function is a more functional style of an array's .reduceRight, as it\n    allows to pass in the function first and defer giving the array to iterate\n    over. Please note that any function which should be executed in a certain\n    context must be bound before being passed",
+            "itemtype": "method",
+            "name": "foldRightWith",
+            "params": [
+                {
+                    "name": "fn",
+                    "description": "The function to fold with",
+                    "type": "Function"
+                },
+                {
+                    "name": "list",
+                    "description": "The array to iterate over",
+                    "type": "Array"
+                },
+                {
+                    "name": "any",
+                    "description": "The base value",
+                    "type": "Seed"
+                }
+            ],
+            "return": {
+                "description": "The folded/reduced list",
+                "type": "Array"
+            },
+            "example": [
+                "\n    var catRight = funkyJS.foldRightWith(function (acc, x) {\n        return acc + x;\n    });\n\n    catRight(['hello', 'why', 'there'], '');\n    // -> 'therewhyhello'\n"
+            ],
+            "class": "funkyJS",
+            "module": "functors"
+        },
+        {
+            "file": "sources\\extensions\\functors.js",
+            "line": 258,
+            "description": "The everyWith function is a more functional style of an array's .every, as it\n    allows to pass in the function first and defer giving the array to iterate\n    over. Please note that any function which should be executed in a certain\n    context must be bound before being passed",
+            "itemtype": "method",
+            "name": "everyWith",
+            "params": [
+                {
+                    "name": "fn",
+                    "description": "The function to compare with",
+                    "type": "Function"
+                },
+                {
+                    "name": "list",
+                    "description": "The array to iterate over",
+                    "type": "Array"
+                }
+            ],
+            "return": {
+                "description": "True if every value passes the comparator function",
+                "type": "Boolean"
+            },
+            "example": [
+                "\n    var allNumbers = funkyJS.everyWith(funkyJS.isNumber);\n\n    allNumbers([1, 2, 3, 4]);\n    // -> true\n\n    allNumbers([1, null, 3, 4]);\n    // -> false\n"
+            ],
+            "class": "funkyJS",
+            "module": "functors"
+        },
+        {
+            "file": "sources\\extensions\\functors.js",
+            "line": 301,
+            "description": "The someWith function is a more functional style of an array's .some, as it\n    allows to pass in the function first and defer giving the array to iterate\n    over. Please note that any function which should be executed in a certain\n    context must be bound before being passed",
+            "itemtype": "method",
+            "name": "someWith",
+            "params": [
+                {
+                    "name": "fn",
+                    "description": "The function to compare with",
+                    "type": "Function"
+                },
+                {
+                    "name": "list",
+                    "description": "The array to iterate over",
+                    "type": "Array"
+                }
+            ],
+            "return": {
+                "description": "True if some values pass the comparator function",
+                "type": "Boolean"
+            },
+            "example": [
+                "\n    var someNumbers = funkyJS.someWith(funkyJS.isNumber);\n\n    someNumbers([1, null, 3, 4]);\n    // -> true\n\n    someNumbers([null, '', {}]);\n    // -> false\n"
+            ],
+            "class": "funkyJS",
+            "module": "functors"
+        },
+        {
+            "file": "sources\\extensions\\functors.js",
+            "line": 346,
+            "description": "EXPORT\n======",
+            "class": "funkyJS",
+            "module": "functors"
+        },
+        {
+            "file": "sources\\extensions\\iterators.js",
+            "line": 39,
+            "description": "Allows to create a numerical iterator, with a optional start and end number.\n    If the end number is below the start number, the returned iterator counts\n    down. If no arguments are given, the iterator counts up to positive\n    infinity, starting by zero",
+            "itemtype": "method",
+            "name": "numIterator",
+            "params": [
+                {
+                    "name": "[start",
+                    "description": "= 0] Optional start number",
+                    "type": "Number"
+                },
+                {
+                    "name": "[max",
+                    "description": "= Infinity] Optional end number",
+                    "type": "Number"
+                }
+            ],
+            "return": {
+                "description": "Iterator object",
+                "type": "Object"
+            },
+            "example": [
+                "\n    var nums = funkyJS.numIterator(5); // counts 5 -> Infinity\n\n    nums.next().value();\n    // -> 5\n\n    nums.next().value();\n    // -> 6\n\n    nums.next().value();\n    // -> 7\n\n\n    var nums2 = funkyJS.numIterator();\n\n    nums2.next().value();\n    // -> 0\n\n    nums2.next().value();\n    // -> 1\n\n    nums2.next().value();\n    // -> 2\n\n\n    var nums3 = funkyJS.numIterator(10, 0);\n\n    nums3.next().value();\n    // -> 10\n\n    nums3.next().value();\n    // -> 9\n\n    nums3.next().value();\n    // -> 8\n"
+            ],
+            "class": "funkyJS",
+            "module": "iterators"
+        },
+        {
+            "file": "sources\\extensions\\iterators.js",
+            "line": 119,
+            "description": "Creates a sequencial iterator. Sequencial iterators allow to iterate over\n    strings, arrays, arguments and nodelist",
+            "itemtype": "method",
+            "name": "seqIterator",
+            "params": [
+                {
+                    "name": "seq",
+                    "description": "Sequencial value",
+                    "type": "Array|string|arguments|nodelist"
+                }
+            ],
+            "return": {
+                "description": "Iterator object",
+                "type": "Object"
+            },
+            "example": [
+                "\n    var itAbc = funkyJS.seqIterator(['a', 'b', 'c']);\n\n    itAbc.next().value();\n    // -> 'a'\n\n    itAbc.next().value();\n    // -> 'b'\n\n    itAbc.next().value();\n    // -> 'c'\n\n\n    var itStr = funkyJS.seqIterator('string');\n\n    itStr.next().value();\n    // -> 's'\n\n    itStr.next().value();\n    // -> 't'\n\n    itStr.next().value();\n    // -> 'r'\n"
+            ],
+            "class": "funkyJS",
+            "module": "iterators"
+        },
+        {
+            "file": "sources\\extensions\\iterators.js",
+            "line": 184,
+            "description": "Creates a object/hashtable iterator. Please note that the returned iterator\n    might iterate randomly through the object, depending on the behaviour of\n    the underlying JavaScript engine",
+            "itemtype": "method",
+            "name": "objIterator",
+            "params": [
+                {
+                    "name": "obj",
+                    "description": "Hashtable to iterate over",
+                    "type": "Object"
+                }
+            ],
+            "return": {
+                "description": "Iterator object",
+                "type": "Object"
+            },
+            "example": [
+                "\n    var itAbc = funkyJS.objIterator({\n        a: 'first',\n        b: 'second',\n        c: 'third'\n    });\n\n    itAbc.next().value();\n    // -> 'first'\n\n    itAbc.next().value();\n    // -> 'second'\n\n    itAbc.next().value();\n    // -> 'third'\n"
+            ],
+            "class": "funkyJS",
+            "module": "iterators"
+        },
+        {
+            "file": "sources\\extensions\\iterators.js",
+            "line": 244,
+            "description": "Returns a lazy iterator, which maps a given function to a given iterator. The\n    returned iterator is lazy, as it only maps when calling it's next() method",
+            "itemtype": "method",
+            "name": "mapLazy",
+            "params": [
+                {
+                    "name": "fn",
+                    "description": "The function to apply",
+                    "type": "Function"
+                },
+                {
+                    "name": "iterator",
+                    "description": "The iterator to map over",
+                    "type": "Object"
+                }
+            ],
+            "return": {
+                "description": "Iterator object",
+                "type": "Object"
+            },
+            "example": [
+                "\n    var itAbc = funkyJS.objIterator({\n        a: 'first',\n        b: 'second',\n        c: 'third'\n    });\n\n    var upper = funkyJS.call(String.prototype.toUpperCase);\n\n    var lazyMap = funkyJS.mapLazy(upper, itAbc);\n\n    lazyMap.next().value();\n    // -> 'FIRST'\n\n    lazyMap.next().value();\n    // -> 'SECOND'\n\n    lazyMap.next().value();\n    // -> 'THIRD'\n"
+            ],
+            "class": "funkyJS",
+            "module": "iterators"
+        },
+        {
+            "file": "sources\\extensions\\iterators.js",
+            "line": 313,
+            "description": "Returns a lazy iterator, which filters with a given function a given iterator.\n    The returned iterator is lazy, as it only filters when calling it's\n    next() method",
+            "itemtype": "method",
+            "name": "filterLazy",
+            "params": [
+                {
+                    "name": "fn",
+                    "description": "The predicate function",
+                    "type": "Function"
+                },
+                {
+                    "name": "iterator",
+                    "description": "The iterator to filter",
+                    "type": "Object"
+                }
+            ],
+            "return": {
+                "description": "Iterator object",
+                "type": "Object"
+            },
+            "example": [
+                "\n    var itAbc = funkyJS.objIterator({\n        a: 'first',\n        b: 'second',\n        c: 'third'\n    });\n\n    var startsEitherFT = function (s) {\n        return s[0] === 't' || s[0] === 'f';\n    }\n\n    var lazyFilter = funkyJS.filterLazy(startsEitherFT, itAbc);\n\n    lazyFilter.next().value();\n    // -> 'first'\n\n    lazyFilter.next().value();\n    // -> 'third'\n"
+            ],
+            "class": "funkyJS",
+            "module": "iterators"
+        },
+        {
+            "file": "sources\\extensions\\iterators.js",
+            "line": 385,
+            "description": "Returns a lazy iterator, which folds a given iterator to one value. The\n    returned iterator is lazy as it only folds one when calling it's next()\n    method",
+            "itemtype": "method",
+            "name": "foldLazy",
+            "params": [
+                {
+                    "name": "fn",
+                    "description": "The function to fold with",
+                    "type": "Function"
+                },
+                {
+                    "name": "iterator",
+                    "description": "The iterator to fold",
+                    "type": "Object"
+                },
+                {
+                    "name": "seed",
+                    "description": "The initial value to start from",
+                    "type": "*"
+                }
+            ],
+            "return": {
+                "description": "Iterator object",
+                "type": "Object"
+            },
+            "example": [
+                "\n    var itAbc = funkyJS.objIterator({\n        a: 'first',\n        b: 'second',\n        c: 'third'\n    });\n\n    var cat = function (a, b) {\n        return !a ? b : a + ', ' + b;\n    }\n\n    var lazyFold = funkyJS.foldLazy(cat, itAbc, '');\n\n    lazyFold.next().value();\n    // -> 'first'\n\n    lazyFold.next().value();\n    // -> 'first, second'\n\n    lazyFold.next().value();\n    // -> 'first, second, third'\n"
+            ],
+            "class": "funkyJS",
+            "module": "iterators"
+        },
+        {
+            "file": "sources\\extensions\\iterators.js",
+            "line": 472,
+            "description": "EXPORT\n======",
+            "class": "funkyJS",
+            "module": "iterators"
+        },
+        {
+            "file": "sources\\extensions\\strings.js",
+            "line": 36,
+            "description": "The trimLeft function allows to remove whitespace from the beginning of a\n    string",
+            "itemtype": "method",
+            "name": "trimLeft",
+            "params": [
+                {
+                    "name": "str",
+                    "description": "The string to trim left",
+                    "type": "String"
+                }
+            ],
+            "return": {
+                "description": "The trimmed string",
+                "type": "String"
+            },
+            "example": [
+                "\n    var str = '   a string   ';\n\n    funkyJS.trimLeft(str);\n    // -> 'a string   '\n"
+            ],
+            "class": "funkyJS",
+            "module": "strings"
+        },
+        {
+            "file": "sources\\extensions\\strings.js",
+            "line": 60,
+            "description": "The trimRight function allows to remove whitespace from the end of a string",
+            "itemtype": "method",
+            "name": "trimRight",
+            "params": [
+                {
+                    "name": "str",
+                    "description": "The string to trim right",
+                    "type": "String"
+                }
+            ],
+            "return": {
+                "description": "The trimmed string",
+                "type": "String"
+            },
+            "example": [
+                "\n    var str = '   a string   ';\n\n    funkyJS.trimRight(str);\n    // -> '   a string'\n"
+            ],
+            "class": "funkyJS",
+            "module": "strings"
+        },
+        {
+            "file": "sources\\extensions\\strings.js",
+            "line": 83,
+            "description": "The trim function allows to remove whitespace from both sides of a string",
+            "itemtype": "method",
+            "name": "trim",
+            "params": [
+                {
+                    "name": "str",
+                    "description": "The string to trim",
+                    "type": "String"
+                }
+            ],
+            "return": {
+                "description": "The trimmed string",
+                "type": "String"
+            },
+            "example": [
+                "\n    var str = '   a string   ';\n\n    funkyJS.trim(str);\n    // -> 'a string'\n"
+            ],
+            "class": "funkyJS",
+            "module": "strings"
+        },
+        {
+            "file": "sources\\extensions\\strings.js",
+            "line": 106,
+            "description": "The camelize function allows to transform a string from separation by\n    dashes and underscores into a camelcased form",
+            "itemtype": "method",
+            "name": "camelize",
+            "params": [
+                {
+                    "name": "str",
+                    "description": "The string to transform",
+                    "type": "String"
+                }
+            ],
+            "return": {
+                "description": "Formatted string",
+                "type": "String"
+            },
+            "example": [
+                "\n    var str = 'string-separated';\n\n    funkyJS.camelize(str);\n    // -> 'stringSeparated'\n"
+            ],
+            "class": "funkyJS",
+            "module": "strings"
+        },
+        {
+            "file": "sources\\extensions\\strings.js",
+            "line": 132,
+            "description": "The dasherize function allows to transform a string from separation by\n    uppercase letters and underscores into separations by dashes",
+            "itemtype": "method",
+            "name": "dasherize",
+            "params": [
+                {
+                    "name": "str",
+                    "description": "The string to transform",
+                    "type": "String"
+                }
+            ],
+            "return": {
+                "description": "Formatted string",
+                "type": "String"
+            },
+            "example": [
+                "\n    var str = 'stringSeparated';\n\n    funkyJS.dasherize(str);\n    // -> 'string-separated'\n"
+            ],
+            "class": "funkyJS",
+            "module": "strings"
+        },
+        {
+            "file": "sources\\extensions\\strings.js",
+            "line": 158,
+            "description": "The underscore function allows to transform a string from separation by\n    uppercase letters and dashes into separations by underscores",
+            "itemtype": "method",
+            "name": "underscore",
+            "params": [
+                {
+                    "name": "str",
+                    "description": "The string to transform",
+                    "type": "String"
+                }
+            ],
+            "return": {
+                "description": "Formatted string",
+                "type": "String"
+            },
+            "example": [
+                "\n    var str = 'string-separated';\n\n    funkyJS.underscore(str);\n    // -> 'string_separated'\n"
+            ],
+            "class": "funkyJS",
+            "module": "strings"
+        },
+        {
+            "file": "sources\\extensions\\strings.js",
+            "line": 184,
+            "description": "The splitParse function allows to split a string on a freely definable\n    delimiter and parse the created atoms with a given operation",
+            "itemtype": "method",
+            "name": "splitParse",
+            "params": [
+                {
+                    "name": "fn",
+                    "description": "The operation to perform after splitting",
+                    "type": "Function"
+                },
+                {
+                    "name": "delimiter",
+                    "description": "The delimiter to split on",
+                    "type": "String|regexp"
+                },
+                {
+                    "name": "str",
+                    "description": "The string seed",
+                    "type": "String"
+                }
+            ],
+            "return": {
+                "description": "The parsed atoms of the string",
+                "type": "Array"
+            },
+            "example": [
+                "\n    function toInt (n) {\n        return parseInt(n, 10);\n    }\n\n    var isoDateToInts = funkyJS.splitParse(toInt, /\\s|\\-|\\:/g);\n\n    isoDateToInts('2015-02-25 06:00:00');\n    // -> [2015, 2, 25, 6, 0, 0]\n"
+            ],
+            "class": "funkyJS",
+            "module": "strings"
+        },
+        {
+            "file": "sources\\extensions\\strings.js",
+            "line": 234,
+            "description": "Meant to be a basic templating function, the substitude function allows to\n    replace parts of a template string with real data at runtime. The parts\n    of a template which should be replaced have to be wrapped in placeholders\n    in the format: ${key}. The actual data is awaited to be given as a pure\n    object (may be JSON as well)",
+            "itemtype": "method",
+            "name": "substitude",
+            "params": [
+                {
+                    "name": "str",
+                    "description": "The template string",
+                    "type": "String"
+                },
+                {
+                    "name": "data",
+                    "description": "The data as key-value pairs",
+                    "type": "Object"
+                }
+            ],
+            "return": {
+                "description": "The parsed string",
+                "type": "String"
+            },
+            "example": [
+                "\n    var tpl = 'This is ${subject} and ${does}.';\n\n    var desc = funkyJS.substitude(tpl);\n\n    desc({subject: 'John Doe', does: 'he codes JavaScript'});\n    // -> 'This is John Doe and his computer.'\n\n    desc({subject: 'Steve Smith', does: 'he does nothing'});\n    // 'This is Steve Smith and he does nothing.'\n\n\n\n    funkyJS.substitude(tpl, {\n        subject: 'me',\n        does: 'I test substitude'\n    });\n    // -> 'This is me and I test substitude.'\n"
+            ],
+            "class": "funkyJS",
+            "module": "strings"
+        },
+        {
+            "file": "sources\\extensions\\strings.js",
+            "line": 300,
+            "description": "EXPORT\n======",
+            "class": "funkyJS",
+            "module": "strings"
+        },
+        {
+            "file": "sources\\extensions\\trampolines.js",
+            "line": 46,
+            "description": "The thunk function allows to wrap a function into a thunk which can be used\n    in trampolined functions. For usage please take a look at the trampoline\n    function",
+            "itemtype": "method",
+            "name": "thunk",
+            "params": [
+                {
+                    "name": "fn",
+                    "description": "The function to thunk",
+                    "type": "Function"
+                }
+            ],
+            "return": {
+                "description": "A new thunk",
+                "type": "Thunk"
+            },
+            "class": "funkyJS",
+            "module": "trampolines"
+        },
+        {
+            "file": "sources\\extensions\\trampolines.js",
+            "line": 65,
+            "description": "The trampoline function allows to implement tail-call optimized functions/\n    tail-recursive function calls in JavaScript as a stack-oriented language.\n    This allows to transfer the burden of computations from the stack onto\n    the heap which results in the possibility of much longer computations to\n    run",
+            "itemtype": "method",
+            "name": "trampoline",
+            "params": [
+                {
+                    "name": "fn",
+                    "description": "A function returning thunks or a final value",
+                    "type": "Function"
+                }
+            ],
+            "return": {
+                "description": "The final result",
+                "type": "Any"
+            },
+            "example": [
+                "\n    var _vanilla = function (n1, n2) {\n        if (n2 < 1) {\n            return n1;\n        }\n        return _vanilla(n1 * n2, n2 - 1);\n    }\n\n    var _thunkedInner = function (n1, n2) {\n        if (n2 < 1) {\n            return n1;\n        }\n        return funkyJS.thunk(function () {\n            return _thunkedInner(n1 * n2, n2 - 1);\n        });\n    }\n\n    var thunked = function (n) {\n        return funkyJS.trampoline(_thunkedInner(1, Math.abs(n)));\n    }\n\n\n    vanilla(10);\n    // -> 362880\n\n    vanilla(50325);\n    // -> RangeError\n\n\n    thunked(10);\n    // -> 3628800\n\n    thunked(50325);\n    // -> ... Wait until finished :)\n"
+            ],
+            "class": "funkyJS",
+            "module": "trampolines"
+        },
+        {
+            "file": "sources\\extensions\\trampolines.js",
+            "line": 123,
+            "description": "EXPORT\n======",
+            "class": "funkyJS",
+            "module": "trampolines"
+        },
+        {
+            "file": "sources\\_birds.js",
+            "line": 22,
+            "description": "The identity function (Identity/Idiot Bird) takes a argument and instantly\n    returns it",
+            "itemtype": "method",
+            "name": "identity",
+            "params": [
+                {
+                    "name": "x",
+                    "description": "Anything",
+                    "type": "Any"
+                }
+            ],
+            "return": {
+                "description": "Anything given",
+                "type": "Any"
+            },
+            "example": [
+                "\n    var one = funkyJS.identity(1);\n"
+            ],
+            "class": "funkyJS",
+            "module": "birds"
+        },
+        {
+            "file": "sources\\_birds.js",
+            "line": 39,
+            "description": "The constant function (Kestrel) takes a argument and returns a function\n    which will always return the given argument if called",
+            "itemtype": "method",
+            "name": "constant",
+            "params": [
+                {
+                    "name": "x",
+                    "description": "Anything",
+                    "type": "Any"
+                }
+            ],
+            "return": {
+                "description": "A function which always returns x",
+                "type": "Function"
+            },
+            "example": [
+                "\n    var getZero = funkyJS.constant(0);\n\n    getZero();\n    // -> 0\n\n    getZero(100);\n    // -> 0\n"
+            ],
+            "class": "funkyJS",
+            "module": "birds"
+        },
+        {
+            "file": "sources\\_birds.js",
+            "line": 94,
+            "description": "The cmps function (Bluebird) is the basic functional higher-order function\n    for function composition. It takes a function, returns a function which\n    again takes a function and returns a function taking any value which is\n    piped through both given functions from right to left",
+            "itemtype": "method",
+            "name": "cmps",
+            "params": [
+                {
+                    "name": "f",
+                    "description": "A function",
+                    "type": "Function"
+                }
+            ],
+            "return": {
+                "description": "Function taking a second function",
+                "type": "Function"
+            },
+            "example": [
+                "\n    var toInt32 = function (s) {\n        return parseInt('' + s, 10);\n    }\n\n    var add10 = function (n) {\n        return n + 10;\n    }\n\n    var toIntPlus10 = funkyJS.cmps(add10)(toInt32);\n    toIntPlus10('300px');\n    // -> 310\n"
+            ],
+            "class": "funkyJS",
+            "module": "birds"
+        },
+        {
+            "file": "sources\\arity.js",
+            "line": 43,
+            "description": "The aritize function takes a number and returns a function which has a arity\n    of exactly that length. A optional second argument allows to create a\n    loosely aritized function, which acts much like a variadic function, but\n    packs all the given arguments into a array. A call to aritize returns a\n    function, which awaits a function describing the operation applied to the\n    given arguments (either loosely or strict)",
+            "itemtype": "method",
+            "name": "aritize",
+            "params": [
+                {
+                    "name": "arity",
+                    "description": "The arity of the original function",
+                    "type": "Number"
+                },
+                {
+                    "name": "[loose",
+                    "description": "= false] Return a loose or strict function",
+                    "type": "Boolean"
+                }
+            ],
+            "return": {
+                "description": "A wrapper function with correct arity",
+                "type": "Function"
+            },
+            "example": [
+                "\n    var max = function () {\n        return Math.max.apply(null, arguments);\n    }\n\n    max(1, 2, 3, 4, 5);\n    // -> 5\n\n    max.length;\n    // -> 0\n\n    // loosely aritized (acts much like variadic)\n    var looseMax = funkyJS.aritize(3, true)(max);\n\n    looseMax(1, 2, 3, 4, 5);\n    // -> 5\n\n    looseMax.length;\n    // -> 3\n\n\n    // strictly aritized (acts much like niladic, monadic, etc...)\n    var stictMax = funkyJS.aritize(3)(function (args) {\n        return max.apply(null, args);\n    });\n\n    strictMax(1, 2, 3, 4, 5);\n    // -> 3\n\n    strictMax.length;\n    // -> 3\n"
+            ],
+            "class": "funkyJS",
+            "module": "arity"
+        },
+        {
+            "file": "sources\\arity.js",
+            "line": 124,
+            "description": "The niladic function restricts the number of arguments (a functions arity) that\n    are needed to execute a function to zero. It takes a function and returns\n    a function which takes arguments until the given function can be executed.\n    If more arguments are passed than the arity of the given function is, the\n    arguments which are too many will be ignored",
+            "itemtype": "method",
+            "name": "niladic",
+            "params": [
+                {
+                    "name": "f",
+                    "description": "The function to restrict",
+                    "type": "Function"
+                }
+            ],
+            "return": {
+                "description": "A curried, restricted variant of the given function",
+                "type": "Function"
+            },
+            "example": [
+                "\n    var say = function (sentence) {\n        return sentence || '---';\n    }\n\n    say('hello');\n    // -> 'hello'\n\n    var dontSay = funkyJS.niladic(say);\n\n    dontSay('hello');\n    // -> '---'\n"
+            ],
+            "class": "funkyJS",
+            "module": "arity"
+        },
+        {
+            "file": "sources\\arity.js",
+            "line": 164,
+            "description": "The monadic function restricts the number of arguments (a functions arity) that\n    are needed to execute a function to one. It takes a function and returns\n    a function which takes arguments until the given function can be executed.\n    If more arguments are passed than the arity of the given function is, the\n    arguments which are too many will be ignored",
+            "itemtype": "method",
+            "name": "monadic",
+            "params": [
+                {
+                    "name": "f",
+                    "description": "The function to restrict",
+                    "type": "Function"
+                }
+            ],
+            "return": {
+                "description": "A curried, restricted variant of the given function",
+                "type": "Function"
+            },
+            "example": [
+                "\n    var sayTo = function (sentence, receiver) {\n        return sentence + ' ' + (receiver.name || 'nobody');\n    }\n\n    sayTo('hello', {name: 'joe'});\n    // -> 'hello joe'\n\n    var sayToNobody = funkyJS.monadic(sayTo);\n\n    sayToNobody('hello', {name: 'joe'});\n    // -> 'hello nobody'\n"
+            ],
+            "class": "funkyJS",
+            "module": "arity"
+        },
+        {
+            "file": "sources\\arity.js",
+            "line": 208,
+            "description": "The dyadic function restricts the number of arguments (a functions arity) that\n    are needed to execute a function to two. It takes a function and returns\n    a function which takes arguments until the given function can be executed.\n    If more arguments are passed than the arity of the given function is, the\n    arguments which are too many will be ignored",
+            "itemtype": "method",
+            "name": "dyadic",
+            "params": [
+                {
+                    "name": "f",
+                    "description": "The function to restrict",
+                    "type": "Function"
+                }
+            ],
+            "return": {
+                "description": "A curried, restricted variant of the given function",
+                "type": "Function"
+            },
+            "example": [
+                "\n    var sayTo = function (sentence, receiver) {\n        return sentence + ' ' + (receiver.name || 'nobody');\n    }\n\n    sayTo('hello', {name: 'joe'});\n    // -> 'hello joe'\n\n    var sayToCurried = funkyJS.dyadic(sayTo);\n\n    var greet = sayToCurried('hello');\n\n    greet({name: 'joe'});\n    // -> 'hello joe'\n"
+            ],
+            "class": "funkyJS",
+            "module": "arity"
+        },
+        {
+            "file": "sources\\arity.js",
+            "line": 260,
+            "description": "The triadic function restricts the number of arguments (a functions arity) that\n    are needed to execute a function to three. It takes a function and returns\n    a function which takes arguments until the given function can be executed.\n    If more arguments are passed than the arity of the given function is, the\n    arguments which are too many will be ignored",
+            "itemtype": "method",
+            "name": "triadic",
+            "params": [
+                {
+                    "name": "f",
+                    "description": "The function to restrict",
+                    "type": "Function"
+                }
+            ],
+            "return": {
+                "description": "A curried, restricted variant of the given function",
+                "type": "Function"
+            },
+            "example": [
+                "\n    var sayTo = function (sentence, symbol, receiver) {\n        return sentence + '' + symbol + '' + (receiver.name || 'nobody');\n    }\n\n    sayTo('hello', ', ', {name: 'joe'});\n    // -> 'hello, joe'\n\n    var sayToCurried = funkyJS.triadic(sayTo);\n\n    var greet = sayToCurried('hello', ', ');\n\n    greet({name: 'joe'});\n    // -> 'hello, joe'\n"
+            ],
+            "class": "funkyJS",
+            "module": "arity"
+        },
+        {
+            "file": "sources\\arity.js",
+            "line": 318,
+            "description": "The tetradic function restricts the number of arguments (a functions arity) that\n    are needed to execute a function to four. It takes a function and returns\n    a function which takes arguments until the given function can be executed.\n    If more arguments are passed than the arity of the given function is, the\n    arguments which are too many will be ignored",
+            "itemtype": "method",
+            "name": "tetradic",
+            "params": [
+                {
+                    "name": "f",
+                    "description": "The function to restrict",
+                    "type": "Function"
+                }
+            ],
+            "return": {
+                "description": "A curried, restricted variant of the given function",
+                "type": "Function"
+            },
+            "example": [
+                "\n    var takeAll = function () {\n        return funkyJS.toArray(arguments);\n    }\n\n    takeAll(1, 2, 3, 4, 5);\n    // -> [1, 2, 3, 4, 5]\n\n    var takeFour = funkyJS.tetradic(takeAll);\n\n    takeFour(1, 2, 3, 4, 5);\n    // -> [1, 2, 3, 4]\n"
+            ],
+            "class": "funkyJS",
+            "module": "arity"
+        },
+        {
+            "file": "sources\\arity.js",
+            "line": 380,
+            "description": "The polyadic function restricts the number of arguments (a functions arity) that\n    are needed to execute a function to two or more. It takes a function and returns\n    a function which takes arguments until the given function can be executed.\n    If too less arguments are given to the returned accumulator function, a\n    new accumulator function is returned.",
+            "itemtype": "method",
+            "name": "polyadic",
+            "params": [
+                {
+                    "name": "f",
+                    "description": "The function to restrict",
+                    "type": "Function"
+                }
+            ],
+            "return": {
+                "description": "A curried, restricted variant of the given function",
+                "type": "Function"
+            },
+            "example": [
+                "\n    var takeAll = function () {\n        return funkyJS.toArray(arguments);\n    }\n\n    takeAll(1, 2, 3, 4, 5);\n    // -> [1, 2, 3, 4, 5]\n\n    var takeTwoOrMore = funkyJS.polyadic(takeAll);\n\n    takeTwoOrMore(1, 2);\n    // -> [1, 2]\n\n    takeTwoOrMore(1);\n    // -> function accumulator\n\n    takeTwoOrMore(1, 2, 3);\n    // -> [1, 2, 3]\n"
+            ],
+            "class": "funkyJS",
+            "module": "arity"
+        },
+        {
+            "file": "sources\\arity.js",
+            "line": 435,
+            "description": "The variadic function transforms any function which takes at least one argument\n    (unary function) into a function which takes a variable number or arguments\n    (multary function) by providing the overhanging arguments combined into\n    a array with the regular last argument",
+            "itemtype": "method",
+            "name": "variadic",
+            "params": [
+                {
+                    "name": "f",
+                    "description": "The original (not multary) function",
+                    "type": "Function"
+                }
+            ],
+            "return": {
+                "description": "A multary variant of the given function",
+                "type": "Function"
+            },
+            "example": [
+                "\n    var unary = function (a) {\n        return a;\n    }\n\n    var binary = function (a, b) {\n        return [a, b];\n    }\n\n    unary(1, 2, 3);\n    // -> 1\n\n    binary(1, 2, 3);\n    // -> [1, 2]\n\n    var variUnary = funkyJS.variadic(unary);\n    var variBinary = funkyJS.variadic(binary);\n\n    variUnary(1, 2, 3);\n    // -> [1, 2, 3]\n\n    variBinary(1, 2, 3);\n    // -> [1, [2, 3]]\n"
+            ],
+            "class": "funkyJS",
+            "module": "arity"
+        },
+        {
+            "file": "sources\\arrays.js",
+            "line": 35,
+            "description": "The toArray function takes in any enumerable value (arrays, nodelists, strings,\n    objects, arguments) and transforms it into a real array. If the given\n    value is not enumerable, it will be wrapped into a array",
+            "itemtype": "method",
+            "name": "toArray",
+            "params": [
+                {
+                    "name": "x",
+                    "description": "Anything",
+                    "type": "Any"
+                }
+            ],
+            "return": {
+                "description": "Array from enumerable or array with given value",
+                "type": "Array"
+            },
+            "example": [
+                "\n    funkyJS.toArray([1, 2, 3]);\n    // -> [1, 2, 3]\n\n    funkyJS.toArray({ a: 1, b: 2, c: 3 });\n    // -> [1, 2, 3]\n\n    funkyJS.toArray(null);\n    // -> [null]\n"
+            ],
+            "class": "funkyJS",
+            "module": "arrays"
+        },
+        {
+            "file": "sources\\arrays.js",
+            "line": 82,
+            "description": "The first function returns the first item of any sequencial value given. For\n    not sequencial values the given value is returned",
+            "itemtype": "method",
+            "name": "first",
+            "params": [
+                {
+                    "name": "a",
+                    "description": "The sequencial value",
+                    "type": "Array|nodelist|arguments|string"
+                }
+            ],
+            "return": {
+                "description": "The first item",
+                "type": "Any"
+            },
+            "example": [
+                "\n    funkyJS.first(['a', 'b', 'c']);\n    // -> 'a'\n\n    funkyJS.first('some string');\n    // -> 's'\n\n    funkyJS.first(null);\n    // -> null\n\n    funkyJS.first()(['a', 'b', 'c']);\n    // -> 'a'\n"
+            ],
+            "class": "funkyJS",
+            "module": "arrays"
+        },
+        {
+            "file": "sources\\arrays.js",
+            "line": 117,
+            "description": "The last function returns the last item of any sequencial value given. For\n    not sequencial values the given value is returned",
+            "itemtype": "method",
+            "name": "last",
+            "params": [
+                {
+                    "name": "a",
+                    "description": "The sequencial value",
+                    "type": "Array|nodelist|arguments|string"
+                }
+            ],
+            "return": {
+                "description": "The last item",
+                "type": "Any"
+            },
+            "example": [
+                "\n    funkyJS.last(['a', 'b', 'c']);\n    // -> 'c'\n\n    funkyJS.last('some string');\n    // -> 'g'\n\n    funkyJS.last(null);\n    // -> null\n\n    funkyJS.last()(['a', 'b', 'c']);\n    // -> 'c'\n"
+            ],
+            "class": "funkyJS",
+            "module": "arrays"
+        },
+        {
+            "file": "sources\\arrays.js",
+            "line": 152,
+            "description": "The head function returns all but the last item of any sequencial value given.\n    For not sequencial values the given value is returned",
+            "itemtype": "method",
+            "name": "head",
+            "params": [
+                {
+                    "name": "a",
+                    "description": "The sequencial value",
+                    "type": "Array|nodelist|arguments|string"
+                }
+            ],
+            "return": {
+                "description": "The head items",
+                "type": "Array"
+            },
+            "example": [
+                "\n    funkyJS.head(['a', 'b', 'c']);\n    // -> ['a', 'b']\n\n    funkyJS.head('some string');\n    // -> 'some strin'\n\n    funkyJS.head(null);\n    // -> null\n\n    funkyJS.head()(['a', 'b', 'c']);\n    // -> ['a', 'b']\n"
+            ],
+            "class": "funkyJS",
+            "module": "arrays"
+        },
+        {
+            "file": "sources\\arrays.js",
+            "line": 187,
+            "description": "The tail function returns all but the first item of any sequencial value given.\n    For not sequencial values the given value is returned",
+            "itemtype": "method",
+            "name": "tail",
+            "params": [
+                {
+                    "name": "a",
+                    "description": "The sequencial value",
+                    "type": "Array|nodelist|arguments|string"
+                }
+            ],
+            "return": {
+                "description": "The tail items",
+                "type": "Array"
+            },
+            "example": [
+                "\n    funkyJS.tail(['a', 'b', 'c']);\n    // -> ['b', 'c']\n\n    funkyJS.tail('some string');\n    // -> 'ome string'\n\n    funkyJS.tail(null);\n    // -> null\n\n    funkyJS.tail()(['a', 'b', 'c']);\n    // -> ['b', 'c']\n"
+            ],
+            "class": "funkyJS",
+            "module": "arrays"
+        },
+        {
+            "file": "sources\\arrays.js",
+            "line": 222,
+            "description": "Given a index number and any sequencial value, the nth function returns the\n    item on the given index position or null if no such item can be found or\n    the given value is not sequencial",
+            "itemtype": "method",
+            "name": "nth",
+            "params": [
+                {
+                    "name": "n",
+                    "description": "Index of the item to return",
+                    "type": "Number"
+                },
+                {
+                    "name": "a",
+                    "description": "The sequencial value",
+                    "type": "Array|nodelist|arguments|string"
+                }
+            ],
+            "return": {
+                "description": "The item on position n or null",
+                "type": "Any"
+            },
+            "example": [
+                "\n    funkyJS.nth(1, ['a', 'b', 'c']);\n    // -> 'b'\n\n    funkyJS.nth(1, 'some string');\n    // -> 'o'\n\n    funkyJS.nth(1, null);\n    // -> null\n\n    funkyJS.nth(1)()(['a', 'b', 'c']);\n    // -> 'b'\n"
+            ],
+            "class": "funkyJS",
+            "module": "arrays"
+        },
+        {
+            "file": "sources\\arrays.js",
+            "line": 269,
+            "description": "The take function returns a new array from a given sequencial with as many\n    items taken from the beginning of the given value as specified",
+            "itemtype": "method",
+            "name": "take",
+            "params": [
+                {
+                    "name": "n",
+                    "description": "The amount of items to take into a new array",
+                    "type": "Number"
+                },
+                {
+                    "name": "a",
+                    "description": "The sequencial value",
+                    "type": "Array|nodelist|arguments|string"
+                }
+            ],
+            "return": {
+                "description": "Array of n items from the left of the given sequencial value",
+                "type": "Array"
+            },
+            "example": [
+                "\n    funkyJS.take(2, ['a', 'b', 'c', 'd']);\n    // -> ['a', 'b']\n\n    funkyJS.take(4, 'some string');\n    // -> ['s', 'o', 'm', 'e']\n\n    funkyJS.take(2, null);\n    // -> null\n\n    funkyJS.take(2)()(['a', 'b', 'c', 'd']);\n    // -> ['a', 'b']\n"
+            ],
+            "class": "funkyJS",
+            "module": "arrays"
+        },
+        {
+            "file": "sources\\arrays.js",
+            "line": 315,
+            "description": "The drop function returns a new array from a given sequencial with as many\n    items dropn from the beginning of the given value as specified",
+            "itemtype": "method",
+            "name": "drop",
+            "params": [
+                {
+                    "name": "n",
+                    "description": "The amount of items to drop into a new array",
+                    "type": "Number"
+                },
+                {
+                    "name": "a",
+                    "description": "The sequencial value",
+                    "type": "Array|nodelist|arguments|string"
+                }
+            ],
+            "return": {
+                "description": "Array of n items from the left of the given sequencial value",
+                "type": "Array"
+            },
+            "example": [
+                "\n    funkyJS.drop(2, ['a', 'b', 'c', 'd']);\n    // -> ['c', 'd']\n\n    funkyJS.drop(5, 'some string');\n    // -> ['s', 't', 'r', 'i', 'n', 'g']\n\n    funkyJS.drop(2, null);\n    // -> null\n\n    funkyJS.drop(2)()(['a', 'b', 'c', 'd']);\n    // -> ['c', 'd']\n"
+            ],
+            "class": "funkyJS",
+            "module": "arrays"
+        },
+        {
+            "file": "sources\\arrays.js",
+            "line": 361,
+            "description": "Given two sequencial values, the append function adds the first one to the\n    end of the second one",
+            "itemtype": "method",
+            "name": "append",
+            "params": [
+                {
+                    "name": "a1",
+                    "description": "The sequence to append",
+                    "type": "Array|nodelist|arguments|string"
+                },
+                {
+                    "name": "a2",
+                    "description": "The sequence to append a1 to",
+                    "type": "Array|nodelist|arguments|string"
+                }
+            ],
+            "return": {
+                "description": "a1 after the sequence of a2",
+                "type": "Array"
+            },
+            "example": [
+                "\n    var newTail = [1, 2, 3];\n\n    funkyJS.append(newTail, ['a', 'b', 'c']);\n    // -> ['a', 'b', 'c', 1, 2, 3]\n\n    funkyJS.append(newTail, null);\n    // -> null\n\n    funkyJS.append(newTail)()(['a', 'b', 'c']);\n    // -> ['a', 'b', 'c', 1, 2, 3]\n"
+            ],
+            "class": "funkyJS",
+            "module": "arrays"
+        },
+        {
+            "file": "sources\\arrays.js",
+            "line": 403,
+            "description": "Given two sequencial values, the prepend function adds the first one to the\n    end of the second one",
+            "itemtype": "method",
+            "name": "prepend",
+            "params": [
+                {
+                    "name": "a1",
+                    "description": "The sequence to prepend",
+                    "type": "Array|nodelist|arguments|string"
+                },
+                {
+                    "name": "a2",
+                    "description": "The sequence a1 should preceede",
+                    "type": "Array|nodelist|arguments|string"
+                }
+            ],
+            "return": {
+                "description": "a1 before the sequence of a2",
+                "type": "Array"
+            },
+            "example": [
+                "\n    var newHead = [1, 2, 3];\n\n    funkyJS.prepend(newHead, ['a', 'b', 'c']);\n    // -> [1, 2, 3, 'a', 'b', 'c']\n\n    funkyJS.prepend(newHead, null);\n    // -> null\n\n    funkyJS.prepend(newHead)()(['a', 'b', 'c']);\n    // -> [1, 2, 3, 'a', 'b', 'c']\n"
+            ],
+            "class": "funkyJS",
+            "module": "arrays"
+        },
+        {
+            "file": "sources\\arrays.js",
+            "line": 445,
+            "description": "Given three sequencial values, the surround function adds the first one to the\n    head and the second one to the tail of the third value.",
+            "itemtype": "method",
+            "name": "surround",
+            "params": [
+                {
+                    "name": "a1",
+                    "description": "The head sequence",
+                    "type": "Array|nodelist|arguments|string"
+                },
+                {
+                    "name": "a2",
+                    "description": "The tail sequence",
+                    "type": "Array|nodelist|arguments|string"
+                },
+                {
+                    "name": "target",
+                    "description": "The sequence to be surrounded",
+                    "type": "Array|nodelist|arguments|string"
+                }
+            ],
+            "return": {
+                "description": "Target between a1 and a2",
+                "type": "Array"
+            },
+            "example": [
+                "\n    var newHead = ['a', 'b', 'c'];\n    var newTail = ['x', 'y', 'z'];\n\n    funkyJS.surround(newHead, newTail, ['m', 'n', 'o']);\n    // -> ['a', 'b', 'c', 'm', 'n', 'o', 'x', 'y', 'z']\n\n    funkyJS.surround(newHead, newTail, null);\n    // -> null\n\n    funkyJS.surround(newHead)(newTail)(['m', 'n', 'o']);\n    // -> ['a', 'b', 'c', 'm', 'n', 'o', 'x', 'y', 'z']\n"
+            ],
+            "class": "funkyJS",
+            "module": "arrays"
+        },
+        {
+            "file": "sources\\arrays.js",
+            "line": 496,
+            "description": "The unique function takes a sequencial value and returns a new array from it\n    which contains only the unique items",
+            "itemtype": "method",
+            "name": "unique",
+            "params": [
+                {
+                    "name": "a",
+                    "description": "The original sequencial",
+                    "type": "Array|nodelist|arguments|string"
+                }
+            ],
+            "return": {
+                "description": "Array with only the unique values from a",
+                "type": "Array"
+            },
+            "example": [
+                "\n    var original = ['a', 'c', 'b', 'b', 'a', 'a', 'f', 'k', 'a', 'b', 'f', 'c'];\n\n    funkyJS.unique(original);\n    // -> ['a', 'c', 'b', 'f', 'k']\n"
+            ],
+            "class": "funkyJS",
+            "module": "arrays"
+        },
+        {
+            "file": "sources\\arrays.js",
+            "line": 529,
+            "description": "The flatten function flattens any given nested sequencial value",
+            "itemtype": "method",
+            "name": "flatten",
+            "params": [
+                {
+                    "name": "a1",
+                    "description": "The nested sequencial",
+                    "type": "Array|nodelist|arguments|string"
+                }
+            ],
+            "return": {
+                "description": "A new flat version of the given array",
+                "type": "Array"
+            },
+            "example": [
+                "\n    var singleLevel = [['a', 'b'], ['c', 'd'], 'e'];\n    var multiLevel = [[[['a', 'b']], ['c']], 'd', [[[['e']]]]];\n\n    funkyJS.flatten(singleLevel);\n    // -> ['a', 'b', 'c', 'd', 'e'];\n\n    funkyJS.flatten(multiLevel);\n    // -> ['a', 'b', 'c', 'd', 'e'];\n"
+            ],
+            "class": "funkyJS",
+            "module": "arrays"
+        },
+        {
+            "file": "sources\\arrays.js",
+            "line": 579,
+            "description": "Given two sequencial values, the union function returns a new array which\n    contains the unique values of both",
+            "itemtype": "method",
+            "name": "union",
+            "params": [
+                {
+                    "name": "a1",
+                    "description": "First sequencial",
+                    "type": "Array|nodelist|arguments|string"
+                },
+                {
+                    "name": "a2",
+                    "description": "Second sequencial",
+                    "type": "Array|nodelist|arguments|string"
+                }
+            ],
+            "return": {
+                "description": "New array containing the union of a1 and a2",
+                "type": "Array"
+            },
+            "example": [
+                "\n    var first = ['a', 'h', 'e', 'c', 'b', 'f'];\n    var second = ['c', 'd', 'a', 'f', 'e', 'h'];\n\n    funkyJS.union(first, second);\n    // -> ['a', 'h', 'e', 'c', 'b', 'f', 'd']\n"
+            ],
+            "class": "funkyJS",
+            "module": "arrays"
+        },
+        {
+            "file": "sources\\arrays.js",
+            "line": 613,
+            "description": "Given two sequencial values, the intersect function returns a new array which\n    contains the intersection of both",
+            "itemtype": "method",
+            "name": "intersect",
+            "params": [
+                {
+                    "name": "a1",
+                    "description": "First sequencial",
+                    "type": "Array|nodelist|arguments|string"
+                },
+                {
+                    "name": "a2",
+                    "description": "Second sequencial",
+                    "type": "Array|nodelist|arguments|string"
+                }
+            ],
+            "return": {
+                "description": "New array containing the intersection of a1 and a2",
+                "type": "Array"
+            },
+            "example": [
+                "\n    var first = ['a', 'h', 'e', 'c', 'b', 'f'];\n    var second = ['c', 'd', 'a', 'f', 'e', 'h'];\n\n    funkyJS.intersect(first, second);\n    // -> ['a', 'h', 'e', 'c', 'f']\n"
+            ],
+            "class": "funkyJS",
+            "module": "arrays"
+        },
+        {
+            "file": "sources\\arrays.js",
+            "line": 655,
+            "description": "Given two sequencial values, the difference function returns a new array which\n    contains the difference of both",
+            "itemtype": "method",
+            "name": "difference",
+            "params": [
+                {
+                    "name": "a1",
+                    "description": "First sequencial",
+                    "type": "Array|nodelist|arguments|string"
+                },
+                {
+                    "name": "a2",
+                    "description": "Second sequencial",
+                    "type": "Array|nodelist|arguments|string"
+                }
+            ],
+            "return": {
+                "description": "New array containing the difference of a1 and a2",
+                "type": "Array"
+            },
+            "example": [
+                "\n    var first = ['a', 'h', 'e', 'c', 'b', 'f'];\n    var second = ['c', 'd', 'a', 'f', 'e', 'h'];\n\n    funkyJS.difference(first, second);\n    // -> ['b', 'd']\n"
+            ],
+            "class": "funkyJS",
+            "module": "arrays"
+        },
+        {
+            "file": "sources\\combinators.js",
+            "line": 58,
+            "description": "The compose function allows to create a function from a set of functions. The\n    returned function executes the given set of functions from right to left\n    and returns the final result of all applications to the arguments given",
+            "itemtype": "method",
+            "name": "compose",
+            "params": [
+                {
+                    "name": "fn1",
+                    "description": "One to N functions to compose together",
+                    "type": "Function",
+                    "multiple": true
+                }
+            ],
+            "return": {
+                "description": "The composed functions as a new function",
+                "type": "Function"
+            },
+            "example": [
+                "\n    var hello = function (name) { return 'hello ' + name; }\n    var shout = function (sentence) { return sentence.toUpperCase() + '!'; }\n\n    var shoutHello = funkyJS.compose(shout, hello);\n    hello('joe');\n    // -> 'hello joe'\n\n    shout('joe');\n    // -> 'JOE!'\n\n    shoutHello('joe');\n    // -> 'HELLO JOE!'\n"
+            ],
+            "class": "funkyJS",
+            "module": "combinators"
+        },
+        {
+            "file": "sources\\combinators.js",
+            "line": 102,
+            "description": "The pipe function allows to create a function from a set of functions. The\n    returned function executes the given set of functions from left to right\n    and returns the final result of all applications to the arguments given",
+            "itemtype": "method",
+            "name": "pipe",
+            "params": [
+                {
+                    "name": "fn1",
+                    "description": "One to N functions to pipe through",
+                    "type": "Function",
+                    "multiple": true
+                }
+            ],
+            "return": {
+                "description": "The piped functions as a new function",
+                "type": "Function"
+            },
+            "example": [
+                "\n    var greet = function (name) { return 'good evening ' + name; }\n    var bePoliteTo = function (name) { return name + ', are you fine today?'; }\n\n    var greetAndBePoliteTo = funkyJS.pipe(greet, bePoliteTo);\n    greet('joe');\n    // -> 'good evening joe'\n\n    bePoliteTo('joe');\n    // -> 'joe, are you fine today?'\n\n    greetAndBePoliteTo('joe');\n    // -> 'good evening joe, are you fine today?'\n"
+            ],
+            "class": "funkyJS",
+            "module": "combinators"
+        },
+        {
+            "file": "sources\\combinators.js",
+            "line": 146,
+            "description": "The and function allows to combine a series of comparator functions into a\n    sequence of and-and (&&) conditions, incoming values must pass",
+            "itemtype": "method",
+            "name": "and",
+            "params": [
+                {
+                    "name": "fn1",
+                    "description": "One to N functions to compare against",
+                    "type": "Function",
+                    "multiple": true
+                }
+            ],
+            "return": {
+                "description": "The conditions chained inside a new function",
+                "type": "Function"
+            },
+            "example": [
+                "\n    var isBelow10 = function (value) {\n        return value < 10;\n    }\n\n    var isDivBy2 = function (value) {\n        return value % 2 === 0;\n    }\n\n    var isNumBelow10DivBy2 = funkyJS.and(\n        funkyJS.isNumber,\n        isBelow10,\n        isDivBy2\n    );\n\n    isNumBelow10DivBy2(8);\n    // -> true\n\n    isNumBelow10DivBy2(9);\n    // -> false\n\n    isNumBelow10DivBy2(null);\n    // -> false\n"
+            ],
+            "class": "funkyJS",
+            "module": "combinators"
+        },
+        {
+            "file": "sources\\combinators.js",
+            "line": 199,
+            "description": "The or function allows to combine a series of comparator functions into a\n    sequence of or-or (||) conditions, incoming values must pass",
+            "itemtype": "method",
+            "name": "or",
+            "params": [
+                {
+                    "name": "fn1",
+                    "description": "One to N functions to compare against",
+                    "type": "Function",
+                    "multiple": true
+                }
+            ],
+            "return": {
+                "description": "The conditions chained inside a new function",
+                "type": "Function"
+            },
+            "example": [
+                "\n    var hasLength = funkyJS.has('length');\n\n    var isIterable = funkyJS.or(\n        funkyJS.isArray,\n        funkyJS.and(hasLength, funkyJS.isNotFunction)\n    );\n\n    isIterable('string');\n    // -> true\n\n    isIterable(['a', 'b', 'c']);\n    // -> true\n\n    isIterable({\n        length: 3,\n        0: 'some',\n        1: 'thing',\n        2: 'here'\n    });\n    // -> true\n\n    isIterable(null);\n    // -> false\n\n    isIterable(function (a, b, c) {});\n    // -> false\n"
+            ],
+            "class": "funkyJS",
+            "module": "combinators"
+        },
+        {
+            "file": "sources\\combinators.js",
+            "line": 256,
+            "description": "Given a array of functions, the splat function allows to apply incoming\n    arguments to all given functions at once. It returns a function which\n    consumes the arguments and passes them to every function in the array",
+            "itemtype": "method",
+            "name": "splat",
+            "params": [
+                {
+                    "name": "fns",
+                    "description": "The functions to \"splat\" onto the arguments",
+                    "type": "Array"
+                }
+            ],
+            "return": {
+                "description": "A function awaiting arguments",
+                "type": "Function"
+            },
+            "example": [
+                "\n    var multiply = function (n) {\n        console.log(n * n);\n    }\n\n    var add = function (n) {\n        console.log(n + n);\n    }\n\n    var logMultAdd = funkyJS.splat([multiply, add]);\n\n    logMultAdd(4);\n    // -> console logs 16\n    // -> console logs 8\n"
+            ],
+            "class": "funkyJS",
+            "module": "combinators"
+        },
+        {
+            "file": "sources\\combinators.js",
+            "line": 304,
+            "description": "EXPORT\n======",
+            "class": "funkyJS",
+            "module": "combinators"
+        },
+        {
+            "file": "sources\\decorators.js",
+            "line": 56,
+            "description": "Given a function, the flip function returns a function which takes in the\n    number of arguments from the given one but applies the arguments to the\n    given function reversed",
+            "itemtype": "method",
+            "name": "flip",
+            "params": [
+                {
+                    "name": "fn",
+                    "description": "The function to apply reversed",
+                    "type": "Function"
+                }
+            ],
+            "return": {
+                "description": "A accumulator function",
+                "type": "Function"
+            },
+            "example": [
+                "\n    var greets = function (a, b) {\n        return 'hello ' + a + ', my name is ' + b;\n    }\n\n    greets('joe', 'jane');\n    // -> 'hello joe, my name is jane'\n\n    funkyJS.flip(greets)('joe', 'jane');\n    // -> 'hello jane, my name is joe'\n"
+            ],
+            "class": "funkyJS",
+            "module": "decorators"
+        },
+        {
+            "file": "sources\\decorators.js",
+            "line": 101,
+            "description": "The fluent function returns a fluent version of any given function so one can\n    chain method calls together (like in jQuery)",
+            "itemtype": "method",
+            "name": "fluent",
+            "params": [
+                {
+                    "name": "fn",
+                    "description": "The original function",
+                    "type": "Function"
+                }
+            ],
+            "return": {
+                "description": "A fluent variant of the given function",
+                "type": "Function"
+            },
+            "example": [
+                "\n    var staticClass = {\n        foo: function () {\n            // does something\n        },\n        bar: function () {\n            // does another thing\n        }\n    }\n\n    staticClass.foo().bar();\n    // -> Error: Cannot call method \"bar\" of undefined\n\n    staticClass.foo = funkyJS.fluent(staticClass.foo);\n    staticClass.bar = funkyJS.fluent(staticClass.bar);\n\n    staticClass.foo().bar();\n    // -> Works like a charm now\n"
+            ],
+            "class": "funkyJS",
+            "module": "decorators"
+        },
+        {
+            "file": "sources\\decorators.js",
+            "line": 145,
+            "description": "Given a predicate and a operator function, the guard function returns a function\n    which only executes the operator if the arguments given pass the predicate\n    function. Otherwise `null` is returned",
+            "itemtype": "method",
+            "name": "guard",
+            "params": [
+                {
+                    "name": "predicate",
+                    "description": "The guarding/predicate function",
+                    "type": "Function"
+                },
+                {
+                    "name": "fn",
+                    "description": "The operator function",
+                    "type": "Function"
+                }
+            ],
+            "return": {
+                "description": "A guarded function",
+                "type": "Function"
+            },
+            "example": [
+                "\n    var operand = function (str) {\n        return str.toUpperCase();\n    }\n\n    var guardedOperand = funkyJS.guard(funkyJS.isString, operand);\n\n    operand('joe');\n    // -> 'JOE'\n\n    guardedOperand('joe');\n    // -> 'JOE'\n\n    operand(1);\n    // -> TypeError: undefined is not a function\n\n    guardedOperand(1);\n    // -> null, no error\n"
+            ],
+            "class": "funkyJS",
+            "module": "decorators"
+        },
+        {
+            "file": "sources\\decorators.js",
+            "line": 203,
+            "description": "The maybe function takes a function and returns a guarded function which is\n    only executed, if none of the arguments it is applied to is `null` or\n    `undefined`. Otherwise `null` is returned",
+            "itemtype": "method",
+            "name": "maybe",
+            "params": [
+                {
+                    "name": "fn",
+                    "description": "The function to execute maybe",
+                    "type": "Function"
+                }
+            ],
+            "return": {
+                "description": "A guarded function",
+                "type": "Function"
+            },
+            "example": [
+                "\n    var queryAll = function (selector, root) {\n        return root.querySelectorAll(selector);\n    }\n\n    var maybeQueryAll = funkyJS.maybe(function (selector, root) {\n        return root.querySelectorAll(selector);\n    });\n\n\n    queryAll('div', document);\n    // -> Nodelist[<div>, <div>, <div>, ...]\n\n    maybeQueryAll('div', document);\n    // -> Nodelist[<div>, <div>, <div>, ...]\n\n    queryAll('div');\n    // -> TypeError: Cannot read property 'querySelectorAll' of undefined\n\n    maybeQueryAll('div');\n    // -> null, no error\n"
+            ],
+            "class": "funkyJS",
+            "module": "decorators"
+        },
+        {
+            "file": "sources\\decorators.js",
+            "line": 250,
+            "description": "The not function takes a function as argument and returns a function which\n    when applied returns the opposite boolean result of the given function",
+            "itemtype": "method",
+            "name": "not",
+            "params": [
+                {
+                    "name": "fn",
+                    "description": "The function to negate",
+                    "type": "Function"
+                }
+            ],
+            "return": {
+                "description": "A function giving the opposite boolean result of fn",
+                "type": "Function"
+            },
+            "example": [
+                "\n    var sayYes = function () { return true; }\n    var sayNo = funkyJS.not(sayYes);\n\n    sayYes();\n    // -> true\n\n    sayNo();\n    // -> false\n"
+            ],
+            "class": "funkyJS",
+            "module": "decorators"
+        },
+        {
+            "file": "sources\\decorators.js",
+            "line": 284,
+            "description": "Given a number of milliseconds and a function, the debounce function returns\n    a function which calls the given function debounced for the given amount\n    of milliseconds. Every new call to the returned function debounces the\n    invocation further.",
+            "itemtype": "method",
+            "name": "debounce",
+            "params": [
+                {
+                    "name": "ticks",
+                    "description": "Milliseconds to debounce",
+                    "type": "Number"
+                },
+                {
+                    "name": "fn",
+                    "description": "Function to debounce",
+                    "type": "Function"
+                }
+            ],
+            "return": {
+                "description": "A function which calls fn debounced",
+                "type": "Function"
+            },
+            "example": [
+                "\n    var recalcComplexLayout = function () {\n        // does some complex layout recalculations\n    }\n\n    window.onresize = funkyJS.debounce(250, recalcComplexLayout);\n    // recalcComplexLayout is only called 250ms after the last resize action\n"
+            ],
+            "class": "funkyJS",
+            "module": "decorators"
+        },
+        {
+            "file": "sources\\decorators.js",
+            "line": 344,
+            "description": "Given a function, the memoize function returns a memoized version of that\n    function",
+            "itemtype": "method",
+            "name": "memoize",
+            "params": [
+                {
+                    "name": "fn",
+                    "description": "Function to return a memoized version from",
+                    "type": "Function"
+                }
+            ],
+            "return": {
+                "description": "A memoized version of the given function",
+                "type": "Function"
+            },
+            "example": [
+                "\n    var complexCalculation = function (numInput) {\n        // does some complex calculation with the given number\n    }\n\n    var complexCalcMemo = funkyJS.memoize(complexCalculation);\n    // -> returns result of any number given before immediatly (without recalculation)\n"
+            ],
+            "class": "funkyJS",
+            "module": "decorators"
+        },
+        {
+            "file": "sources\\decorators.js",
+            "line": 385,
+            "description": "The curry function allows to return a function from a given function, which\n    splits the application of the given function into multiple steps. The\n    returned function returns itself functions, until enough arguments to\n    execute the originally given function",
+            "itemtype": "method",
+            "name": "curry",
+            "params": [
+                {
+                    "name": "fn",
+                    "description": "The function to curry",
+                    "type": "Function"
+                }
+            ],
+            "return": {
+                "description": "The curried function",
+                "type": "Function"
+            },
+            "example": [
+                "\n    var add = funkyJS.curry(function (a, b) {\n        return a + b;\n    });\n\n    add('a')('z');\n    // -> 'az'\n"
+            ],
+            "class": "funkyJS",
+            "module": "decorators"
+        },
+        {
+            "file": "sources\\decorators.js",
+            "line": 428,
+            "description": "The curryRight function allows to return a function from a given function, which\n    splits the application of the given function into multiple steps. The\n    returned function returns itself functions, until enough arguments to\n    execute the originally given function. The collected arguments are reversed\n    before applied",
+            "itemtype": "method",
+            "name": "curryRight",
+            "params": [
+                {
+                    "name": "fn",
+                    "description": "The function to curry",
+                    "type": "Function"
+                }
+            ],
+            "return": {
+                "description": "The curried function",
+                "type": "Function"
+            },
+            "example": [
+                "\n    var add = funkyJS.curryRight(function (a, b) {\n        return a + b;\n    });\n\n    add('a')('z');\n    // -> 'za'\n"
+            ],
+            "class": "funkyJS",
+            "module": "decorators"
+        },
+        {
+            "file": "sources\\decorators.js",
+            "line": 472,
+            "description": "The partial function allows to partially apply a function to a set of arguments\n    by leaving the context unbound. It returns a funciton, which collects\n    arguments until enough arguments are collected to execute the partially\n    applied function. funkyJS.partial also allows to leave holes in the list\n    of arguments preset to a function by passing the undefined value",
+            "itemtype": "method",
+            "name": "partial",
+            "params": [
+                {
+                    "name": "fn",
+                    "description": "The function to partially apply",
+                    "type": "Function"
+                },
+                {
+                    "name": "partials",
+                    "description": "The argument values to preset (ltr)",
+                    "type": "Array|*",
+                    "optional": true
+                }
+            ],
+            "return": {
+                "description": "The partially applied function",
+                "type": "Function"
+            },
+            "example": [
+                "\n    var format = function (prefix, value, postfix) {\n        return prefix + ' ' + value + ' ' + postfix;\n    }\n\n    var formatBtn = funkyJS.partial(format, [\n        'this is',\n        undefined,\n        'button'\n    ]);\n\n    formatBtn('joe');\n    // -> 'this is joe button';\n\n    formatBtn('a');\n    // -> 'this is a button';\n"
+            ],
+            "class": "funkyJS",
+            "module": "decorators"
+        },
+        {
+            "file": "sources\\decorators.js",
+            "line": 560,
+            "description": "The partialRight function allows to partially apply a function to a set of arguments\n    by leaving the context unbound. It returns a funciton, which collects\n    arguments until enough arguments are collected to execute the partially\n    applied function. funkyJS.partialRight also allows to leave holes in the list\n    of arguments preset to a function by passing the undefined value. The\n    accumulated arguments are reversed before the function is applied to them",
+            "itemtype": "method",
+            "name": "partialRight",
+            "params": [
+                {
+                    "name": "fn",
+                    "description": "The function to partially apply",
+                    "type": "Function"
+                },
+                {
+                    "name": "partials",
+                    "description": "The argument values to preset (rtl)",
+                    "type": "Array|*",
+                    "optional": true
+                }
+            ],
+            "return": {
+                "description": "The partially applied function",
+                "type": "Function"
+            },
+            "example": [
+                "\n    var format = function (prefix, value, postfix) {\n        return prefix + ' ' + value + ' ' + postfix;\n    }\n\n    var formatBtnR = funkyJS.partialRight(format, [\n        'button',\n        undefined,\n        'this is'\n    ]);\n\n    formatBtnR('joe');\n    // -> 'this is joe button';\n\n    formatBtnR('a');\n    // -> 'this is a button';\n"
+            ],
+            "class": "funkyJS",
+            "module": "decorators"
+        },
+        {
+            "file": "sources\\decorators.js",
+            "line": 649,
+            "description": "The call function kind of works much like the native Function.prototype.bind\n    function, but skips the setting of a specific context until execution.\n    The returned function awaits the context as the first argument given. If\n    a function with a arity of zero is passed into call, the returned function\n    has a arity of one, because at least the context argument must be given",
+            "itemtype": "method",
+            "name": "call",
+            "params": [
+                {
+                    "name": "fn",
+                    "description": "The function to call",
+                    "type": "Function"
+                },
+                {
+                    "name": "...leftArgs",
+                    "description": "Any arguments to pass through from the left",
+                    "type": "Any",
+                    "optional": true
+                }
+            ],
+            "return": {
+                "description": "Function awaiting a context and optionally more arguments",
+                "type": "Function"
+            },
+            "example": [
+                "\n    var slice = funkyJS.call(Array.prototype.slice);\n\n    slice(['a', 'b', 'c'], 1, 2);\n    // -> ['b']\n\n    var sliceTail = funkyJS.call(Array.prototype.slice, 1);\n\n    sliceTail(['a', 'b', 'c']);\n    // -> ['b', 'c']\n"
+            ],
+            "class": "funkyJS",
+            "module": "decorators"
+        },
+        {
+            "file": "sources\\decorators.js",
+            "line": 690,
+            "description": "The callRight function kind of works much like the native Function.prototype.bind\n    function, but skips the setting of a specific context until execution.\n    The returned function awaits the context as the first argument given. If\n    a function with a arity of zero is passed into call, the returned function\n    has a arity of one, because at least the context argument must be given",
+            "itemtype": "method",
+            "name": "callRight",
+            "params": [
+                {
+                    "name": "fn",
+                    "description": "The function to call",
+                    "type": "Function"
+                },
+                {
+                    "name": "...leftArgs",
+                    "description": "Any arguments to pass through from the right",
+                    "type": "Any",
+                    "optional": true
+                }
+            ],
+            "return": {
+                "description": "Function awaiting a context and optionally more arguments",
+                "type": "Function"
+            },
+            "example": [
+                "\n    var slice = funkyJS.callRight(Array.prototype.slice);\n\n    slice(['a', 'b', 'c'], 2, 1);\n    // -> ['b']\n\n    var slice2 = funkyJS.callRight(Array.prototype.slice, 2);\n\n    slice2(['a', 'b', 'c'], 0);\n    // -> ['a', 'b']\n"
+            ],
+            "class": "funkyJS",
+            "module": "decorators"
+        },
+        {
+            "file": "sources\\decorators.js",
+            "line": 794,
+            "description": "EXPORT\n======",
+            "class": "funkyJS",
+            "module": "decorators"
+        },
+        {
+            "file": "sources\\lenses.js",
+            "line": 37,
+            "description": "makeLense awaits a array of one to N property names and returns a\n    collection of lenses with one lense per property. Lenses are a way to\n    implement immutable data structures in javascript and they compose\n    nicely",
+            "itemtype": "method",
+            "name": "makeLense",
+            "params": [
+                {
+                    "name": "props",
+                    "description": "Array of property names",
+                    "type": "Array"
+                }
+            ],
+            "return": {
+                "description": "Collection of lenses",
+                "type": "Object"
+            },
+            "example": [
+                "\n    var L = funkyJS.makeLense(['message', 'user', 'email']);\n\n    var comment = {\n        message: 'This is the user message',\n        user: 'anonymous',\n        email: 'anonymous@example.com'\n    };\n\n    var formatEmail = function (email) {\n        return email.replace(/@/g, '(at)');\n    }\n\n    var charliesComment = L.user.set('Charlie', comment);\n    L.user(charliesComment);\n    // -> 'Charlie'\n\n    var charliesEscComment = L.email.set('charlie@example.com' charliesComment);\n    charliesEscComment = L.email.over(formatEmail, charliesEscComment);\n    L.email(charliesEscComment);\n    // -> 'charlie(at)example.com'\n\n\n\n    // equivalent but shorter version\n    // ------------------------------\n    var processComment = funkyJS.compose(\n        L.user.set('Charlie'),\n        L.email.set('charlie@example.com'),\n        L.email.over(formatEmail)\n    )\n\n    processComment(comment);\n    // -> { ..., user: 'Charlie', email: 'charlie(at)example.com'}"
+            ],
+            "class": "funkyJS",
+            "module": "lenses"
+        },
+        {
+            "file": "sources\\lenses.js",
+            "line": 123,
+            "description": "EXPORT\n======",
+            "class": "funkyJS",
+            "module": "lenses"
+        },
+        {
+            "file": "sources\\objects.js",
+            "line": 38,
+            "description": "Takes a property or method name and a object and returns true if the object\n    has the property (not inherited) or false if not",
+            "itemtype": "method",
+            "name": "has",
+            "params": [
+                {
+                    "name": "s",
+                    "description": "Name of the property or method",
+                    "type": "String"
+                },
+                {
+                    "name": "o",
+                    "description": "The object to test against",
+                    "type": "Object"
+                }
+            ],
+            "return": {
+                "description": "True if the property exists, false otherwise",
+                "type": "Boolean"
+            },
+            "example": [
+                "\n    var dict = {\n        foo: 'bar'\n    }\n\n    funkyJS.has('foo', dict);\n    // -> true\n\n    funkyJS.has('howdy', dict);\n    // -> false\n\n    funkyJS.has('foo')(dict);\n    // -> true\n"
+            ],
+            "class": "funkyJS",
+            "module": "objects"
+        },
+        {
+            "file": "sources\\objects.js",
+            "line": 77,
+            "description": "Takes a property or method name and a object and returns the propertyvalue\n    on the object if it exists, otherwise null",
+            "itemtype": "method",
+            "name": "get",
+            "params": [
+                {
+                    "name": "s",
+                    "description": "Name of the property or method",
+                    "type": "String"
+                },
+                {
+                    "name": "o",
+                    "description": "The object to get the value from",
+                    "type": "Object"
+                }
+            ],
+            "return": {
+                "description": "The value of the property or null if it does not exist",
+                "type": "Any|null"
+            },
+            "example": [
+                "\n    var dict = {\n        foo: 'bar'\n    }\n\n    funkyJS.get('foo', dict);\n    // -> 'bar'\n\n    funkyJS.get('howdy', dict);\n    // -> null\n\n    funkyJS.get('foo')(dict);\n    // -> 'bar'\n"
+            ],
+            "class": "funkyJS",
+            "module": "objects"
+        },
+        {
+            "file": "sources\\objects.js",
+            "line": 123,
+            "description": "Takes a property or method name and a array of objects and returns the value\n    on the named property/method for each object as a new array if it exists\n    otherwise it returns null",
+            "itemtype": "method",
+            "name": "pluck",
+            "params": [
+                {
+                    "name": "s",
+                    "description": "Name of the property or method",
+                    "type": "String"
+                },
+                {
+                    "name": "os",
+                    "description": "Array of objects to get the value from",
+                    "type": "Array"
+                }
+            ],
+            "return": {
+                "description": "The collected values or null if the value has not existed",
+                "type": "Array"
+            },
+            "example": [
+                "\n    var dicts = [{\n        foo: 'bar'\n    }, {\n        foo: 'baz'\n    }, {\n        foo: 'bam'\n    }];\n\n    funkyJS.pluck('foo', dicts);\n    // -> ['bar', 'baz', 'bam']\n\n    funkyJS.pluck('howdy', dicts);\n    // -> [null, null, null]\n\n    funkyJS.pluck('foo')(dicts);\n    // -> ['bar', 'baz', 'bam']\n\n    funkyJS.pluck('foo', dicts[0]);\n    // -> 'bar'\n"
+            ],
+            "class": "funkyJS",
+            "module": "objects"
+        },
+        {
+            "file": "sources\\objects.js",
+            "line": 174,
+            "description": "Given a object, the keys function returns the keys of the object or a empty\n    array if anything other than a object is given",
+            "itemtype": "method",
+            "name": "keys",
+            "params": [
+                {
+                    "name": "o",
+                    "description": "The object to get the keys from",
+                    "type": "Object"
+                }
+            ],
+            "return": {
+                "description": "Array of all keys as strings or empty array",
+                "type": "Array"
+            },
+            "example": [
+                "\n    var dict = {\n        foo: 'bar',\n        goo: 'car'\n    }\n\n    funkyJS.keys(dict);\n    // -> ['foo', 'goo']\n\n    funkyJS.keys(null);\n    // -> []\n\n    funkyJS.keys()(dict)\n    // -> ['foo', 'goo']\n"
+            ],
+            "class": "funkyJS",
+            "module": "objects"
+        },
+        {
+            "file": "sources\\objects.js",
+            "line": 211,
+            "description": "The values function returns the values of a given object as array or a empty\n    array if no values are present or anything other than a object is given",
+            "itemtype": "method",
+            "name": "values",
+            "params": [
+                {
+                    "name": "o",
+                    "description": "The object to get the values from",
+                    "type": "Object"
+                }
+            ],
+            "return": {
+                "description": "Array of all values or empty array",
+                "type": "Array"
+            },
+            "example": [
+                "\n    var dict = {\n        foo: 'bar',\n        goo: 'car'\n    }\n\n    funkyJS.values(dict);\n    // -> ['bar', 'car']\n\n    funkyJS.values(null);\n    // -> []\n\n    funkyJS.values()(dict);\n    // -> ['bar', 'car']\n"
+            ],
+            "class": "funkyJS",
+            "module": "objects"
+        },
+        {
+            "file": "sources\\objects.js",
+            "line": 244,
+            "description": "The methods function takes a object and returns the keys of all functions\n    that can be found on the object as array of strings or a empty array if\n    no functions are found or a non object is given",
+            "itemtype": "method",
+            "name": "methods",
+            "params": [
+                {
+                    "name": "o",
+                    "description": "The object to get the functions from",
+                    "type": "Object"
+                }
+            ],
+            "return": {
+                "description": "Array of method names or empty array",
+                "type": "Array"
+            },
+            "example": [
+                "\n    var dict = {\n        foo: 'bar',\n        goo: 'car',\n        toString: function () {\n            return 'Dictionary(foo, goo)';\n        }\n    }\n\n    funkyJS.methods(dict);\n    // -> ['toString']\n\n    funkyJS.methods(null);\n    // -> []\n\n    funkyJS.methods()(dict);\n    // -> ['toString']\n"
+            ],
+            "class": "funkyJS",
+            "module": "objects"
+        },
+        {
+            "file": "sources\\objects.js",
+            "line": 281,
+            "description": "If given a object, the pairs method returns a array of key-value pairs as\n    arrays or a empty array if a non-object is given",
+            "itemtype": "method",
+            "name": "pairs",
+            "params": [
+                {
+                    "name": "o",
+                    "description": "The object to get the pairs from",
+                    "type": "Object"
+                }
+            ],
+            "return": {
+                "description": "Array of key-value pairs or empty array",
+                "type": "Array"
+            },
+            "example": [
+                "\n    var dict = {\n        foo: 'bar',\n        goo: null\n    }\n\n    funkyJS.pairs(dict);\n    // -> [[foo, 'bar'], [goo, null]]\n\n    funkyJS.pairs(null);\n    // -> []\n\n    funkyJS.pairs()(dict);\n    // -> [[foo, 'bar'], [goo, null]]\n"
+            ],
+            "class": "funkyJS",
+            "module": "objects"
+        },
+        {
+            "file": "sources\\objects.js",
+            "line": 314,
+            "description": "The inverse function takes in a object and returns a copy of it with the keys\n    and the values reversed, so that the keys become the values and vice-versa.\n    Note that the values should be unique and serializable to a string",
+            "itemtype": "method",
+            "name": "inverse",
+            "params": [
+                {
+                    "name": "o",
+                    "description": "The object to inverse",
+                    "type": "Object"
+                }
+            ],
+            "return": {
+                "description": "A copy of the given object or null",
+                "type": "Object|null"
+            },
+            "example": [
+                "\n    var dict = {\n        foo: 'bar',\n        goo: 'car'\n    }\n\n    funkyJS.inverse(dict);\n    // -> { bar: 'foo', car: 'goo' }\n\n    funkyJS.inverse(null);\n    // -> null\n\n    funkyJS.inverse()(dict);\n    // -> { bar: 'foo', car: 'goo' }\n"
+            ],
+            "class": "funkyJS",
+            "module": "objects"
+        },
+        {
+            "file": "sources\\objects.js",
+            "line": 358,
+            "description": "The instance function always returns a instance of the given constructor. If\n    the second argument already is a instance of the constructor, it is\n    returned, otherwise a new instance of the constructor is created. This\n    allows to create instances out of every function",
+            "itemtype": "method",
+            "name": "instance",
+            "params": [
+                {
+                    "name": "Ctor",
+                    "description": "The constructor function",
+                    "type": "Function"
+                },
+                {
+                    "name": "context",
+                    "description": "The current context to check against (optional)",
+                    "type": "Any",
+                    "optional": true
+                }
+            ],
+            "return": {
+                "description": "Context if given a instance of Ctor, otherwise new Ctor",
+                "type": "Object"
+            },
+            "example": [
+                "\n    function thing (value) {\n        var self = funkyJS.instance(thing, this);\n        self.value = function () {\n            return value;\n        }\n        return self;\n    }\n\n    thing.is = function (x) {\n        return x instanceof thing;\n    }\n\n    var _t = thing(10);\n\n    thing.is(_t);\n    // -> true\n\n    _t.value();\n    // -> 10\n"
+            ],
+            "class": "funkyJS",
+            "module": "objects"
+        },
+        {
+            "file": "sources\\objects.js",
+            "line": 406,
+            "description": "The factory function allows to create a factory for any given constructor\n    function",
+            "itemtype": "method",
+            "name": "factory",
+            "params": [
+                {
+                    "name": "Ctor",
+                    "description": "Constructor function",
+                    "type": "Function"
+                }
+            ],
+            "return": {
+                "description": "The factory for Ctor",
+                "type": "Function"
+            },
+            "example": [
+                "\n    var It = function (val) {\n        this.value = val;\n    }\n    It.prototype.type = function () {\n        return typeof this.value;\n    }\n\n    var makeIt = funkyJS.factory(It);\n\n    var it = makeIt('Hello World');\n    it.type();\n    // -> string\n\n    it.value;\n    // -> 'Hello World'\n"
+            ],
+            "class": "funkyJS",
+            "module": "objects"
+        },
+        {
+            "file": "sources\\objects.js",
+            "line": 445,
+            "description": "The extend method takes in two objects and extends the first one with the\n    last one. See also the extendWith method",
+            "itemtype": "method",
+            "name": "extend",
+            "params": [
+                {
+                    "name": "o",
+                    "description": "The destination to extend",
+                    "type": "Object"
+                },
+                {
+                    "name": "s",
+                    "description": "The extension",
+                    "type": "Object"
+                }
+            ],
+            "return": {
+                "description": "The extended destination",
+                "type": "Object"
+            },
+            "example": [
+                "\n    var dict = {\n        foo: 'bar'\n    }\n\n    var ext = {\n        goo: 'car'\n    }\n\n    funkyJS.extend(dict, ext);\n    // -> { foo: 'bar', goo: 'car' }\n\n    funkyJS.extend(dict, null);\n    // -> { foo: 'bar' }\n\n    funkyJS.extend(null, ext);\n    // -> null\n\n    funkyJS.extend(null, null);\n    // -> null\n\n    funkyJS.extend(dict)()(ext);\n    // -> { foo: 'bar', goo: 'car' }\n"
+            ],
+            "class": "funkyJS",
+            "module": "objects"
+        },
+        {
+            "file": "sources\\objects.js",
+            "line": 501,
+            "description": "The extendWith method takes in two objects and extends the last one with the\n    first one. See also the extend method",
+            "itemtype": "method",
+            "name": "extendWith",
+            "params": [
+                {
+                    "name": "s",
+                    "description": "The extension",
+                    "type": "Object"
+                },
+                {
+                    "name": "o",
+                    "description": "The destination to extend",
+                    "type": "Object"
+                }
+            ],
+            "return": {
+                "description": "The extended destination",
+                "type": "Object"
+            },
+            "example": [
+                "\n    var dict = {\n        foo: 'bar'\n    }\n\n    var ext = {\n        goo: 'car'\n    }\n\n    funkyJS.extendWith(ext, dict);\n    // -> { foo: 'bar', goo: 'car' }\n\n    funkyJS.extendWith(ext, null);\n    // -> null\n\n    funkyJS.extendWith(null, dict);\n    // -> { foo: 'bar' }\n\n    funkyJS.extendWith(null, null);\n    // -> null\n\n    funkyJS.extendWith(ext)()(dict);\n    // -> { foo: 'bar', goo: 'car' }\n"
+            ],
+            "class": "funkyJS",
+            "module": "objects"
+        },
+        {
+            "file": "sources\\objects.js",
+            "line": 550,
+            "description": "The inherits method is designed to work particularly well with constructor\n    functions. It takes a two object, from which the first one is the source\n    and the second one is the extension on the source. The returned value is\n    a new object to use as prototype",
+            "itemtype": "method",
+            "name": "inherits",
+            "params": [
+                {
+                    "name": "src",
+                    "description": "The original constructor to inherit",
+                    "type": "Object"
+                },
+                {
+                    "name": "ext",
+                    "description": "The extension to the original class",
+                    "type": "Object"
+                }
+            ],
+            "return": {
+                "description": "A new prototype object",
+                "type": "Object"
+            },
+            "example": [
+                "\n    var Source = function () {}\n\n    Source.prototype = {\n        constructor: Source,\n\n        foo: function () {\n            window.console.log('foo::() called');\n        },\n\n        bar: function () {\n            window.console.log('bar::() was called');\n        }\n    }\n\n    Source.subClass = function (ext) {\n        return funkyJS.inherits(Source, ext);\n    }\n\n\n\n    var Extended = function () {}\n\n    Extended.prototype = Source.subClass({\n        constructor: Extended,\n\n        fooBar: function () {\n            this.foo();\n            this.bar();\n        }\n    });\n\n    Extended.subClass = function (ext) {\n        return funkyJS.inherits(Extended, ext);\n    }\n"
+            ],
+            "class": "funkyJS",
+            "module": "objects"
+        },
+        {
+            "file": "sources\\objects.js",
+            "line": 613,
+            "description": "The delegate function is a way to delegate the behaviour of one object to\n    other objects. It allows to specify the methods which are available\n    exclusive. This means, if no method is specified or none of the given\n    method names exists on the provider, no method will be available\n    on the receiver either. It is mostly useful if you have a certain\n    behaviour you want to share across instances or classes/prototypes",
+            "itemtype": "method",
+            "name": "delegate",
+            "params": [
+                {
+                    "name": "provider",
+                    "description": "The object which provides methods",
+                    "type": "Object"
+                },
+                {
+                    "name": "receiver",
+                    "description": "The object on which the methods are called",
+                    "type": "Object"
+                },
+                {
+                    "name": "methods",
+                    "description": "Names of method to provide",
+                    "type": "Array"
+                }
+            ],
+            "return": {
+                "description": "The receiver",
+                "type": "Object"
+            },
+            "example": [
+                "\n    var earnsMoney = funkyJS.delegate({\n        _parseCurrency: function (input) {\n            return '$' + (funkyJS.isNumber(input) ? input.toFixed(2) : '0.00');\n        },\n        income: function (input) {\n            var income = this._parseCurrency(input);\n            this.salary = income;\n        },\n        incrementByPercentage: function (perc) {\n            var money = +(this.salary.replace('$', '')),\n                inc = funkyJS.isNumber(perc) && perc > 1 ? perc : 1;\n\n            this.income(money + (money/100 * inc));\n        }\n    });\n\n    var joe = {\n        name: 'joe'\n    }\n\n    earnsMoney(joe, [\n        'income',\n        'incrementByPercentage'\n    ]);\n\n    joe.name;\n    // -> 'joe'\n\n    joe.income(1500);\n    joe.salary;\n    // -> '$1500.00'\n\n    joe.incrementByPercentage(6);\n    joe.salary;\n    // -> '$1590.00'\n"
+            ],
+            "class": "funkyJS",
+            "module": "objects"
+        },
+        {
+            "file": "sources\\objects.js",
+            "line": 694,
+            "description": "The forward function can be used to achieve forwarding of method calls from\n    one object to another. This is useful if you want to use a object as\n    a property of some other object and want to share some methods from\n    the inner object on the outer one. It allows to specify the methods\n    exclusive. This means, if no method is specified or none of the given\n    method names exists on the receiver, no method will be available\n    on the forwarder either.",
+            "itemtype": "method",
+            "name": "forward",
+            "params": [
+                {
+                    "name": "forwarder",
+                    "description": "The objects which forwards the method calls",
+                    "type": "Object"
+                },
+                {
+                    "name": "receiver",
+                    "description": "The object which receives the method calls",
+                    "type": "Object"
+                },
+                {
+                    "name": "methods",
+                    "description": "Names of method to provide",
+                    "type": "Array"
+                }
+            ],
+            "return": {
+                "description": "The forwarder",
+                "type": "Object"
+            },
+            "example": [
+                "\n    var joe = {\n        name: 'joe'\n    }\n\n    var familyStateManager = function () {\n        var partner;\n        return {\n            marry: function () {\n                partner = 1;\n            }\n            divorce: function () {\n                partner = 0;\n            },\n            isMarried: function () {\n                return !!partner;\n            }\n        };\n    }\n\n    funkyJS.forward(joe, familyStateManager(), [\n        'marry',\n        'divorce',\n        'isMarried'\n    ]);\n\n    joe.name;\n    // -> joe\n\n    joe.isMarried();\n    // -> false\n\n    joe.marry();\n    joe.isMarried();\n    // -> true\n\n    joe.divorce();\n    joe.isMarried();\n    // -> false\n"
+            ],
+            "class": "funkyJS",
+            "module": "objects"
+        },
+        {
+            "file": "sources\\objects.js",
+            "line": 779,
+            "description": "The immutable function takes an object and returns a immutable copy of it",
+            "itemtype": "method",
+            "name": "immutable",
+            "params": [
+                {
+                    "name": "o",
+                    "description": "Base object",
+                    "type": "Object"
+                }
+            ],
+            "return": {
+                "description": "Immutable copy of the base object",
+                "type": "Object"
+            },
+            "example": [
+                "\n    var money = funkyJS.immutable({\n        dollar: 4,\n        cents: 50\n    });\n\n    money.dollar;\n    // -> 4\n\n    money.dollar = 5;\n\n    money.dollar;\n    // -> 4\n"
+            ],
+            "class": "funkyJS",
+            "module": "objects"
+        },
+        {
+            "file": "sources\\objects.js",
+            "line": 821,
+            "description": "The fAccess function allows to turn a object or array into a function",
+            "itemtype": "method",
+            "name": "fAccess",
+            "params": [
+                {
+                    "name": "o",
+                    "description": "Any plain object or array",
+                    "type": "Object|array"
+                }
+            ],
+            "return": {
+                "description": "Accessor function",
+                "type": "Function"
+            },
+            "example": [
+                "\n    var john = funkyJS.fAccess({\n        name: 'John Doe',\n        age: 30\n    });\n\n    ['name', 'age'].map(john);\n    // -> ['John Doe', 30]\n\n\n\n    var abc = funkyJS.fAccess([\n        'a', 'b', 'c', 'd', 'e', 'f', 'g',\n        'h', 'i', 'j', 'k', 'l', 'm', 'n',\n        'o', 'p', 'q', 'r', 's', 't', 'u',\n        'v', 'w', 'x', 'y', 'z', ' ', '!'\n    ]);\n\n    [7, 4, 11, 11, 14, 26, 23, 14, 18, 12, 3, 27].map(abc).join('');\n    // -> 'hello world!'\n"
+            ],
+            "class": "funkyJS",
+            "module": "objects"
+        },
+        {
+            "file": "sources\\type.js",
+            "line": 41,
+            "description": "The is function takes in the name of any internal [[Class]] and a value and\n    checks if the internal [[Class]] of the given value matches the given\n    name",
+            "itemtype": "method",
+            "name": "is",
+            "params": [
+                {
+                    "name": "cls",
+                    "description": "Name of the internal [[Class]]",
+                    "type": "String"
+                },
+                {
+                    "name": "x",
+                    "description": "The value",
+                    "type": "Any"
+                }
+            ],
+            "return": {
+                "description": "True on match, false otherwise",
+                "type": "Boolean"
+            },
+            "example": [
+                "\n    var aString = 'string';\n    var aArray = [];\n\n    typeof aString === 'string';\n    // -> true\n\n    typeof aArray === 'array';\n    // -> false\n\n    funkyJS.is('string', aString);\n    // -> true\n\n    funkyJS.is('array', aArray);\n    // -> true\n\n    var isArray = funkyJS.is('array');\n\n    isArray(aArray);\n    // -> true\n"
+            ],
+            "class": "funkyJS",
+            "module": "type"
+        },
+        {
+            "file": "sources\\type.js",
+            "line": 88,
+            "description": "The isNull function takes in a value and checks if it is null",
+            "itemtype": "method",
+            "name": "isNull",
+            "params": [
+                {
+                    "name": "x",
+                    "description": "Value to check against",
+                    "type": "Any"
+                }
+            ],
+            "return": {
+                "description": "True if x is null, false otherwise",
+                "type": "Boolean"
+            },
+            "example": [
+                "\n    funkyJS.isNull(null);\n    // -> true\n\n    funkyJS.isNull(undefined);\n    // -> false\n\n    funkyJS.isNull(0);\n    // -> false\n"
+            ],
+            "class": "funkyJS",
+            "module": "type"
+        },
+        {
+            "file": "sources\\type.js",
+            "line": 115,
+            "description": "The isNotNull function takes in a value and checks if it is not null",
+            "itemtype": "method",
+            "name": "isNotNull",
+            "params": [
+                {
+                    "name": "x",
+                    "description": "Value to check against",
+                    "type": "Any"
+                }
+            ],
+            "return": {
+                "description": "True if x is not null, false otherwise",
+                "type": "Boolean"
+            },
+            "example": [
+                "\n    funkyJS.isNotNull(null);\n    // -> false\n\n    funkyJS.isNotNull(undefined);\n    // -> true\n\n    funkyJS.isNotNull(0);\n    // -> true\n"
+            ],
+            "class": "funkyJS",
+            "module": "type"
+        },
+        {
+            "file": "sources\\type.js",
+            "line": 142,
+            "description": "The isVoid function takes in a value and checks if it is undefined",
+            "itemtype": "method",
+            "name": "isVoid",
+            "params": [
+                {
+                    "name": "x",
+                    "description": "Value to check against",
+                    "type": "Any"
+                }
+            ],
+            "return": {
+                "description": "True if x is undefined, false otherwise",
+                "type": "Boolean"
+            },
+            "example": [
+                "\n    funkyJS.isVoid(undefined);\n    // -> true\n\n    funkyJS.isVoid(null);\n    // -> false\n\n    funkyJS.isVoid(0);\n    // -> false\n"
+            ],
+            "class": "funkyJS",
+            "module": "type"
+        },
+        {
+            "file": "sources\\type.js",
+            "line": 169,
+            "description": "The isNotVoid function takes in a value and checks if it is not undefined",
+            "itemtype": "method",
+            "name": "isNotVoid",
+            "params": [
+                {
+                    "name": "x",
+                    "description": "Value to check against",
+                    "type": "Any"
+                }
+            ],
+            "return": {
+                "description": "True if x is not undefined, false otherwise",
+                "type": "Boolean"
+            },
+            "example": [
+                "\n    funkyJS.isNotVoid(undefined);\n    // -> false\n\n    funkyJS.isNotVoid(null);\n    // -> true\n\n    funkyJS.isNotVoid(0);\n    // -> true\n"
+            ],
+            "class": "funkyJS",
+            "module": "type"
+        },
+        {
+            "file": "sources\\type.js",
+            "line": 196,
+            "description": "The isNil function takes in a value and checks if it is null or undefined",
+            "itemtype": "method",
+            "name": "isNil",
+            "params": [
+                {
+                    "name": "x",
+                    "description": "Value to check against",
+                    "type": "Any"
+                }
+            ],
+            "return": {
+                "description": "True if x is null or undefined, false otherwise",
+                "type": "Boolean"
+            },
+            "example": [
+                "\n    funkyJS.isNil(null);\n    // -> true\n\n    funkyJS.isNil(undefined);\n    // -> true\n\n    funkyJS.isNil(0);\n    // -> false\n"
+            ],
+            "class": "funkyJS",
+            "module": "type"
+        },
+        {
+            "file": "sources\\type.js",
+            "line": 223,
+            "description": "The isNotNil function takes in a value and checks if it is not null or undefined",
+            "itemtype": "method",
+            "name": "isNotNil",
+            "params": [
+                {
+                    "name": "x",
+                    "description": "Value to check against",
+                    "type": "Any"
+                }
+            ],
+            "return": {
+                "description": "True if x is not null or undefined, false otherwise",
+                "type": "Boolean"
+            },
+            "example": [
+                "\n    funkyJS.isNotNil(0);\n    // -> true\n\n    funkyJS.isNotNil(null);\n    // -> false\n\n    funkyJS.isNotNil(undefined);\n    // -> false\n"
+            ],
+            "class": "funkyJS",
+            "module": "type"
+        },
+        {
+            "file": "sources\\type.js",
+            "line": 250,
+            "description": "The isBool function takes in a value and checks if it is a boolean",
+            "itemtype": "method",
+            "name": "isBool",
+            "params": [
+                {
+                    "name": "x",
+                    "description": "Value to check against",
+                    "type": "Any"
+                }
+            ],
+            "return": {
+                "description": "True if x is a boolean, false otherwise",
+                "type": "Boolean"
+            },
+            "example": [
+                "\n    funkyJS.isBool(false);\n    // -> true\n\n    funkyJS.isBool('true');\n    // -> false\n\n    funkyJS.isBool(0);\n    // -> false\n"
+            ],
+            "class": "funkyJS",
+            "module": "type"
+        },
+        {
+            "file": "sources\\type.js",
+            "line": 277,
+            "description": "The isNotBool function takes in a value and checks if it is not a boolean",
+            "itemtype": "method",
+            "name": "isNotBool",
+            "params": [
+                {
+                    "name": "x",
+                    "description": "Value to check against",
+                    "type": "Any"
+                }
+            ],
+            "return": {
+                "description": "True if x is not a boolean, false otherwise",
+                "type": "Boolean"
+            },
+            "example": [
+                "\n    funkyJS.isNotBool(0);\n    // -> true\n\n    funkyJS.isNotBool('false');\n    // -> true\n\n    funkyJS.isNotBool(true);\n    // -> false\n"
+            ],
+            "class": "funkyJS",
+            "module": "type"
+        },
+        {
+            "file": "sources\\type.js",
+            "line": 304,
+            "description": "The isString function takes in a value and checks if it is a string",
+            "itemtype": "method",
+            "name": "isString",
+            "params": [
+                {
+                    "name": "x",
+                    "description": "Value to check against",
+                    "type": "Any"
+                }
+            ],
+            "return": {
+                "description": "True if x is a string, false otherwise",
+                "type": "Boolean"
+            },
+            "example": [
+                "\n    funkyJS.isString('string');\n    // -> true\n\n    funkyJS.isString(undefined);\n    // -> false\n\n    funkyJS.isString(0);\n    // -> false\n"
+            ],
+            "class": "funkyJS",
+            "module": "type"
+        },
+        {
+            "file": "sources\\type.js",
+            "line": 331,
+            "description": "The isNotString function takes in a value and checks if it is not a string",
+            "itemtype": "method",
+            "name": "isNotString",
+            "params": [
+                {
+                    "name": "x",
+                    "description": "Value to check against",
+                    "type": "Any"
+                }
+            ],
+            "return": {
+                "description": "True if x is not a string, false otherwise",
+                "type": "Boolean"
+            },
+            "example": [
+                "\n    funkyJS.isNotString(0);\n    // -> true\n\n    funkyJS.isNotString(undefined);\n    // -> true\n\n    funkyJS.isNotString('string');\n    // -> false\n"
+            ],
+            "class": "funkyJS",
+            "module": "type"
+        },
+        {
+            "file": "sources\\type.js",
+            "line": 358,
+            "description": "The isNumber function takes in a value and checks if it is a number (not NaN\n    and finite)",
+            "itemtype": "method",
+            "name": "isNumber",
+            "params": [
+                {
+                    "name": "x",
+                    "description": "Value to check against",
+                    "type": "Any"
+                }
+            ],
+            "return": {
+                "description": "True if x is a number, false otherwise",
+                "type": "Boolean"
+            },
+            "example": [
+                "\n    funkyJS.isNumber(0);\n    // -> true\n\n    funkyJS.isNumber(NaN);\n    // -> false\n"
+            ],
+            "class": "funkyJS",
+            "module": "type"
+        },
+        {
+            "file": "sources\\type.js",
+            "line": 383,
+            "description": "The isNotNumber function takes in a value and checks if it is not a number",
+            "itemtype": "method",
+            "name": "isNotNumber",
+            "params": [
+                {
+                    "name": "x",
+                    "description": "Value to check against",
+                    "type": "Any"
+                }
+            ],
+            "return": {
+                "description": "True if x is not a number, false otherwise",
+                "type": "Boolean"
+            },
+            "example": [
+                "\n    funkyJS.isNotNumber(0);\n    // -> false\n\n    funkyJS.isNotNumber(NaN);\n    // -> true\n"
+            ],
+            "class": "funkyJS",
+            "module": "type"
+        },
+        {
+            "file": "sources\\type.js",
+            "line": 407,
+            "description": "The isInt32 function takes in a value and checks if it is a integer",
+            "itemtype": "method",
+            "name": "isInt32",
+            "params": [
+                {
+                    "name": "x",
+                    "description": "Value to check against",
+                    "type": "Any"
+                }
+            ],
+            "return": {
+                "description": "True if x is a integer, false otherwise",
+                "type": "Boolean"
+            },
+            "example": [
+                "\n    funkyJS.isInt32(1);\n    // -> true\n\n    funkyJS.isInt32(1.5);\n    // -> false\n"
+            ],
+            "class": "funkyJS",
+            "module": "type"
+        },
+        {
+            "file": "sources\\type.js",
+            "line": 431,
+            "description": "The isNotInt32 function takes in a value and checks if it is not a integer",
+            "itemtype": "method",
+            "name": "isNotInt32",
+            "params": [
+                {
+                    "name": "x",
+                    "description": "Value to check against",
+                    "type": "Any"
+                }
+            ],
+            "return": {
+                "description": "True if x is not a integer, false otherwise",
+                "type": "Boolean"
+            },
+            "example": [
+                "\n    funkyJS.isNotInt32(1);\n    // -> false\n\n    funkyJS.isNotInt32(1.5);\n    // -> true\n"
+            ],
+            "class": "funkyJS",
+            "module": "type"
+        },
+        {
+            "file": "sources\\type.js",
+            "line": 455,
+            "description": "The isFloat32 function takes in a value and checks if it is a floating point number",
+            "itemtype": "method",
+            "name": "isFloat32",
+            "params": [
+                {
+                    "name": "x",
+                    "description": "Value to check against",
+                    "type": "Any"
+                }
+            ],
+            "return": {
+                "description": "True if x is a floating point number, false otherwise",
+                "type": "Boolean"
+            },
+            "example": [
+                "\n    funkyJS.isFloat32(1.5);\n    // -> true\n\n    funkyJS.isFloat32(1);\n    // -> false\n"
+            ],
+            "class": "funkyJS",
+            "module": "type"
+        },
+        {
+            "file": "sources\\type.js",
+            "line": 479,
+            "description": "The isNotFloat32 function takes in a value and checks if it is not a floating point number",
+            "itemtype": "method",
+            "name": "isNotFloat32",
+            "params": [
+                {
+                    "name": "x",
+                    "description": "Value to check against",
+                    "type": "Any"
+                }
+            ],
+            "return": {
+                "description": "True if x is not a floating point number, false otherwise",
+                "type": "Boolean"
+            },
+            "example": [
+                "\n    funkyJS.isNotFloat32(1.5);\n    // -> false\n\n    funkyJS.isNotFloat32(1);\n    // -> true\n"
+            ],
+            "class": "funkyJS",
+            "module": "type"
+        },
+        {
+            "file": "sources\\type.js",
+            "line": 503,
+            "description": "The isFunction function takes in a value and checks if it is a function",
+            "itemtype": "method",
+            "name": "isFunction",
+            "params": [
+                {
+                    "name": "x",
+                    "description": "Value to check against",
+                    "type": "Any"
+                }
+            ],
+            "return": {
+                "description": "True if x is a function, false otherwise",
+                "type": "Boolean"
+            },
+            "example": [
+                "\n    funkyJS.isFunction(function () {});\n    // -> true\n\n    funkyJS.isFunction('function');\n    // -> false\n"
+            ],
+            "class": "funkyJS",
+            "module": "type"
+        },
+        {
+            "file": "sources\\type.js",
+            "line": 527,
+            "description": "The isNotFunction function takes in a value and checks if it is not a function",
+            "itemtype": "method",
+            "name": "isNotFunction",
+            "params": [
+                {
+                    "name": "x",
+                    "description": "Value to check against",
+                    "type": "Any"
+                }
+            ],
+            "return": {
+                "description": "True if x is not a function, false otherwise",
+                "type": "Boolean"
+            },
+            "example": [
+                "\n    funkyJS.isNotFunction(function () {});\n    // -> false\n\n    funkyJS.isNotFunction('function');\n    // -> true\n"
+            ],
+            "class": "funkyJS",
+            "module": "type"
+        },
+        {
+            "file": "sources\\type.js",
+            "line": 551,
+            "description": "The isArray function takes in a value and checks if it is a array",
+            "itemtype": "method",
+            "name": "isArray",
+            "params": [
+                {
+                    "name": "x",
+                    "description": "Value to check against",
+                    "type": "Any"
+                }
+            ],
+            "return": {
+                "description": "True if x is a array, false otherwise",
+                "type": "Boolean"
+            },
+            "example": [
+                "\n    funkyJS.isArray([]);\n    // -> true\n\n    funkyJS.isArray({});\n    // -> false\n"
+            ],
+            "class": "funkyJS",
+            "module": "type"
+        },
+        {
+            "file": "sources\\type.js",
+            "line": 575,
+            "description": "The isNotArray function takes in a value and checks if it is not a array",
+            "itemtype": "method",
+            "name": "isNotArray",
+            "params": [
+                {
+                    "name": "x",
+                    "description": "Value to check against",
+                    "type": "Any"
+                }
+            ],
+            "return": {
+                "description": "True if x is not a array, false otherwise",
+                "type": "Boolean"
+            },
+            "example": [
+                "\n    funkyJS.isNotArray([]);\n    // -> false\n\n    funkyJS.isNotArray({});\n    // -> true\n"
+            ],
+            "class": "funkyJS",
+            "module": "type"
+        },
+        {
+            "file": "sources\\type.js",
+            "line": 599,
+            "description": "The isObject function takes in a value and checks if it is a object",
+            "itemtype": "method",
+            "name": "isObject",
+            "params": [
+                {
+                    "name": "x",
+                    "description": "Value to check against",
+                    "type": "Any"
+                }
+            ],
+            "return": {
+                "description": "True if x is a object, false otherwise",
+                "type": "Boolean"
+            },
+            "example": [
+                "\n    funkyJS.isObject({});\n    // -> true\n\n    funkyJS.isObject([]);\n    // -> false\n"
+            ],
+            "class": "funkyJS",
+            "module": "type"
+        },
+        {
+            "file": "sources\\type.js",
+            "line": 623,
+            "description": "The isNotObject function takes in a value and checks if it is not a object",
+            "itemtype": "method",
+            "name": "isNotObject",
+            "params": [
+                {
+                    "name": "x",
+                    "description": "Value to check against",
+                    "type": "Any"
+                }
+            ],
+            "return": {
+                "description": "True if x is not a object, false otherwise",
+                "type": "Boolean"
+            },
+            "example": [
+                "\n    funkyJS.isNotObject({});\n    // -> false\n\n    funkyJS.isNotObject([]);\n    // -> true\n"
+            ],
+            "class": "funkyJS",
+            "module": "type"
+        },
+        {
+            "file": "sources\\type.js",
+            "line": 647,
+            "description": "The isDate function takes in a value and checks if it is a Date() instance",
+            "itemtype": "method",
+            "name": "isDate",
+            "params": [
+                {
+                    "name": "x",
+                    "description": "Value to check against",
+                    "type": "Any"
+                }
+            ],
+            "return": {
+                "description": "True if x is a Date() instance, false otherwise",
+                "type": "Boolean"
+            },
+            "example": [
+                "\n    funkyJS.isDate(new Date());\n    // -> true\n\n    funkyJS.isDate('2014-01-01');\n    // -> false\n"
+            ],
+            "class": "funkyJS",
+            "module": "type"
+        },
+        {
+            "file": "sources\\type.js",
+            "line": 671,
+            "description": "The isNotDate function takes in a value and checks if it is not a Date() instance",
+            "itemtype": "method",
+            "name": "isNotDate",
+            "params": [
+                {
+                    "name": "x",
+                    "description": "Value to check against",
+                    "type": "Any"
+                }
+            ],
+            "return": {
+                "description": "True if x is not a Date() instance, false otherwise",
+                "type": "Boolean"
+            },
+            "example": [
+                "\n    funkyJS.isNotDate(new Date());\n    // -> false\n\n    funkyJS.isNotDate('2014-01-01');\n    // -> true\n"
+            ],
+            "class": "funkyJS",
+            "module": "type"
+        },
+        {
+            "file": "sources\\type.js",
+            "line": 695,
+            "description": "The isRegex function takes in a value and checks if it is a regular expression",
+            "itemtype": "method",
+            "name": "isRegex",
+            "params": [
+                {
+                    "name": "x",
+                    "description": "Value to check against",
+                    "type": "Any"
+                }
+            ],
+            "return": {
+                "description": "True if x is a regular expression, false otherwise",
+                "type": "Boolean"
+            },
+            "example": [
+                "\n    funkyJS.isRegex(/.+/);\n    // -> true\n\n    funkyJS.isRegex(' ');\n    // -> false\n"
+            ],
+            "class": "funkyJS",
+            "module": "type"
+        },
+        {
+            "file": "sources\\type.js",
+            "line": 719,
+            "description": "The isNotRegex function takes in a value and checks if it is not a regular expression",
+            "itemtype": "method",
+            "name": "isNotRegex",
+            "params": [
+                {
+                    "name": "x",
+                    "description": "Value to check against",
+                    "type": "Any"
+                }
+            ],
+            "return": {
+                "description": "True if x is not a regular expression, false otherwise",
+                "type": "Boolean"
+            },
+            "example": [
+                "\n    funkyJS.isNotRegex(/.+/);\n    // -> false\n\n    funkyJS.isNotRegex(' ');\n    // -> true\n"
+            ],
+            "class": "funkyJS",
+            "module": "type"
+        },
+        {
+            "file": "sources\\type.js",
+            "line": 743,
+            "description": "The isNode function takes in a value and checks if it is a DOM-Node",
+            "itemtype": "method",
+            "name": "isNode",
+            "params": [
+                {
+                    "name": "x",
+                    "description": "Value to check against",
+                    "type": "Any"
+                }
+            ],
+            "return": {
+                "description": "True if x is a DOM-Node, false otherwise",
+                "type": "Boolean"
+            },
+            "example": [
+                "\n    funkyJS.isNode(document.createElement('div'));\n    // -> true\n\n    funkyJS.isNode('<div></div>');\n    // -> false\n"
+            ],
+            "class": "funkyJS",
+            "module": "type"
+        },
+        {
+            "file": "sources\\type.js",
+            "line": 767,
+            "description": "The isNotNode function takes in a value and checks if it is not a DOM-Node",
+            "itemtype": "method",
+            "name": "isNotNode",
+            "params": [
+                {
+                    "name": "x",
+                    "description": "Value to check against",
+                    "type": "Any"
+                }
+            ],
+            "return": {
+                "description": "True if x is not a DOM-Node, false otherwise",
+                "type": "Boolean"
+            },
+            "example": [
+                "\n    funkyJS.isNotNode(document.createElement('div'));\n    // -> false\n\n    funkyJS.isNotNode('<div></div>');\n    // -> true\n"
+            ],
+            "class": "funkyJS",
+            "module": "type"
+        },
+        {
+            "file": "sources\\type.js",
+            "line": 791,
+            "description": "The isNodeList function takes in a value and checks if it is a list of DOM-Nodes",
+            "itemtype": "method",
+            "name": "isNodeList",
+            "params": [
+                {
+                    "name": "x",
+                    "description": "Value to check against",
+                    "type": "Any"
+                }
+            ],
+            "return": {
+                "description": "True if x is a list of DOM-Nodes, false otherwise",
+                "type": "Boolean"
+            },
+            "example": [
+                "\n    funkyJS.isNodeList(document.querySelectorAll('div'));\n    // -> true\n\n    funkyJS.isNodeList([]);\n    // -> false\n"
+            ],
+            "class": "funkyJS",
+            "module": "type"
+        },
+        {
+            "file": "sources\\type.js",
+            "line": 815,
+            "description": "The isNotNodeList function takes in a value and checks if it is not a list of DOM-Nodes",
+            "itemtype": "method",
+            "name": "isNotNodeList",
+            "params": [
+                {
+                    "name": "x",
+                    "description": "Value to check against",
+                    "type": "Any"
+                }
+            ],
+            "return": {
+                "description": "True if x is not a list of DOM-Nodes, false otherwise",
+                "type": "Boolean"
+            },
+            "example": [
+                "\n    funkyJS.isNotNodeList(document.querySelectorAll('div'));\n    // -> false\n\n    funkyJS.isNotNodeList([]);\n    // -> true\n"
+            ],
+            "class": "funkyJS",
+            "module": "type"
+        },
+        {
+            "file": "sources\\type.js",
+            "line": 839,
+            "description": "The isSequencial function takes in a value and checks if it is a sequencial\n    enumerable. A enumerable is considered sequencial, if it validates against\n    the following tests:\n    1) Is not null or undefined AND\n    2) Has a length property with int32 value AND\n    3) Is not a function AND\n    4) Is not a object",
+            "itemtype": "method",
+            "name": "isSequencial",
+            "params": [
+                {
+                    "name": "x",
+                    "description": "Value to check against",
+                    "type": "Any"
+                }
+            ],
+            "return": {
+                "description": "True if x is a sequencial enumerable, false otherwise",
+                "type": "Boolean"
+            },
+            "example": [
+                "\n    funkyJS.isSequencial(document.querySelectorAll('div'));\n    // -> true\n"
+            ],
+            "class": "funkyJS",
+            "module": "type"
+        },
+        {
+            "file": "sources\\type.js",
+            "line": 869,
+            "description": "The isNotSequencial function takes in a value and checks if it is not a\n    sequencial enumerable. A enumerable is not considered sequencial, if it\n    fails in any of the following tests:\n    1) Is not null or undefined AND\n    2) Has a length property with int32 value AND\n    3) Is not a function AND\n    4) Is not a object",
+            "itemtype": "method",
+            "name": "isNotSequencial",
+            "params": [
+                {
+                    "name": "x",
+                    "description": "Value to check against",
+                    "type": "Any"
+                }
+            ],
+            "return": {
+                "description": "True if x is not a sequencial enumerable, false otherwise",
+                "type": "Boolean"
+            },
+            "example": [
+                "\n    funkyJS.isNotSequencial(document.querySelectorAll('div'));\n    // -> false\n"
+            ],
+            "class": "funkyJS",
+            "module": "type"
+        },
+        {
+            "file": "sources\\type.js",
+            "line": 896,
+            "description": "The isEnumerable function takes in a value and checks if it is a enumerable.\n    A enumerable must validate against the following tests:\n    1) Is object\n    OR\n    1) Is not null or undefined AND\n    2) Has a length property with int32 value AND\n    3) Is not a function AND\n    4) Is not a object",
+            "itemtype": "method",
+            "name": "isEnumerable",
+            "params": [
+                {
+                    "name": "x",
+                    "description": "Value to check against",
+                    "type": "Any"
+                }
+            ],
+            "return": {
+                "description": "True if x is a enumerable, false otherwise",
+                "type": "Boolean"
+            },
+            "example": [
+                "\n    funkyJS.isEnumerable(document.querySelectorAll('div'));\n    // -> true\n"
+            ],
+            "class": "funkyJS",
+            "module": "type"
+        },
+        {
+            "file": "sources\\type.js",
+            "line": 924,
+            "description": "The isNotEnumerable function takes in a value and checks if it is not a enumerable.\n    A value is not considered enumerable if it fails in any of the following\n    tests:\n    1) Is object\n    OR\n    1) Is not null or undefined AND\n    2) Has a length property with int32 value AND\n    3) Is not a function AND\n    4) Is not a object",
+            "itemtype": "method",
+            "name": "isNotEnumerable",
+            "params": [
+                {
+                    "name": "x",
+                    "description": "Value to check against",
+                    "type": "Any"
+                }
+            ],
+            "return": {
+                "description": "True if x is not a enumerable, false otherwise",
+                "type": "Boolean"
+            },
+            "example": [
+                "\n    funkyJS.isNotEnumerable(document.querySelectorAll('div'));\n    // -> false\n"
+            ],
+            "class": "funkyJS",
+            "module": "type"
+        }
+    ],
+    "warnings": [
+        {
+            "message": "Missing item type\nEXPORT\n======",
+            "line": " sources\\extensions\\_template.js:40"
+        },
+        {
+            "message": "Missing item type\nEXPORT\n======",
+            "line": " sources\\extensions\\advices.js:179"
+        },
+        {
+            "message": "Missing item type\nEXPORT\n======",
+            "line": " sources\\extensions\\contracts.js:363"
+        },
+        {
+            "message": "Missing item type\nEXPORT\n======",
+            "line": " sources\\extensions\\decorators.js:393"
+        },
+        {
+            "message": "Missing item type\nEXPORT\n======",
+            "line": " sources\\extensions\\functors.js:346"
+        },
+        {
+            "message": "Missing item type\nEXPORT\n======",
+            "line": " sources\\extensions\\iterators.js:472"
+        },
+        {
+            "message": "Missing item type\nEXPORT\n======",
+            "line": " sources\\extensions\\strings.js:300"
+        },
+        {
+            "message": "Missing item type\nEXPORT\n======",
+            "line": " sources\\extensions\\trampolines.js:123"
+        },
+        {
+            "message": "Missing item type\nEXPORT\n======",
+            "line": " sources\\combinators.js:304"
+        },
+        {
+            "message": "Missing item type\nEXPORT\n======",
+            "line": " sources\\decorators.js:794"
+        },
+        {
+            "message": "Missing item type\nEXPORT\n======",
+            "line": " sources\\lenses.js:123"
+        }
+    ]
+}
