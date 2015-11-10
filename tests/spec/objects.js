@@ -205,4 +205,10 @@ describe('funkyJS Objects Module', function () {
         expect(fCtor(9).inc().v).toBe(10);
         expect(fCtor(10)).toEqual(new cTor(10));
     });
+
+    it('testing exec :: f -> f|s -> o -> *', function () {
+        var map = funkyJS.exec('map', function (n) {return n * n;});
+
+        expect(map([1,2])).toEqual([1,4]);
+    });
 });

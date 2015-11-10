@@ -1,5 +1,5 @@
 /* global describe, it, expect, funkyJS */
-describe('funkyJS Functors Extension Module', function () {
+describe('funkyJS Functors Module', function () {
 
     it('testing forEachWith :: f -> f, a', function () {
         var _f = funkyJS.forEachWith(function (v) { _r += v; }),

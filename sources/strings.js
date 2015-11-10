@@ -51,7 +51,7 @@
     **/
     api.trimLeft = function trimLeft (str) {
         if (!type.isString(str)) {
-            throw 'trimLeft expects str to be string but saw ' + str;
+            return str;
         }
 
         return str.replace(/^\s+/g, '');
@@ -74,7 +74,7 @@
     **/
     api.trimRight = function trimRight (str) {
         if (!type.isString(str)) {
-            throw 'trimRight expects str to be string but saw ' + str;
+            return str;
         }
 
         return str.replace(/\s+$/g, '');
@@ -97,7 +97,7 @@
     **/
     api.trim = function trim (str) {
         if (!type.isString(str)) {
-            throw 'trim expects str to be string but saw ' + str;
+            return str;
         }
 
         return api.trimLeft(api.trimRight(str));
@@ -121,7 +121,7 @@
     **/
     api.camelize = function camelize (str) {
         if (!type.isString(str)) {
-            throw 'camelize expects str to be string but saw ' + str;
+            return str;
         }
 
         return str.replace(/-[A-Za-z]|_[A-Za-z]/g, function (match) {
@@ -147,7 +147,7 @@
     **/
     api.dasherize = function dasherize (str) {
         if (!type.isString(str)) {
-            throw 'dasherize expects str to be string but saw ' + str;
+            return str;
         }
 
         return str.replace(/_[A-Za-z]|[A-Z]/g, function (match) {
@@ -173,7 +173,7 @@
     **/
     api.underscore = function underscore (str) {
         if (!type.isString(str)) {
-            throw 'underscore expects str to be string but saw ' + str;
+            return str;
         }
 
         return str.replace(/-[A-Za-z]|[A-Z]/g, function (match) {

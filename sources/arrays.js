@@ -494,12 +494,12 @@
     }
 
     /**
-    The unique function takes a sequencial value and returns a new array from it
+    The unique function takes a enumerable value and returns a new array from it
         which contains only the unique items
 
     @method unique
     @for funkyJS
-    @param {array|nodelist|arguments|string} a The original sequencial
+    @param {array|nodelist|arguments|string|object} a The original enumerable
     @return {array} Array with only the unique values from a
 
     @example
@@ -517,7 +517,7 @@
         }
 
         clone = [];
-        a = type.isSequencial(a) ? api.toArray(a) : [];
+        a = api.toArray(a);
         a.forEach(function (value) {
             if (clone.indexOf(value) < 0) {
                 clone.push(value)
@@ -577,13 +577,13 @@
     })();
 
     /**
-    Given two sequencial values, the union function returns a new array which
+    Given two enumerable values, the union function returns a new array which
         contains the unique values of both
 
     @method union
     @for funkyJS
-    @param {array|nodelist|arguments|string} a1 First sequencial
-    @param {array|nodelist|arguments|string} a2 Second sequencial
+    @param {array|nodelist|arguments|string|object} a1 First enumerable
+    @param {array|nodelist|arguments|string|object} a2 Second enumerable
     @return {array} New array containing the union of a1 and a2
 
     @example
@@ -605,19 +605,19 @@
             }
         }
 
-        a1 = type.isSequencial(a1) ? api.toArray(a1) : [];
-        a2 = type.isSequencial(a2) ? api.toArray(a2) : [];
+        a1 = api.toArray(a1);
+        a2 = api.toArray(a2);
         return api.unique(a1.concat(a2));
     }
 
     /**
-    Given two sequencial values, the intersect function returns a new array which
+    Given two enumerable values, the intersect function returns a new array which
         contains the intersection of both
 
     @method intersect
     @for funkyJS
-    @param {array|nodelist|arguments|string} a1 First sequencial
-    @param {array|nodelist|arguments|string} a2 Second sequencial
+    @param {array|nodelist|arguments|string|object} a1 First enumerable
+    @param {array|nodelist|arguments|string|object} a2 Second enumerable
     @return {array} New array containing the intersection of a1 and a2
 
     @example
@@ -639,8 +639,8 @@
             }
         }
 
-        a1 = type.isSequencial(a1) ? api.unique(api.toArray(a1)) : [];
-        a2 = type.isSequencial(a2) ? api.unique(api.toArray(a2)) : [];
+        a1 = api.unique(api.toArray(a1));
+        a2 = api.unique(api.toArray(a2));
         if (a2.length > a1.length) {
             return a2.filter(function (v) {
                 return a1.indexOf(v) >= 0;
@@ -653,13 +653,13 @@
     }
 
     /**
-    Given two sequencial values, the difference function returns a new array which
+    Given two enumerable values, the difference function returns a new array which
         contains the difference of both
 
     @method difference
     @for funkyJS
-    @param {array|nodelist|arguments|string} a1 First sequencial
-    @param {array|nodelist|arguments|string} a2 Second sequencial
+    @param {array|nodelist|arguments|string|object} a1 First enumerable
+    @param {array|nodelist|arguments|string|object} a2 Second enumerable
     @return {array} New array containing the difference of a1 and a2
 
     @example
@@ -681,8 +681,8 @@
             }
         }
 
-        a1 = type.isSequencial(a1) ? api.toArray(a1) : [];
-        a2 = type.isSequencial(a2) ? api.toArray(a2) : [];
+        a1 = api.toArray(a1);
+        a2 = api.toArray(a2);
         return api.union(a1, a2).filter(function (v) {
             return a1.indexOf(v) < 0 || a2.indexOf(v) < 0;
         });

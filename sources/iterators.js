@@ -284,7 +284,7 @@
         }
 
         if (!type.isObject(iterator) || !type.isFunction(iterator.next)) {
-            throw 'mapLazy expected second argument to be iterator but was ' + iterator;
+            throw 'mapLazy expected second argument to be iterator but saw ' + iterator;
         }
 
         return {
@@ -353,7 +353,7 @@
         }
 
         if (!type.isObject(iterator) || !type.isFunction(iterator.next)) {
-            throw 'filterLazy expected second argument to be iterator but was ' + iterator;
+            throw 'filterLazy expected second argument to be iterator but saw ' + iterator;
         }
 
         return {
@@ -436,7 +436,7 @@
         }
 
         if (!type.isObject(iterator) || !type.isFunction(iterator.next)) {
-            throw 'foldLazy expected second argument to be iterator but was ' + iterator;
+            throw 'foldLazy expected second argument to be iterator but saw ' + iterator;
         }
 
         _acc = seed;
@@ -463,8 +463,6 @@
             }
         };
     }
-
-
 
 
 

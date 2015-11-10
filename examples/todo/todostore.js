@@ -33,7 +33,7 @@
         var _data = store.get('funkyjs-todoapp');
         if (f.isObject(_data)) {
             DATA = _data;
-            DATA.todos.forEach(TodoApp.addTodo);
+            DATA.todos.forEach(f.maybe(TodoApp.addTodo));
         }
     }
 

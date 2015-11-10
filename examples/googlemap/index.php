@@ -19,7 +19,6 @@
     ?>
     <script src="https://maps.googleapis.com/maps/api/js?v=3"></script>
     <script src="../../builds/funkyjs2.bundled.min.js"></script>
-    <script src="../../builds/funkyjs2.ext.bundled.min.js"></script>
     <script src="js/make.js"></script>
     <script src="js/plugin_core.js"></script>
     <script src="js/plugin_utils.js"></script>

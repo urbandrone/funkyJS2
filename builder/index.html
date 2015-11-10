@@ -261,6 +261,46 @@
                     Type
                 </p>
             </fieldset>
+
+            <h2 class="">
+                Adapters and extensions
+            </h2>
+            <fieldset class="form_group block">
+                <div class="form_pair">
+                    <input class="checkbox" type="checkbox" name="modules[]" value="dom">
+                    <label class="label">funkyDOM</label>
+                </div>
+                <p class="descriptor">
+                    <b>A thin wrapper factory around jQuery/Zepto</b>
+                    <br>
+                    A small factory around the jQuery/Zepto/$ function which can be used instead. Returns a funkyDOM collection which itself is a jQuery/Zepto collection with enhanced capabilities.
+                    <br>
+                    <br>
+                    <b>Provided collection methods:</b>
+                    <br>
+                    .ego, .evoke, .advisable, .unique, .union, .intersect, .difference
+                    <br>
+                    <br>
+                    <b>Altered collection methods:</b>
+                    <br>
+                    .find, .closest, .parent, .parents, .parentsUntil, .children, .prev, .prevAll, .prevUntil, .next, .nextAll, .nextUntil, .contents, .eq, .first, .last, .offsetParent, .add, .addSelf
+                    <br>
+                    <br>
+                    <b>Provided static methods:</b>
+                    <br>
+                    funkyDOM (factory), .is, .ego, .evoke, .advisable, .unique, .union, .intersect, .difference
+                </p>
+                <p class="descriptor">
+                    <b>Depends on:</b>
+                    <br>
+                    Type, Arity, Decorators, Arrays, Advices
+                    <br>
+                    <br>
+                    <b>External dependencies:</b>
+                    <br>
+                    jQuery/Zepto
+                </p>
+            </fieldset>
         </form>
     </div>
     <script src="libs/funkyjs2.bundled.min.js"></script>

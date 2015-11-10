@@ -19,7 +19,7 @@
             
         </div>
         <div class="yui3-u-1-4 version">
-            <em>API Docs for: 2.0.0</em>
+            <em>API Docs for: 2.1.0</em>
         </div>
     </div>
     <div id="bd" class="yui3-g">
@@ -422,6 +422,13 @@
                         
                             <li class="index-item method">
                                 <a href="#method_everyWith">everyWith</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_exec">exec</a>
 
                                 
                                 
@@ -5341,7 +5348,7 @@ window.onresize = funkyJS.debounce(250, recalcComplexLayout);
             
         
         
-        <a href="../files/sources_objects.js.html#l613"><code>sources\objects.js:613</code></a>
+        <a href="../files/sources_objects.js.html#l614"><code>sources\objects.js:614</code></a>
         
         </p>
 
@@ -5547,7 +5554,7 @@ joe.salary;
     </div>
 
     <div class="description">
-        <p>Given two sequencial values, the difference function returns a new array which
+        <p>Given two enumerable values, the difference function returns a new array which
     contains the difference of both</p>
 
     </div>
@@ -5561,13 +5568,13 @@ joe.salary;
                 <li class="param">
                     
                         <code class="param-name">a1</code>
-                        <span class="type">Array | Nodelist | Arguments | String</span>
+                        <span class="type">Array | Nodelist | Arguments | String | Object</span>
                     
 
                     
 
                     <div class="param-description">
-                        <p>First sequencial</p>
+                        <p>First enumerable</p>
 
                     </div>
 
@@ -5577,13 +5584,13 @@ joe.salary;
                 <li class="param">
                     
                         <code class="param-name">a2</code>
-                        <span class="type">Array | Nodelist | Arguments | String</span>
+                        <span class="type">Array | Nodelist | Arguments | String | Object</span>
                     
 
                     
 
                     <div class="param-description">
-                        <p>Second sequencial</p>
+                        <p>Second enumerable</p>
 
                     </div>
 
@@ -5681,7 +5688,7 @@ funkyJS.difference(first, second);
             
         
         
-        <a href="../files/sources_decorators.more.js.html#l330"><code>sources\decorators.more.js:330</code></a>
+        <a href="../files/sources_decorators.beyond.js.html#l330"><code>sources\decorators.beyond.js:330</code></a>
         
         </p>
 
@@ -6216,6 +6223,154 @@ allNumbers([1, null, 3, 4]);
 </div>
 
                 
+                    <div id="method_exec" class="method item">
+    <h3 class="name"><code>exec</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>fn</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code class="optional">[args*]</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">Function</span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                    <p>Provided by the <a href="../modules/objects.html">objects</a> module.</p>
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/sources_objects.js.html#l872"><code>sources\objects.js:872</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>The exec function allows to send the call of a method to any receiver with
+    optionally preset arguments. A call will only be made if the method can
+    be found on the receiver</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">fn</code>
+                        <span class="type">String | Function</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>The name of a method or a function</p>
+
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name optional">[args*]</code>
+                        <span class="type">Any</span>
+                        <span class="flag optional" title="This parameter is optional.">optional</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>Optional arguments as presets</p>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type">Function</span>:
+                    
+                    <p>Function waiting for a receiver</p>
+
+                
+            </div>
+        </div>
+    
+
+    
+        <div class="example">
+            <h4>Example:</h4>
+
+            <div class="example-content">
+                <pre class="code prettyprint"><code>var f = funkyJS;
+
+var mapSqr = f.exec(&#39;map&#39;, function (n) { return n * n;});
+
+mapSqr([1, 2, 3, 4, 5]);
+// -&gt; [1, 4, 9, 16, 25]</code></pre>
+
+            </div>
+        </div>
+    
+</div>
+
+                
                     <div id="method_extend" class="method item">
     <h3 class="name"><code>extend</code></h3>
 
@@ -6270,7 +6425,7 @@ allNumbers([1, null, 3, 4]);
             
         
         
-        <a href="../files/sources_objects.js.html#l445"><code>sources\objects.js:445</code></a>
+        <a href="../files/sources_objects.js.html#l446"><code>sources\objects.js:446</code></a>
         
         </p>
 
@@ -6432,7 +6587,7 @@ funkyJS.extend(dict)()(ext);
             
         
         
-        <a href="../files/sources_objects.js.html#l501"><code>sources\objects.js:501</code></a>
+        <a href="../files/sources_objects.js.html#l502"><code>sources\objects.js:502</code></a>
         
         </p>
 
@@ -6588,7 +6743,7 @@ funkyJS.extendWith(ext)()(dict);
             
         
         
-        <a href="../files/sources_objects.js.html#l821"><code>sources\objects.js:821</code></a>
+        <a href="../files/sources_objects.js.html#l822"><code>sources\objects.js:822</code></a>
         
         </p>
 
@@ -6724,7 +6879,7 @@ var abc = funkyJS.fAccess([
             
         
         
-        <a href="../files/sources_objects.js.html#l406"><code>sources\objects.js:406</code></a>
+        <a href="../files/sources_objects.js.html#l407"><code>sources\objects.js:407</code></a>
         
         </p>
 
@@ -8363,7 +8518,7 @@ squared;
             
         
         
-        <a href="../files/sources_objects.js.html#l694"><code>sources\objects.js:694</code></a>
+        <a href="../files/sources_objects.js.html#l695"><code>sources\objects.js:695</code></a>
         
         </p>
 
@@ -8562,7 +8717,7 @@ joe.isMarried();
             
         
         
-        <a href="../files/sources_objects.js.html#l77"><code>sources\objects.js:77</code></a>
+        <a href="../files/sources_objects.js.html#l78"><code>sources\objects.js:78</code></a>
         
         </p>
 
@@ -8872,7 +9027,7 @@ guardedOperand(1);
             
         
         
-        <a href="../files/sources_objects.js.html#l38"><code>sources\objects.js:38</code></a>
+        <a href="../files/sources_objects.js.html#l39"><code>sources\objects.js:39</code></a>
         
         </p>
 
@@ -9153,7 +9308,7 @@ funkyJS.head()([&#39;a&#39;, &#39;b&#39;, &#39;c&#39;]);
             
         
         
-        <a href="../files/sources_decorators.more.js.html#l65"><code>sources\decorators.more.js:65</code></a>
+        <a href="../files/sources_decorators.beyond.js.html#l65"><code>sources\decorators.beyond.js:65</code></a>
         
         </p>
 
@@ -9497,7 +9652,7 @@ var makeLabel = fromStrDateMake(isLabel)(labelDelivery);</code></pre>
             
         
         
-        <a href="../files/sources_objects.js.html#l779"><code>sources\objects.js:779</code></a>
+        <a href="../files/sources_objects.js.html#l780"><code>sources\objects.js:780</code></a>
         
         </p>
 
@@ -9632,7 +9787,7 @@ money.dollar;
             
         
         
-        <a href="../files/sources_objects.js.html#l550"><code>sources\objects.js:550</code></a>
+        <a href="../files/sources_objects.js.html#l551"><code>sources\objects.js:551</code></a>
         
         </p>
 
@@ -9808,7 +9963,7 @@ Extended.subClass = function (ext) {
             
         
         
-        <a href="../files/sources_objects.js.html#l358"><code>sources\objects.js:358</code></a>
+        <a href="../files/sources_objects.js.html#l359"><code>sources\objects.js:359</code></a>
         
         </p>
 
@@ -9981,7 +10136,7 @@ _t.value();
     </div>
 
     <div class="description">
-        <p>Given two sequencial values, the intersect function returns a new array which
+        <p>Given two enumerable values, the intersect function returns a new array which
     contains the intersection of both</p>
 
     </div>
@@ -9995,13 +10150,13 @@ _t.value();
                 <li class="param">
                     
                         <code class="param-name">a1</code>
-                        <span class="type">Array | Nodelist | Arguments | String</span>
+                        <span class="type">Array | Nodelist | Arguments | String | Object</span>
                     
 
                     
 
                     <div class="param-description">
-                        <p>First sequencial</p>
+                        <p>First enumerable</p>
 
                     </div>
 
@@ -10011,13 +10166,13 @@ _t.value();
                 <li class="param">
                     
                         <code class="param-name">a2</code>
-                        <span class="type">Array | Nodelist | Arguments | String</span>
+                        <span class="type">Array | Nodelist | Arguments | String | Object</span>
                     
 
                     
 
                     <div class="param-description">
-                        <p>Second sequencial</p>
+                        <p>Second enumerable</p>
 
                     </div>
 
@@ -10109,7 +10264,7 @@ funkyJS.intersect(first, second);
             
         
         
-        <a href="../files/sources_objects.js.html#l314"><code>sources\objects.js:314</code></a>
+        <a href="../files/sources_objects.js.html#l315"><code>sources\objects.js:315</code></a>
         
         </p>
 
@@ -12498,7 +12653,7 @@ funkyJS.isVoid(0);
             
         
         
-        <a href="../files/sources_objects.js.html#l174"><code>sources\objects.js:174</code></a>
+        <a href="../files/sources_objects.js.html#l175"><code>sources\objects.js:175</code></a>
         
         </p>
 
@@ -13627,7 +13782,7 @@ var complexCalcMemo = funkyJS.memoize(complexCalculation);
             
         
         
-        <a href="../files/sources_objects.js.html#l244"><code>sources\objects.js:244</code></a>
+        <a href="../files/sources_objects.js.html#l245"><code>sources\objects.js:245</code></a>
         
         </p>
 
@@ -13894,7 +14049,7 @@ sayToNobody(&#39;hello&#39;, {name: &#39;joe&#39;});
             
         
         
-        <a href="../files/sources_decorators.more.js.html#l214"><code>sources\decorators.more.js:214</code></a>
+        <a href="../files/sources_decorators.beyond.js.html#l214"><code>sources\decorators.beyond.js:214</code></a>
         
         </p>
 
@@ -14943,7 +15098,7 @@ isIterable(function (a, b, c) {});
             
         
         
-        <a href="../files/sources_objects.js.html#l281"><code>sources\objects.js:281</code></a>
+        <a href="../files/sources_objects.js.html#l282"><code>sources\objects.js:282</code></a>
         
         </p>
 
@@ -15695,7 +15850,7 @@ getUser(&#39;user0c2a37fb&#39;, showCard, catchError);</code></pre>
             
         
         
-        <a href="../files/sources_objects.js.html#l123"><code>sources\objects.js:123</code></a>
+        <a href="../files/sources_objects.js.html#l124"><code>sources\objects.js:124</code></a>
         
         </p>
 
@@ -18655,7 +18810,7 @@ funkyJS.underscore(str);
     </div>
 
     <div class="description">
-        <p>Given two sequencial values, the union function returns a new array which
+        <p>Given two enumerable values, the union function returns a new array which
     contains the unique values of both</p>
 
     </div>
@@ -18669,13 +18824,13 @@ funkyJS.underscore(str);
                 <li class="param">
                     
                         <code class="param-name">a1</code>
-                        <span class="type">Array | Nodelist | Arguments | String</span>
+                        <span class="type">Array | Nodelist | Arguments | String | Object</span>
                     
 
                     
 
                     <div class="param-description">
-                        <p>First sequencial</p>
+                        <p>First enumerable</p>
 
                     </div>
 
@@ -18685,13 +18840,13 @@ funkyJS.underscore(str);
                 <li class="param">
                     
                         <code class="param-name">a2</code>
-                        <span class="type">Array | Nodelist | Arguments | String</span>
+                        <span class="type">Array | Nodelist | Arguments | String | Object</span>
                     
 
                     
 
                     <div class="param-description">
-                        <p>Second sequencial</p>
+                        <p>Second enumerable</p>
 
                     </div>
 
@@ -18794,7 +18949,7 @@ funkyJS.union(first, second);
     </div>
 
     <div class="description">
-        <p>The unique function takes a sequencial value and returns a new array from it
+        <p>The unique function takes a enumerable value and returns a new array from it
     which contains only the unique items</p>
 
     </div>
@@ -18808,13 +18963,13 @@ funkyJS.union(first, second);
                 <li class="param">
                     
                         <code class="param-name">a</code>
-                        <span class="type">Array | Nodelist | Arguments | String</span>
+                        <span class="type">Array | Nodelist | Arguments | String | Object</span>
                     
 
                     
 
                     <div class="param-description">
-                        <p>The original sequencial</p>
+                        <p>The original enumerable</p>
 
                     </div>
 
@@ -18905,7 +19060,7 @@ funkyJS.unique(original);
             
         
         
-        <a href="../files/sources_objects.js.html#l211"><code>sources\objects.js:211</code></a>
+        <a href="../files/sources_objects.js.html#l212"><code>sources\objects.js:212</code></a>
         
         </p>
 

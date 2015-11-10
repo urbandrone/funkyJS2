@@ -1,5 +1,5 @@
 /* global describe, it, expect, funkyJS */
-describe('funkyJS Strings Extension Module', function () {
+describe('funkyJS Strings Module', function () {
 
     it('testing trimLeft :: f -> s -> s', function () {
         expect(funkyJS.trimLeft('   test   ')).toBe('test   ');

@@ -1,0 +1,704 @@
+<h3>
+    About
+</h3>
+<p>
+    funkyDOM is a small enhancement to basic jQuery or Zepto. It works as a functional mixin and implements some special methods (like ego, advisable, etc) on top of the basic jQuery/Zepto collection.
+    <br>
+    For convenience, the funkyDOM function is a factory function like jQuery()/Zepto() and accepts the same arguments as they do, therefor whatever can be done with a jQuery/Zepto collection factory can also be done with the funkyDOM factory.
+</p>
+<p>
+    In addition to adding special methods to a given or created collection, all methods also exist as static methods on the factory itself. If you want to use any of the static methods, the referencing collection has to be given as first argument. For example:
+</p>
+<pre><code>var all = f$('*'), body = f$('body');
+
+var union = body.union(all);
+var unionAlternative = body.add(all).unique();
+var intersection = body.intersect(all);
+var difference = body.difference(all);
+
+// is literally equivalent to:
+var unionStatic = f$.union(body, all);
+var unionAlternativeStatic = f$.unique(body.add(all));
+var intersectionStatic = f$.intersect(body, all);
+var differenceStatic = f$.difference(body, all);</code></pre>
+<h3 id="deps">
+    funkyJS, jQuery and Zepto
+</h3>
+<p>
+    Besides the obvious dependency on jQuery or Zepto, funkyDOM depends on funkyJS 2 version 2.1.0 or greater. This has an upside and a downside. The downside is, the amount of data to load increases a bit. This does not hurt too much, as funkyJS 2 itself is relatively small itself, especially if you use the builder tool to create your version of funkyDOM, as it ensures all needed files are merged together into one source code so you do not have to take care of this yourself. Of course this does not apply to jQuery/Zepto files, which you'll likely use already. Be sure these meet the requirements to use funkyDOM with the version you use (all gzipped and minified):
+</p>
+<p>
+    jQuery: V. 2.0.0 or higher (30kb) <b>or</b><br>
+    Zepto: V. 1.1.0 or higher (10kb, just core modules) <b>and</b><br>
+    funkyJS &amp; funkyDOM: V. 2.1.0 or higher (5 - 6kb, just needed modules)
+</p>
+<p>
+    The upside however is, that funkyJS enables you to do certain things in JavaScript, which are otherwise more tricky to achive and you'd have to implement a lot of stuff yourself. funkyDOM itself is written in a way that takes care to use as few modules of funkyJS as possible, to keep the filesize small.
+</p>
+<p>
+    Next, it implements fixes for certain situations, which – if not fixed – require you to add certain boilerplate over and over again throughout the whole application/website/widget/etc...
+</p>
+<h3 id="example1">
+    Example
+</h3>
+<p>
+    Below you see a example of how funkyDOM transforms the way you can write jQuery with it. The example is taken from the page you just watch and uses these additional methods from funkyJS:
+</p>
+<ul>
+    <li>
+        pipe from combinators.sync
+    </li>
+</ul>
+<pre><code>var f$ = funkyDOM,
+    f = funkyJS;
+
+// get element references (1)
+var body = f$('body').ego('css', 'html', 'animate', 'off'),
+    lib = f$('.lib').ego('animate'),
+    claim = f$('.lib_claim').ego('animate'),
+    libText = f$('.lib_text').ego('animate');
+
+// predefine animations to run (2)
+var onAfterBodyAnim = f.pipe(
+    claim.evoke('animate', {opacity: 1}, 1000),
+    libText.evoke('animate', {opacity: 1}, 2000)
+);
+
+var animateBody = body.evoke(
+    'animate',
+    [{
+        marginTop: '280px'
+    },
+    600,
+    onAfterBodyAnim
+);
+
+// run the animations (3)
+lib.animate(
+    {fontSize: '70px'}, 
+    {complete: animateBody}
+);</code></pre>
+<h4>
+    Walkthrough
+</h4>
+<p>
+    <b>Part 1</b><br>
+    Let's step through the example. The first part shows querying the DOM with funkyDOM instead of jQuery. This should look pretty familiar so far. After that step, we immediatly call the method "ego" on each collection. The ego method accepts one to unlimited strings of method names and makes these methods egocentric on the collection. This means, whenever your program calls a egocentric method, the "this" part inside the method always points to the instance it is egocentric about. You might notice a relationship to Function.prototype.bind here. Simply said, both do the same and in reality, Function.prototype.bind is used inside ego, but in addition to that the ego methods preserves the correct arity while binding and in fact is much easier to handle if binding methods to instances as it can be called in chained calls, which feels very naturally in and around the jQuery world.
+</p>
+<p>
+    Calls to ego also allow you to pass only the (afterwards) egocentric method around and invoke it later, for example in callback chains. funkyDOM also installs a helper method to ease that too which we'll discuss in short.
+</p>
+<p>
+    <b>Part 2</b><br>
+    The next part first consists of a funkyJS invocation of the pipe method. You can read more about it in the funkyJS documentation, but in short, it allows to create a pipeline of functions to execute.
+</p>
+<pre><code>
+var onAfterBodyAnim = f.pipe(
+    claim.evoke('animate', {opacity: 1}, 1000),
+    libText.evoke('animate', {opacity: 1}, 2000)
+);</code></pre>
+<p>
+    So, we are building a pipeline of functions. We want to make calls to the already egocentric animate method of two collections we queried – sounds quite simple so far.
+</p>
+<p>
+    But, you'll see – in reality it's not that simple. Even though the animate methods of both collections are egocentric, the problem now is that we have to pass different arguments to both collections (the duration parameter). And even if it would be possible to pass different arguments in a single function invocation (which would be crazy already) to the functions contained inside it's body, how to ensure the correct functions are applied to the correct arguments (so first to first, third to second if second should be third, etc.)? You would have to take care that each pipeline of functions you create would have been written in the same order to rely on the order of arguments given. For small projects that would be an option, for larger projects it would be just horrible.
+</p>
+<p>
+    The solution of funkyDOM instead works in the opposite direction. It implements an evoke method, which allows to call any egocentric method with a predefined set of arguments by returning the invocation as raw function. Sounds crazy? Read on.
+    <br>
+    This is also a bit similiar to Function.prototype.bind's behaviour of presetting arguments of a bound function. This is where it get's interesting, because evoke and ego together can be used just like Function.prototype.bind and you could emulate their behaviour with Function.prototype.bind (although doing so would introduce much more noise in your code). Please note that evoke does not bind the function's context like bind does, it just presets the arguments applied. Therefor, the variable "animateBody" in the example contains the raw invocation of the animate method on the body collection with just a predefined set of arguments.
+</p>
+<pre><code>var animateBody = body.evoke(
+    'animate',
+    [{
+        marginTop: '280px'
+    },
+    600,
+    onAfterBodyAnim
+);</code></pre>
+<p>
+    <b>Part 3</b><br>
+    There's not much left to say. The last part just contains a normal invocation of the animate method on the lib collection. As soon as the animation completes, the variable "animateBody" is called and kicks off the next animation. Done.
+</p>
+<pre><code>lib.animate(
+    {fontSize: '70px'}, 
+    {complete: animateBody}
+);</code></pre>
+<h4>
+    Why another library?
+</h4>
+<p>
+    The ego and evoke methods are not the only benefit of funkyDOM, but both of them operate at the heart of what funkyDOM tries to do: Lifiting jQuery or Zepto as OO methology based frameworks into the world of functional programming, which allows from a general point of view much easier modularity at atomic level. It does so by pointing our perspective away from the OO level right to functions as first-class citizens. This allows you to pass method invocations around like normal collections.
+</p>
+<p>
+    From that description emerges what funkyDOM really is: A <em>enhancement</em> instead of a new library. Use it or don't use it. And if you do, use it exclusively or beneath plain jQuery collections, the choice is completely up to you.
+</p>
+<h3 id="example2">
+    Want another example?
+</h3>
+<pre><code>var f$ = funkyDOM,
+    f = funkyJS;
+
+// a "Clickable" class constructor
+function Clickable (selector, root) {
+    // get root element and make egocentric methods
+    this.$root = fdom(selector, root).
+        ego('addClass', 'removeClass', 'toggleClass');
+
+    // create a activate method
+    this.activate = this.$root.evoke('addClass', 'is-clicked');
+    // create a deactivate method
+    this.deactivate = this.$root.evoke('removeClass', 'is-clicked');
+    // create a toggle method and bind it
+    this.toggle = this.$root.evoke('toggleClass', 'is-clicked');
+
+    // set css and event listeners
+    this.$root.css('cursor', 'pointer').on('click', this.toggle);
+}
+
+// create a factory function for the constructor
+var makeClickable = f.factory(Clickable);</code></pre>
+<p>
+    The example demonstrates how to create a class and all of it's methods just inside the constructor. Finally, the constructor is passed into funkyJS.factory which returns a factory function for it which eliminates the need for the "new" keyword. Don't panic if you havn't chosen the funkyJS objects module, you can still use the Clickable constructor, just prefix it with "new" like:
+</p>
+<pre><code>new Clickable('#selector');</code></pre>
+<p>
+    It works just the same. If you want to see it in action, just click on one of the above code boxes and inspect the HTML markup through your browser inspector.
+</p>
+<h4>
+    Why all this?
+</h4>
+<p>
+    Just in case you still have this question:
+</p>
+<span class="center bg--dblue"><b>Because it's super useful</b></span>
+<p>
+    See: We created a new class  at runtime without ever having to write "function () {}" to define a method anywhere ourself, which immensly helps to remove noise from your code. On top of that, we have set an event listener to the click event which is correcly bound automatically. Of course nothing stops us from adding more complexity to the prototype chain too, but I kind of like the idea of small things. They tend to have a much higher reuse as big fat parts of any application. So this is it: A class which can be used on any clickable element, which adds and removes (programatically) or toggles (event driven as well as programatically) the CSS class "is-clicked" on the element. I'm sure you can come up with more usable solutions yourself :)
+</p>
+<h4>
+    Additionals
+</h4>
+<p>
+    If you need more stuff to chew on, think about this: You've already seen that funkyDOM makes it possible to create deferred functions of method invocations as well as egocentric methods on the created collection. First of all, what do you think happens if we write this:
+</p>
+<pre><code>var styleBody = funkyDOM('body').ego('css').css;</code></pre>
+<p>
+    Of course, the variable now contains the function which represents the "css" method of the collection containing &lt;body&gt; which is a egocentric method since we called "ego" with it as argument. All right.
+    <br>
+    Now we can style the body element by calling "styleBody" with the arguments we want. See?
+</p>
+<pre><code>styleBody({fontSize: 16});</code></pre>
+<p>
+    If "styleBody" has been a plain old function like the usually ones: 
+</p>
+<pre><code>function styleBody (props) {
+    $('body').css(props);
+}</code></pre>
+<p>
+    the calling chain would have stopped here. But this isn't just a plain function. This one has super powers! &hellip; OK, it's a normal function, but with a little twist on it: It automatically is executed in the context of the body collection and – guess what – it returns the collection after a call!
+</p>
+<pre><code>styleBody({fontSize: 16}).html('&lt;h1&gt;Hello World&lt;/h1&gt;');</code></pre>
+<p>
+    How cool is that? Passing around a bound function itself can be really powerful and usually leads to different solutions which we might not think of in the first place but which are often much easier to understand than the usual ones. And by using the evoke method of every funkyDOM collection, you may also predefine a function invocation with the evoke method. That gives you, instead of the raw function, the invocation of a function with optionally predefined arguments (as seen above). And the invocation of a function returns the same as the function itself does if it is invoked: The collection it is about.
+</p>
+<p>
+    Here's some usual stuff to do: Set up a eventlistener which triggers a animation and unbinds itself after a click. Just stuff it into a class if you like, abstracting it further into a more reusable component:
+</p>
+<pre><code>// simple implementation (example)
+var listener = body.ego('animate', 'off').
+    evoke('animate', {fontSize: 16}, 500, body.evoke('off', 'click'));
+
+body.on('click', listener);
+
+// class implementation (example)
+function Anim (el, props, ms) {
+    this.el = funkyDOM(el).ego('animate', 'on', 'off');
+    this.offClick = this.el.evoke('off', 'click');
+    this.onClick = this.el.evoke('on', 'click');
+    this.animate = this.el.evoke('animate', props, ms, this.offClick);
+
+    this.onClick(this.animate);
+}
+
+var anim = new Anim('#myElement', {left: 300}, 500);</code></pre>
+<h3 id="docs">
+    Documentation
+</h3>
+<p>
+    Below you'll find the documentation of the static and instance/collection methods provided by funkyDOM.
+</p>
+<table class="doc">
+    <caption>Static methods</caption>
+    <thead>
+        <tr>
+            <th>funkyDOM.method</th>
+            <th>args</th>
+            <th>arg type(s)</th>
+            <th>returns</th>
+        </tr>
+        <tr>
+            <th colspan="4">Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>ego</td>
+            <td>self, method1 [, ...methodN]</td>
+            <td>collection, string1 [, ...stringN]</td>
+            <td>collection</td>
+        </tr>
+        <tr>
+            <td colspan="4" class="doc_method">
+            Given a collection and one to N method names, makes all fields which are methods on the collection egocentric or bound to the collection. Returns the collection.
+            </td>
+        </tr>
+        <tr>
+            <td>is</td>
+            <td>self</td>
+            <td>collection</td>
+            <td>boolean</td>
+        </tr>
+        <tr>
+            <td colspan="4" class="doc_method">
+            Given a collection returns true if it is a funkyDOM collection and false if not.
+            </td>
+        </tr>
+        <tr>
+            <td>evoke</td>
+            <td>self, method [, ... additional args]</td>
+            <td>collection, string [, ...*]</td>
+            <td>function</td>
+        </tr>
+        <tr>
+            <td colspan="4" class="doc_method">
+            Given a collection, a method name and one to N optional arguments, returns a function wrapping the invocation of the method with the given arguments predefined from the left. Additional arguments passed to the deferred invocation at application time are added to the right of the predefined argument set.
+            </td>
+        </tr>
+        <tr>
+            <td>evokeRight</td>
+            <td>self, method [, ... additional args]</td>
+            <td>collection, string [, ...*]</td>
+            <td>function</td>
+        </tr>
+        <tr>
+            <td colspan="4" class="doc_method">
+            Given a collection, a method name and one to N optional arguments, returns a function wrapping the invocation of the method with the given arguments predefined from the right. Additional arguments passed to the deferred invocation at application time are added to the left of the predefined argument set.
+            </td>
+        </tr>
+        <tr>
+            <td>advisable</td>
+            <td>self, method</td>
+            <td>collection, string</td>
+            <td>collection</td>
+        </tr>
+        <tr>
+            <td colspan="4" class="doc_method">
+            Given a collection and a method name, makes the given method advisable. A advisable method has like method-methods: Methods you can call on the methods itself. Please see the funkyJS documentation for detailed information (coming soon, currently on Github: https://github.com/urbandrone/funkyJS2/)
+            </td>
+        </tr>
+        <tr>
+            <td>unique</td>
+            <td>self</td>
+            <td>collection</td>
+            <td>new collection</td>
+        </tr>
+        <tr>
+            <td colspan="4" class="doc_method">
+            Returns a new collection with all duplicates removed. Very useful if you have build a collection from a array of elements which contains some doubled ones.
+            </td>
+        </tr>
+        <tr>
+            <td>union</td>
+            <td>self, other</td>
+            <td>collection, collection</td>
+            <td>new collection</td>
+        </tr>
+        <tr>
+            <td colspan="4" class="doc_method">
+            Returns a collection with the union of two collections, so that both collections are merged into another but all duplicated elements have been removed.
+            </td>
+        </tr>
+        <tr>
+            <td>intersect</td>
+            <td>self, other</td>
+            <td>collection, collection</td>
+            <td>new collection</td>
+        </tr>
+        <tr>
+            <td colspan="4" class="doc_method">
+            Returns a collection with the intersection of two other collections.
+            </td>
+        </tr>
+        <tr>
+            <td>difference</td>
+            <td>self, other</td>
+            <td>collection, collection</td>
+            <td>new collection</td>
+        </tr>
+        <tr>
+            <td colspan="4" class="doc_method">
+            Returns a new collection containing the difference of two given collections.
+            </td>
+        </tr>
+        <tr>
+            <td>forEach</td>
+            <td>self, fn [, scope]</td>
+            <td>collection, fn [, *]</td>
+            <td>collection</td>
+        </tr>
+        <tr>
+            <td colspan="4" class="doc_method">
+            Finally makes jQuery's "each" method behave like the one on Array.prototype insofar, as it alters the given arguments to the equivalents of a array ones.
+<pre><code>jQuery.each(collection, fn(index, item));
+funkyDOM.forEach(collection, fn(item, index, allItems), context);</code></pre>
+            . For technical reasons, it's impossible to overwrite jQuery's/Zepto's "each" method because there is no way to determine the past call stack to find out which <em>internal</em> each method has been called by a wrapped method inside the funkyDOM wrapper, and which calls have been made from <em>outside</em> the wrapper. Hence the name.
+            </td>
+        </tr>
+        <tr>
+            <td>mapEach</td>
+            <td>self, fn [, scope]</td>
+            <td>collection, fn [, *]</td>
+            <td>new collection</td>
+        </tr>
+        <tr>
+            <td colspan="4" class="doc_method">
+            Finally makes jQuery's "map" method behave like the one on Array.prototype insofar, as it alters the given arguments to the equivalents of a array ones.
+<pre><code>jQuery.map(collection, fn(index, item));
+funkyDOM.mapEach(collection, fn(item, index, allItems), context);</code></pre>
+            . For technical reasons, it's impossible to overwrite jQuery's/Zepto's "filter" method because there is no way to determine the past call stack to find out which <em>internal</em> filter method has been called by a wrapped method inside the funkyDOM wrapper, and which calls have been made from <em>outside</em> the wrapper. Hence the name.
+            </td>
+        </tr>
+        <tr>
+            <td>filterEach</td>
+            <td>self, fn [, scope]</td>
+            <td>collection, fn [, *]</td>
+            <td>new collection</td>
+        </tr>
+        <tr>
+            <td colspan="4" class="doc_method">
+            Finally makes jQuery's "filter" method behave like the one on Array.prototype insofar, as it alters the given arguments to the equivalents of a array ones.
+<pre><code>jQuery.filter(collection, fn(index, item));
+funkyDOM.filterEach(collection, fn(item, index, allItems), context);</code></pre>
+            . For technical reasons, it's impossible to overwrite jQuery's/Zepto's "filter" method because there is no way to determine the past call stack to find out which <em>internal</em> filter method has been called by a wrapped method inside the funkyDOM wrapper, and which calls have been made from <em>outside</em> the wrapper. Hence the name.
+            </td>
+        </tr>
+        <tr>
+            <td>foldEach</td>
+            <td>self, fn, seed [, scope]</td>
+            <td>collection, fn, * [, *]</td>
+            <td>new collection</td>
+        </tr>
+        <tr>
+            <td colspan="4" class="doc_method">
+            Returns a folded/reduced collection, depending on the function and the type of seed given to it. Below is an example
+<pre><code>var f$ = funkyDOM;
+var divs = f$('div');
+var divClasses = f$.foldEach(divs, function (acc, div) {
+    return div.className + (acc ? ' ' + acc : ' ');
+}, '');
+
+console.log(divClasses.split(' '));
+// -> ['my-class', 'my-other', 'some-third-class']</code></pre>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<table class="doc">
+    <caption>Instance/Collection methods</caption>
+    <thead>
+        <tr>
+            <th>collection.method</th>
+            <th>args</th>
+            <th>arg type(s)</th>
+            <th>returns</th>
+        </tr>
+        <tr>
+            <th colspan="4">Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>ego</td>
+            <td>method1 [, ...methodN]</td>
+            <td>string1 [, ...stringN]</td>
+            <td>collection</td>
+        </tr>
+        <tr>
+            <td colspan="4" class="doc_method">
+            Given one to N method names, makes all fields which are methods on the collection egocentric or bound to the collection. Returns the collection.
+            </td>
+        </tr>
+        <tr>
+            <td>evoke</td>
+            <td>method [, ... additional args]</td>
+            <td>string [, ...*]</td>
+            <td>function</td>
+        </tr>
+        <tr>
+            <td colspan="4" class="doc_method">
+            Given a method name and one to N optional arguments, returns a function wrapping the invocation of the method with the given arguments predefined from the left. Additional arguments passed to the deferred invocation at application time are added to the right of the predefined argument set.
+            </td>
+        </tr>
+        <tr>
+            <td>advisable</td>
+            <td>method</td>
+            <td>string</td>
+            <td>collection</td>
+        </tr>
+        <tr>
+            <td colspan="4" class="doc_method">
+            Given a method name, makes the given method advisable. A advisable method has like method-methods: Methods you can call on the methods itself. Please see the funkyJS documentation for detailed information (coming soon, currently on Github: https://github.com/urbandrone/funkyJS2/)
+            </td>
+        </tr>
+        <tr>
+            <td>unique</td>
+            <td>-</td>
+            <td>-</td>
+            <td>new collection</td>
+        </tr>
+        <tr>
+            <td colspan="4" class="doc_method">
+            Returns a new collection with all duplicates removed. Very useful if you have build a collection from a array of elements which contains some doubled ones.
+            </td>
+        </tr>
+        <tr>
+            <td>union</td>
+            <td>other</td>
+            <td>collection</td>
+            <td>new collection</td>
+        </tr>
+        <tr>
+            <td colspan="4" class="doc_method">
+            Returns a collection with the union of two collections, so that both collections are merged into another but all duplicated elements have been removed.
+            </td>
+        </tr>
+        <tr>
+            <td>intersect</td>
+            <td>other</td>
+            <td>collection</td>
+            <td>new collection</td>
+        </tr>
+        <tr>
+            <td colspan="4" class="doc_method">
+            Returns a collection with the intersection of two collections.
+            </td>
+        </tr>
+        <tr>
+            <td>difference</td>
+            <td>other</td>
+            <td>collection</td>
+            <td>new collection</td>
+        </tr>
+        <tr>
+            <td colspan="4" class="doc_method">
+            Returns a new collection containing the difference of two given collections.
+            </td>
+        </tr>
+        <tr>
+            <td>forEach</td>
+            <td>fn [, scope]</td>
+            <td>fn [, *]</td>
+            <td>collection</td>
+        </tr>
+        <tr>
+            <td colspan="4" class="doc_method">
+            Finally makes jQuery's "each" method behave like the one on Array.prototype insofar, as it alters the given arguments to the equivalents of a array ones.
+<pre><code>$collection.each(fn(index, item));
+f$collection.forEach(fn(item, index, allItems), context);</code></pre>
+            . For technical reasons, it's impossible to overwrite jQuery's/Zepto's "each" method because there is no way to determine the past call stack to find out which <em>internal</em> each method has been called by a wrapped method inside the funkyDOM wrapper, and which calls have been made from <em>outside</em> the wrapper. Hence the name.
+            </td>
+        </tr>
+        <tr>
+            <td>mapEach</td>
+            <td>fn [, scope]</td>
+            <td>fn [, *]</td>
+            <td>new collection</td>
+        </tr>
+        <tr>
+            <td colspan="4" class="doc_method">
+            Finally makes jQuery's "map" method behave like the one on Array.prototype insofar, as it alters the given arguments to the equivalents of a array ones.
+<pre><code>$collection.map(fn(index, item));
+f$collection.mapEach(fn(item, index, allItems), context);</code></pre>
+            . For technical reasons, it's impossible to overwrite jQuery's/Zepto's "filter" method because there is no way to determine the past call stack to find out which <em>internal</em> filter method has been called by a wrapped method inside the funkyDOM wrapper, and which calls have been made from <em>outside</em> the wrapper. Hence the name.
+            </td>
+        </tr>
+        <tr>
+            <td>filterEach</td>
+            <td>fn [, scope]</td>
+            <td>fn [, *]</td>
+            <td>new collection</td>
+        </tr>
+        <tr>
+            <td colspan="4" class="doc_method">
+            Finally makes jQuery's "filter" method behave like the one on Array.prototype insofar, as it alters the given arguments to the equivalents of a array ones.
+<pre><code>$collection.filter(fn(index, item));
+f$collection.filterEach(fn(item, index, allItems), context);</code></pre>
+            . For technical reasons, it's impossible to overwrite jQuery's/Zepto's "filter" method because there is no way to determine the past call stack to find out which <em>internal</em> filter method has been called by a wrapped method inside the funkyDOM wrapper, and which calls have been made from <em>outside</em> the wrapper. Hence the name.
+            </td>
+        </tr>
+        <tr>
+            <td>foldEach</td>
+            <td>fn, seed [, scope]</td>
+            <td>fn, * [, *]</td>
+            <td>new collection</td>
+        </tr>
+        <tr>
+            <td colspan="4" class="doc_method">
+            Returns a folded/reduced collection, depending on the function and the type of seed given to it. Below is an example
+<pre><code>var f$ = funkyDOM;
+var divClasses = f$('div').foldEach(function (acc, div) {
+    return div.className + (acc ? ' ' + acc : ' ');
+}, '');
+
+console.log(divClasses.split(' '));
+// -> ['my-class', 'my-other', 'some-third-class']</code></pre>
+            </td>
+        </tr>
+        <tr>
+            <td>to$</td>
+            <td>-</td>
+            <td>-</td>
+            <td>jQuery/Zepto collection</td>
+        </tr>
+        <tr>
+            <td colspan="4" class="doc_method">
+            Returns a jQuery (or Zepto) collection from the funkyDOM collection.</code></pre>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p>
+    Additionally, here is the list of jQuery methods which are modified when creating a funkyDOM collection. They work just the same but ensure to return a funkyDOM collection instead of a plain jQuery collection.
+</p>
+<table class="doc">
+    <caption>Altered methods</caption>
+    <thead>
+        <tr>
+            <th>collection.method</th>
+            <th>returns</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>find</td>
+            <td>new funkyDOM collection</td>
+        </tr>
+        <tr>
+            <td>closest</td>
+            <td>new funkyDOM collection</td>
+        </tr>
+        <tr>
+            <td>parent</td>
+            <td>new funkyDOM collection</td>
+        </tr>
+        <tr>
+            <td>parents</td>
+            <td>new funkyDOM collection</td>
+        </tr>
+        <tr>
+            <td>parentsUntil</td>
+            <td>new funkyDOM collection</td>
+        </tr>
+        <tr>
+            <td>children</td>
+            <td>new funkyDOM collection</td>
+        </tr>
+        <tr>
+            <td>siblings</td>
+            <td>new funkyDOM collection</td>
+        </tr>
+        <tr>
+            <td>prev</td>
+            <td>new funkyDOM collection</td>
+        </tr>
+        <tr>
+            <td>prevAll</td>
+            <td>new funkyDOM collection</td>
+        </tr>
+        <tr>
+            <td>prevUntil</td>
+            <td>new funkyDOM collection</td>
+        </tr>
+        <tr>
+            <td>next</td>
+            <td>new funkyDOM collection</td>
+        </tr>
+        <tr>
+            <td>nextAll</td>
+            <td>new funkyDOM collection</td>
+        </tr>
+        <tr>
+            <td>nextUntil</td>
+            <td>new funkyDOM collection</td>
+        </tr>
+        <tr>
+            <td>contents</td>
+            <td>new funkyDOM collection</td>
+        </tr>
+        <tr>
+            <td>eq</td>
+            <td>new funkyDOM collection</td>
+        </tr>
+        <tr>
+            <td>first</td>
+            <td>new funkyDOM collection</td>
+        </tr>
+        <tr>
+            <td>last</td>
+            <td>new funkyDOM collection</td>
+        </tr>
+        <tr>
+            <td>offsetParent</td>
+            <td>new funkyDOM collection</td>
+        </tr>
+        <tr>
+            <td>add</td>
+            <td>new funkyDOM collection</td>
+        </tr>
+        <tr>
+            <td>addSelf</td>
+            <td>new funkyDOM collection</td>
+        </tr>
+        <tr>
+            <td>addBack</td>
+            <td>new funkyDOM collection</td>
+        </tr>
+        <tr>
+            <td>end</td>
+            <td>new funkyDOM collection</td>
+        </tr>
+        <tr>
+            <td>has</td>
+            <td>new funkyDOM collection</td>
+        </tr>
+        <tr>
+            <td>clone</td>
+            <td>new funkyDOM collection</td>
+        </tr>
+        <tr>
+            <td>not</td>
+            <td>new funkyDOM collection</td>
+        </tr>
+    </tbody>
+</table>
+<!-- NAVIGATION -->
+<div class="nav bg--dblue">
+    <ul>
+        <li>
+            <a href="#top" class="nav_link fg--lblue is-active">About</a>
+        </li>
+        <li>
+            <a href="#example1" class="nav_link fg--lblue">Example</a>
+        </li>
+        <li>
+            <a href="#example2" class="nav_link fg--lblue">Other example</a>
+        </li>
+        <li>
+            <a href="#docs" class="nav_link fg--lblue">Documentation</a>
+        </li>
+    </ul>
+</div>
+
+
+
+

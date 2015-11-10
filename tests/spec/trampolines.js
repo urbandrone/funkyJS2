@@ -1,5 +1,5 @@
 /* globals describe, it, expect, funkyJS */
-describe('funkyJS Trampolines Extension Module', function () {
+describe('funkyJS Trampolines Module', function () {
 
     var _flatten = function (acc, arr) {
         if (arr.length < 1) {

@@ -1,5 +1,5 @@
 /* global describe, it, expect, funkyJS */
-describe('funkyJS Iterators Extension Module', function () {
+describe('funkyJS Iterators Module', function () {
 
     var SEQ_STR = 'abc',
         SEQ_ARR = ['a', 'b', 'c'],

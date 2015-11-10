@@ -1,7 +1,7 @@
 {
     "project": {
         "name": "funkyjs-2",
-        "version": "2.0.0",
+        "version": "2.1.0",
         "description": "Second version of funkyJS",
         "logo": "logo.png"
     },
@@ -83,10 +83,10 @@
             },
             "namespaces": {}
         },
-        "sources\\decorators.js": {
-            "name": "sources\\decorators.js",
+        "sources\\decorators.beyond.js": {
+            "name": "sources\\decorators.beyond.js",
             "modules": {
-                "decorators": 1
+                "decorators.extensions": 1
             },
             "classes": {},
             "fors": {
@@ -94,10 +94,10 @@
             },
             "namespaces": {}
         },
-        "sources\\decorators.more.js": {
-            "name": "sources\\decorators.more.js",
+        "sources\\decorators.js": {
+            "name": "sources\\decorators.js",
             "modules": {
-                "decorators.extensions": 1
+                "decorators": 1
             },
             "classes": {},
             "fors": {
@@ -270,6 +270,18 @@
             "file": "sources\\contracts.js",
             "line": 29
         },
+        "decorators.extensions": {
+            "name": "decorators.extensions",
+            "submodules": {},
+            "classes": {},
+            "fors": {
+                "funkyJS": 1
+            },
+            "namespaces": {},
+            "tag": "module",
+            "file": "sources\\decorators.beyond.js",
+            "line": 32
+        },
         "decorators": {
             "name": "decorators",
             "submodules": {},
@@ -281,18 +293,6 @@
             "tag": "module",
             "file": "sources\\decorators.js",
             "line": 22
-        },
-        "decorators.extensions": {
-            "name": "decorators.extensions",
-            "submodules": {},
-            "classes": {},
-            "fors": {
-                "funkyJS": 1
-            },
-            "namespaces": {},
-            "tag": "module",
-            "file": "sources\\decorators.more.js",
-            "line": 32
         },
         "functors": {
             "name": "functors",
@@ -972,14 +972,14 @@
         {
             "file": "sources\\arrays.js",
             "line": 496,
-            "description": "The unique function takes a sequencial value and returns a new array from it\n    which contains only the unique items",
+            "description": "The unique function takes a enumerable value and returns a new array from it\n    which contains only the unique items",
             "itemtype": "method",
             "name": "unique",
             "params": [
                 {
                     "name": "a",
-                    "description": "The original sequencial",
-                    "type": "Array|nodelist|arguments|string"
+                    "description": "The original enumerable",
+                    "type": "Array|nodelist|arguments|string|object"
                 }
             ],
             "return": {
@@ -1018,19 +1018,19 @@
         {
             "file": "sources\\arrays.js",
             "line": 579,
-            "description": "Given two sequencial values, the union function returns a new array which\n    contains the unique values of both",
+            "description": "Given two enumerable values, the union function returns a new array which\n    contains the unique values of both",
             "itemtype": "method",
             "name": "union",
             "params": [
                 {
                     "name": "a1",
-                    "description": "First sequencial",
-                    "type": "Array|nodelist|arguments|string"
+                    "description": "First enumerable",
+                    "type": "Array|nodelist|arguments|string|object"
                 },
                 {
                     "name": "a2",
-                    "description": "Second sequencial",
-                    "type": "Array|nodelist|arguments|string"
+                    "description": "Second enumerable",
+                    "type": "Array|nodelist|arguments|string|object"
                 }
             ],
             "return": {
@@ -1046,19 +1046,19 @@
         {
             "file": "sources\\arrays.js",
             "line": 613,
-            "description": "Given two sequencial values, the intersect function returns a new array which\n    contains the intersection of both",
+            "description": "Given two enumerable values, the intersect function returns a new array which\n    contains the intersection of both",
             "itemtype": "method",
             "name": "intersect",
             "params": [
                 {
                     "name": "a1",
-                    "description": "First sequencial",
-                    "type": "Array|nodelist|arguments|string"
+                    "description": "First enumerable",
+                    "type": "Array|nodelist|arguments|string|object"
                 },
                 {
                     "name": "a2",
-                    "description": "Second sequencial",
-                    "type": "Array|nodelist|arguments|string"
+                    "description": "Second enumerable",
+                    "type": "Array|nodelist|arguments|string|object"
                 }
             ],
             "return": {
@@ -1074,19 +1074,19 @@
         {
             "file": "sources\\arrays.js",
             "line": 655,
-            "description": "Given two sequencial values, the difference function returns a new array which\n    contains the difference of both",
+            "description": "Given two enumerable values, the difference function returns a new array which\n    contains the difference of both",
             "itemtype": "method",
             "name": "difference",
             "params": [
                 {
                     "name": "a1",
-                    "description": "First sequencial",
-                    "type": "Array|nodelist|arguments|string"
+                    "description": "First enumerable",
+                    "type": "Array|nodelist|arguments|string|object"
                 },
                 {
                     "name": "a2",
-                    "description": "Second sequencial",
-                    "type": "Array|nodelist|arguments|string"
+                    "description": "Second enumerable",
+                    "type": "Array|nodelist|arguments|string|object"
                 }
             ],
             "return": {
@@ -1718,6 +1718,92 @@
             "module": "contracts"
         },
         {
+            "file": "sources\\decorators.beyond.js",
+            "line": 65,
+            "description": "The hom function allows to fix the types of arguments a function accepts and\n    the type of output value a function must return to any type of function\n    by passing input contracts and a output contract. This allows to implement\n    some kind of typesafe functions known from for example Java into the JS\n    world. The first call to hom returns a function, which accepts a function\n    descibing the operation to perform.",
+            "itemtype": "method",
+            "name": "hom",
+            "params": [
+                {
+                    "name": "ins",
+                    "description": "Array of input contract functions",
+                    "type": "Array"
+                },
+                {
+                    "name": "out",
+                    "description": "The output contract function",
+                    "type": "Function"
+                }
+            ],
+            "return": {
+                "description": "Function awaiting a operation",
+                "type": "Function"
+            },
+            "example": [
+                "\n    // a \"Person\" constructor, which is highly dependend on the types of\n    //   arguments passed to it to function correctly\n    var Person = function (name, birthdate) {\n        var _now = +(new Date()) - (+birthdate);\n\n        this.name = Person.formatName(name);\n        this.age = Person.calcAge(_now);\n        return this;\n    }\n\n    // a \"isPerson\" contract\n    Person.is = function (instance) {\n        return Person.prototype.isPrototypeOf(instance);\n    }\n\n    Person.formatName = function (name) { ... }\n    Person.calcAge = function (msSinceBirth) { ... }\n\n\n\n    // create a factory function which is typesafe\n    Person.make = funkyJS.hom(\n        // enforce incoming arguments to be a string and\n        //   a date object. any function which returns a\n        //   boolean result may be used here\n        [funkyJS.isString, funkyJS.isDate],\n        Person.is\n    )(function (name, birthday) {\n        if (+birthday > +(new Date())) {\n            // this throws error because it violates the\n            //   output contract, so we are able to detect\n            //   persons created with a date in future\n            return null;\n        }\n        return new Person(name, birthday);\n    });\n\n\n\n    Person.make('john doe', new Date(1985, 2, 25));\n    // -> Person(name:'John Doe', age: ... );\n\n    Person.make(1, 0);\n    // -> Error\n\n    Person.make('john doe', 0);\n    // -> Error\n\n    Person.make('john doe', new Date());\n    // -> Person(name:'John Doe', age: 0); // just born\n\n    Person.make('john doe', new Date(2320, 2, 25));\n    // -> Error\n\n\n\n    // the behaviour of hom allows also to store for example a creation\n    //   process before defining the type of output\n    var fromStrDateMake = funkyJS.hom([\n        funkyJS.isString,\n        funkyJS.isDate\n    ]);\n\n    // a delivery label factory\n    var labelDelivery = function (id, deliveryDate) {\n        return {\n            id: 'label-' + id,\n            delivered: deliveryDate.toISOString()\n        };\n    }\n\n    var isLabel = funkyJS.hom(\n        [funkyJS.isObject],\n        funkyJS.isObject\n    )(function (label) {\n        if (funkyJS.has('id', label) && funkyJS.has('delivered', label)) {\n            return label;\n        }\n        return null;\n    });\n\n\n    // the factory for Person rewritten\n    Person.make = fromStrDateMake(Person.is)(function (name, bDay) {\n        return new Person(name, bDay);\n    });\n\n    // the label factory\n    var makeLabel = fromStrDateMake(isLabel)(labelDelivery);\n"
+            ],
+            "class": "funkyJS",
+            "module": "decorators.extensions"
+        },
+        {
+            "file": "sources\\decorators.beyond.js",
+            "line": 214,
+            "description": "The multiDispatch function allows to create so called multi methods, known\n    from LISP, which makes it possible to define a single function, composed\n    out of multiple functions which are called depending on the type of the\n    input arguments. Please note that the arity of a multi method/multiple\n    dispatched function is zero, so it might be useful to use the aritize\n    function after creating a multi dispatched function depending on the\n    usecase",
+            "itemtype": "method",
+            "name": "multiDispatch",
+            "params": [
+                {
+                    "name": "defs",
+                    "description": "Definition objects of a function in a multi method",
+                    "type": "Array"
+                }
+            ],
+            "return": {
+                "description": "The multi method",
+                "type": "Function"
+            },
+            "example": [
+                "\n\n    var multiply = funkyJS.multiDispatch([{\n        // this definition says:\n        // -> input must be 2 arguments of type number\n        // -> output must be of type number\n        // -> operation to perform if input validates\n        args: [funkyJS.isNumber, funkyJS.isNumber],\n        out: funkyJS.isNumber,\n        proc: function (n1, n2) {\n            return n1 * n2;\n        }\n    }, {\n        // this definition says:\n        // -> input must be 1 argument of type number\n        // -> any output accepted\n        // -> operation to perform if input validates\n        args: [funkyJS.isNumber],\n        proc: function (n) {\n            return n * n;\n        }\n    }, {\n        args: [funkyJS.isArray],\n        out: funkyJS.isNumber,\n        proc: function (list) {\n            return list.slice(1).reduce(function (acc, n) {\n                return acc * n;\n            }, list[0]);\n        }\n    }]);\n\n    multiply(2, 3);\n    // -> 6\n\n    multiply(9);\n    // -> 81\n\n    multiply([1, 2, 3, 4, 5]);\n    // -> 120\n\n    multiply(null);\n    // -> undefined\n\n    multiply.length;\n    // -> 0\n\n    // uses the aritize function to create the arity wanted\n    multiply = funkyJS.aritize(2, true)(multiply);\n\n    multiply.length;\n    // -> 2\n\n    // works like before\n    multiply(2, 3);\n    // -> 6\n\n    // works also with single argument like before\n    multiply(9);\n    // -> 81\n\n    // or with arrays\n    multiply([1, 2, 3, 4, 5]);\n    // -> 120\n"
+            ],
+            "class": "funkyJS",
+            "module": "decorators.extensions"
+        },
+        {
+            "file": "sources\\decorators.beyond.js",
+            "line": 330,
+            "description": "The displaceArgs function allows to rearrange the position of arguments passed\n    to a function before the function is applied to them. This is especially\n    useful if a function should be reused, but the order of arguments it\n    consumes does not match for any reason with the new implementation (for\n    example: a incoming array should be applied to a existing function, but\n    the order of items is incorrect)",
+            "itemtype": "method",
+            "name": "displaceArgs",
+            "params": [
+                {
+                    "name": "fn",
+                    "description": "A function with the operation",
+                    "type": "Function"
+                },
+                {
+                    "name": "positions",
+                    "description": "Index:value pairs where the values or the argument positions",
+                    "type": "Array"
+                }
+            ],
+            "return": {
+                "description": "A wrapper function",
+                "type": "Function"
+            },
+            "example": [
+                "\n    var add = function (a, b) {\n        return a + b;\n    }\n\n    add('a', 'z');\n    // -> 'az'\n\n    var revAdd = funkyJS.displaceArgs(add, [1, 0]);\n\n    revAdd('z', 'a');\n    // -> 'az'\n"
+            ],
+            "class": "funkyJS",
+            "module": "decorators.extensions"
+        },
+        {
+            "file": "sources\\decorators.beyond.js",
+            "line": 393,
+            "description": "EXPORT\n======",
+            "class": "funkyJS",
+            "module": "decorators.extensions"
+        },
+        {
             "file": "sources\\decorators.js",
             "line": 56,
             "description": "Given a function, the flip function returns a function which takes in the\n    number of arguments from the given one but applies the arguments to the\n    given function reversed",
@@ -2056,92 +2142,6 @@
             "description": "EXPORT\n======",
             "class": "funkyJS",
             "module": "decorators"
-        },
-        {
-            "file": "sources\\decorators.more.js",
-            "line": 65,
-            "description": "The hom function allows to fix the types of arguments a function accepts and\n    the type of output value a function must return to any type of function\n    by passing input contracts and a output contract. This allows to implement\n    some kind of typesafe functions known from for example Java into the JS\n    world. The first call to hom returns a function, which accepts a function\n    descibing the operation to perform.",
-            "itemtype": "method",
-            "name": "hom",
-            "params": [
-                {
-                    "name": "ins",
-                    "description": "Array of input contract functions",
-                    "type": "Array"
-                },
-                {
-                    "name": "out",
-                    "description": "The output contract function",
-                    "type": "Function"
-                }
-            ],
-            "return": {
-                "description": "Function awaiting a operation",
-                "type": "Function"
-            },
-            "example": [
-                "\n    // a \"Person\" constructor, which is highly dependend on the types of\n    //   arguments passed to it to function correctly\n    var Person = function (name, birthdate) {\n        var _now = +(new Date()) - (+birthdate);\n\n        this.name = Person.formatName(name);\n        this.age = Person.calcAge(_now);\n        return this;\n    }\n\n    // a \"isPerson\" contract\n    Person.is = function (instance) {\n        return Person.prototype.isPrototypeOf(instance);\n    }\n\n    Person.formatName = function (name) { ... }\n    Person.calcAge = function (msSinceBirth) { ... }\n\n\n\n    // create a factory function which is typesafe\n    Person.make = funkyJS.hom(\n        // enforce incoming arguments to be a string and\n        //   a date object. any function which returns a\n        //   boolean result may be used here\n        [funkyJS.isString, funkyJS.isDate],\n        Person.is\n    )(function (name, birthday) {\n        if (+birthday > +(new Date())) {\n            // this throws error because it violates the\n            //   output contract, so we are able to detect\n            //   persons created with a date in future\n            return null;\n        }\n        return new Person(name, birthday);\n    });\n\n\n\n    Person.make('john doe', new Date(1985, 2, 25));\n    // -> Person(name:'John Doe', age: ... );\n\n    Person.make(1, 0);\n    // -> Error\n\n    Person.make('john doe', 0);\n    // -> Error\n\n    Person.make('john doe', new Date());\n    // -> Person(name:'John Doe', age: 0); // just born\n\n    Person.make('john doe', new Date(2320, 2, 25));\n    // -> Error\n\n\n\n    // the behaviour of hom allows also to store for example a creation\n    //   process before defining the type of output\n    var fromStrDateMake = funkyJS.hom([\n        funkyJS.isString,\n        funkyJS.isDate\n    ]);\n\n    // a delivery label factory\n    var labelDelivery = function (id, deliveryDate) {\n        return {\n            id: 'label-' + id,\n            delivered: deliveryDate.toISOString()\n        };\n    }\n\n    var isLabel = funkyJS.hom(\n        [funkyJS.isObject],\n        funkyJS.isObject\n    )(function (label) {\n        if (funkyJS.has('id', label) && funkyJS.has('delivered', label)) {\n            return label;\n        }\n        return null;\n    });\n\n\n    // the factory for Person rewritten\n    Person.make = fromStrDateMake(Person.is)(function (name, bDay) {\n        return new Person(name, bDay);\n    });\n\n    // the label factory\n    var makeLabel = fromStrDateMake(isLabel)(labelDelivery);\n"
-            ],
-            "class": "funkyJS",
-            "module": "decorators.extensions"
-        },
-        {
-            "file": "sources\\decorators.more.js",
-            "line": 214,
-            "description": "The multiDispatch function allows to create so called multi methods, known\n    from LISP, which makes it possible to define a single function, composed\n    out of multiple functions which are called depending on the type of the\n    input arguments. Please note that the arity of a multi method/multiple\n    dispatched function is zero, so it might be useful to use the aritize\n    function after creating a multi dispatched function depending on the\n    usecase",
-            "itemtype": "method",
-            "name": "multiDispatch",
-            "params": [
-                {
-                    "name": "defs",
-                    "description": "Definition objects of a function in a multi method",
-                    "type": "Array"
-                }
-            ],
-            "return": {
-                "description": "The multi method",
-                "type": "Function"
-            },
-            "example": [
-                "\n\n    var multiply = funkyJS.multiDispatch([{\n        // this definition says:\n        // -> input must be 2 arguments of type number\n        // -> output must be of type number\n        // -> operation to perform if input validates\n        args: [funkyJS.isNumber, funkyJS.isNumber],\n        out: funkyJS.isNumber,\n        proc: function (n1, n2) {\n            return n1 * n2;\n        }\n    }, {\n        // this definition says:\n        // -> input must be 1 argument of type number\n        // -> any output accepted\n        // -> operation to perform if input validates\n        args: [funkyJS.isNumber],\n        proc: function (n) {\n            return n * n;\n        }\n    }, {\n        args: [funkyJS.isArray],\n        out: funkyJS.isNumber,\n        proc: function (list) {\n            return list.slice(1).reduce(function (acc, n) {\n                return acc * n;\n            }, list[0]);\n        }\n    }]);\n\n    multiply(2, 3);\n    // -> 6\n\n    multiply(9);\n    // -> 81\n\n    multiply([1, 2, 3, 4, 5]);\n    // -> 120\n\n    multiply(null);\n    // -> undefined\n\n    multiply.length;\n    // -> 0\n\n    // uses the aritize function to create the arity wanted\n    multiply = funkyJS.aritize(2, true)(multiply);\n\n    multiply.length;\n    // -> 2\n\n    // works like before\n    multiply(2, 3);\n    // -> 6\n\n    // works also with single argument like before\n    multiply(9);\n    // -> 81\n\n    // or with arrays\n    multiply([1, 2, 3, 4, 5]);\n    // -> 120\n"
-            ],
-            "class": "funkyJS",
-            "module": "decorators.extensions"
-        },
-        {
-            "file": "sources\\decorators.more.js",
-            "line": 330,
-            "description": "The displaceArgs function allows to rearrange the position of arguments passed\n    to a function before the function is applied to them. This is especially\n    useful if a function should be reused, but the order of arguments it\n    consumes does not match for any reason with the new implementation (for\n    example: a incoming array should be applied to a existing function, but\n    the order of items is incorrect)",
-            "itemtype": "method",
-            "name": "displaceArgs",
-            "params": [
-                {
-                    "name": "fn",
-                    "description": "A function with the operation",
-                    "type": "Function"
-                },
-                {
-                    "name": "positions",
-                    "description": "Index:value pairs where the values or the argument positions",
-                    "type": "Array"
-                }
-            ],
-            "return": {
-                "description": "A wrapper function",
-                "type": "Function"
-            },
-            "example": [
-                "\n    var add = function (a, b) {\n        return a + b;\n    }\n\n    add('a', 'z');\n    // -> 'az'\n\n    var revAdd = funkyJS.displaceArgs(add, [1, 0]);\n\n    revAdd('z', 'a');\n    // -> 'az'\n"
-            ],
-            "class": "funkyJS",
-            "module": "decorators.extensions"
-        },
-        {
-            "file": "sources\\decorators.more.js",
-            "line": 393,
-            "description": "EXPORT\n======",
-            "class": "funkyJS",
-            "module": "decorators.extensions"
         },
         {
             "file": "sources\\functors.js",
@@ -2521,7 +2521,7 @@
         },
         {
             "file": "sources\\iterators.js",
-            "line": 472,
+            "line": 470,
             "description": "EXPORT\n======",
             "class": "funkyJS",
             "module": "iterators"
@@ -2558,7 +2558,7 @@
         },
         {
             "file": "sources\\objects.js",
-            "line": 38,
+            "line": 39,
             "description": "Takes a property or method name and a object and returns true if the object\n    has the property (not inherited) or false if not",
             "itemtype": "method",
             "name": "has",
@@ -2586,7 +2586,7 @@
         },
         {
             "file": "sources\\objects.js",
-            "line": 77,
+            "line": 78,
             "description": "Takes a property or method name and a object and returns the propertyvalue\n    on the object if it exists, otherwise null",
             "itemtype": "method",
             "name": "get",
@@ -2614,7 +2614,7 @@
         },
         {
             "file": "sources\\objects.js",
-            "line": 123,
+            "line": 124,
             "description": "Takes a property or method name and a array of objects and returns the value\n    on the named property/method for each object as a new array if it exists\n    otherwise it returns null",
             "itemtype": "method",
             "name": "pluck",
@@ -2642,7 +2642,7 @@
         },
         {
             "file": "sources\\objects.js",
-            "line": 174,
+            "line": 175,
             "description": "Given a object, the keys function returns the keys of the object or a empty\n    array if anything other than a object is given",
             "itemtype": "method",
             "name": "keys",
@@ -2665,7 +2665,7 @@
         },
         {
             "file": "sources\\objects.js",
-            "line": 211,
+            "line": 212,
             "description": "The values function returns the values of a given object as array or a empty\n    array if no values are present or anything other than a object is given",
             "itemtype": "method",
             "name": "values",
@@ -2688,7 +2688,7 @@
         },
         {
             "file": "sources\\objects.js",
-            "line": 244,
+            "line": 245,
             "description": "The methods function takes a object and returns the keys of all functions\n    that can be found on the object as array of strings or a empty array if\n    no functions are found or a non object is given",
             "itemtype": "method",
             "name": "methods",
@@ -2711,7 +2711,7 @@
         },
         {
             "file": "sources\\objects.js",
-            "line": 281,
+            "line": 282,
             "description": "If given a object, the pairs method returns a array of key-value pairs as\n    arrays or a empty array if a non-object is given",
             "itemtype": "method",
             "name": "pairs",
@@ -2734,7 +2734,7 @@
         },
         {
             "file": "sources\\objects.js",
-            "line": 314,
+            "line": 315,
             "description": "The inverse function takes in a object and returns a copy of it with the keys\n    and the values reversed, so that the keys become the values and vice-versa.\n    Note that the values should be unique and serializable to a string",
             "itemtype": "method",
             "name": "inverse",
@@ -2757,7 +2757,7 @@
         },
         {
             "file": "sources\\objects.js",
-            "line": 358,
+            "line": 359,
             "description": "The instance function always returns a instance of the given constructor. If\n    the second argument already is a instance of the constructor, it is\n    returned, otherwise a new instance of the constructor is created. This\n    allows to create instances out of every function",
             "itemtype": "method",
             "name": "instance",
@@ -2786,7 +2786,7 @@
         },
         {
             "file": "sources\\objects.js",
-            "line": 406,
+            "line": 407,
             "description": "The factory function allows to create a factory for any given constructor\n    function",
             "itemtype": "method",
             "name": "factory",
@@ -2809,7 +2809,7 @@
         },
         {
             "file": "sources\\objects.js",
-            "line": 445,
+            "line": 446,
             "description": "The extend method takes in two objects and extends the first one with the\n    last one. See also the extendWith method",
             "itemtype": "method",
             "name": "extend",
@@ -2837,7 +2837,7 @@
         },
         {
             "file": "sources\\objects.js",
-            "line": 501,
+            "line": 502,
             "description": "The extendWith method takes in two objects and extends the last one with the\n    first one. See also the extend method",
             "itemtype": "method",
             "name": "extendWith",
@@ -2865,7 +2865,7 @@
         },
         {
             "file": "sources\\objects.js",
-            "line": 550,
+            "line": 551,
             "description": "The inherits method is designed to work particularly well with constructor\n    functions. It takes a two object, from which the first one is the source\n    and the second one is the extension on the source. The returned value is\n    a new object to use as prototype",
             "itemtype": "method",
             "name": "inherits",
@@ -2893,7 +2893,7 @@
         },
         {
             "file": "sources\\objects.js",
-            "line": 613,
+            "line": 614,
             "description": "The delegate function is a way to delegate the behaviour of one object to\n    other objects. It allows to specify the methods which are available\n    exclusive. This means, if no method is specified or none of the given\n    method names exists on the provider, no method will be available\n    on the receiver either. It is mostly useful if you have a certain\n    behaviour you want to share across instances or classes/prototypes",
             "itemtype": "method",
             "name": "delegate",
@@ -2926,7 +2926,7 @@
         },
         {
             "file": "sources\\objects.js",
-            "line": 694,
+            "line": 695,
             "description": "The forward function can be used to achieve forwarding of method calls from\n    one object to another. This is useful if you want to use a object as\n    a property of some other object and want to share some methods from\n    the inner object on the outer one. It allows to specify the methods\n    exclusive. This means, if no method is specified or none of the given\n    method names exists on the receiver, no method will be available\n    on the forwarder either.",
             "itemtype": "method",
             "name": "forward",
@@ -2959,7 +2959,7 @@
         },
         {
             "file": "sources\\objects.js",
-            "line": 779,
+            "line": 780,
             "description": "The immutable function takes an object and returns a immutable copy of it",
             "itemtype": "method",
             "name": "immutable",
@@ -2982,7 +2982,7 @@
         },
         {
             "file": "sources\\objects.js",
-            "line": 821,
+            "line": 822,
             "description": "The fAccess function allows to turn a object or array into a function",
             "itemtype": "method",
             "name": "fAccess",
@@ -2999,6 +2999,35 @@
             },
             "example": [
                 "\n    var john = funkyJS.fAccess({\n        name: 'John Doe',\n        age: 30\n    });\n\n    ['name', 'age'].map(john);\n    // -> ['John Doe', 30]\n\n\n\n    var abc = funkyJS.fAccess([\n        'a', 'b', 'c', 'd', 'e', 'f', 'g',\n        'h', 'i', 'j', 'k', 'l', 'm', 'n',\n        'o', 'p', 'q', 'r', 's', 't', 'u',\n        'v', 'w', 'x', 'y', 'z', ' ', '!'\n    ]);\n\n    [7, 4, 11, 11, 14, 26, 23, 14, 18, 12, 3, 27].map(abc).join('');\n    // -> 'hello world!'\n"
+            ],
+            "class": "funkyJS",
+            "module": "objects"
+        },
+        {
+            "file": "sources\\objects.js",
+            "line": 872,
+            "description": "The exec function allows to send the call of a method to any receiver with\n    optionally preset arguments. A call will only be made if the method can\n    be found on the receiver",
+            "itemtype": "method",
+            "name": "exec",
+            "params": [
+                {
+                    "name": "fn",
+                    "description": "The name of a method or a function",
+                    "type": "String|function"
+                },
+                {
+                    "name": "args*",
+                    "description": "Optional arguments as presets",
+                    "type": "Any",
+                    "optional": true
+                }
+            ],
+            "return": {
+                "description": "Function waiting for a receiver",
+                "type": "Function"
+            },
+            "example": [
+                "\n    var f = funkyJS;\n\n    var mapSqr = f.exec('map', function (n) { return n * n;});\n\n    mapSqr([1, 2, 3, 4, 5]);\n    // -> [1, 4, 9, 16, 25]\n"
             ],
             "class": "funkyJS",
             "module": "objects"
@@ -3694,11 +3723,11 @@
         },
         {
             "message": "Missing item type\nEXPORT\n======",
-            "line": " sources\\decorators.js:795"
+            "line": " sources\\decorators.beyond.js:393"
         },
         {
             "message": "Missing item type\nEXPORT\n======",
-            "line": " sources\\decorators.more.js:393"
+            "line": " sources\\decorators.js:795"
         },
         {
             "message": "Missing item type\nEXPORT\n======",
@@ -3706,7 +3735,7 @@
         },
         {
             "message": "Missing item type\nEXPORT\n======",
-            "line": " sources\\iterators.js:472"
+            "line": " sources\\iterators.js:470"
         },
         {
             "message": "Missing item type\nEXPORT\n======",

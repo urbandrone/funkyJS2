@@ -19,7 +19,7 @@
             
         </div>
         <div class="yui3-u-1-4 version">
-            <em>API Docs for: 2.0.0</em>
+            <em>API Docs for: 2.1.0</em>
         </div>
     </div>
     <div id="bd" class="yui3-g">
@@ -151,6 +151,7 @@
     // INTERNAL UTILITES
     // =================
     var hasOwn = Object.prototype.hasOwnProperty;
+    var slice = Array.prototype.slice;
 
 
 
@@ -321,7 +322,7 @@
             return keys;
         }
 
-        if (!type.isObject(o)) {
+        if (type.isNil(o)) {
             return [];
         }
 
@@ -608,7 +609,7 @@
             }
         }
 
-        if (!type.isObject(o) || !type.isObject(s)) {
+        if (type.isNil(o) || !type.isObject(s)) {
             return o;
         }
 
@@ -969,6 +970,10 @@
 
     **/
     api.fAccess = function fAccess (o) {
+        if (arguments.length &lt; 1) {
+            return fAccess;
+        }
+
         if (!type.isObject(o) &amp;&amp; !type.isArray(o)) {
             throw &#x27;fAccess expected argument to be object but saw &#x27; + o;
         }
@@ -982,6 +987,47 @@
             value: o
         });
         return fobj;
+    }
+
+    /**
+    The exec function allows to send the call of a method to any receiver with
+        optionally preset arguments. A call will only be made if the method can
+        be found on the receiver
+
+    @method exec
+    @for funkyJS
+    @param {string|function} fn The name of a method or a function
+    @param {any} [args*] Optional arguments as presets
+    @return {function} Function waiting for a receiver
+
+    @example
+        var f = funkyJS;
+
+        var mapSqr = f.exec(&#x27;map&#x27;, function (n) { return n * n;});
+
+        mapSqr([1, 2, 3, 4, 5]);
+        // -&gt; [1, 4, 9, 16, 25]
+    
+    **/
+    api.exec = function exec (fn/*, args*/) {
+        var args;
+        if (arguments.length &lt; 1) {
+            return exec;
+        }
+
+        if (!type.isString(fn) &amp;&amp; !type.isFunction(fn)) {
+            throw &#x27;exec expected argument to be string or function but saw &#x27; + fn;
+        }
+
+        args = slice.call(arguments, 1);
+        return function (self/*, restArgs*/) {
+            if (self) {
+                if (type.isString(fn) &amp;&amp; type.isFunction(self[fn])) {
+                    return self[fn].apply(self, args.concat(slice.call(arguments, 1)));
+                }
+                return fn.apply(self, args.concat(slice.call(arguments, 1)));
+            }
+        }
     }
 
 

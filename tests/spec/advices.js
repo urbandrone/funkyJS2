@@ -1,5 +1,5 @@
 /* globals funkyJS */
-describe('funkyJS Advices Extension Module', function () {
+describe('funkyJS Advices Module', function () {
     var gValue = 0,
         gLastUUID = null,
         f = funkyJS;

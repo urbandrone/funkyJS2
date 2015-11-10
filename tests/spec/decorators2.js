@@ -1,5 +1,5 @@
 /* global describe, it, expect, funkyJS */
-describe('funkyJS Decorators Extension Module', function () {
+describe('funkyJS Decorators.Beyond Module', function () {
 
     var _ = funkyJS;
 

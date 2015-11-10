@@ -31,6 +31,7 @@
     // INTERNAL UTILITES
     // =================
     var hasOwn = Object.prototype.hasOwnProperty;
+    var slice = Array.prototype.slice;
 
 
 
@@ -201,7 +202,7 @@
             return keys;
         }
 
-        if (!type.isObject(o)) {
+        if (type.isNil(o)) {
             return [];
         }
 
@@ -488,7 +489,7 @@
             }
         }
 
-        if (!type.isObject(o) || !type.isObject(s)) {
+        if (type.isNil(o) || !type.isObject(s)) {
             return o;
         }
 
@@ -849,6 +850,10 @@
 
     **/
     api.fAccess = function fAccess (o) {
+        if (arguments.length < 1) {
+            return fAccess;
+        }
+
         if (!type.isObject(o) && !type.isArray(o)) {
             throw 'fAccess expected argument to be object but saw ' + o;
         }
@@ -862,6 +867,47 @@
             value: o
         });
         return fobj;
+    }
+
+    /**
+    The exec function allows to send the call of a method to any receiver with
+        optionally preset arguments. A call will only be made if the method can
+        be found on the receiver
+
+    @method exec
+    @for funkyJS
+    @param {string|function} fn The name of a method or a function
+    @param {any} [args*] Optional arguments as presets
+    @return {function} Function waiting for a receiver
+
+    @example
+        var f = funkyJS;
+
+        var mapSqr = f.exec('map', function (n) { return n * n;});
+
+        mapSqr([1, 2, 3, 4, 5]);
+        // -> [1, 4, 9, 16, 25]
+    
+    **/
+    api.exec = function exec (fn/*, args*/) {
+        var args;
+        if (arguments.length < 1) {
+            return exec;
+        }
+
+        if (!type.isString(fn) && !type.isFunction(fn)) {
+            throw 'exec expected argument to be string or function but saw ' + fn;
+        }
+
+        args = slice.call(arguments, 1);
+        return function (self/*, restArgs*/) {
+            if (self) {
+                if (type.isString(fn) && type.isFunction(self[fn])) {
+                    return self[fn].apply(self, args.concat(slice.call(arguments, 1)));
+                }
+                return fn.apply(self, args.concat(slice.call(arguments, 1)));
+            }
+        }
     }
 
 

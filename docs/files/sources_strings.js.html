@@ -19,7 +19,7 @@
             
         </div>
         <div class="yui3-u-1-4 version">
-            <em>API Docs for: 2.0.0</em>
+            <em>API Docs for: 2.1.0</em>
         </div>
     </div>
     <div id="bd" class="yui3-g">
@@ -171,7 +171,7 @@
     **/
     api.trimLeft = function trimLeft (str) {
         if (!type.isString(str)) {
-            throw &#x27;trimLeft expects str to be string but saw &#x27; + str;
+            return str;
         }
 
         return str.replace(/^\s+/g, &#x27;&#x27;);
@@ -194,7 +194,7 @@
     **/
     api.trimRight = function trimRight (str) {
         if (!type.isString(str)) {
-            throw &#x27;trimRight expects str to be string but saw &#x27; + str;
+            return str;
         }
 
         return str.replace(/\s+$/g, &#x27;&#x27;);
@@ -217,7 +217,7 @@
     **/
     api.trim = function trim (str) {
         if (!type.isString(str)) {
-            throw &#x27;trim expects str to be string but saw &#x27; + str;
+            return str;
         }
 
         return api.trimLeft(api.trimRight(str));
@@ -241,7 +241,7 @@
     **/
     api.camelize = function camelize (str) {
         if (!type.isString(str)) {
-            throw &#x27;camelize expects str to be string but saw &#x27; + str;
+            return str;
         }
 
         return str.replace(/-[A-Za-z]|_[A-Za-z]/g, function (match) {
@@ -267,7 +267,7 @@
     **/
     api.dasherize = function dasherize (str) {
         if (!type.isString(str)) {
-            throw &#x27;dasherize expects str to be string but saw &#x27; + str;
+            return str;
         }
 
         return str.replace(/_[A-Za-z]|[A-Z]/g, function (match) {
@@ -293,7 +293,7 @@
     **/
     api.underscore = function underscore (str) {
         if (!type.isString(str)) {
-            throw &#x27;underscore expects str to be string but saw &#x27; + str;
+            return str;
         }
 
         return str.replace(/-[A-Za-z]|[A-Z]/g, function (match) {

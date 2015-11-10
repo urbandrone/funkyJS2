@@ -1,5 +1,5 @@
 /* global describe, it, expect, beforeEach, funkyJS */
-describe('funkyJS Combinators Extension Module', function () {
+describe('funkyJS Combinators.Async Module', function () {
 
     var _ = funkyJS;
 

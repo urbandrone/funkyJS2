@@ -39,7 +39,7 @@ module.exports = function(grunt) {
                         'sources/contracts.js',
                         'sources/functors.js',
                         'sources/combinators.async.js',
-                        'sources/decorators.more.js',
+                        'sources/decorators.beyond.js',
                         'sources/iterators.js',
                         'sources/trampolines.js',
                         'sources/strings.js',
@@ -63,11 +63,18 @@ module.exports = function(grunt) {
                     'builds/amd-cjs/contracts.js': 'sources/contracts.js',
                     'builds/amd-cjs/functors.js': 'sources/functors.js',
                     'builds/amd-cjs/combinators2.js': 'sources/combinators.async.js',
-                    'builds/amd-cjs/decorators2.js': 'sources/decorators.more.js',
+                    'builds/amd-cjs/decorators2.js': 'sources/decorators.beyond.js',
                     'builds/amd-cjs/iterators.js': 'sources/iterators.js',
                     'builds/amd-cjs/trampolines.js': 'sources/trampolines.js',
                     'builds/amd-cjs/strings.js': 'sources/strings.js',
-                    'builds/amd-cjs/advices.js': 'sources/advices.js'
+                    'builds/amd-cjs/advices.js': 'sources/advices.js',
+
+                    /**
+                    ============================================================
+                    ADAPTERS
+                    ============================================================
+                    **/
+                    'builds/adapters/dom.js': 'sources/adapters/dom/funkyDOM_jquery.js'
                 }
             }
         },
@@ -77,20 +84,14 @@ module.exports = function(grunt) {
                     expand: true,
                     flatten: true,
                     src: ['builds/*.bundled.min.js'],
-                    dest: 'builder/libs/'
-                }, {
-                    expand: true,
-                    flatten: false,
-                    cwd: 'builds/amd-cjs/',
-                    src: ['**/*.js'],
-                    dest: 'builder/sources/',
+                    dest: 'builder/libs/',
                     filter: 'isFile'
                 }, {
                     expand: true,
                     flatten: false,
                     cwd: 'builds/',
-                    src: ['funkyjs2.*.js'],
-                    dest: 'builder/libs/',
+                    src: ['amd-cjs/**/*.js', 'adapters/dom.js'],
+                    dest: 'builder/sources/',
                     filter: 'isFile'
                 }, {
                     expand: true,

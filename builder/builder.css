@@ -26,6 +26,15 @@ body * {
 .h1, .h2, .h3, .h4 {
     font-weight: 400;
 }
+.h1 {
+    font-size: 6.4rem;
+}
+.h2 {
+    font-size: 4.8rem;
+}
+.h3 {
+    font-size: 3.2rem;
+}
 
 
 
@@ -100,9 +109,6 @@ body * {
 
 
 /* FORM ===================================================================== */
-.form {
-    font-size: 0;
-}
 .form:after {
     content: '';
     display: block;
@@ -123,8 +129,12 @@ body * {
     .form_group {
         display: inline-block;
         vertical-align: top;
-        width: 50%;
+        width: 49%;
         margin: 0;
+    }
+    .form_group.block {
+        display: block;
+        width: 100%;
     }
     .form_group:first-of-type {
         border-right: 6px solid #F5F5F5;

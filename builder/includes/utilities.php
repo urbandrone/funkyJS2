@@ -56,7 +56,8 @@ class Utils
             'advices' => 'sources/advices.js',
             'iterators' => 'sources/iterators.js',
             'functors' => 'sources/functors.js',
-            'contracts' => 'sources/contracts.js'
+            'contracts' => 'sources/contracts.js',
+            'dom' => 'sources/adapters/dom.js'
         );
         return $map;
     }

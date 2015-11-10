@@ -1,5 +1,5 @@
 /* global describe, it, expect, funkyJS */
-describe('funkyJS Contracts Extension Module', function () {
+describe('funkyJS Contracts Module', function () {
 
     var tryIf = function (fn) {
         return function () {

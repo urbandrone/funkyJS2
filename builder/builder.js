@@ -11,7 +11,7 @@
     Xhr = (function () {
         function request (options, done, fail) {
             var method;
-            if (f.isNotString(options.url)) {
+            if (!f.isString(options.url)) {
                 return fail(new Error('Missing URL for XHR'));
             }
 
@@ -54,7 +54,8 @@
             combinators2: ['type', 'arity'],
             advices: ['type', 'arity'],
             functors: ['type'],
-            contracts: ['type']
+            contracts: ['type'],
+            dom: ['type', 'arity', 'decorators', 'arrays', 'advices']
         };
 
         function getDependencies (module) {
@@ -126,7 +127,7 @@
                 data: {modules: scripts.missing.join(',')}
             }, function (response) {
                 var parsed = JSON.parse(response);
-                if (f.isNotArray(parsed)) {
+                if (!f.isArray(parsed)) {
                     return fail(new Error('Invalid response of ' + parsed));
                 }
                 done(parsed.reduce(getMissing.transform, _available));
@@ -138,7 +139,7 @@
         };
 
         function provide (scripts, done, fail) {
-            if (f.isNotString(scripts)) {
+            if (!f.isString(scripts)) {
                 return fail(new Error('unable to get the scripts'));
             }
             done(scripts);

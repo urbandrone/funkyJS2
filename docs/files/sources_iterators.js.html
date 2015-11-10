@@ -19,7 +19,7 @@
             
         </div>
         <div class="yui3-u-1-4 version">
-            <em>API Docs for: 2.0.0</em>
+            <em>API Docs for: 2.1.0</em>
         </div>
     </div>
     <div id="bd" class="yui3-g">
@@ -404,7 +404,7 @@
         }
 
         if (!type.isObject(iterator) || !type.isFunction(iterator.next)) {
-            throw &#x27;mapLazy expected second argument to be iterator but was &#x27; + iterator;
+            throw &#x27;mapLazy expected second argument to be iterator but saw &#x27; + iterator;
         }
 
         return {
@@ -473,7 +473,7 @@
         }
 
         if (!type.isObject(iterator) || !type.isFunction(iterator.next)) {
-            throw &#x27;filterLazy expected second argument to be iterator but was &#x27; + iterator;
+            throw &#x27;filterLazy expected second argument to be iterator but saw &#x27; + iterator;
         }
 
         return {
@@ -556,7 +556,7 @@
         }
 
         if (!type.isObject(iterator) || !type.isFunction(iterator.next)) {
-            throw &#x27;foldLazy expected second argument to be iterator but was &#x27; + iterator;
+            throw &#x27;foldLazy expected second argument to be iterator but saw &#x27; + iterator;
         }
 
         _acc = seed;
@@ -583,8 +583,6 @@
             }
         };
     }
-
-
 
 
 
