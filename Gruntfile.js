@@ -43,7 +43,8 @@ module.exports = function(grunt) {
                         'sources/iterators.js',
                         'sources/trampolines.js',
                         'sources/strings.js',
-                        'sources/advices.js'
+                        'sources/advices.js',
+                        'sources/transducers.js'
                     ],
 
                     /**
@@ -68,6 +69,7 @@ module.exports = function(grunt) {
                     'builds/amd-cjs/trampolines.js': 'sources/trampolines.js',
                     'builds/amd-cjs/strings.js': 'sources/strings.js',
                     'builds/amd-cjs/advices.js': 'sources/advices.js',
+                    'builds/amd-cjs/transducers.js': 'sources/transducers.js',
 
                     /**
                     ============================================================

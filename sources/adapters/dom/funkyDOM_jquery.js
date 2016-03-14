@@ -139,7 +139,7 @@
         }
         return self;
     });
-    mod.forEach = f.variadic(function (self, fnScope) {
+    mod.fEach = f.variadic(function (self, fnScope) {
         // take instance/object, function, optional scope/context
         //   call $.each but alter args if given collection and function
         // give instance/object
@@ -152,46 +152,33 @@
         }
         return self;
     });
-    mod.mapEach = f.variadic(function (self, fnScope) {
+    mod.fMap = f.variadic(function (self, fnScope) {
         // take instance/object, function, optional scope/context
-        //   map with mod.forEach if given collection and function
+        //   map with mod.fEach if given collection and function
         // give instance/object
         var fn = fnScope[0], scope = fnScope[1], result = [];
         if (isjQ(self) && f.isFunction(fn)) {
             scope = f.isNil(scope) ? self : scope;
-            mod.forEach(self, function (it, i, all) {
+            mod.fEach(self, function (it, i, all) {
                 result.push(fn.call(scope, it, i, all));
             });
         }
         return mod($(result));
     });
-    mod.filterEach = f.variadic(function (self, fnScope) {
+    mod.fFilter = f.variadic(function (self, fnScope) {
         // take instance/object, function, optional scope/context
-        //   filter with mod.forEach if given collection and function
+        //   filter with mod.fEach if given collection and function
         // give instance/object
         var fn = fnScope[0], scope = fnScope[1], result = [];
         if (isjQ(self) && f.isFunction(fn)) {
             scope = f.isNil(scope) ? self : scope;
-            mod.forEach(self, function (it, i, all) {
+            mod.fEach(self, function (it, i, all) {
                 if (!!fn.call(scope, it, i, all)) {
                     result.push(it);
                 }
             });
         }
         return mod($(result));
-    });
-    mod.foldEach = f.variadic(function (self, fn, accScope) {
-        // take instance/object, function, seed, optional scope/context
-        //   fold with mod.forEach if given collection, function and seed
-        // give folded seed
-        var acc = accScope[0], scope = accScope[1];
-        if (isjQ(self) && f.isFunction(fn) && !f.isNil(acc)) {
-            scope = f.isNil(scope) ? self : scope;
-            mod.forEach(self, function (it, i, all) {
-                acc = fn.call(scope, acc, it, i, all);
-            });
-        }
-        return acc;
     });
 
     // INSTANCE METHODS MIXED IN ON CREATION
@@ -213,21 +200,17 @@
             // see mod.evokeRight
             return mod.evokeRight.apply(null, [this, fn].concat(args));
         }),
-        forEach: function (fn, scope) {
-            // see mod.forEach
-            return mod.forEach.apply(null, [this, fn, scope]);
+        fEach: function (fn, scope) {
+            // see mod.fEach
+            return mod.fEach.apply(null, [this, fn, scope]);
         },
-        mapEach: function (fn, scope) {
-            // see mod.mapEach
-            return mod.mapEach.apply(null, [this, fn, scope]);
+        fMap: function (fn, scope) {
+            // see mod.fMap
+            return mod.fMap.apply(null, [this, fn, scope]);
         },
-        filterEach: function (fn, scope) {
-            // see mod.filterEach
-            return mod.filterEach.apply(null, [this, fn, scope]);
-        },
-        foldEach: function (fn, acc, scope) {
-            // see mod.foldEach
-            return mod.foldEach.apply(null, [this, fn, acc, scope]);
+        fFilter: function (fn, scope) {
+            // see mod.fFilter
+            return mod.fFilter.apply(null, [this, fn, scope]);
         },
         unique: function () {
             // see mod.unique

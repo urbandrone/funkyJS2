@@ -72,10 +72,6 @@
 
     **/
     api.is = function is (cls, x) {
-        if (arguments.length < 1) {
-            return is;
-        }
-
         if (arguments.length < 2) {
             return function (x) {
                 return is(cls, x);
@@ -105,10 +101,6 @@
 
     **/
     api.isNull = function isNull (x) {
-        if (arguments.length < 1) {
-            return isNull;
-        }
-
         return x === null;
     }
 
@@ -132,10 +124,6 @@
 
     **/
     api.isVoid = function isVoid (x) {
-        if (arguments.length < 1) {
-            return isVoid;
-        }
-
         return x === undefined;
     }
 
@@ -159,10 +147,6 @@
 
     **/
     api.isNil = function isNil (x) {
-        if (arguments.length < 1) {
-            return isNil;
-        }
-
         return x == null;
     }
 
@@ -186,10 +170,6 @@
 
     **/
     api.isBool = function isBool (x) {
-        if (arguments.length < 1) {
-            return isBool;
-        }
-
         return typeof x === 'boolean';
     }
 
@@ -213,10 +193,6 @@
 
     **/
     api.isString = function isString (x) {
-        if (arguments.length < 1) {
-            return isString;
-        }
-
         return typeof x === 'string';
     }
 
@@ -238,10 +214,6 @@
 
     **/
     api.isNumber = function isNumber (x) {
-        if (arguments.length < 1) {
-            return isNumber;
-        }
-
         return typeof x === 'number' && !isNaN(x) && isFinite(x);
     }
 
@@ -262,10 +234,6 @@
 
     **/
     api.isInt32 = function isInt32 (x) {
-        if (arguments.length < 1) {
-            return isInt32;
-        }
-
         return api.isNumber(x) && x % 1 === 0 || api.isNumber(x) && x === 1;
     }
 
@@ -286,10 +254,6 @@
 
     **/
     api.isFloat32 = function isFloat32 (x) {
-        if (arguments.length < 1) {
-            return isFloat32;
-        }
-
         return api.isNumber(x) && x % 1 !== 0;
     }
 
@@ -310,10 +274,6 @@
 
     **/
     api.isFunction = function isFunction (x) {
-        if (arguments.length < 1) {
-            return isFunction;
-        }
-
         return typeof x === 'function';
     }
 
@@ -334,10 +294,6 @@
 
     **/
     api.isArray = function isArray (x) {
-        if (arguments.length < 1) {
-            return isArray;
-        }
-
         return Array.isArray(x);
     }
 
@@ -358,10 +314,6 @@
 
     **/
     api.isObject = function isObject (x) {
-        if (arguments.length < 1) {
-            return isObject;
-        }
-
         return api.is('object', x);
     }
 
@@ -382,10 +334,6 @@
 
     **/
     api.isDate = function isDate (x) {
-        if (arguments.length < 1) {
-            return isDate;
-        }
-
         return api.is('date', x);
     }
 
@@ -406,10 +354,6 @@
 
     **/
     api.isRegex = function isRegex (x) {
-        if (arguments.length < 1) {
-            return isRegex;
-        }
-
         return api.is('regexp', x);
     }
 
@@ -430,10 +374,6 @@
 
     **/
     api.isNode = function isNode (x) {
-        if (arguments.length < 1) {
-            return isNode;
-        }
-
         return !api.isNil(x) && api.isInt32(x.nodeType);
     }
 
@@ -454,10 +394,6 @@
 
     **/
     api.isNodeList = function isNodeList (x) {
-        if (arguments.length < 1) {
-            return isNodeList;
-        }
-
         return (/^((\[object\s)(html(options)?collection|nodelist)(\]))$/).test(toStr(x));
     }
 
@@ -481,10 +417,6 @@
 
     **/
     api.isSequencial = function isSequencial (x) {
-        if (arguments.length < 1) {
-            return isSequencial;
-        }
-
         return !api.isNil(x) &&
                api.isInt32(x.length) &&
                !api.isFunction(x) &&
@@ -512,12 +444,52 @@
 
     **/
     api.isEnumerable = function isEnumerable (x) {
-        if (arguments.length < 1) {
-            return isEnumerable;
-        }
-
         return api.isObject(x) || api.isSequencial(x);
     }
+
+    /*
+    The isIterator function takes a value and checks if it conforms (loosely) to
+        the @@iterator prototcol or (at least) has a `next` method. For ES2015
+        use, the function checks if `Symbol` and `Symbol.iterator` are defined
+        and used on the value.
+
+    @method isIterator
+    @for funkyJS
+    @param {any} x Value to check against
+    @return {boolean} True if x is a iterator, false otherwise
+
+    @example
+        funkyJS.isIterator({
+            next: function () {
+                return {done: false, value: 1};
+            }
+        });
+        // -> true
+
+    */
+    api.isIterator = function isIterator (x) {
+        if (x) {
+            /* jshint undef: false */
+            if (typeof Symbol === 'function' && Symbol.iterator != null) {
+                // note: this is a future-safe check for ES2015 environments,
+                //       but the entity we're dealing with may be defined in
+                //       ES5 environment, so do not simply stop here and return
+                //       false if the entity does not have Symbol.iterator!
+                if (x[Symbol.iterator]) {
+                    return true;
+                }
+            }
+            /* jshint undef: true */
+
+            if (api.isFunction(x['@@iterator']) && api.isFunction(x.next)) {
+                return x['@@iterator']() === x;
+            }
+
+            return api.isFunction(x.next);
+        }
+        return false;
+    }
+    
 
 
 

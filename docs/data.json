@@ -171,6 +171,17 @@
             },
             "namespaces": {}
         },
+        "sources\\transducers.js": {
+            "name": "sources\\transducers.js",
+            "modules": {
+                "transducers": 1
+            },
+            "classes": {},
+            "fors": {
+                "funkyJS.transducers": 1
+            },
+            "namespaces": {}
+        },
         "sources\\type.js": {
             "name": "sources\\type.js",
             "modules": {
@@ -366,6 +377,20 @@
             "file": "sources\\trampolines.js",
             "line": 29
         },
+        "transducers": {
+            "name": "transducers",
+            "submodules": {},
+            "classes": {
+                "funkyJS.transducers": 1
+            },
+            "fors": {
+                "funkyJS.transducers": 1
+            },
+            "namespaces": {},
+            "tag": "module",
+            "file": "sources\\transducers.js",
+            "line": 29
+        },
         "type": {
             "name": "type",
             "submodules": {},
@@ -389,6 +414,17 @@
             "plugin_for": [],
             "extension_for": [],
             "module": "birds",
+            "namespace": ""
+        },
+        "funkyJS.transducers": {
+            "name": "funkyJS.transducers",
+            "shortname": "funkyJS.transducers",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "transducers",
             "namespace": ""
         }
     },
@@ -2358,7 +2394,7 @@
         },
         {
             "file": "sources\\iterators.js",
-            "line": 39,
+            "line": 46,
             "description": "Allows to create a numerical iterator, with a optional start and end number.\n    If the end number is below the start number, the returned iterator counts\n    down. If no arguments are given, the iterator counts up to positive\n    infinity, starting by zero",
             "itemtype": "method",
             "name": "numIterator",
@@ -2379,14 +2415,14 @@
                 "type": "Object"
             },
             "example": [
-                "\n    var nums = funkyJS.numIterator(5); // counts 5 -> Infinity\n\n    nums.next().value();\n    // -> 5\n\n    nums.next().value();\n    // -> 6\n\n    nums.next().value();\n    // -> 7\n\n\n    var nums2 = funkyJS.numIterator();\n\n    nums2.next().value();\n    // -> 0\n\n    nums2.next().value();\n    // -> 1\n\n    nums2.next().value();\n    // -> 2\n\n\n    var nums3 = funkyJS.numIterator(10, 0);\n\n    nums3.next().value();\n    // -> 10\n\n    nums3.next().value();\n    // -> 9\n\n    nums3.next().value();\n    // -> 8\n"
+                "\n    var nums = funkyJS.numIterator(5); // counts 5 -> Infinity\n\n    nums.next().value;\n    // -> 5\n\n    nums.next().value;\n    // -> 6\n\n    nums.next().value;\n    // -> 7\n\n\n    var nums2 = funkyJS.numIterator();\n\n    nums2.next().value;\n    // -> 0\n\n    nums2.next().value;\n    // -> 1\n\n    nums2.next().value;\n    // -> 2\n\n\n    var nums3 = funkyJS.numIterator(10, 0);\n\n    nums3.next().value;\n    // -> 10\n\n    nums3.next().value;\n    // -> 9\n\n    nums3.next().value;\n    // -> 8\n"
             ],
             "class": "funkyJS",
             "module": "iterators"
         },
         {
             "file": "sources\\iterators.js",
-            "line": 119,
+            "line": 122,
             "description": "Creates a sequencial iterator. Sequencial iterators allow to iterate over\n    strings, arrays, arguments and nodelist",
             "itemtype": "method",
             "name": "seqIterator",
@@ -2402,14 +2438,14 @@
                 "type": "Object"
             },
             "example": [
-                "\n    var itAbc = funkyJS.seqIterator(['a', 'b', 'c']);\n\n    itAbc.next().value();\n    // -> 'a'\n\n    itAbc.next().value();\n    // -> 'b'\n\n    itAbc.next().value();\n    // -> 'c'\n\n\n    var itStr = funkyJS.seqIterator('string');\n\n    itStr.next().value();\n    // -> 's'\n\n    itStr.next().value();\n    // -> 't'\n\n    itStr.next().value();\n    // -> 'r'\n"
+                "\n    var itAbc = funkyJS.seqIterator(['a', 'b', 'c']);\n\n    itAbc.next().value;\n    // -> 'a'\n\n    itAbc.next().value;\n    // -> 'b'\n\n    itAbc.next().value;\n    // -> 'c'\n\n\n    var itStr = funkyJS.seqIterator('string');\n\n    itStr.next().value;\n    // -> 's'\n\n    itStr.next().value;\n    // -> 't'\n\n    itStr.next().value;\n    // -> 'r'\n"
             ],
             "class": "funkyJS",
             "module": "iterators"
         },
         {
             "file": "sources\\iterators.js",
-            "line": 184,
+            "line": 183,
             "description": "Creates a object/hashtable iterator. Please note that the returned iterator\n    might iterate randomly through the object, depending on the behaviour of\n    the underlying JavaScript engine",
             "itemtype": "method",
             "name": "objIterator",
@@ -2425,14 +2461,14 @@
                 "type": "Object"
             },
             "example": [
-                "\n    var itAbc = funkyJS.objIterator({\n        a: 'first',\n        b: 'second',\n        c: 'third'\n    });\n\n    itAbc.next().value();\n    // -> 'first'\n\n    itAbc.next().value();\n    // -> 'second'\n\n    itAbc.next().value();\n    // -> 'third'\n"
+                "\n    var itAbc = funkyJS.objIterator({\n        a: 'first',\n        b: 'second',\n        c: 'third'\n    });\n\n    itAbc.next().value;\n    // -> 'first'\n\n    itAbc.next().value;\n    // -> 'second'\n\n    itAbc.next().value;\n    // -> 'third'\n"
             ],
             "class": "funkyJS",
             "module": "iterators"
         },
         {
             "file": "sources\\iterators.js",
-            "line": 244,
+            "line": 239,
             "description": "Returns a lazy iterator, which maps a given function to a given iterator. The\n    returned iterator is lazy, as it only maps when calling it's next() method",
             "itemtype": "method",
             "name": "mapLazy",
@@ -2453,14 +2489,14 @@
                 "type": "Object"
             },
             "example": [
-                "\n    var itAbc = funkyJS.objIterator({\n        a: 'first',\n        b: 'second',\n        c: 'third'\n    });\n\n    var upper = funkyJS.call(String.prototype.toUpperCase);\n\n    var lazyMap = funkyJS.mapLazy(upper, itAbc);\n\n    lazyMap.next().value();\n    // -> 'FIRST'\n\n    lazyMap.next().value();\n    // -> 'SECOND'\n\n    lazyMap.next().value();\n    // -> 'THIRD'\n"
+                "\n    var itAbc = funkyJS.objIterator({\n        a: 'first',\n        b: 'second',\n        c: 'third'\n    });\n\n    var upper = funkyJS.call(String.prototype.toUpperCase);\n\n    var lazyMap = funkyJS.mapLazy(upper, itAbc);\n\n    lazyMap.next().value;\n    // -> 'FIRST'\n\n    lazyMap.next().value;\n    // -> 'SECOND'\n\n    lazyMap.next().value;\n    // -> 'THIRD'\n"
             ],
             "class": "funkyJS",
             "module": "iterators"
         },
         {
             "file": "sources\\iterators.js",
-            "line": 313,
+            "line": 304,
             "description": "Returns a lazy iterator, which filters with a given function a given iterator.\n    The returned iterator is lazy, as it only filters when calling it's\n    next() method",
             "itemtype": "method",
             "name": "filterLazy",
@@ -2481,15 +2517,15 @@
                 "type": "Object"
             },
             "example": [
-                "\n    var itAbc = funkyJS.objIterator({\n        a: 'first',\n        b: 'second',\n        c: 'third'\n    });\n\n    var startsEitherFT = function (s) {\n        return s[0] === 't' || s[0] === 'f';\n    }\n\n    var lazyFilter = funkyJS.filterLazy(startsEitherFT, itAbc);\n\n    lazyFilter.next().value();\n    // -> 'first'\n\n    lazyFilter.next().value();\n    // -> 'third'\n"
+                "\n    var itAbc = funkyJS.objIterator({\n        a: 'first',\n        b: 'second',\n        c: 'third'\n    });\n\n    var startsEitherFT = function (s) {\n        return s[0] === 't' || s[0] === 'f';\n    }\n\n    var lazyFilter = funkyJS.filterLazy(startsEitherFT, itAbc);\n\n    lazyFilter.next().value;\n    // -> 'first'\n\n    lazyFilter.next().value;\n    // -> 'third'\n"
             ],
             "class": "funkyJS",
             "module": "iterators"
         },
         {
             "file": "sources\\iterators.js",
-            "line": 385,
-            "description": "Returns a lazy iterator, which folds a given iterator to one value. The\n    returned iterator is lazy as it only folds one when calling it's next()\n    method",
+            "line": 372,
+            "description": "Returns a lazy iterator, which folds a given iterator into a value. The\n    returned iterator is lazy as it only folds one when calling it's next()\n    method",
             "itemtype": "method",
             "name": "foldLazy",
             "params": [
@@ -2499,14 +2535,14 @@
                     "type": "Function"
                 },
                 {
-                    "name": "iterator",
-                    "description": "The iterator to fold",
-                    "type": "Object"
-                },
-                {
                     "name": "seed",
                     "description": "The initial value to start from",
                     "type": "*"
+                },
+                {
+                    "name": "iterator",
+                    "description": "The iterator to fold",
+                    "type": "Object"
                 }
             ],
             "return": {
@@ -2514,14 +2550,14 @@
                 "type": "Object"
             },
             "example": [
-                "\n    var itAbc = funkyJS.objIterator({\n        a: 'first',\n        b: 'second',\n        c: 'third'\n    });\n\n    var cat = function (a, b) {\n        return !a ? b : a + ', ' + b;\n    }\n\n    var lazyFold = funkyJS.foldLazy(cat, itAbc, '');\n\n    lazyFold.next().value();\n    // -> 'first'\n\n    lazyFold.next().value();\n    // -> 'first, second'\n\n    lazyFold.next().value();\n    // -> 'first, second, third'\n"
+                "\n    var itAbc = funkyJS.objIterator({\n        a: 'first',\n        b: 'second',\n        c: 'third'\n    });\n\n    var cat = function (a, b) {\n        return !a ? b : a + ', ' + b;\n    }\n\n    var lazyFold = funkyJS.foldLazy(cat, '', itAbc);\n\n    lazyFold.next().value;\n    // -> 'first'\n\n    lazyFold.next().value;\n    // -> 'first, second'\n\n    lazyFold.next().value;\n    // -> 'first, second, third'\n"
             ],
             "class": "funkyJS",
             "module": "iterators"
         },
         {
             "file": "sources\\iterators.js",
-            "line": 470,
+            "line": 453,
             "description": "EXPORT\n======",
             "class": "funkyJS",
             "module": "iterators"
@@ -3289,6 +3325,685 @@
             "module": "trampolines"
         },
         {
+            "file": "sources\\transducers.js",
+            "line": 54,
+            "description": "Returns true for a reduced value",
+            "itemtype": "method",
+            "name": "isReduced",
+            "params": [
+                {
+                    "name": "value",
+                    "description": "Any value to test",
+                    "type": "Any"
+                }
+            ],
+            "return": {
+                "description": "True or false",
+                "type": "Boolean"
+            },
+            "example": [
+                "\n    var t = funkyJS.transducers;\n\n    t.isReduced(val);\n    // -> True or false\n"
+            ],
+            "class": "funkyJS.transducers",
+            "module": "transducers"
+        },
+        {
+            "file": "sources\\transducers.js",
+            "line": 73,
+            "description": "Transforms a value into a reduced value",
+            "itemtype": "method",
+            "name": "reduced",
+            "params": [
+                {
+                    "name": "value",
+                    "description": "Any value to set finally reduced",
+                    "type": "Any"
+                }
+            ],
+            "return": {
+                "description": "A reduced value (immutable)",
+                "type": "ReducedValue"
+            },
+            "example": [
+                "\n    var t = funkyJS.transducers;\n\n    var val = t.reduced(1);\n    // -> {value: 1}\n\n    t.isReduced(val);\n    // -> true\n"
+            ],
+            "class": "funkyJS.transducers",
+            "module": "transducers"
+        },
+        {
+            "file": "sources\\transducers.js",
+            "line": 106,
+            "description": "Transforms a reduced value into a normal value",
+            "itemtype": "method",
+            "name": "unReduced",
+            "alias": "deref",
+            "params": [
+                {
+                    "name": "value",
+                    "description": "Any reduced value",
+                    "type": "ReducedValue"
+                }
+            ],
+            "return": {
+                "description": "The unreduced value",
+                "type": "Any"
+            },
+            "example": [
+                "\n    var t = funkyJS.transducers;\n\n    var val = t.reduced(1);\n    // -> val === {value: 1}\n\n    t.isReduced(val);\n    // -> true\n\n    var nval = t.unReduced(val);\n    // -> nval === 1\n\n    t.isReduced(nval);\n    // -> false\n"
+            ],
+            "class": "funkyJS.transducers",
+            "module": "transducers"
+        },
+        {
+            "file": "sources\\transducers.js",
+            "line": 135,
+            "description": "Given a transformer/transducer, a seed value and a reducable, tries to fold\n    the reducable into the seed value with the transformer",
+            "itemtype": "method",
+            "name": "foldl",
+            "alias": "reduce",
+            "params": [
+                {
+                    "name": "xf",
+                    "description": "Transducer function or normal function",
+                    "type": "Transducer|function"
+                },
+                {
+                    "name": "seed",
+                    "description": "Final value in initial state",
+                    "type": "Any"
+                },
+                {
+                    "name": "list",
+                    "description": "The reducable",
+                    "type": "Array|array-like|object|iterator"
+                }
+            ],
+            "return": {
+                "description": "The final value",
+                "type": "Any"
+            },
+            "example": [
+                "\n    var t = funkyJS.transducers;\n\n    function add (a, b) { return a + b; }\n\n    t.foldl(add, 0, [1, 2, 3]);\n    // -> 6\n"
+            ],
+            "class": "funkyJS.transducers",
+            "module": "transducers"
+        },
+        {
+            "file": "sources\\transducers.js",
+            "line": 207,
+            "description": "Maps a transformer function and a step function into a seed and over a \n    collection. Does not perform lazy although it has a kind of lazy behaviour indeed.\n    The function is fully curried, except for the transformer/transducer\n    argument. The stepper function (second argument) should know how to add\n    new items into the final result. The seed (third argument) should be the\n    final result in it's initial state, while the input (last argument) is\n    the source or starting value.",
+            "itemtype": "method",
+            "name": "transduce",
+            "params": [
+                {
+                    "name": "xf",
+                    "description": "Transducer function or normal function",
+                    "type": "Transducer|function"
+                },
+                {
+                    "name": "step",
+                    "description": "One of the stepper functions or normal function",
+                    "type": "Stepper|function"
+                },
+                {
+                    "name": "seed",
+                    "description": "Final value in it's inital state",
+                    "type": "Any"
+                },
+                {
+                    "name": "Collection",
+                    "description": "to transduce",
+                    "type": "Array|array-like|object|iterator"
+                }
+            ],
+            "return": {
+                "description": "The final value",
+                "type": "Any"
+            },
+            "example": [
+                "\n    var t = funkyJS.transducers,\n        f = funkyJS;\n\n\n    // multiple transformation, stored as tranducer function\n    var xfSquareEven = f.compose(\n        t.map(function (v) { return v * v; }),\n        t.filter(function (v) { return v % 2 === 0; })\n    );\n\n    t.transduce(xfSquareEven, t.conj, [], [1, 2, 3, 4, 5]);\n    // -> [4, 16]\n\n    // ... or reversed?\n    t.transduce(xfSquareEven, t.cons, [], [1, 2, 3, 4, 5]);\n    // -> [16, 4]\n\n    // another way to sum up\n    t.transduce(xfSquareEven, t.combine, 0, [1, 2, 3, 4, 5]);\n    // -> 20\n\n\n\n    // single transformation, stored as a transducer function\n    var xfIdentity = t.map(f.identity);\n\n    // general \"sum\" transducer\n    var xfSum = xfIdentity(t.combine, 0);\n\n    xfSum([1, 2, 3, 4, 5]);\n    // -> 15\n\n\n\n    // DOM operations?\n    var buttons = document.querySelector('button.clickMe');\n\n    // define a handler...\n    function myHandler (e) {\n        ...\n    }\n\n    // make all active button clickable\n    var xfClickableIfActive = f.compose(\n        t.map(function (b) {\n            // basically we create a side effect here\n            b.addEventListener('click', myHandler, false);\n            return b;\n        }),\n        t.filter(function (b) {\n            return b.disabled === null;\n        })\n    );\n\n    // do it!\n    t.transduce(xfClickableIfActive, t.conj, [], buttons);\n    // -> [button1, ...buttonN] (if not disabled)\n"
+            ],
+            "class": "funkyJS.transducers",
+            "module": "transducers"
+        },
+        {
+            "file": "sources\\transducers.js",
+            "line": 310,
+            "description": "Maps a transformer function into a seed value over the collection. Combines\n    different depending on the type of seed value. See the example below for\n    more information",
+            "itemtype": "method",
+            "name": "into",
+            "params": [
+                {
+                    "name": "seed",
+                    "description": "Final value in it's inital state",
+                    "type": "Any"
+                },
+                {
+                    "name": "xf",
+                    "description": "Transducer function or normal function",
+                    "type": "Transducer|function"
+                },
+                {
+                    "name": "Collection",
+                    "description": "to transduce into the seed",
+                    "type": "Array|array-like|object"
+                }
+            ],
+            "return": {
+                "description": "The final value",
+                "type": "Any"
+            },
+            "example": [
+                "\n    var t = funkyJS.transducers,\n        f = funkyJS;\n\nvar xfSquareNumericValues = f.compose(\n    t.map(function (v) { return v * v; }),\n    t.filter(f.compose(f.unary(parseInt), f.isNumber)),\n    t.map(f.get('value'))\n);\n\n\nvar squaresFromInputs = t.into([], xfSquareNumericValues);\nvar sumOfSquaredInputs = t.into(0, xfSquareNumericValues);\nvar strOfSquaredInputs = t.into('', xfSquareNumericValues);\n\n\n// pretending we have input fields with 1, empty string and 3 as values\nvar inputs = document.querySelectorAll('input.with-num-val');\n\nsquaresFromInputs(inputs);\n// -> [1, 9]\n\nsumOfSquaredInputs(inputs);\n// -> 10\n\nstrOfSquaredInputs(inputs);\n// -> '19'\n"
+            ],
+            "class": "funkyJS.transducers",
+            "module": "transducers"
+        },
+        {
+            "file": "sources\\transducers.js",
+            "line": 387,
+            "description": "Takes a list and a value and adds the value to the end of the list. Has a\n    side effect on the list. If you do not want to have a side effect use\n    funkyJS.transducers.conj instead",
+            "itemtype": "method",
+            "name": "append",
+            "params": [
+                {
+                    "name": "list",
+                    "description": "List of results so far",
+                    "type": "Array"
+                },
+                {
+                    "name": "v",
+                    "description": "Next value",
+                    "type": "Any"
+                }
+            ],
+            "return": {
+                "description": "Modified list",
+                "type": "Array"
+            },
+            "example": [
+                "\n    var t = funkyJS.transducers;\n\n    var a = [1];\n    var b = t.append(a, 2);\n    // -> [1, 2]\n\n    a === b;\n    // -> true"
+            ],
+            "class": "funkyJS.transducers",
+            "module": "transducers"
+        },
+        {
+            "file": "sources\\transducers.js",
+            "line": 413,
+            "description": "Takes a list and a value and adds the value to the front of the list. Has a\n    side effect on the list. If you do not want to have a side effect use\n    funkyJS.transducers.cons instead",
+            "itemtype": "method",
+            "name": "prepend",
+            "params": [
+                {
+                    "name": "list",
+                    "description": "List of results so far",
+                    "type": "Array"
+                },
+                {
+                    "name": "v",
+                    "description": "Next value",
+                    "type": "Any"
+                }
+            ],
+            "return": {
+                "description": "Modified list",
+                "type": "Array"
+            },
+            "example": [
+                "\n    var t = funkyJS.transducers;\n\n    var a = [2];\n    var b = t.prepend(a, 1);\n    // -> [1, 2]\n\n    a === b;\n    // -> true"
+            ],
+            "class": "funkyJS.transducers",
+            "module": "transducers"
+        },
+        {
+            "file": "sources\\transducers.js",
+            "line": 439,
+            "description": "Takes a list and a value and adds the value to the front of the list without\n    side effects on the list. If you do want to have a side effect use\n    funkyJS.transducers.prepend instead",
+            "itemtype": "method",
+            "name": "cons",
+            "params": [
+                {
+                    "name": "list",
+                    "description": "List of results so far",
+                    "type": "Array"
+                },
+                {
+                    "name": "v",
+                    "description": "Next value",
+                    "type": "Any"
+                }
+            ],
+            "return": {
+                "description": "New list",
+                "type": "Array"
+            },
+            "example": [
+                "\n    var t = funkyJS.transducers;\n\n    var a = [2];\n    var b = t.cons(a, 1);\n    // -> [1, 2]\n\n    a === b;\n    // -> false"
+            ],
+            "class": "funkyJS.transducers",
+            "module": "transducers"
+        },
+        {
+            "file": "sources\\transducers.js",
+            "line": 464,
+            "description": "Takes a list and a value and adds the value to the end of the list without\n    side effects on the list. If you do want to have a side effect use\n    funkyJS.transducers.append instead",
+            "itemtype": "method",
+            "name": "conj",
+            "params": [
+                {
+                    "name": "list",
+                    "description": "List of results so far",
+                    "type": "Array"
+                },
+                {
+                    "name": "v",
+                    "description": "Next value",
+                    "type": "Any"
+                }
+            ],
+            "return": {
+                "description": "New list",
+                "type": "Array"
+            },
+            "example": [
+                "\n    var t = funkyJS.transducers;\n\n    var a = [1];\n    var b = t.conj(a, 2);\n    // -> [1, 2]\n\n    a === b;\n    // -> false"
+            ],
+            "class": "funkyJS.transducers",
+            "module": "transducers"
+        },
+        {
+            "file": "sources\\transducers.js",
+            "line": 489,
+            "description": "Takes two values and directly combines them via `(+)`. Works on numbers and\n    strings",
+            "itemtype": "method",
+            "name": "combine",
+            "params": [
+                {
+                    "name": "vA",
+                    "description": "Result so far",
+                    "type": "Number|string"
+                },
+                {
+                    "name": "vB",
+                    "description": "Next value",
+                    "type": "Number|string"
+                }
+            ],
+            "return": {
+                "description": "Combined value",
+                "type": "Number|string"
+            },
+            "example": [
+                "\n    var t = funkyJS.transducers;\n\n    t.combine(1, 2);\n    // -> 3\n\n    t.combine('a', 'b');\n    // -> 'ab'\n"
+            ],
+            "class": "funkyJS.transducers",
+            "module": "transducers"
+        },
+        {
+            "file": "sources\\transducers.js",
+            "line": 513,
+            "description": "Takes a glue parameter and returns a stepper function which combines the\n    result so far and the next value with the glue in between by calling\n    `(+)`. Works on numbers and strings.",
+            "itemtype": "method",
+            "name": "join",
+            "params": [
+                {
+                    "name": "glue",
+                    "description": "Glue value",
+                    "type": "Number|string"
+                }
+            ],
+            "return": {
+                "description": "A reducing function",
+                "type": "Function"
+            },
+            "example": [
+                "\n    var t = funkyJS.transducers;\n\n    t.join('-')(1, 2);\n    // -> '1-2'\n\n    var glueSpace = t.join(' ');\n\n    glueSpace('a', 'b');\n    // -> 'a b'\n"
+            ],
+            "class": "funkyJS.transducers",
+            "module": "transducers"
+        },
+        {
+            "file": "sources\\transducers.js",
+            "line": 541,
+            "description": "Given a object and a key-value pair, merges the pair into the object and\n    returns it afterwards. If kv is a object itself, the whole object is\n    merged into the record",
+            "itemtype": "method",
+            "name": "merge",
+            "params": [
+                {
+                    "name": "rec",
+                    "description": "Object to merge into",
+                    "type": "Object"
+                },
+                {
+                    "name": "kv",
+                    "description": "Key-value pair where kv[0] is the key",
+                    "type": "Array|object"
+                }
+            ],
+            "return": {
+                "description": "Given `rec` object",
+                "type": "Object"
+            },
+            "example": [
+                "\n    var t = funkyJS.transducers;\n\n    t.merge({}, ['name', 'John Doe']);\n    // -> {name: 'John Doe'}\n\n    t.merge({}, {name: 'John Doe'});\n    // -> {name: 'John Doe'}\n"
+            ],
+            "class": "funkyJS.transducers",
+            "module": "transducers"
+        },
+        {
+            "file": "sources\\transducers.js",
+            "line": 578,
+            "description": "Accepts a transformer function `t` and returns a function which itself also\n    accepts a function and returns a transducer. If the interal `.step`\n    function of the transducer is called, the transformer function `t` gets\n    called with these arguments before it's final result will be returned:\n    `step` a function which moves on to the next step. The transformer `t`\n        may call this argument and returns it's result as the final result \n        of the computation or the final results so far.\n    `f` the function passed to the returned function.\n    `r` the final computed results so far\n    `v` the next value",
+            "itemtype": "method",
+            "name": "liftTransformer",
+            "params": [
+                {
+                    "name": "t",
+                    "description": "Transformer function `t`",
+                    "type": "Function"
+                }
+            ],
+            "return": {
+                "description": "A function awaiting `f`",
+                "type": "Function"
+            },
+            "example": [
+                "\n    // this examples shows how to implement a transformer which acts like\n    //   funkyJS.transducers.map if that wasn't defined already as well as\n    //   for funkyJS.transducers.filter if that wasn't defined either\n\n    var t = funkyJS.transducers,\n        comp = funkyJS.compose;\n\n    // a mapping transducer\n    var xfMap = t.liftTransformer(function (step, f, r, v) {\n        return step(r, f(v));\n    });\n\n    // a filtering transducer\n    var xfFilter = t.liftTransformer(function (step, f, r, v) {\n        return !!f(v) ? step(r, v) : r;\n    });\n\n    // try it:\n    var vals = [1, 2, 3, 4, 5];\n\n    var evenSquares = comp(\n        xfMap(function (v) { return v * v; })\n        xfFilter(function (v) { return v % 2 === 0; })\n    );\n\n    t.transduce(evenSquares, t.conj, [], vals);\n    // -> [4, 16]\n"
+            ],
+            "class": "funkyJS.transducers",
+            "module": "transducers"
+        },
+        {
+            "file": "sources\\transducers.js",
+            "line": 643,
+            "description": "A transformer which flattens out the resulting structure",
+            "itemtype": "method",
+            "name": "flatten",
+            "params": [
+                {
+                    "name": "xf",
+                    "description": "A transducer to flatten over",
+                    "type": "Transducer"
+                }
+            ],
+            "return": {
+                "description": "A new transducer",
+                "type": "Transducer"
+            },
+            "class": "funkyJS.transducers",
+            "module": "transducers"
+        },
+        {
+            "file": "sources\\transducers.js",
+            "line": 677,
+            "description": "Given a function `f`, returns a function awaiting a transducer which when\n    reduced maps `f` to every value.",
+            "itemtype": "method",
+            "name": "map",
+            "params": [
+                {
+                    "name": "f",
+                    "description": "A function to map",
+                    "type": "Function"
+                }
+            ],
+            "return": {
+                "description": "A function awaiting another transducer",
+                "type": "Function"
+            },
+            "class": "funkyJS.transducers",
+            "module": "transducers"
+        },
+        {
+            "file": "sources\\transducers.js",
+            "line": 703,
+            "description": "Given a function `f`, returns a function awaiting a transducer which when\n    reduced maps `f` to every value and then flattens the result out.",
+            "itemtype": "method",
+            "name": "flatMap",
+            "params": [
+                {
+                    "name": "f",
+                    "description": "A function to map",
+                    "type": "Function"
+                }
+            ],
+            "return": {
+                "description": "A function awaiting a transducer",
+                "type": "Function"
+            },
+            "class": "funkyJS.transducers",
+            "module": "transducers"
+        },
+        {
+            "file": "sources\\transducers.js",
+            "line": 717,
+            "description": "Given a predicate function `f`, returns a function awaiting a transducer which\n    when reduced returns a collection with a values inside for which `f`\n    returned `true`.",
+            "itemtype": "method",
+            "name": "filter",
+            "params": [
+                {
+                    "name": "f",
+                    "description": "The predicate function",
+                    "type": "Function"
+                }
+            ],
+            "return": {
+                "description": "A function awaiting a transducer",
+                "type": "Function"
+            },
+            "class": "funkyJS.transducers",
+            "module": "transducers"
+        },
+        {
+            "file": "sources\\transducers.js",
+            "line": 744,
+            "description": "Given a number `n`, drops `n` items from the beginning of the collection",
+            "itemtype": "method",
+            "name": "drop",
+            "params": [
+                {
+                    "name": "n",
+                    "description": "Number of items to drop from the left",
+                    "type": "Number"
+                }
+            ],
+            "return": {
+                "description": "A function awaiting a transducer",
+                "type": "Function"
+            },
+            "class": "funkyJS.transducers",
+            "module": "transducers"
+        },
+        {
+            "file": "sources\\transducers.js",
+            "line": 774,
+            "description": "Given a number `n`, drops the `n`th item from the collection",
+            "itemtype": "method",
+            "name": "dropNth",
+            "params": [
+                {
+                    "name": "n",
+                    "description": "Number of item to drop",
+                    "type": "Number"
+                }
+            ],
+            "return": {
+                "description": "A function awaiting a transducer",
+                "type": "Function"
+            },
+            "class": "funkyJS.transducers",
+            "module": "transducers"
+        },
+        {
+            "file": "sources\\transducers.js",
+            "line": 804,
+            "description": "Given a predicate function `f`, drops items from the beginning of the\n    collection until the predicate returns `false`",
+            "itemtype": "method",
+            "name": "dropWhile",
+            "params": [
+                {
+                    "name": "f",
+                    "description": "A predicate function",
+                    "type": "Function"
+                }
+            ],
+            "return": {
+                "description": "A function awaiting a transducer",
+                "type": "Function"
+            },
+            "class": "funkyJS.transducers",
+            "module": "transducers"
+        },
+        {
+            "file": "sources\\transducers.js",
+            "line": 834,
+            "description": "Given a number `n`, takes `n` items from the beginning of the collection",
+            "itemtype": "method",
+            "name": "take",
+            "params": [
+                {
+                    "name": "n",
+                    "description": "Number of items to take from the left",
+                    "type": "Number"
+                }
+            ],
+            "return": {
+                "description": "A function awaiting a transducer",
+                "type": "Function"
+            },
+            "class": "funkyJS.transducers",
+            "module": "transducers"
+        },
+        {
+            "file": "sources\\transducers.js",
+            "line": 864,
+            "description": "Given a number `n`, takes the `n`th item from the collection",
+            "itemtype": "method",
+            "name": "takeNth",
+            "params": [
+                {
+                    "name": "n",
+                    "description": "Number of item to take",
+                    "type": "Number"
+                }
+            ],
+            "return": {
+                "description": "A function awaiting a transducer",
+                "type": "Function"
+            },
+            "class": "funkyJS.transducers",
+            "module": "transducers"
+        },
+        {
+            "file": "sources\\transducers.js",
+            "line": 894,
+            "description": "Given a predicate function `f`, takes items from the beginning of the\n    collection until the predicate returns `false`",
+            "itemtype": "method",
+            "name": "takeWhile",
+            "params": [
+                {
+                    "name": "f",
+                    "description": "A predicate function",
+                    "type": "Function"
+                }
+            ],
+            "return": {
+                "description": "A function awaiting a transducer",
+                "type": "Function"
+            },
+            "class": "funkyJS.transducers",
+            "module": "transducers"
+        },
+        {
+            "file": "sources\\transducers.js",
+            "line": 925,
+            "description": "A transformer which keeps all values which are not equal to `null` and/or\n    to `undefined`",
+            "itemtype": "method",
+            "name": "keep",
+            "params": [
+                {
+                    "name": "xf",
+                    "description": "A transducer to operate over",
+                    "type": "Transducer"
+                }
+            ],
+            "return": {
+                "description": "A new transducer",
+                "type": "Transducer"
+            },
+            "class": "funkyJS.transducers",
+            "module": "transducers"
+        },
+        {
+            "file": "sources\\transducers.js",
+            "line": 952,
+            "description": "A transformer which returns a collection of unique values",
+            "itemtype": "method",
+            "name": "unique",
+            "params": [
+                {
+                    "name": "xf",
+                    "description": "A transducer to operate over",
+                    "type": "Transducer"
+                }
+            ],
+            "return": {
+                "description": "A new transducer",
+                "type": "Transducer"
+            },
+            "class": "funkyJS.transducers",
+            "module": "transducers"
+        },
+        {
+            "file": "sources\\transducers.js",
+            "line": 980,
+            "description": "Given a number `n`, divides the collection into chunks of `n` size. The last\n    partition may have less then `n` items, depending on the size of the\n    initial collection",
+            "itemtype": "method",
+            "name": "partition",
+            "params": [
+                {
+                    "name": "n",
+                    "description": "Size of a single chunk",
+                    "type": "Number"
+                }
+            ],
+            "return": {
+                "description": "A function awaiting a transducer",
+                "type": "Function"
+            },
+            "class": "funkyJS.transducers",
+            "module": "transducers"
+        },
+        {
+            "file": "sources\\transducers.js",
+            "line": 1018,
+            "description": "Given a function `f`, divides the collection into chunks whenever `f` returns\n    a new value",
+            "itemtype": "method",
+            "name": "partitionBy",
+            "params": [
+                {
+                    "name": "n",
+                    "description": "Size of a single chunk",
+                    "type": "Number"
+                }
+            ],
+            "return": {
+                "description": "A function awaiting a transducer",
+                "type": "Function"
+            },
+            "example": [
+                "\n    var t = funkyJS.transducers;\n\n    var isOdd = function (v) { return v % 2 === 0; }\n\n    t.transduce(\n        t.partitionBy(isOdd),\n        t.append,\n        [],\n        [1, 1, 1, 2, 2, 3, 3, 3]\n    );\n    // -> [[1, 1, 1], [2, 2], [3, 3, 3]]\n"
+            ],
+            "class": "funkyJS.transducers",
+            "module": "transducers"
+        },
+        {
+            "file": "sources\\transducers.js",
+            "line": 1074,
+            "description": "EXPORT\n======",
+            "class": "funkyJS.transducers",
+            "module": "transducers"
+        },
+        {
             "file": "sources\\type.js",
             "line": 41,
             "description": "The is function takes in the name of any internal [[Class]] and a value and\n    checks if the internal [[Class]] of the given value matches the given\n    name",
@@ -3318,7 +4033,7 @@
         },
         {
             "file": "sources\\type.js",
-            "line": 88,
+            "line": 84,
             "description": "The isNull function takes in a value and checks if it is null",
             "itemtype": "method",
             "name": "isNull",
@@ -3341,7 +4056,7 @@
         },
         {
             "file": "sources\\type.js",
-            "line": 115,
+            "line": 107,
             "description": "The isVoid function takes in a value and checks if it is undefined",
             "itemtype": "method",
             "name": "isVoid",
@@ -3364,7 +4079,7 @@
         },
         {
             "file": "sources\\type.js",
-            "line": 142,
+            "line": 130,
             "description": "The isNil function takes in a value and checks if it is null or undefined",
             "itemtype": "method",
             "name": "isNil",
@@ -3387,7 +4102,7 @@
         },
         {
             "file": "sources\\type.js",
-            "line": 169,
+            "line": 153,
             "description": "The isBool function takes in a value and checks if it is a boolean",
             "itemtype": "method",
             "name": "isBool",
@@ -3410,7 +4125,7 @@
         },
         {
             "file": "sources\\type.js",
-            "line": 196,
+            "line": 176,
             "description": "The isString function takes in a value and checks if it is a string",
             "itemtype": "method",
             "name": "isString",
@@ -3433,7 +4148,7 @@
         },
         {
             "file": "sources\\type.js",
-            "line": 223,
+            "line": 199,
             "description": "The isNumber function takes in a value and checks if it is a number (not NaN\n    and finite)",
             "itemtype": "method",
             "name": "isNumber",
@@ -3456,7 +4171,7 @@
         },
         {
             "file": "sources\\type.js",
-            "line": 248,
+            "line": 220,
             "description": "The isInt32 function takes in a value and checks if it is a integer",
             "itemtype": "method",
             "name": "isInt32",
@@ -3479,7 +4194,7 @@
         },
         {
             "file": "sources\\type.js",
-            "line": 272,
+            "line": 240,
             "description": "The isFloat32 function takes in a value and checks if it is a floating point number",
             "itemtype": "method",
             "name": "isFloat32",
@@ -3502,7 +4217,7 @@
         },
         {
             "file": "sources\\type.js",
-            "line": 296,
+            "line": 260,
             "description": "The isFunction function takes in a value and checks if it is a function",
             "itemtype": "method",
             "name": "isFunction",
@@ -3525,7 +4240,7 @@
         },
         {
             "file": "sources\\type.js",
-            "line": 320,
+            "line": 280,
             "description": "The isArray function takes in a value and checks if it is a array",
             "itemtype": "method",
             "name": "isArray",
@@ -3548,7 +4263,7 @@
         },
         {
             "file": "sources\\type.js",
-            "line": 344,
+            "line": 300,
             "description": "The isObject function takes in a value and checks if it is a object",
             "itemtype": "method",
             "name": "isObject",
@@ -3571,7 +4286,7 @@
         },
         {
             "file": "sources\\type.js",
-            "line": 368,
+            "line": 320,
             "description": "The isDate function takes in a value and checks if it is a Date() instance",
             "itemtype": "method",
             "name": "isDate",
@@ -3594,7 +4309,7 @@
         },
         {
             "file": "sources\\type.js",
-            "line": 392,
+            "line": 340,
             "description": "The isRegex function takes in a value and checks if it is a regular expression",
             "itemtype": "method",
             "name": "isRegex",
@@ -3617,7 +4332,7 @@
         },
         {
             "file": "sources\\type.js",
-            "line": 416,
+            "line": 360,
             "description": "The isNode function takes in a value and checks if it is a DOM-Node",
             "itemtype": "method",
             "name": "isNode",
@@ -3640,7 +4355,7 @@
         },
         {
             "file": "sources\\type.js",
-            "line": 440,
+            "line": 380,
             "description": "The isNodeList function takes in a value and checks if it is a list of DOM-Nodes",
             "itemtype": "method",
             "name": "isNodeList",
@@ -3663,7 +4378,7 @@
         },
         {
             "file": "sources\\type.js",
-            "line": 464,
+            "line": 400,
             "description": "The isSequencial function takes in a value and checks if it is a sequencial\n    enumerable. A enumerable is considered sequencial, if it validates against\n    the following tests:\n    1) Is not null or undefined AND\n    2) Has a length property with int32 value AND\n    3) Is not a function AND\n    4) Is not a object",
             "itemtype": "method",
             "name": "isSequencial",
@@ -3686,7 +4401,7 @@
         },
         {
             "file": "sources\\type.js",
-            "line": 494,
+            "line": 426,
             "description": "The isEnumerable function takes in a value and checks if it is a enumerable.\n    A enumerable must validate against the following tests:\n    1) Is object\n    OR\n    1) Is not null or undefined AND\n    2) Has a length property with int32 value AND\n    3) Is not a function AND\n    4) Is not a object",
             "itemtype": "method",
             "name": "isEnumerable",
@@ -3709,6 +4424,14 @@
         }
     ],
     "warnings": [
+        {
+            "message": "unknown tag: alias",
+            "line": " sources\\transducers.js:106"
+        },
+        {
+            "message": "unknown tag: alias",
+            "line": " sources\\transducers.js:135"
+        },
         {
             "message": "Missing item type\nEXPORT\n======",
             "line": " sources\\advices.js:182"
@@ -3735,7 +4458,7 @@
         },
         {
             "message": "Missing item type\nEXPORT\n======",
-            "line": " sources\\iterators.js:470"
+            "line": " sources\\iterators.js:453"
         },
         {
             "message": "Missing item type\nEXPORT\n======",
@@ -3748,6 +4471,10 @@
         {
             "message": "Missing item type\nEXPORT\n======",
             "line": " sources\\trampolines.js:123"
+        },
+        {
+            "message": "Missing item type\nEXPORT\n======",
+            "line": " sources\\transducers.js:1074"
         }
     ]
 }

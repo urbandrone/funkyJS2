@@ -341,7 +341,7 @@ var anim = new Anim('#myElement', {left: 300}, 500);</code></pre>
             </td>
         </tr>
         <tr>
-            <td>forEach</td>
+            <td>fEach</td>
             <td>self, fn [, scope]</td>
             <td>collection, fn [, *]</td>
             <td>collection</td>
@@ -350,12 +350,12 @@ var anim = new Anim('#myElement', {left: 300}, 500);</code></pre>
             <td colspan="4" class="doc_method">
             Finally makes jQuery's "each" method behave like the one on Array.prototype insofar, as it alters the given arguments to the equivalents of a array ones.
 <pre><code>jQuery.each(collection, fn(index, item));
-funkyDOM.forEach(collection, fn(item, index, allItems), context);</code></pre>
+funkyDOM.fEach(collection, fn(item, index, allItems), context);</code></pre>
             . For technical reasons, it's impossible to overwrite jQuery's/Zepto's "each" method because there is no way to determine the past call stack to find out which <em>internal</em> each method has been called by a wrapped method inside the funkyDOM wrapper, and which calls have been made from <em>outside</em> the wrapper. Hence the name.
             </td>
         </tr>
         <tr>
-            <td>mapEach</td>
+            <td>fMap</td>
             <td>self, fn [, scope]</td>
             <td>collection, fn [, *]</td>
             <td>new collection</td>
@@ -364,12 +364,12 @@ funkyDOM.forEach(collection, fn(item, index, allItems), context);</code></pre>
             <td colspan="4" class="doc_method">
             Finally makes jQuery's "map" method behave like the one on Array.prototype insofar, as it alters the given arguments to the equivalents of a array ones.
 <pre><code>jQuery.map(collection, fn(index, item));
-funkyDOM.mapEach(collection, fn(item, index, allItems), context);</code></pre>
+funkyDOM.fMap(collection, fn(item, index, allItems), context);</code></pre>
             . For technical reasons, it's impossible to overwrite jQuery's/Zepto's "filter" method because there is no way to determine the past call stack to find out which <em>internal</em> filter method has been called by a wrapped method inside the funkyDOM wrapper, and which calls have been made from <em>outside</em> the wrapper. Hence the name.
             </td>
         </tr>
         <tr>
-            <td>filterEach</td>
+            <td>fFilter</td>
             <td>self, fn [, scope]</td>
             <td>collection, fn [, *]</td>
             <td>new collection</td>
@@ -378,27 +378,8 @@ funkyDOM.mapEach(collection, fn(item, index, allItems), context);</code></pre>
             <td colspan="4" class="doc_method">
             Finally makes jQuery's "filter" method behave like the one on Array.prototype insofar, as it alters the given arguments to the equivalents of a array ones.
 <pre><code>jQuery.filter(collection, fn(index, item));
-funkyDOM.filterEach(collection, fn(item, index, allItems), context);</code></pre>
+funkyDOM.fFilter(collection, fn(item, index, allItems), context);</code></pre>
             . For technical reasons, it's impossible to overwrite jQuery's/Zepto's "filter" method because there is no way to determine the past call stack to find out which <em>internal</em> filter method has been called by a wrapped method inside the funkyDOM wrapper, and which calls have been made from <em>outside</em> the wrapper. Hence the name.
-            </td>
-        </tr>
-        <tr>
-            <td>foldEach</td>
-            <td>self, fn, seed [, scope]</td>
-            <td>collection, fn, * [, *]</td>
-            <td>new collection</td>
-        </tr>
-        <tr>
-            <td colspan="4" class="doc_method">
-            Returns a folded/reduced collection, depending on the function and the type of seed given to it. Below is an example
-<pre><code>var f$ = funkyDOM;
-var divs = f$('div');
-var divClasses = f$.foldEach(divs, function (acc, div) {
-    return div.className + (acc ? ' ' + acc : ' ');
-}, '');
-
-console.log(divClasses.split(' '));
-// -> ['my-class', 'my-other', 'some-third-class']</code></pre>
             </td>
         </tr>
     </tbody>
@@ -495,7 +476,7 @@ console.log(divClasses.split(' '));
             </td>
         </tr>
         <tr>
-            <td>forEach</td>
+            <td>fEach</td>
             <td>fn [, scope]</td>
             <td>fn [, *]</td>
             <td>collection</td>
@@ -504,12 +485,12 @@ console.log(divClasses.split(' '));
             <td colspan="4" class="doc_method">
             Finally makes jQuery's "each" method behave like the one on Array.prototype insofar, as it alters the given arguments to the equivalents of a array ones.
 <pre><code>$collection.each(fn(index, item));
-f$collection.forEach(fn(item, index, allItems), context);</code></pre>
+f$collection.fEach(fn(item, index, allItems), context);</code></pre>
             . For technical reasons, it's impossible to overwrite jQuery's/Zepto's "each" method because there is no way to determine the past call stack to find out which <em>internal</em> each method has been called by a wrapped method inside the funkyDOM wrapper, and which calls have been made from <em>outside</em> the wrapper. Hence the name.
             </td>
         </tr>
         <tr>
-            <td>mapEach</td>
+            <td>fMap</td>
             <td>fn [, scope]</td>
             <td>fn [, *]</td>
             <td>new collection</td>
@@ -518,12 +499,12 @@ f$collection.forEach(fn(item, index, allItems), context);</code></pre>
             <td colspan="4" class="doc_method">
             Finally makes jQuery's "map" method behave like the one on Array.prototype insofar, as it alters the given arguments to the equivalents of a array ones.
 <pre><code>$collection.map(fn(index, item));
-f$collection.mapEach(fn(item, index, allItems), context);</code></pre>
+f$collection.fMap(fn(item, index, allItems), context);</code></pre>
             . For technical reasons, it's impossible to overwrite jQuery's/Zepto's "filter" method because there is no way to determine the past call stack to find out which <em>internal</em> filter method has been called by a wrapped method inside the funkyDOM wrapper, and which calls have been made from <em>outside</em> the wrapper. Hence the name.
             </td>
         </tr>
         <tr>
-            <td>filterEach</td>
+            <td>fFilter</td>
             <td>fn [, scope]</td>
             <td>fn [, *]</td>
             <td>new collection</td>
@@ -532,26 +513,8 @@ f$collection.mapEach(fn(item, index, allItems), context);</code></pre>
             <td colspan="4" class="doc_method">
             Finally makes jQuery's "filter" method behave like the one on Array.prototype insofar, as it alters the given arguments to the equivalents of a array ones.
 <pre><code>$collection.filter(fn(index, item));
-f$collection.filterEach(fn(item, index, allItems), context);</code></pre>
+f$collection.fFilter(fn(item, index, allItems), context);</code></pre>
             . For technical reasons, it's impossible to overwrite jQuery's/Zepto's "filter" method because there is no way to determine the past call stack to find out which <em>internal</em> filter method has been called by a wrapped method inside the funkyDOM wrapper, and which calls have been made from <em>outside</em> the wrapper. Hence the name.
-            </td>
-        </tr>
-        <tr>
-            <td>foldEach</td>
-            <td>fn, seed [, scope]</td>
-            <td>fn, * [, *]</td>
-            <td>new collection</td>
-        </tr>
-        <tr>
-            <td colspan="4" class="doc_method">
-            Returns a folded/reduced collection, depending on the function and the type of seed given to it. Below is an example
-<pre><code>var f$ = funkyDOM;
-var divClasses = f$('div').foldEach(function (acc, div) {
-    return div.className + (acc ? ' ' + acc : ' ');
-}, '');
-
-console.log(divClasses.split(' '));
-// -> ['my-class', 'my-other', 'some-third-class']</code></pre>
             </td>
         </tr>
         <tr>

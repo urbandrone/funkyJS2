@@ -36,6 +36,13 @@
 
 
 
+    function conformProtocol (obj) {
+        obj['@@iterator'] = function () { return obj; };
+        return obj;
+    }
+
+
+
     /**
     Allows to create a numerical iterator, with a optional start and end number.
         If the end number is below the start number, the returned iterator counts
@@ -51,37 +58,37 @@
     @example
         var nums = funkyJS.numIterator(5); // counts 5 -> Infinity
 
-        nums.next().value();
+        nums.next().value;
         // -> 5
 
-        nums.next().value();
+        nums.next().value;
         // -> 6
 
-        nums.next().value();
+        nums.next().value;
         // -> 7
 
 
         var nums2 = funkyJS.numIterator();
 
-        nums2.next().value();
+        nums2.next().value;
         // -> 0
 
-        nums2.next().value();
+        nums2.next().value;
         // -> 1
 
-        nums2.next().value();
+        nums2.next().value;
         // -> 2
 
 
         var nums3 = funkyJS.numIterator(10, 0);
 
-        nums3.next().value();
+        nums3.next().value;
         // -> 10
 
-        nums3.next().value();
+        nums3.next().value;
         // -> 9
 
-        nums3.next().value();
+        nums3.next().value;
         // -> 8
 
     **/
@@ -94,26 +101,22 @@
             _add = -1;
         }
 
-        return {
+        return conformProtocol({
             next: function () {
                 var _cur = _now;
                 _now += _add;
                 if (_cur === _end) {
                     return {
                         done: true,
-                        value: function () {
-                            return undefined;
-                        }
+                        value: undefined
                     };
                 }
                 return {
                     done: false,
-                    value: function () {
-                        return _cur;
-                    }
+                    value: _cur
                 };
             }
-        };
+        });
     }
 
     /**
@@ -128,25 +131,25 @@
     @example
         var itAbc = funkyJS.seqIterator(['a', 'b', 'c']);
 
-        itAbc.next().value();
+        itAbc.next().value;
         // -> 'a'
 
-        itAbc.next().value();
+        itAbc.next().value;
         // -> 'b'
 
-        itAbc.next().value();
+        itAbc.next().value;
         // -> 'c'
 
 
         var itStr = funkyJS.seqIterator('string');
 
-        itStr.next().value();
+        itStr.next().value;
         // -> 's'
 
-        itStr.next().value();
+        itStr.next().value;
         // -> 't'
 
-        itStr.next().value();
+        itStr.next().value;
         // -> 'r'
 
     **/
@@ -158,27 +161,23 @@
         }
 
         _index = -1;
-        return {
+        return conformProtocol({
             next: function () {
                 _index += 1;
 
                 if (_index >= seq.length) {
                     return {
                         done: true,
-                        value: function () {
-                            return undefined;
-                        }
+                        value: undefined
                     };
                 }
 
                 return {
                     done: false,
-                    value: function () {
-                        return seq[_index];
-                    }
+                    value: seq[_index]
                 };
             }
-        };
+        });
     }
 
     /**
@@ -198,13 +197,13 @@
             c: 'third'
         });
 
-        itAbc.next().value();
+        itAbc.next().value;
         // -> 'first'
 
-        itAbc.next().value();
+        itAbc.next().value;
         // -> 'second'
 
-        itAbc.next().value();
+        itAbc.next().value;
         // -> 'third'
 
     **/
@@ -218,27 +217,23 @@
 
         _keys = Object.keys(obj);
         _index = -1;
-        return {
+        return conformProtocol({
             next: function () {
                 _index += 1;
 
                 if (_index >= _keys.length) {
                     return {
                         done: true,
-                        value: function () {
-                            return undefined;
-                        }
+                        value: undefined
                     };
                 }
 
                 return {
                     done: false,
-                    value: function () {
-                        return obj[_keys[_index]];
-                    }
+                    value: obj[_keys[_index]]
                 };
             }
-        };
+        });
     }
 
     /**
@@ -262,13 +257,13 @@
 
         var lazyMap = funkyJS.mapLazy(upper, itAbc);
 
-        lazyMap.next().value();
+        lazyMap.next().value;
         // -> 'FIRST'
 
-        lazyMap.next().value();
+        lazyMap.next().value;
         // -> 'SECOND'
 
-        lazyMap.next().value();
+        lazyMap.next().value;
         // -> 'THIRD'
 
     **/
@@ -283,31 +278,27 @@
             }
         }
 
-        if (!type.isObject(iterator) || !type.isFunction(iterator.next)) {
-            throw 'mapLazy expected second argument to be iterator but saw ' + iterator;
+        if (!type.isIterator(iterator)) {
+            throw 'mapLazy expects last argument to be iterator but saw ' + iterator;
         }
 
-        return {
+        return conformProtocol({
             next: function () {
                 var _it = iterator.next();
 
                 if (_it.done) {
                     return {
                         done: true,
-                        value: function () {
-                            return undefined;
-                        }
+                        value: _it.value
                     }
                 }
 
                 return {
                     done: false,
-                    value: function () {
-                        return fn(_it.value());
-                    }
+                    value: fn(_it.value)
                 }
             }
-        };
+        });
     }
 
     /**
@@ -334,10 +325,10 @@
 
         var lazyFilter = funkyJS.filterLazy(startsEitherFT, itAbc);
 
-        lazyFilter.next().value();
+        lazyFilter.next().value;
         // -> 'first'
 
-        lazyFilter.next().value();
+        lazyFilter.next().value;
         // -> 'third'
 
     **/
@@ -352,46 +343,42 @@
             }
         }
 
-        if (!type.isObject(iterator) || !type.isFunction(iterator.next)) {
-            throw 'filterLazy expected second argument to be iterator but saw ' + iterator;
+        if (!type.isIterator(iterator)) {
+            throw 'filterLazy expects last argument to be iterator but saw ' + iterator;
         }
 
-        return {
+        return conformProtocol({
             next: function () {
                 var _it = iterator.next();
-                while (!_it.done && !fn(_it.value())) {
+                while (!_it.done && !fn(_it.value)) {
                     _it = iterator.next();
                 }
 
                 if (_it.done) {
                     return {
                         done: true,
-                        value: function () {
-                            return undefined;
-                        }
+                        value: _it.value
                     };
                 }
 
                 return {
                     done: false,
-                    value: function () {
-                        return _it.value();
-                    }
+                    value: _it.value
                 }
             }
-        };
+        });
     }
 
     /**
-    Returns a lazy iterator, which folds a given iterator to one value. The
+    Returns a lazy iterator, which folds a given iterator into a value. The
         returned iterator is lazy as it only folds one when calling it's next()
         method
 
     @method foldLazy
     @for funkyJS
     @param {function} fn The function to fold with
-    @param {object} iterator The iterator to fold
     @param {*} seed The initial value to start from
+    @param {object} iterator The iterator to fold
     @return {object} Iterator object
 
     @example
@@ -405,19 +392,19 @@
             return !a ? b : a + ', ' + b;
         }
 
-        var lazyFold = funkyJS.foldLazy(cat, itAbc, '');
+        var lazyFold = funkyJS.foldLazy(cat, '', itAbc);
 
-        lazyFold.next().value();
+        lazyFold.next().value;
         // -> 'first'
 
-        lazyFold.next().value();
+        lazyFold.next().value;
         // -> 'first, second'
 
-        lazyFold.next().value();
+        lazyFold.next().value;
         // -> 'first, second, third'
 
     **/
-    api.foldLazy = function foldLazy (fn, iterator, seed) {
+    api.foldLazy = function foldLazy (fn, seed, iterator) {
         var _acc;
         if (typeof fn !== 'function') {
             throw 'foldLazy expected first argument to be function but saw ' + fn;
@@ -435,33 +422,29 @@
             }
         }
 
-        if (!type.isObject(iterator) || !type.isFunction(iterator.next)) {
-            throw 'foldLazy expected second argument to be iterator but saw ' + iterator;
+        if (!type.isIterator(iterator)) {
+            throw 'foldLazy expects last argument to be iterator but saw ' + iterator;
         }
 
         _acc = seed;
-        return {
+        return conformProtocol({
             next: function () {
                 var _it = iterator.next();
 
                 if (_it.done) {
                     return {
                         done: true,
-                        value: function () {
-                            return undefined;
-                        }
+                        value: _acc
                     };
                 }
 
+                _acc = fn(_acc, _it.value);
                 return {
                     done: false,
-                    value: function () {
-                        _acc = fn(_acc, _it.value());
-                        return _acc;
-                    }
+                    value: _acc
                 }
             }
-        };
+        });
     }
 
 

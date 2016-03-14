@@ -172,4 +172,14 @@ describe('funkyJS Types Module', function () {
         expect(e).toBe(false);
     });
 
+    it('testing isIterator :: f -> x -> b', function () {
+        var a = funkyJS.isIterator(null);
+        var b = funkyJS.isIterator({next: true});
+        var c = funkyJS.isIterator({next: function () {}});
+
+        expect(a).toBe(false);
+        expect(b).toBe(false);
+        expect(c).toBe(true);
+    });
+
 });

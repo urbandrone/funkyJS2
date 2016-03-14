@@ -1,7 +1,8 @@
 YUI.add("yuidoc-meta", function(Y) {
    Y.YUIDoc = { meta: {
     "classes": [
-        "funkyJS"
+        "funkyJS",
+        "funkyJS.transducers"
     ],
     "modules": [
         "advices",
@@ -19,6 +20,7 @@ YUI.add("yuidoc-meta", function(Y) {
         "objects",
         "strings",
         "trampolines",
+        "transducers",
         "type"
     ],
     "allModules": [
@@ -81,6 +83,10 @@ YUI.add("yuidoc-meta", function(Y) {
         {
             "displayName": "trampolines",
             "name": "trampolines"
+        },
+        {
+            "displayName": "transducers",
+            "name": "transducers"
         },
         {
             "displayName": "type",

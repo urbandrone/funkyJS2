@@ -43,6 +43,8 @@
             
                 <li><a href="../classes/funkyJS.html">funkyJS</a></li>
             
+                <li><a href="../classes/funkyJS.transducers.html">funkyJS.transducers</a></li>
+            
             </ul>
 
             <ul id="api-modules" class="apis modules">
@@ -76,6 +78,8 @@
                 <li><a href="../modules/strings.html">strings</a></li>
             
                 <li><a href="../modules/trampolines.html">trampolines</a></li>
+            
+                <li><a href="../modules/transducers.html">transducers</a></li>
             
                 <li><a href="../modules/type.html">type</a></li>
             
@@ -7018,7 +7022,7 @@ it.value;
             
         
         
-        <a href="../files/sources_iterators.js.html#l313"><code>sources\iterators.js:313</code></a>
+        <a href="../files/sources_iterators.js.html#l304"><code>sources\iterators.js:304</code></a>
         
         </p>
 
@@ -7110,10 +7114,10 @@ var startsEitherFT = function (s) {
 
 var lazyFilter = funkyJS.filterLazy(startsEitherFT, itAbc);
 
-lazyFilter.next().value();
+lazyFilter.next().value;
 // -&gt; &#39;first&#39;
 
-lazyFilter.next().value();
+lazyFilter.next().value;
 // -&gt; &#39;third&#39;</code></pre>
 
             </div>
@@ -7801,13 +7805,13 @@ staticClass.foo().bar();
             
                 <li class="arg">
                     
-                        <code>iterator</code>
+                        <code>seed</code>
                     
                 </li>
             
                 <li class="arg">
                     
-                        <code>seed</code>
+                        <code>iterator</code>
                     
                 </li>
             
@@ -7846,7 +7850,7 @@ staticClass.foo().bar();
             
         
         
-        <a href="../files/sources_iterators.js.html#l385"><code>sources\iterators.js:385</code></a>
+        <a href="../files/sources_iterators.js.html#l372"><code>sources\iterators.js:372</code></a>
         
         </p>
 
@@ -7857,7 +7861,7 @@ staticClass.foo().bar();
     </div>
 
     <div class="description">
-        <p>Returns a lazy iterator, which folds a given iterator to one value. The
+        <p>Returns a lazy iterator, which folds a given iterator into a value. The
     returned iterator is lazy as it only folds one when calling it&#39;s next()
     method</p>
 
@@ -7887,22 +7891,6 @@ staticClass.foo().bar();
             
                 <li class="param">
                     
-                        <code class="param-name">iterator</code>
-                        <span class="type">Object</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <p>The iterator to fold</p>
-
-                    </div>
-
-                    
-                </li>
-            
-                <li class="param">
-                    
                         <code class="param-name">seed</code>
                         <span class="type"></span>
                     
@@ -7911,6 +7899,22 @@ staticClass.foo().bar();
 
                     <div class="param-description">
                         <p>The initial value to start from</p>
+
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">iterator</code>
+                        <span class="type">Object</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>The iterator to fold</p>
 
                     </div>
 
@@ -7952,15 +7956,15 @@ var cat = function (a, b) {
     return !a ? b : a + &#39;, &#39; + b;
 }
 
-var lazyFold = funkyJS.foldLazy(cat, itAbc, &#39;&#39;);
+var lazyFold = funkyJS.foldLazy(cat, &#39;&#39;, itAbc);
 
-lazyFold.next().value();
+lazyFold.next().value;
 // -&gt; &#39;first&#39;
 
-lazyFold.next().value();
+lazyFold.next().value;
 // -&gt; &#39;first, second&#39;
 
-lazyFold.next().value();
+lazyFold.next().value;
 // -&gt; &#39;first, second, third&#39;</code></pre>
 
             </div>
@@ -10556,7 +10560,7 @@ isArray(aArray);
             
         
         
-        <a href="../files/sources_type.js.html#l320"><code>sources\type.js:320</code></a>
+        <a href="../files/sources_type.js.html#l280"><code>sources\type.js:280</code></a>
         
         </p>
 
@@ -10678,7 +10682,7 @@ funkyJS.isArray({});
             
         
         
-        <a href="../files/sources_type.js.html#l169"><code>sources\type.js:169</code></a>
+        <a href="../files/sources_type.js.html#l153"><code>sources\type.js:153</code></a>
         
         </p>
 
@@ -10803,7 +10807,7 @@ funkyJS.isBool(0);
             
         
         
-        <a href="../files/sources_type.js.html#l368"><code>sources\type.js:368</code></a>
+        <a href="../files/sources_type.js.html#l320"><code>sources\type.js:320</code></a>
         
         </p>
 
@@ -10925,7 +10929,7 @@ funkyJS.isDate(&#39;2014-01-01&#39;);
             
         
         
-        <a href="../files/sources_type.js.html#l494"><code>sources\type.js:494</code></a>
+        <a href="../files/sources_type.js.html#l426"><code>sources\type.js:426</code></a>
         
         </p>
 
@@ -11051,7 +11055,7 @@ funkyJS.isDate(&#39;2014-01-01&#39;);
             
         
         
-        <a href="../files/sources_type.js.html#l272"><code>sources\type.js:272</code></a>
+        <a href="../files/sources_type.js.html#l240"><code>sources\type.js:240</code></a>
         
         </p>
 
@@ -11173,7 +11177,7 @@ funkyJS.isFloat32(1);
             
         
         
-        <a href="../files/sources_type.js.html#l296"><code>sources\type.js:296</code></a>
+        <a href="../files/sources_type.js.html#l260"><code>sources\type.js:260</code></a>
         
         </p>
 
@@ -11295,7 +11299,7 @@ funkyJS.isFunction(&#39;function&#39;);
             
         
         
-        <a href="../files/sources_type.js.html#l248"><code>sources\type.js:248</code></a>
+        <a href="../files/sources_type.js.html#l220"><code>sources\type.js:220</code></a>
         
         </p>
 
@@ -11417,7 +11421,7 @@ funkyJS.isInt32(1.5);
             
         
         
-        <a href="../files/sources_type.js.html#l142"><code>sources\type.js:142</code></a>
+        <a href="../files/sources_type.js.html#l130"><code>sources\type.js:130</code></a>
         
         </p>
 
@@ -11542,7 +11546,7 @@ funkyJS.isNil(0);
             
         
         
-        <a href="../files/sources_type.js.html#l416"><code>sources\type.js:416</code></a>
+        <a href="../files/sources_type.js.html#l360"><code>sources\type.js:360</code></a>
         
         </p>
 
@@ -11664,7 +11668,7 @@ funkyJS.isNode(&#39;&lt;div&gt;&lt;/div&gt;&#39;);
             
         
         
-        <a href="../files/sources_type.js.html#l440"><code>sources\type.js:440</code></a>
+        <a href="../files/sources_type.js.html#l380"><code>sources\type.js:380</code></a>
         
         </p>
 
@@ -11786,7 +11790,7 @@ funkyJS.isNodeList([]);
             
         
         
-        <a href="../files/sources_type.js.html#l88"><code>sources\type.js:88</code></a>
+        <a href="../files/sources_type.js.html#l84"><code>sources\type.js:84</code></a>
         
         </p>
 
@@ -11911,7 +11915,7 @@ funkyJS.isNull(0);
             
         
         
-        <a href="../files/sources_type.js.html#l223"><code>sources\type.js:223</code></a>
+        <a href="../files/sources_type.js.html#l199"><code>sources\type.js:199</code></a>
         
         </p>
 
@@ -12034,7 +12038,7 @@ funkyJS.isNumber(NaN);
             
         
         
-        <a href="../files/sources_type.js.html#l344"><code>sources\type.js:344</code></a>
+        <a href="../files/sources_type.js.html#l300"><code>sources\type.js:300</code></a>
         
         </p>
 
@@ -12156,7 +12160,7 @@ funkyJS.isObject([]);
             
         
         
-        <a href="../files/sources_type.js.html#l392"><code>sources\type.js:392</code></a>
+        <a href="../files/sources_type.js.html#l340"><code>sources\type.js:340</code></a>
         
         </p>
 
@@ -12278,7 +12282,7 @@ funkyJS.isRegex(&#39; &#39;);
             
         
         
-        <a href="../files/sources_type.js.html#l464"><code>sources\type.js:464</code></a>
+        <a href="../files/sources_type.js.html#l400"><code>sources\type.js:400</code></a>
         
         </p>
 
@@ -12403,7 +12407,7 @@ funkyJS.isRegex(&#39; &#39;);
             
         
         
-        <a href="../files/sources_type.js.html#l196"><code>sources\type.js:196</code></a>
+        <a href="../files/sources_type.js.html#l176"><code>sources\type.js:176</code></a>
         
         </p>
 
@@ -12528,7 +12532,7 @@ funkyJS.isString(0);
             
         
         
-        <a href="../files/sources_type.js.html#l115"><code>sources\type.js:115</code></a>
+        <a href="../files/sources_type.js.html#l107"><code>sources\type.js:107</code></a>
         
         </p>
 
@@ -13221,7 +13225,7 @@ processComment(comment);
             
         
         
-        <a href="../files/sources_iterators.js.html#l244"><code>sources\iterators.js:244</code></a>
+        <a href="../files/sources_iterators.js.html#l239"><code>sources\iterators.js:239</code></a>
         
         </p>
 
@@ -13310,13 +13314,13 @@ var upper = funkyJS.call(String.prototype.toUpperCase);
 
 var lazyMap = funkyJS.mapLazy(upper, itAbc);
 
-lazyMap.next().value();
+lazyMap.next().value;
 // -&gt; &#39;FIRST&#39;
 
-lazyMap.next().value();
+lazyMap.next().value;
 // -&gt; &#39;SECOND&#39;
 
-lazyMap.next().value();
+lazyMap.next().value;
 // -&gt; &#39;THIRD&#39;</code></pre>
 
             </div>
@@ -14649,7 +14653,7 @@ funkyJS.nth(1)()([&#39;a&#39;, &#39;b&#39;, &#39;c&#39;]);
             
         
         
-        <a href="../files/sources_iterators.js.html#l39"><code>sources\iterators.js:39</code></a>
+        <a href="../files/sources_iterators.js.html#l46"><code>sources\iterators.js:46</code></a>
         
         </p>
 
@@ -14732,37 +14736,37 @@ funkyJS.nth(1)()([&#39;a&#39;, &#39;b&#39;, &#39;c&#39;]);
             <div class="example-content">
                 <pre class="code prettyprint"><code>var nums = funkyJS.numIterator(5); // counts 5 -&gt; Infinity
 
-nums.next().value();
+nums.next().value;
 // -&gt; 5
 
-nums.next().value();
+nums.next().value;
 // -&gt; 6
 
-nums.next().value();
+nums.next().value;
 // -&gt; 7
 
 
 var nums2 = funkyJS.numIterator();
 
-nums2.next().value();
+nums2.next().value;
 // -&gt; 0
 
-nums2.next().value();
+nums2.next().value;
 // -&gt; 1
 
-nums2.next().value();
+nums2.next().value;
 // -&gt; 2
 
 
 var nums3 = funkyJS.numIterator(10, 0);
 
-nums3.next().value();
+nums3.next().value;
 // -&gt; 10
 
-nums3.next().value();
+nums3.next().value;
 // -&gt; 9
 
-nums3.next().value();
+nums3.next().value;
 // -&gt; 8</code></pre>
 
             </div>
@@ -14819,7 +14823,7 @@ nums3.next().value();
             
         
         
-        <a href="../files/sources_iterators.js.html#l184"><code>sources\iterators.js:184</code></a>
+        <a href="../files/sources_iterators.js.html#l183"><code>sources\iterators.js:183</code></a>
         
         </p>
 
@@ -14889,13 +14893,13 @@ nums3.next().value();
     c: &#39;third&#39;
 });
 
-itAbc.next().value();
+itAbc.next().value;
 // -&gt; &#39;first&#39;
 
-itAbc.next().value();
+itAbc.next().value;
 // -&gt; &#39;second&#39;
 
-itAbc.next().value();
+itAbc.next().value;
 // -&gt; &#39;third&#39;</code></pre>
 
             </div>
@@ -16292,7 +16296,7 @@ funkyJS.prepend(newHead)()([&#39;a&#39;, &#39;b&#39;, &#39;c&#39;]);
             
         
         
-        <a href="../files/sources_iterators.js.html#l119"><code>sources\iterators.js:119</code></a>
+        <a href="../files/sources_iterators.js.html#l122"><code>sources\iterators.js:122</code></a>
         
         </p>
 
@@ -16357,25 +16361,25 @@ funkyJS.prepend(newHead)()([&#39;a&#39;, &#39;b&#39;, &#39;c&#39;]);
             <div class="example-content">
                 <pre class="code prettyprint"><code>var itAbc = funkyJS.seqIterator([&#39;a&#39;, &#39;b&#39;, &#39;c&#39;]);
 
-itAbc.next().value();
+itAbc.next().value;
 // -&gt; &#39;a&#39;
 
-itAbc.next().value();
+itAbc.next().value;
 // -&gt; &#39;b&#39;
 
-itAbc.next().value();
+itAbc.next().value;
 // -&gt; &#39;c&#39;
 
 
 var itStr = funkyJS.seqIterator(&#39;string&#39;);
 
-itStr.next().value();
+itStr.next().value;
 // -&gt; &#39;s&#39;
 
-itStr.next().value();
+itStr.next().value;
 // -&gt; &#39;t&#39;
 
-itStr.next().value();
+itStr.next().value;
 // -&gt; &#39;r&#39;</code></pre>
 
             </div>
