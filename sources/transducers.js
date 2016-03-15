@@ -34,12 +34,11 @@
 
 
     // utilities
-
     function genTransformer (f) {
         return {
-            init: function () { throw 'Init not supported on gen. transformers'; },
-            step: f,
-            result: function (x) { return x; }
+            '@@transducer/init': function () { throw 'Not supported'; },
+            '@@transducer/step': f,
+            '@@transducer/result': function (x) { return x; }
         };
     }
 
@@ -67,7 +66,8 @@
 
     **/
     api.isReduced = function isReduced (value) {
-        return value && value.__transformer_reduced__;
+        return value &&
+            (value['@@transducer/reduced'] || value.__transducer_reduced__);
     }
 
     /**
@@ -90,12 +90,22 @@
     **/
     api.reduced = function reduced (value) {
         return Object.create(null, {
+            '@@transducer/value': {
+                enumerable: true,
+                writable: false,
+                value: value                
+            },
             value: {
                 enumerable: true,
                 writable: false,
                 value: value
             },
-            __transformer_reduced__: {
+            '@@transducer/reduced': {
+                enumerable: false,
+                writable: false,
+                value: true                
+            },
+            __transducer_reduced__: {
                 enumerable: false,
                 writable: false,
                 value: true
@@ -172,7 +182,7 @@
         _v = seed;
         if (type.isSequencial(list)) {
             for (_i = 0, _l = list.length; _i < _l; _i += 1) {
-                _v = _xf.step(_v, list[_i]);
+                _v = _xf['@@transducer/step'](_v, list[_i]);
                 if (api.isReduced(_v)) {
                     _v = api.deref(_v);
                     break;
@@ -182,7 +192,7 @@
         } else if (type.isIterator(list)) {
             _i = list.next();
             while(!_i.done) {
-                _v = _xf.step(_v, _i.value);
+                _v = _xf['@@transducer/step'](_v, _i.value);
                 if(api.isReduced(_v)) {
                     _v = api.deref(_v);
                     break;
@@ -193,7 +203,7 @@
         } else if (type.isObject(list)) {
             _ks = Object.keys(list)
             for (_i = 0, _l = _ks.length; _i < _l; _i += 1) {
-                _v = _xf.step(_v, [_ks[_i], list[_ks[_i]]]);
+                _v = _xf['@@transducer/step'](_v, [_ks[_i], list[_ks[_i]]]);
                 if (api.isReduced(_v)) {
                     _v = api.deref(_v);
                     break;
@@ -201,7 +211,7 @@
             }
         }
 
-        return _xf.result(_v);
+        return _xf['@@transducer/result'](_v);
     }
 
     /**
@@ -626,14 +636,14 @@
         return function (f) {
             return function (xf) {
                 return {
-                    init: function () {
-                        return xf.init();
+                    '@@transducer/init': function () {
+                        return xf['@@transducer/init']();
                     },
-                    step: function (r, v) {
-                        return t(xf.step.bind(xf), f, r, v);
+                    '@@transducer/step': function (r, v) {
+                        return t(xf['@@transducer/step'].bind(xf), f, r, v);
                     },
-                    result: function (v) {
-                        return xf.result(v);
+                    '@@transducer/result': function (v) {
+                        return xf['@@transducer/result'](v);
                     }
                 };
             }
@@ -651,25 +661,25 @@
     **/
     api.flatten = function flatten (xf) {
         return {
-            init: function () {
-                return xf.init();
+            '@@transducer/init': function () {
+                return xf['@@transducer/init']();
             },
-            step: function (r, v) {
+            '@@transducer/step': function (r, v) {
                 return api.foldl({
-                    init: function() {
-                        return xf.init();
+                    '@@transducer/init': function() {
+                        return xf['@@transducer/init']();
                     },
-                    step: function(__r, __v) {
-                        var _v = xf.step(__r, __v);
+                    '@@transducer/step': function(__r, __v) {
+                        var _v = xf['@@transducer/step'](__r, __v);
                         return api.isReduced(_v) ? api.deref(_v) : _v;
                     },
-                    result: function(v) {
+                    '@@transducer/result': function(v) {
                         return v;
                     }
                 }, r, v);
             },
-            result: function (v) {
-                return xf.result(v);
+            '@@transducer/result': function (v) {
+                return xf['@@transducer/result'](v);
             }
         };
     }
@@ -687,14 +697,14 @@
     api.map = function map (f) {
         return function (xf) {
             return {
-                init: function () {
-                    return xf.init();
+                '@@transducer/init': function () {
+                    return xf['@@transducer/init']();
                 },
-                step: function (r, v) {
-                    return xf.step(r, f(v));
+                '@@transducer/step': function (r, v) {
+                    return xf['@@transducer/step'](r, f(v));
                 },
-                result: function (v) {
-                    return xf.result(v);
+                '@@transducer/result': function (v) {
+                    return xf['@@transducer/result'](v);
                 }
             };
         }
@@ -710,7 +720,9 @@
     @return {function} A function awaiting a transducer
 
     **/
-    api.flatMap = comp(api.flatten, api.map);
+    api.flatMap = function flatMap (f) {
+        return comp(api.flatten, api.map(f));
+    };
 
     /**
     Given a predicate function `f`, returns a function awaiting a transducer which
@@ -726,14 +738,14 @@
     api.filter = function filter (f) {
         return function (xf) {
             return {
-                init: function () {
-                    return xf.init();
+                '@@transducer/init': function () {
+                    return xf['@@transducer/init']();
                 },
-                step: function (r, v) {
-                    return !!f(v) ? xf.step(r, v) : r;
+                '@@transducer/step': function (r, v) {
+                    return !!f(v) ? xf['@@transducer/step'](r, v) : r;
                 },
-                result: function (v) {
-                    return xf.result(v);
+                '@@transducer/result': function (v) {
+                    return xf['@@transducer/result'](v);
                 }
             };
         }
@@ -752,18 +764,18 @@
         return function (xf) {
             var _n = n;
             return {
-                init: function () {
-                    return xf.init();
+                '@@transducer/init': function () {
+                    return xf['@@transducer/init']();
                 },
-                step: function (r, v) {
+                '@@transducer/step': function (r, v) {
                     if (_n > 0) {
                         _n -= 1;
                         return r;
                     }
-                    return xf.step(r, v);
+                    return xf['@@transducer/step'](r, v);
                 },
-                result: function (v) {
-                    return xf.result(v);
+                '@@transducer/result': function (v) {
+                    return xf['@@transducer/result'](v);
                 }
             };
         }
@@ -782,18 +794,18 @@
         return function (xf) {
             var _i = -1;
             return {
-                init: function () {
-                    return xf.init();
+                '@@transducer/init': function () {
+                    return xf['@@transducer/init']();
                 },
-                step: function (r, v) {
+                '@@transducer/step': function (r, v) {
                     _i += 1;
                     if (_i === n) {
                         return r;
                     }
-                    return xf.step(r, v);
+                    return xf['@@transducer/step'](r, v);
                 },
-                result: function (v) {
-                    return xf.result(v);
+                '@@transducer/result': function (v) {
+                    return xf['@@transducer/result'](v);
                 }
             };
         }
@@ -813,17 +825,17 @@
         return function (xf) {
             var _drops = true;
             return {
-                init: function () {
-                    return xf.init();
+                '@@transducer/init': function () {
+                    return xf['@@transducer/init']();
                 },
-                step: function (r, v) {
+                '@@transducer/step': function (r, v) {
                     if (_drops) {
                         _drops = !!f(v);    
                     }
-                    return _drops ? r : xf.step(r, v);
+                    return _drops ? r : xf['@@transducer/step'](r, v);
                 },
-                result: function (v) {
-                    return xf.result(v);
+                '@@transducer/result': function (v) {
+                    return xf['@@transducer/result'](v);
                 }
             };
         }
@@ -842,18 +854,18 @@
         return function (xf) {
             var _n = 0;
             return {
-                init: function () {
-                    return xf.init();
+                '@@transducer/init': function () {
+                    return xf['@@transducer/init']();
                 },
-                step: function (r, v) {
+                '@@transducer/step': function (r, v) {
                     if (_n < n) {
                         _n += 1;
-                        return xf.step(r, v);
+                        return xf['@@transducer/step'](r, v);
                     }
                     return api.reduced(r);
                 },
-                result: function (v) {
-                    return xf.result(v);
+                '@@transducer/result': function (v) {
+                    return xf['@@transducer/result'](v);
                 }
             };
         }
@@ -872,18 +884,18 @@
         return function (xf) {
             var _i = -1;
             return {
-                init: function () {
-                    return xf.init();
+                '@@transducer/init': function () {
+                    return xf['@@transducer/init']();
                 },
-                step: function (r, v) {
+                '@@transducer/step': function (r, v) {
                     _i += 1;
                     if (_i < n) {
                         return r;
                     }
-                    return api.reduced(xf.step(r, v));
+                    return api.reduced(xf['@@transducer/step'](r, v));
                 },
-                result: function (v) {
-                    return xf.result(v);
+                '@@transducer/result': function (v) {
+                    return xf['@@transducer/result'](v);
                 }
             };
         }
@@ -903,18 +915,18 @@
         return function (xf) {
             var _take = true;
             return {
-                init: function () {
-                    return xf.init();
+                '@@transducer/init': function () {
+                    return xf['@@transducer/init']();
                 },
-                step: function (r, v) {
+                '@@transducer/step': function (r, v) {
                     if (_take) {
                         _take = !!f(v);
-                        return _take ? xf.step(r, v) : api.reduced(r);
+                        return _take ? xf['@@transducer/step'](r, v) : api.reduced(r);
                     }
                     return api.reduced(r);
                 },
-                result: function (v) {
-                    return xf.result(v);
+                '@@transducer/result': function (v) {
+                    return xf['@@transducer/result'](v);
                 }
             };
         }
@@ -932,17 +944,17 @@
     **/
     api.keep = function keep (xf) {
         return {
-            init: function () {
-                return xf.init();
+            '@@transducer/init': function () {
+                return xf['@@transducer/init']();
             },
-            step: function (r, v) {
+            '@@transducer/step': function (r, v) {
                 if (v !== null && v !== void 0) {
-                    return xf.step(r, v);
+                    return xf['@@transducer/step'](r, v);
                 }
                 return r;
             },
-            result: function (v) {
-                return xf.result(v);
+            '@@transducer/result': function (v) {
+                return xf['@@transducer/result'](v);
             }
         };
     }
@@ -959,18 +971,18 @@
     api.unique = function unique (xf) {
         var _found = Object.create(null);
         return {
-            init: function () {
-                return xf.init();
+            '@@transducer/init': function () {
+                return xf['@@transducer/init']();
             },
-            step: function (r, v) {
+            '@@transducer/step': function (r, v) {
                 if (!_found[v]) {
                     _found[v] = true;
-                    return xf.step(r, v);
+                    return xf['@@transducer/step'](r, v);
                 }
                 return r;
             },
-            result: function (v) {
-                return xf.result(v);
+            '@@transducer/result': function (v) {
+                return xf['@@transducer/result'](v);
             }
         };
     }
@@ -990,24 +1002,24 @@
         return function (xf) {
             var _i = 0, _p = [], _r;
             return {
-                init: function () {
-                    return xf.init();
+                '@@transducer/init': function () {
+                    return xf['@@transducer/init']();
                 },
-                step: function (r, v) {
+                '@@transducer/step': function (r, v) {
                     if (_i < n) {
                         _i += 1;
                         _p.push(v);
                         return r;
                     }
-                    _r = xf.step(r, _p);
+                    _r = xf['@@transducer/step'](r, _p);
                     _i = 0;
                     _p = [v];
                     return _r;
                 },
-                result: function (v) {
+                '@@transducer/result': function (v) {
                     return _p.length < 1 ?
-                            xf.result(v) :
-                            xf.result(xf.step(v, _p));
+                            xf['@@transducer/result'](v) :
+                            xf['@@transducer/result'](xf['@@transducer/step'](v, _p));
                 }
             };
         }
@@ -1040,10 +1052,10 @@
         return function (xf) {
             var _i = 0, _p = [], _l, _c, _r;
             return {
-                init: function () {
-                    return xf.init();
+                '@@transducer/init': function () {
+                    return xf['@@transducer/init']();
                 },
-                step: function (r, v) {
+                '@@transducer/step': function (r, v) {
                     _l = _c;
                     _c = f(v);
                     if (_i < 1 || _l === _c) {
@@ -1052,14 +1064,14 @@
                         return r;
                     }
 
-                    _r = xf.step(r, _p);
+                    _r = xf['@@transducer/step'](r, _p);
                     _p = [v];
                     return _r;
                 },
-                result: function (v) {
+                '@@transducer/result': function (v) {
                     return _p.length < 1 ?
-                            xf.result(v) :
-                            xf.result(xf.step(v, _p));
+                            xf['@@transducer/result'](v) :
+                            xf['@@transducer/result'](xf['@@transducer/step'](v, _p));
                 }
             };
         }

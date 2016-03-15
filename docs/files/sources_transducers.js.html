@@ -158,12 +158,11 @@
 
 
     // utilities
-
     function genTransformer (f) {
         return {
-            init: function () { throw &#x27;Init not supported on gen. transformers&#x27;; },
-            step: f,
-            result: function (x) { return x; }
+            &#x27;@@transducer/init&#x27;: function () { throw &#x27;Not supported&#x27;; },
+            &#x27;@@transducer/step&#x27;: f,
+            &#x27;@@transducer/result&#x27;: function (x) { return x; }
         };
     }
 
@@ -191,7 +190,8 @@
 
     **/
     api.isReduced = function isReduced (value) {
-        return value &amp;&amp; value.__transformer_reduced__;
+        return value &amp;&amp;
+            (value[&#x27;@@transducer/reduced&#x27;] || value.__transducer_reduced__);
     }
 
     /**
@@ -214,12 +214,22 @@
     **/
     api.reduced = function reduced (value) {
         return Object.create(null, {
+            &#x27;@@transducer/value&#x27;: {
+                enumerable: true,
+                writable: false,
+                value: value                
+            },
             value: {
                 enumerable: true,
                 writable: false,
                 value: value
             },
-            __transformer_reduced__: {
+            &#x27;@@transducer/reduced&#x27;: {
+                enumerable: false,
+                writable: false,
+                value: true                
+            },
+            __transducer_reduced__: {
                 enumerable: false,
                 writable: false,
                 value: true
@@ -296,7 +306,7 @@
         _v = seed;
         if (type.isSequencial(list)) {
             for (_i = 0, _l = list.length; _i &lt; _l; _i += 1) {
-                _v = _xf.step(_v, list[_i]);
+                _v = _xf[&#x27;@@transducer/step&#x27;](_v, list[_i]);
                 if (api.isReduced(_v)) {
                     _v = api.deref(_v);
                     break;
@@ -306,7 +316,7 @@
         } else if (type.isIterator(list)) {
             _i = list.next();
             while(!_i.done) {
-                _v = _xf.step(_v, _i.value);
+                _v = _xf[&#x27;@@transducer/step&#x27;](_v, _i.value);
                 if(api.isReduced(_v)) {
                     _v = api.deref(_v);
                     break;
@@ -317,7 +327,7 @@
         } else if (type.isObject(list)) {
             _ks = Object.keys(list)
             for (_i = 0, _l = _ks.length; _i &lt; _l; _i += 1) {
-                _v = _xf.step(_v, [_ks[_i], list[_ks[_i]]]);
+                _v = _xf[&#x27;@@transducer/step&#x27;](_v, [_ks[_i], list[_ks[_i]]]);
                 if (api.isReduced(_v)) {
                     _v = api.deref(_v);
                     break;
@@ -325,7 +335,7 @@
             }
         }
 
-        return _xf.result(_v);
+        return _xf[&#x27;@@transducer/result&#x27;](_v);
     }
 
     /**
@@ -750,14 +760,14 @@
         return function (f) {
             return function (xf) {
                 return {
-                    init: function () {
-                        return xf.init();
+                    &#x27;@@transducer/init&#x27;: function () {
+                        return xf[&#x27;@@transducer/init&#x27;]();
                     },
-                    step: function (r, v) {
-                        return t(xf.step.bind(xf), f, r, v);
+                    &#x27;@@transducer/step&#x27;: function (r, v) {
+                        return t(xf[&#x27;@@transducer/step&#x27;].bind(xf), f, r, v);
                     },
-                    result: function (v) {
-                        return xf.result(v);
+                    &#x27;@@transducer/result&#x27;: function (v) {
+                        return xf[&#x27;@@transducer/result&#x27;](v);
                     }
                 };
             }
@@ -775,25 +785,25 @@
     **/
     api.flatten = function flatten (xf) {
         return {
-            init: function () {
-                return xf.init();
+            &#x27;@@transducer/init&#x27;: function () {
+                return xf[&#x27;@@transducer/init&#x27;]();
             },
-            step: function (r, v) {
+            &#x27;@@transducer/step&#x27;: function (r, v) {
                 return api.foldl({
-                    init: function() {
-                        return xf.init();
+                    &#x27;@@transducer/init&#x27;: function() {
+                        return xf[&#x27;@@transducer/init&#x27;]();
                     },
-                    step: function(__r, __v) {
-                        var _v = xf.step(__r, __v);
+                    &#x27;@@transducer/step&#x27;: function(__r, __v) {
+                        var _v = xf[&#x27;@@transducer/step&#x27;](__r, __v);
                         return api.isReduced(_v) ? api.deref(_v) : _v;
                     },
-                    result: function(v) {
+                    &#x27;@@transducer/result&#x27;: function(v) {
                         return v;
                     }
                 }, r, v);
             },
-            result: function (v) {
-                return xf.result(v);
+            &#x27;@@transducer/result&#x27;: function (v) {
+                return xf[&#x27;@@transducer/result&#x27;](v);
             }
         };
     }
@@ -811,14 +821,14 @@
     api.map = function map (f) {
         return function (xf) {
             return {
-                init: function () {
-                    return xf.init();
+                &#x27;@@transducer/init&#x27;: function () {
+                    return xf[&#x27;@@transducer/init&#x27;]();
                 },
-                step: function (r, v) {
-                    return xf.step(r, f(v));
+                &#x27;@@transducer/step&#x27;: function (r, v) {
+                    return xf[&#x27;@@transducer/step&#x27;](r, f(v));
                 },
-                result: function (v) {
-                    return xf.result(v);
+                &#x27;@@transducer/result&#x27;: function (v) {
+                    return xf[&#x27;@@transducer/result&#x27;](v);
                 }
             };
         }
@@ -836,7 +846,7 @@
     **/
     api.flatMap = function flatMap (f) {
         return comp(api.flatten, api.map(f));
-    }
+    };
 
     /**
     Given a predicate function &#x60;f&#x60;, returns a function awaiting a transducer which
@@ -852,14 +862,14 @@
     api.filter = function filter (f) {
         return function (xf) {
             return {
-                init: function () {
-                    return xf.init();
+                &#x27;@@transducer/init&#x27;: function () {
+                    return xf[&#x27;@@transducer/init&#x27;]();
                 },
-                step: function (r, v) {
-                    return !!f(v) ? xf.step(r, v) : r;
+                &#x27;@@transducer/step&#x27;: function (r, v) {
+                    return !!f(v) ? xf[&#x27;@@transducer/step&#x27;](r, v) : r;
                 },
-                result: function (v) {
-                    return xf.result(v);
+                &#x27;@@transducer/result&#x27;: function (v) {
+                    return xf[&#x27;@@transducer/result&#x27;](v);
                 }
             };
         }
@@ -878,18 +888,18 @@
         return function (xf) {
             var _n = n;
             return {
-                init: function () {
-                    return xf.init();
+                &#x27;@@transducer/init&#x27;: function () {
+                    return xf[&#x27;@@transducer/init&#x27;]();
                 },
-                step: function (r, v) {
+                &#x27;@@transducer/step&#x27;: function (r, v) {
                     if (_n &gt; 0) {
                         _n -= 1;
                         return r;
                     }
-                    return xf.step(r, v);
+                    return xf[&#x27;@@transducer/step&#x27;](r, v);
                 },
-                result: function (v) {
-                    return xf.result(v);
+                &#x27;@@transducer/result&#x27;: function (v) {
+                    return xf[&#x27;@@transducer/result&#x27;](v);
                 }
             };
         }
@@ -908,18 +918,18 @@
         return function (xf) {
             var _i = -1;
             return {
-                init: function () {
-                    return xf.init();
+                &#x27;@@transducer/init&#x27;: function () {
+                    return xf[&#x27;@@transducer/init&#x27;]();
                 },
-                step: function (r, v) {
+                &#x27;@@transducer/step&#x27;: function (r, v) {
                     _i += 1;
                     if (_i === n) {
                         return r;
                     }
-                    return xf.step(r, v);
+                    return xf[&#x27;@@transducer/step&#x27;](r, v);
                 },
-                result: function (v) {
-                    return xf.result(v);
+                &#x27;@@transducer/result&#x27;: function (v) {
+                    return xf[&#x27;@@transducer/result&#x27;](v);
                 }
             };
         }
@@ -939,17 +949,17 @@
         return function (xf) {
             var _drops = true;
             return {
-                init: function () {
-                    return xf.init();
+                &#x27;@@transducer/init&#x27;: function () {
+                    return xf[&#x27;@@transducer/init&#x27;]();
                 },
-                step: function (r, v) {
+                &#x27;@@transducer/step&#x27;: function (r, v) {
                     if (_drops) {
                         _drops = !!f(v);    
                     }
-                    return _drops ? r : xf.step(r, v);
+                    return _drops ? r : xf[&#x27;@@transducer/step&#x27;](r, v);
                 },
-                result: function (v) {
-                    return xf.result(v);
+                &#x27;@@transducer/result&#x27;: function (v) {
+                    return xf[&#x27;@@transducer/result&#x27;](v);
                 }
             };
         }
@@ -968,18 +978,18 @@
         return function (xf) {
             var _n = 0;
             return {
-                init: function () {
-                    return xf.init();
+                &#x27;@@transducer/init&#x27;: function () {
+                    return xf[&#x27;@@transducer/init&#x27;]();
                 },
-                step: function (r, v) {
+                &#x27;@@transducer/step&#x27;: function (r, v) {
                     if (_n &lt; n) {
                         _n += 1;
-                        return xf.step(r, v);
+                        return xf[&#x27;@@transducer/step&#x27;](r, v);
                     }
                     return api.reduced(r);
                 },
-                result: function (v) {
-                    return xf.result(v);
+                &#x27;@@transducer/result&#x27;: function (v) {
+                    return xf[&#x27;@@transducer/result&#x27;](v);
                 }
             };
         }
@@ -998,18 +1008,18 @@
         return function (xf) {
             var _i = -1;
             return {
-                init: function () {
-                    return xf.init();
+                &#x27;@@transducer/init&#x27;: function () {
+                    return xf[&#x27;@@transducer/init&#x27;]();
                 },
-                step: function (r, v) {
+                &#x27;@@transducer/step&#x27;: function (r, v) {
                     _i += 1;
                     if (_i &lt; n) {
                         return r;
                     }
-                    return api.reduced(xf.step(r, v));
+                    return api.reduced(xf[&#x27;@@transducer/step&#x27;](r, v));
                 },
-                result: function (v) {
-                    return xf.result(v);
+                &#x27;@@transducer/result&#x27;: function (v) {
+                    return xf[&#x27;@@transducer/result&#x27;](v);
                 }
             };
         }
@@ -1029,18 +1039,18 @@
         return function (xf) {
             var _take = true;
             return {
-                init: function () {
-                    return xf.init();
+                &#x27;@@transducer/init&#x27;: function () {
+                    return xf[&#x27;@@transducer/init&#x27;]();
                 },
-                step: function (r, v) {
+                &#x27;@@transducer/step&#x27;: function (r, v) {
                     if (_take) {
                         _take = !!f(v);
-                        return _take ? xf.step(r, v) : api.reduced(r);
+                        return _take ? xf[&#x27;@@transducer/step&#x27;](r, v) : api.reduced(r);
                     }
                     return api.reduced(r);
                 },
-                result: function (v) {
-                    return xf.result(v);
+                &#x27;@@transducer/result&#x27;: function (v) {
+                    return xf[&#x27;@@transducer/result&#x27;](v);
                 }
             };
         }
@@ -1058,17 +1068,17 @@
     **/
     api.keep = function keep (xf) {
         return {
-            init: function () {
-                return xf.init();
+            &#x27;@@transducer/init&#x27;: function () {
+                return xf[&#x27;@@transducer/init&#x27;]();
             },
-            step: function (r, v) {
+            &#x27;@@transducer/step&#x27;: function (r, v) {
                 if (v !== null &amp;&amp; v !== void 0) {
-                    return xf.step(r, v);
+                    return xf[&#x27;@@transducer/step&#x27;](r, v);
                 }
                 return r;
             },
-            result: function (v) {
-                return xf.result(v);
+            &#x27;@@transducer/result&#x27;: function (v) {
+                return xf[&#x27;@@transducer/result&#x27;](v);
             }
         };
     }
@@ -1085,18 +1095,18 @@
     api.unique = function unique (xf) {
         var _found = Object.create(null);
         return {
-            init: function () {
-                return xf.init();
+            &#x27;@@transducer/init&#x27;: function () {
+                return xf[&#x27;@@transducer/init&#x27;]();
             },
-            step: function (r, v) {
+            &#x27;@@transducer/step&#x27;: function (r, v) {
                 if (!_found[v]) {
                     _found[v] = true;
-                    return xf.step(r, v);
+                    return xf[&#x27;@@transducer/step&#x27;](r, v);
                 }
                 return r;
             },
-            result: function (v) {
-                return xf.result(v);
+            &#x27;@@transducer/result&#x27;: function (v) {
+                return xf[&#x27;@@transducer/result&#x27;](v);
             }
         };
     }
@@ -1116,24 +1126,24 @@
         return function (xf) {
             var _i = 0, _p = [], _r;
             return {
-                init: function () {
-                    return xf.init();
+                &#x27;@@transducer/init&#x27;: function () {
+                    return xf[&#x27;@@transducer/init&#x27;]();
                 },
-                step: function (r, v) {
+                &#x27;@@transducer/step&#x27;: function (r, v) {
                     if (_i &lt; n) {
                         _i += 1;
                         _p.push(v);
                         return r;
                     }
-                    _r = xf.step(r, _p);
+                    _r = xf[&#x27;@@transducer/step&#x27;](r, _p);
                     _i = 0;
                     _p = [v];
                     return _r;
                 },
-                result: function (v) {
+                &#x27;@@transducer/result&#x27;: function (v) {
                     return _p.length &lt; 1 ?
-                            xf.result(v) :
-                            xf.result(xf.step(v, _p));
+                            xf[&#x27;@@transducer/result&#x27;](v) :
+                            xf[&#x27;@@transducer/result&#x27;](xf[&#x27;@@transducer/step&#x27;](v, _p));
                 }
             };
         }
@@ -1166,10 +1176,10 @@
         return function (xf) {
             var _i = 0, _p = [], _l, _c, _r;
             return {
-                init: function () {
-                    return xf.init();
+                &#x27;@@transducer/init&#x27;: function () {
+                    return xf[&#x27;@@transducer/init&#x27;]();
                 },
-                step: function (r, v) {
+                &#x27;@@transducer/step&#x27;: function (r, v) {
                     _l = _c;
                     _c = f(v);
                     if (_i &lt; 1 || _l === _c) {
@@ -1178,14 +1188,14 @@
                         return r;
                     }
 
-                    _r = xf.step(r, _p);
+                    _r = xf[&#x27;@@transducer/step&#x27;](r, _p);
                     _p = [v];
                     return _r;
                 },
-                result: function (v) {
+                &#x27;@@transducer/result&#x27;: function (v) {
                     return _p.length &lt; 1 ?
-                            xf.result(v) :
-                            xf.result(xf.step(v, _p));
+                            xf[&#x27;@@transducer/result&#x27;](v) :
+                            xf[&#x27;@@transducer/result&#x27;](xf[&#x27;@@transducer/step&#x27;](v, _p));
                 }
             };
         }

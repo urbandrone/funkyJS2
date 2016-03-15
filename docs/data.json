@@ -3326,7 +3326,7 @@
         },
         {
             "file": "sources\\transducers.js",
-            "line": 54,
+            "line": 53,
             "description": "Returns true for a reduced value",
             "itemtype": "method",
             "name": "isReduced",
@@ -3372,7 +3372,7 @@
         },
         {
             "file": "sources\\transducers.js",
-            "line": 106,
+            "line": 116,
             "description": "Transforms a reduced value into a normal value",
             "itemtype": "method",
             "name": "unReduced",
@@ -3396,7 +3396,7 @@
         },
         {
             "file": "sources\\transducers.js",
-            "line": 135,
+            "line": 145,
             "description": "Given a transformer/transducer, a seed value and a reducable, tries to fold\n    the reducable into the seed value with the transformer",
             "itemtype": "method",
             "name": "foldl",
@@ -3430,7 +3430,7 @@
         },
         {
             "file": "sources\\transducers.js",
-            "line": 207,
+            "line": 217,
             "description": "Maps a transformer function and a step function into a seed and over a \n    collection. Does not perform lazy although it has a kind of lazy behaviour indeed.\n    The function is fully curried, except for the transformer/transducer\n    argument. The stepper function (second argument) should know how to add\n    new items into the final result. The seed (third argument) should be the\n    final result in it's initial state, while the input (last argument) is\n    the source or starting value.",
             "itemtype": "method",
             "name": "transduce",
@@ -3468,7 +3468,7 @@
         },
         {
             "file": "sources\\transducers.js",
-            "line": 310,
+            "line": 320,
             "description": "Maps a transformer function into a seed value over the collection. Combines\n    different depending on the type of seed value. See the example below for\n    more information",
             "itemtype": "method",
             "name": "into",
@@ -3501,7 +3501,7 @@
         },
         {
             "file": "sources\\transducers.js",
-            "line": 387,
+            "line": 397,
             "description": "Takes a list and a value and adds the value to the end of the list. Has a\n    side effect on the list. If you do not want to have a side effect use\n    funkyJS.transducers.conj instead",
             "itemtype": "method",
             "name": "append",
@@ -3529,7 +3529,7 @@
         },
         {
             "file": "sources\\transducers.js",
-            "line": 413,
+            "line": 423,
             "description": "Takes a list and a value and adds the value to the front of the list. Has a\n    side effect on the list. If you do not want to have a side effect use\n    funkyJS.transducers.cons instead",
             "itemtype": "method",
             "name": "prepend",
@@ -3557,7 +3557,7 @@
         },
         {
             "file": "sources\\transducers.js",
-            "line": 439,
+            "line": 449,
             "description": "Takes a list and a value and adds the value to the front of the list without\n    side effects on the list. If you do want to have a side effect use\n    funkyJS.transducers.prepend instead",
             "itemtype": "method",
             "name": "cons",
@@ -3585,7 +3585,7 @@
         },
         {
             "file": "sources\\transducers.js",
-            "line": 464,
+            "line": 474,
             "description": "Takes a list and a value and adds the value to the end of the list without\n    side effects on the list. If you do want to have a side effect use\n    funkyJS.transducers.append instead",
             "itemtype": "method",
             "name": "conj",
@@ -3613,7 +3613,7 @@
         },
         {
             "file": "sources\\transducers.js",
-            "line": 489,
+            "line": 499,
             "description": "Takes two values and directly combines them via `(+)`. Works on numbers and\n    strings",
             "itemtype": "method",
             "name": "combine",
@@ -3641,7 +3641,7 @@
         },
         {
             "file": "sources\\transducers.js",
-            "line": 513,
+            "line": 523,
             "description": "Takes a glue parameter and returns a stepper function which combines the\n    result so far and the next value with the glue in between by calling\n    `(+)`. Works on numbers and strings.",
             "itemtype": "method",
             "name": "join",
@@ -3664,7 +3664,7 @@
         },
         {
             "file": "sources\\transducers.js",
-            "line": 541,
+            "line": 551,
             "description": "Given a object and a key-value pair, merges the pair into the object and\n    returns it afterwards. If kv is a object itself, the whole object is\n    merged into the record",
             "itemtype": "method",
             "name": "merge",
@@ -3692,7 +3692,7 @@
         },
         {
             "file": "sources\\transducers.js",
-            "line": 578,
+            "line": 588,
             "description": "Accepts a transformer function `t` and returns a function which itself also\n    accepts a function and returns a transducer. If the interal `.step`\n    function of the transducer is called, the transformer function `t` gets\n    called with these arguments before it's final result will be returned:\n    `step` a function which moves on to the next step. The transformer `t`\n        may call this argument and returns it's result as the final result \n        of the computation or the final results so far.\n    `f` the function passed to the returned function.\n    `r` the final computed results so far\n    `v` the next value",
             "itemtype": "method",
             "name": "liftTransformer",
@@ -3715,7 +3715,7 @@
         },
         {
             "file": "sources\\transducers.js",
-            "line": 643,
+            "line": 653,
             "description": "A transformer which flattens out the resulting structure",
             "itemtype": "method",
             "name": "flatten",
@@ -3735,7 +3735,7 @@
         },
         {
             "file": "sources\\transducers.js",
-            "line": 677,
+            "line": 687,
             "description": "Given a function `f`, returns a function awaiting a transducer which when\n    reduced maps `f` to every value.",
             "itemtype": "method",
             "name": "map",
@@ -3755,7 +3755,7 @@
         },
         {
             "file": "sources\\transducers.js",
-            "line": 703,
+            "line": 713,
             "description": "Given a function `f`, returns a function awaiting a transducer which when\n    reduced maps `f` to every value and then flattens the result out.",
             "itemtype": "method",
             "name": "flatMap",
@@ -3775,7 +3775,7 @@
         },
         {
             "file": "sources\\transducers.js",
-            "line": 717,
+            "line": 727,
             "description": "Given a predicate function `f`, returns a function awaiting a transducer which\n    when reduced returns a collection with a values inside for which `f`\n    returned `true`.",
             "itemtype": "method",
             "name": "filter",
@@ -3795,7 +3795,7 @@
         },
         {
             "file": "sources\\transducers.js",
-            "line": 744,
+            "line": 754,
             "description": "Given a number `n`, drops `n` items from the beginning of the collection",
             "itemtype": "method",
             "name": "drop",
@@ -3815,7 +3815,7 @@
         },
         {
             "file": "sources\\transducers.js",
-            "line": 774,
+            "line": 784,
             "description": "Given a number `n`, drops the `n`th item from the collection",
             "itemtype": "method",
             "name": "dropNth",
@@ -3835,7 +3835,7 @@
         },
         {
             "file": "sources\\transducers.js",
-            "line": 804,
+            "line": 814,
             "description": "Given a predicate function `f`, drops items from the beginning of the\n    collection until the predicate returns `false`",
             "itemtype": "method",
             "name": "dropWhile",
@@ -3855,7 +3855,7 @@
         },
         {
             "file": "sources\\transducers.js",
-            "line": 834,
+            "line": 844,
             "description": "Given a number `n`, takes `n` items from the beginning of the collection",
             "itemtype": "method",
             "name": "take",
@@ -3875,7 +3875,7 @@
         },
         {
             "file": "sources\\transducers.js",
-            "line": 864,
+            "line": 874,
             "description": "Given a number `n`, takes the `n`th item from the collection",
             "itemtype": "method",
             "name": "takeNth",
@@ -3895,7 +3895,7 @@
         },
         {
             "file": "sources\\transducers.js",
-            "line": 894,
+            "line": 904,
             "description": "Given a predicate function `f`, takes items from the beginning of the\n    collection until the predicate returns `false`",
             "itemtype": "method",
             "name": "takeWhile",
@@ -3915,7 +3915,7 @@
         },
         {
             "file": "sources\\transducers.js",
-            "line": 925,
+            "line": 935,
             "description": "A transformer which keeps all values which are not equal to `null` and/or\n    to `undefined`",
             "itemtype": "method",
             "name": "keep",
@@ -3935,7 +3935,7 @@
         },
         {
             "file": "sources\\transducers.js",
-            "line": 952,
+            "line": 962,
             "description": "A transformer which returns a collection of unique values",
             "itemtype": "method",
             "name": "unique",
@@ -3955,7 +3955,7 @@
         },
         {
             "file": "sources\\transducers.js",
-            "line": 980,
+            "line": 990,
             "description": "Given a number `n`, divides the collection into chunks of `n` size. The last\n    partition may have less then `n` items, depending on the size of the\n    initial collection",
             "itemtype": "method",
             "name": "partition",
@@ -3975,7 +3975,7 @@
         },
         {
             "file": "sources\\transducers.js",
-            "line": 1018,
+            "line": 1028,
             "description": "Given a function `f`, divides the collection into chunks whenever `f` returns\n    a new value",
             "itemtype": "method",
             "name": "partitionBy",
@@ -3998,7 +3998,7 @@
         },
         {
             "file": "sources\\transducers.js",
-            "line": 1074,
+            "line": 1084,
             "description": "EXPORT\n======",
             "class": "funkyJS.transducers",
             "module": "transducers"
@@ -4426,11 +4426,11 @@
     "warnings": [
         {
             "message": "unknown tag: alias",
-            "line": " sources\\transducers.js:106"
+            "line": " sources\\transducers.js:116"
         },
         {
             "message": "unknown tag: alias",
-            "line": " sources\\transducers.js:135"
+            "line": " sources\\transducers.js:145"
         },
         {
             "message": "Missing item type\nEXPORT\n======",
@@ -4474,7 +4474,7 @@
         },
         {
             "message": "Missing item type\nEXPORT\n======",
-            "line": " sources\\transducers.js:1074"
+            "line": " sources\\transducers.js:1084"
         }
     ]
 }

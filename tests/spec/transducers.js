@@ -10,7 +10,7 @@ describe('funkyJS Transducers Module', function () {
         var v = t.reduced(1);
 
         expect(v.value).toBe(1);
-        expect(v.__transformer_reduced__).toBe(true);
+        expect(v['@@transducer/reduced']).toBe(true);
     });
 
     it('testing isReduced :: f -> v -> b', function () {
